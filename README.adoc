@@ -1,0 +1,6 @@
+= Project "Skuld" =
+
+Preamble: Skuld is a Norn (a fate goddess) from Scandinavian mythology. My choice when picking her name as a title for my project as well as (probably) my numerical integration library is dictated by the nature of the goddess: she fortells what should happen the same as a neural network fortell the function for inputed parameters, not calculates it. Also the reason is that I like the Scandinavian mythology pretty much.
+
+== Description ==
+My Bachelor's degree diploma thesis. The main goal is to implement a numerical integration library for neural network-based numerical integration of a complex dimensional functions. 
