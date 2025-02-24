@@ -7,6 +7,14 @@ My Bachelor's degree diploma thesis. The main goal is to implement a numerical i
 
 == Project structure ==
 
+* *diploma-text* directory contains text assets for my diploma tesis.
+* *cat* directory contains the sourse code of the project:
+  ** *nn-c-test* directory contains C programming language attempt on creating the NNI system (was a bad idea and will not be developed later).
+  ** *nn-python* directory contains main implementations using the Python programming language (moslty Jupyter notebooks, but some source .py code also).
+    *** *lib* directory contains .py files and will be the main storage space for my library.
+    *** *main-notebooks* directory contains the "good" Jupyter notebooks (those, I recon, containing the best code and results).
+    *** *playground* other Jupyter notebooks as well as unfinished, abandoned, banished and wrong-idea code.
+
 == Goals ==
 
 Main goal:
