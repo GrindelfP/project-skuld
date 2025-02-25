@@ -1,0 +1,661 @@
+%%
+\documentclass[%
+]{ittmm}
+
+
+%%% One can fix some overfulls
+\sloppy
+
+%% Minted listings support
+%% Need pygment <http://pygments.org/> <http://pypi.python.org/pypi/Pygments>
+\usepackage{minted}
+%% auto break lines
+\setminted{breaklines=true}
+
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% Rights management information.
+%% CC-BY is default license.
+\copyrightyear{2025}
+\copyrightclause{Copyright for this paper by its authors.
+  Use permitted under Creative Commons License Attribution 4.0
+  International (CC BY 4.0).}
+
+%%
+%% This command is for the conference information
+\conference{Information and Telecommunication Technologies and Mathematical Modeling of High-Tech Systems 2025 (ITTMM 2025), Moscow, April 07--11, 2025}
+
+%%
+%% The "title" command
+\title{ITTMM extended thesis template}
+
+\tnotemark[1]
+\tnotetext[1]{You can use this document as the template for preparing your publication. We recommend using the latest version of the ittmm style.}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+\author[1,2]{Dmitry S. Kulyabov}[%
+orcid=0000-0002-0877-7063,
+email=kulyabov-ds@rudn.ru,
+url=https://yamadharma.github.io/,
+]
+\cormark[1]
+
+\author[1]{Anna V. Korolkova}[%
+orcid=0000-0001-7141-7610,
+email=korolkova-av@rudn.ru,
+]
+\address[1]{RUDN University,
+  6 Miklukho-Maklaya St, Moscow, 117198, Russian Federation}
+\address[2]{Joint Institute for Nuclear Research,
+  6 Joliot-Curie St, Dubna, 141980, Russian Federation}
+
+%%% Footnotes
+\cortext[1]{Corresponding author.}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+    The short abstract should have between 150 and 250 words.
+    Papers should contain 3-6 full pages, including figures, tables, and references.
+    When a paper exceeds 6 pages, extra pages can be chargeable.
+    The materials are made out according to the template of the conference book and are laid out on the Conference website.
+    The title and the authors of the extended abstract should be presented using the proper text formatting like in the template above.
+\end{abstract}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\begin{keywords}
+  LaTeX class \sep
+  paper template \sep
+  paper formatting \sep
+  computer science \sep
+  information technologies \sep
+  conference proceedings
+\end{keywords}
+
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introduction}
+
+This template provides a consistent \LaTeX{} style for use across ITTMM Conference publications, and incorporates accessibility and metadata-extraction functionality.
+This document will explain the major features of the document class.
+
+\section{Template parameters}
+
+There are a number of template parameters which modify some part of the
+\mintinline{latex}{ittmm}
+ document class.
+This parameters are enclosed in square brackets and are a part of the
+\mintinline{latex}{\documentclass}
+ command:
+\begin{minted}{latex}
+\documentclass{ittmm}
+\end{minted}
+
+\section{Front matter}
+
+\subsection{Title information}
+
+The titles of papers should be all use the regular English style.
+
+Use the
+\mintinline{latex}{\title}
+command to define the title of your work. Do not insert line breaks in your title.
+
+% \subsection{Title variants}
+
+% \mintinline{latex}{\title}
+% command have the below options:
+% \begin{itemize}
+% \item
+% \mintinline{latex}{title}
+% : Document title. This is default option.
+% \begin{minted}{latex}
+% \title[mode=title]{This is a title}
+% \end{minted}
+
+% You can just omit it, like as follows:
+% \begin{minted}{latex}
+% \title{This is a title}
+% \end{minted}
+
+% \item
+% \mintinline{latex}{alt}
+% : Alternate title.
+% \begin{minted}{latex}
+% \title[mode=alt]{This is a alternate title}
+% \end{minted}
+
+% \item
+% \mintinline{latex}{sub}
+% : Sub title.
+% \begin{minted}{latex}
+% \title[mode=sub]{This is a sub title}
+% \end{minted}
+% You can just use
+% \mintinline{latex}{\subtitle}
+%  command, as follows:
+% \begin{minted}{latex}
+% \subtitle{This is a sub title}
+% \end{minted}
+
+% \item
+% \mintinline{latex}{trans}
+% : Translated title.
+% \begin{minted}{latex}
+% \title[mode=trans]{This is a translated title}
+% \end{minted}
+
+% \item
+% \mintinline{latex}{transsub}
+% : Translated sub title.
+% \begin{minted}{latex}
+% \title[mode=transsub]{This is a translated sub title}
+% \end{minted}
+% \end{itemize}
+
+\subsection{Authors and affiliations}
+
+Each author must be defined separately for accurate metadata identification.
+Multiple authors may share one affiliation.
+Authors' names should not be abbreviated; use full first names wherever possible.
+Include authors' e-mail addresses whenever possible.
+
+% \mintinline{latex}{\author}
+% command have the below options:
+% \begin{itemize}
+% \item
+% \mintinline{latex}{style}
+%  : Style of author name (chinese)
+% \item
+% \mintinline{latex}{prefix}
+%  : Prefix
+% \item
+% \mintinline{latex}{suffix}
+%  : Suffix
+% \item
+% \mintinline{latex}{degree}
+%  : Degree
+% \item
+% \mintinline{latex}{role}
+%  : Role
+% \item
+% \mintinline{latex}{orcid}
+%  : ORCID
+% \item
+% \mintinline{latex}{email}
+%  : E-mail
+% \item
+% \mintinline{latex}{url}
+%  : URL
+% \end{itemize}
+
+% Author names can have some kinds of marks and notes:
+% \begin{itemize}
+% \item affiliation mark:
+% \mintinline{latex}{\author[<num>]}
+% .
+% \end{itemize}
+
+% The author names and affiliations could be formatted in two ways:
+% \begin{enumerate}
+% \item Group the authors per affiliation.
+% \item Use an explicit mark to indicate the affiliations.
+% \end{enumerate}
+
+% Author block example:
+% \begin{minted}{latex}
+% \author[1,2]{Author Name}[%
+%     prefix=Prof.,
+%     degree=D.Sc.,
+%     role=Researcher,
+%     orcid=0000-0000-000-0000,
+%     email=name@example.com,
+%     url=https://name.example.com
+% ]
+
+% \address[1]{Affiliation #1}
+% \address[2]{Affiliation #2}
+% \end{minted}
+
+\subsection{Abstract and keywords}
+
+Abstract shall be entered in an environment that starts with
+\mintinline{latex}{\begin{abstract}}
+ and ends with
+\mintinline{latex}{\end{abstract}}
+.
+
+\begin{minted}{latex}
+\begin{abstract}
+  This is an abstract.
+\end{abstract}
+\end{minted}
+
+The key words are enclosed in a
+\mintinline{latex}{keywords}
+environment. Use
+\mintinline{latex}{\sep}
+ to separate keywords.
+
+\begin{minted}{latex}
+\begin{keywords}
+  First keyword \sep
+  Second keyword \sep
+  Third keyword \sep
+  Fourth keyword
+\end{keywords}
+\end{minted}
+
+At the end of front matter add
+\mintinline{latex}{\maketitle}
+ command.
+
+\subsection{Various marks in the front matter}
+
+The front matter becomes complicated due to various kinds of notes and marks to the title and author names.
+Marks in the title will be denoted by a star (\(\star\)) mark; footnotes are denoted by super scripted Arabic numerals, corresponding author by an Conformal asterisk (
+\mintinline{latex}{*}
+) mark.
+
+\subsubsection{Title marks}
+
+Title mark can be entered by the command,
+\mintinline{latex}{\tnotemark[<num>]}
+and the corresponding text can be entered with the command
+\mintinline{latex}{\tnotetext[<num>]{<text>}}.
+
+An example will be:
+\begin{minted}{latex}
+\title{Moscow Computer Algebra Conference Extended Abstract Template}
+
+\tnotemark[1]
+\tnotetext[1]{You can use this document as the template for preparing your publication. We recommend using the latest version of the ittmm style.}
+\end{minted}
+
+\mintinline{latex}{\tnotemark}
+ and
+\mintinline{latex}{\tnotetext}
+ can be anywhere in the front matter, but should be before
+\mintinline{latex}{\maketitle}
+ command.
+
+\subsubsection{Author marks}
+
+Author names can have some kinds of marks and notes:
+\begin{itemize}
+\item footnote mark :
+\mintinline{latex}{\fnmark[<num>]}
+
+\item footnote text :
+\mintinline{latex}{\fntext[<num>]{<text>}}
+
+\item corresponding author mark :
+\mintinline{latex}{\cormark[<num>]}
+
+\item corresponding author text :
+\mintinline{latex}{\cortext[<num>]{<text>}}
+
+\end{itemize}
+
+\subsubsection{Other marks}
+
+At times, authors want footnotes which leave no marks in the author names. The note text shall be listed as part of the front matter notes. Class files provides
+\mintinline{latex}{\nonumnote}
+ for this purpose. The usage
+\begin{minted}{latex}
+\nonumnote{<text>}
+\end{minted}
+and should be entered anywhere before the
+\mintinline{latex}{\maketitle}
+ command for this to take effect.
+
+\section{Sectioning commands}
+
+Your work should use standard \LaTeX{} sectioning commands:
+\mintinline{latex}{\section}%
+,
+\mintinline{latex}{\subsection}%
+,
+\mintinline{latex}{\subsubsection}%
+, and
+\mintinline{latex}{\paragraph}%
+.
+They should be numbered; do not remove the numbering from the commands.
+
+Simulating a sectioning command by setting the first word or words of a paragraph in boldface or italicized text is not allowed.
+
+\section{Tables}
+
+The
+\mintinline{latex}{ittmm}
+document class includes the
+\mintinline{latex}{booktabs}
+package---\url{https://ctan.org/pkg/booktabs}---for preparing high-quality tables.
+
+Table captions are placed \textit{above} the table.
+
+Because tables cannot be split across pages, the best placement for them is typically the top of the page nearest their initial cite. To ensure this proper \enquote{floating} placement of tables, use the environment
+\mintinline{latex}{table}
+to enclose the table's contents and the table caption. The contents of the table itself must go in the
+\mintinline{latex}{tabular}
+environment, to be aligned properly in rows and columns, with the desired horizontal and vertical rules.
+
+Immediately following this sentence is the point at which Table~\ref{tab:freq} is included in the input file; compare the placement of the table here with the table in the printed output of this document.
+
+\begin{table*}
+  \caption{Frequency of Special Characters}
+  \label{tab:freq}
+  \begin{tabular}{ccl}
+    \toprule
+    Non-English or Math&Frequency&Comments\\
+    \midrule
+    \O & 1 in 1,000& For Swedish names\\
+    \(\pi\) & 1 in 5& Common in math\\
+    \$ & 4 in 5 & Used in business\\
+    \(\Psi^2_1\) & 1 in 40,000& Unexplained usage\\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+To set a wider table, which takes up the whole width of the page's live area, use the environment
+\mintinline{latex}{table*}
+to enclose the table's contents and the table caption.  As with a single-column table, this wide table will
+\enquote{float}
+to a location deemed more desirable.
+Immediately following this sentence is the point at which Table~\ref{tab:commands} is included in the input file; again, it is instructive to compare the placement of the table here with the table in the printed output of this document.
+
+\begin{table}
+  \caption{Some Typical Commands}
+  \label{tab:commands}
+  \begin{tabular}{ccl}
+    \toprule
+    Command &A Number & Comments\\
+    \midrule
+    \texttt{{\char'134}author} & 100& Author \\
+    \texttt{{\char'134}table}& 300 & For tables\\
+    \texttt{{\char'134}table*}& 400& For wider tables\\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Math equations}
+
+You may want to display math equations in three distinct styles: inline, numbered or non-numbered display.
+Each of the three are discussed in the next sections.
+
+\subsection{Inline (in-text) equations}
+
+A formula that appears in the running text is called an inline or in-text formula.
+It is produced by the
+\mintinline{latex}{math}
+environment, which can be invoked with the usual
+\mintinline{latex}{\begin}
+\ldots{}
+\mintinline{latex}{\end}
+construction or with the short form
+\mintinline{latex}{$}
+\ldots{}
+\mintinline{latex}{$}%
+.
+You can use any of the symbols and structures, from \(\alpha\) to \(\omega\), available in \LaTeX~\cite{Lamport:LaTeX}; this section will simply show a few examples of in-text equations in context.
+Notice how this equation:
+\begin{math}
+  \lim_{n\rightarrow \infty} \frac{1}{n} = 0,
+\end{math}
+set here in in-line math style, looks slightly different when set in display style.
+(See next section).
+
+\subsection{Display equations}
+
+A numbered display equation---one set off by vertical space from the text and centered horizontally---is produced by the
+\mintinline{latex}{equation}
+environment.
+An unnumbered display equation is produced by the
+\mintinline{latex}{displaymath}
+environment.
+
+Again, in either environment, you can use any of the symbols and structures available in \LaTeX{}; this section will just give a couple of examples of display equations in context.
+First, consider the equation, shown as an inline equation above:
+\begin{equation}
+  \lim_{n\rightarrow \infty} \frac{1}{n} = 0.
+\end{equation}
+Notice how it is formatted somewhat differently in the
+\mintinline{latex}{displaymath}
+environment.
+Now, we'll enter an unnumbered equation:
+\begin{displaymath}
+  S_{n} = \sum_{i=1}^{n} x_{i} ,
+\end{displaymath}
+and follow it with another numbered equation:
+\begin{equation}
+  \lim_{x \to 0} (1 + x)^{1/x} = e
+\end{equation}
+just to demonstrate \LaTeX's able handling of numbering.
+
+\section{Figures}
+
+The
+\mintinline{latex}{figure}
+environment should be used for figures.
+One or more images can be placed within a figure.
+If your figure contains third-party material, you must clearly identify it as such, as shown in the example below.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.3\linewidth]{figure}
+  \caption{A figure caption}
+\end{figure}
+
+Your figures should contain a caption which describes the figure to the reader.
+Figure captions go below the figure. Your figures should also include a description suitable for screen readers, to assist the visually-challenged to better understand your work.
+
+Figure captions are placed below the figure.
+
+\section{Citations and bibliographies}
+
+The use of Bib\LaTeX{} for the preparation and formatting of one's references is strongly recommended.
+Authors' names should be complete---use full first names (\enquote{Donald E. Knuth}) not initials (\enquote{D. E. Knuth})---and the salient identifying features of a reference should be included: title, year, volume, number, pages, article DOI, etc.
+
+The bibliography is included in your source document with these two commands, placed just before the
+\mintinline{latex}{\end{document}}
+command:
+\begin{minted}{latex}
+\bibliography{bibfile}
+\end{minted}
+where
+\mintinline{latex}{bibfile}
+ is the name, without the
+\mintinline{latex}{.bib}
+suffix, of the Bib\TeX{} file.
+
+\subsection{Some examples}
+
+A paginated journal article \cite{Abril07}, an enumerated journal
+article \cite{Cohen07}, a reference to an entire issue
+\cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
+monograph/whole book in a series (see 2a in spec. document)
+\cite{Harel79}, a divisible-book such as an anthology or compilation
+\cite{Editor00} followed by the same example, however we only output
+the series if the volume number is given \cite{Editor00a} (so series
+should not be present since it has no vol. no.), a chapter in a
+divisible book \cite{Spector90}, a chapter in a divisible book in a
+series \cite{Douglass98}, a multi-volume work as book \cite{Knuth97},
+an article in a proceedings (of a conference, symposium, workshop for
+example) (paginated proceedings article) \cite{Andler79}, a
+proceedings article with all possible elements \cite{Smith10}, an
+example of an enumerated proceedings article \cite{VanGundy07}, an
+informally published work \cite{Harel78}, a doctoral dissertation
+\cite{Clarkson85}, a master's thesis: \cite{anisi03}, an online
+document / world wide web resource \cite{Thornburg01, Ablamowicz07,
+  Poker06}, a video game (Case 1) \cite{Obama08} and (Case 2)
+\cite{Novak03} and \cite{Lee05} and (Case 3) a patent
+\cite{JoeScientist001}, work accepted for publication \cite{rous08},
+prolific author \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other
+cites might contain `duplicate' DOI and URLs (some SIAM articles)
+\cite{Kirschmer:2010:AEI:1958016.1958018}. Multi-volume works as books
+\cite{MR781536} and \cite{MR781537}. A couple of citations with DOIs:
+\cite{2004:ITE:1009386.1010128,Kirschmer:2010:AEI:1958016.1958018}. Online
+citations: \cite{TUGInstmem, Thornburg01, R, UMassCitations}.
+
+\section{Ethical disclaimers}
+
+A disclaimer is a note of disclaimer of responsibility~\cite{kulyabov_2024_editorial_author-ethics_en}.
+For example, authors' statements about conflicts of interest, author contributions, acknowledgements, etc.
+
+Authors should not prepare these disclaimers as a numbered or unnumbered
+\mintinline{latex}{\section}%
+; please use the special environments instead.
+
+\subsection{Author contributions}
+
+The Committee on Publication Ethics (COPE) draws attention to the problem of authorship \cite{cope_book_authorship_en}.
+The CRediT system (\url{https://credit.niso.org/}) is proposed to formalize author roles.
+The CRediT (Contributor Roles Taxonomy) offers 14 possible author roles \cite{holcombe_2019_contributorship-not-authorship_en}.
+This is not really a taxonomy, but a faceted classification. Author roles are not always independent in themselves.
+
+The following statements should be used \emph{Conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing---original draft preparation, X.X.; writing---review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y.}
+Please add at the end of the statement:
+\emph{All authors have read and agreed to the published version of the manuscript.}
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{authorcontributions}
+…
+\end{authorcontributions}
+\end{minted}
+
+\subsection{Funding}
+
+Disclaimer \emph{funding} refers primarily to external funding if the research was externally initiated.
+If the research is entirely the initiative of the author's team, it is better to indicate gratitude for partial funding of some of the stages of the research in the \emph{Acknowledgments} section.
+The fact that the author's team has received external funding should be recorded in the disclaimer as a matter of course.
+When mentioning the sponsor, its exact data (name of the organization, grant number, etc.) and the country of its location should be specified (for example \emph{This research was funded by NAME OF FUNDER grant number XXX}).
+If there is any support, it is recommended to clarify in the \emph{Conflicts of interest} section at which stages of the research and how the support was used.
+If there is no external funding, it is written: \emph{This research received no external funding}.
+If it is impossible to obtain information from the authors about the source of funding, then write: \emph{Not specified}.
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{funding}
+…
+\end{funding}
+\end{minted}
+
+\subsection{Data availability statement}
+
+Data are particularly important in reproducible researches.
+The data availability statement tells the reader where the research data related to the article are located and under what conditions the data can be accessed.
+References to the dataset are also provided.
+
+If no new data is created or analyzed, please write:
+\emph{No new data were created or analyzed in this study. Data sharing is not applicable.}
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{dataavailability}
+…
+\end{dataavailability}
+\end{minted}
+
+\subsection{Conflicts of interest}
+
+This disclaimer must be included.
+
+Conflicts of interest can comment on various aspects, but usually the author's past or current employment is indicated.
+Grants (especially from for-profit companies) received not only by the author but also by the organization for which he or she works are indicated.
+If the author is associated with a sponsor, it is indicated where the research was conducted.
+
+If there is no conflict of interest, then the corresponding statement should also be included: \emph{The authors declare no conflict of interest}.
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{conflictsofinterest}
+…
+\end{conflictsofinterest}
+\end{minted}
+
+\subsection{Acknowledgments}
+
+Identification of funding sources and other support, and thanks to individuals and groups that assisted in the research and the preparation of the work should be included in an acknowledgment section, which is placed just before the reference section in your document.
+
+This section has a special environment:
+\begin{minted}{latex}
+\begin{acknowledgments}
+These are different acknowledgments.
+\end{acknowledgments}
+\end{minted}
+so that the information contained therein can be more easily collected during the article metadata extraction phase, and to ensure consistency in the spelling of the section heading.
+
+\section{Appendices}
+
+If your work needs an appendix, add it before the
+\mintinline{latex}{\end{document}}
+command at the conclusion of your source document.
+
+Start the appendix with the
+\mintinline{latex}{\appendix}
+command:
+\begin{minted}{latex}
+\appendix
+\end{minted}
+and note that in the appendix, sections are lettered, not numbered.
+
+\vspace{\baselineskip}
+
+\begin{authorcontributions}
+  Conceptualization, writing---review and editing, Anna V. Korolkova; methodology, writing---original draft preparation, Dmitry S. Kulyabov.
+  All authors have read and agreed to the published version of the manuscript.
+\end{authorcontributions}
+
+\begin{funding}
+    This research received no external funding.
+\end{funding}
+
+\begin{dataavailability}
+    No new data were created or analysed during this study. Data sharing is not applicable.
+\end{dataavailability}
+
+\begin{conflictsofinterest}
+    The authors declare no conflict of interest.
+\end{conflictsofinterest}
+
+\begin{acknowledgments}
+  We thank the conference organizers for the opportunity to implement this template.
+\end{acknowledgments}
+
+%%
+%% Define the bibliography file to be used
+\bibliography{main}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+\appendix
+
+\section{Local Compilation}
+
+For compile project, please run:
+\begin{minted}{shell}
+latexmk
+\end{minted}
+
+\section{Online Resources}
+
+Overleaf project: \url{https://www.overleaf.com/read/vjvjpsqrqjhj#86e97e}.
+
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: LaTeX
+%%% TeX-master: t
+%%% End:
