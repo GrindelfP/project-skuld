@@ -3,8 +3,7 @@
 ]{ittmm}
 
 
-% \usepackage[T1]{fontenc}% T2A for Cyrillic font encoding
-% \usepackage[english, russian]{babel}
+\usepackage{tikz}
 
 %%% One can fix some overfulls
 \sloppy
@@ -34,9 +33,6 @@
 %% The "title" command
 \title{Application of Neural Network Approach to Numerical Integration}
 
-% \tnotemark[1]
-% \tnotetext[1]{You can use this document as the template for preparing your publication. We recommend using the latest version of the ittmm style.}
-
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
@@ -46,12 +42,12 @@ email=shgregory3@gmail.com,
 ]
 \cormark[1]
 
-\author[2]{Oksana Ivanovna Streltsova}[%
+\author[1,2]{Oksana Ivanovna Streltsova}[%
 orcid=0000-0003-4522-6735,
 email=!!!,
 ]
 
-\author[2]{Yuriy Leonidovich Kalinovskiy}[%
+\author[1,2]{Yuriy Leonidovich Kalinovskiy}[%
 orcid=!!!,
 email=!!!,
 ]
@@ -63,7 +59,6 @@ email=!!!,
 %%% Footnotes
 \cortext[1]{Corresponding author.}
 
-%%
 %% The abstract is a short summary of the work to be presented in the
 %% article.
 \begin{abstract}
@@ -71,7 +66,6 @@ email=!!!,
 
 \end{abstract}
 
-%%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
 \begin{keywords}
@@ -172,7 +166,7 @@ It is shown in item 3 in the key points of the neural network approach to the nu
     Li_0(u) = \frac{u}{1 - u} = -\frac{1}{1 - u^{-1}}.
 \end{equation}
 
-With the help of this substitution the integral of the neural network $\hat{f}(x)$ of any number of variables is calculated simply using (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) where, as it can be clearly seen, the polylogarithm is of the same order $n$ as the number of the integration function's variables. (NB: in Python programming language there is mpmath library which contains the required functionality to calculate such an exotic function as the polylogarithm and our numerical integration method also utilizes it.)
+With the help of this substitution the integral of the neural network $\hat{f}(x)$ of any number of variables is calculated simply using (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) where, as it can be clearly seen, the polylogarithm is of the same order $n$ as the number of the integration function's variables. (NB: in Python programming language there is mpmath library which contains the required functionality to calculate such an exotic function as the polylogarithm and our numerical integration method also utilizes it.) The whole calculus of the integral of (\ref{eq:math-form-mlp}) is a broad topic with requirement of its own theory but it is beyond the scope of this paper, but it may be observed in Lloyd's et al. work\cite{lloyd2020using}.
 
 To conclude, the neural network approach to numerical integration is:
 
@@ -182,27 +176,124 @@ To conclude, the neural network approach to numerical integration is:
     \item extract parameters of the network (\ref{eq:math-form-mlp}) and use them with (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) to calculate the numerical integral.
 \end{enumerate}
 
-\section{Physics task}
+\section{The problem of modeling of the particles formation and their properties in the NICA experiment}
 
-text
+It is mentioned in the introduction to this paper, that the source to the development of the neural network approach was the problem of modeling of the particles formation and their properties in the NICA experiment.
 
-\section{Usage of Neural Network Approach in the Physics task}
+The main task of this problem is to model particle formation ant their properties in the NICA experiment. The problem requires to build a model, which will describe the properties of light and heavy mesons. This will be a nonlocal interactions model!!!!!!\cite{blaschke2012meson}\cite{costa2003pseudoscalar}. The model concludes to the fact that meson (quark-antiquark pair) formation proceeds with a gluon exchange. But the gluon exchange cannot be described as a diagram sum, because perturbation theory cannot be applied here!!!!!!!.
 
-text
+Let \tikz \fill[black] (0,0) circle [radius=1.ex]; be the \textit{form-factor} and let us use Gaussian-type model:
+
+\begin{equation}
+    \label{eq:formfactorsize}
+    F(p^2)=\exp[\frac{-p^2}{\lambda^2}],
+\end{equation}
+
+\noindent so the form-factor size will be defined by the $F(p^2)$ as shown above (\ref{eq:formfactorsize}). To describe the particles we need to know masses, decay constants and the decay process. Let us denote the interaction diagram as \tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    } and than we can use it in the equations:
+
+\begin{equation}
+        \tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    } + \tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    }\tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    } + ... = \frac{1}{1 - \tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    }},
+\end{equation}
+
+\begin{equation}
+        \tikz[baseline=-0.5ex]{
+        \filldraw (0, 0) circle (0.1cm);
+        \filldraw (1, 0) circle (0.1cm);
+        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
+        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
+    } \to \int_{0}^{\infty}\frac{dp}{2\pi^4}F(p^2)\frac{1}{u_1u_2} = \int_{0}^{\infty}\frac{dp}{2\pi^4}F(p^2)\frac{1}{[(p + q_1)^2 + m_1^2][(p + q_2)^2 + m_2^2]}.
+\end{equation}
+
+To calculate these integrals let us use the equations:
+
+\begin{equation}
+    \frac{1}{(p + q_1)^2 + m_1^2} = \int_{0}^{\infty}dt\{\exp(-t[(p + q_i)^2 + m_i^2])\}, 
+\end{equation}
+\begin{equation}
+    F(p^2) = \int_{0}^{\infty}ds\{\exp(-sp^2)F(s)\} .
+\end{equation}
+
+The cases of more than two mesons is described using triple and quadruple integrals.
+
+The amplitudes of particular decays and the squared amplitudes of particular decays are calculated using FORM (a software for analytical calculation). And the key problem is to calculate integrals of functions of multiple variables.
+
+In the framework of this problem there is a particular iterated integral:
+
+\begin{equation}
+    \label{eq:the-integral}
+    \int_{0}^{1}d\alpha\{\alpha^{a}(1 - \alpha)^b\}\int_{0}^{\infty}dt\{\frac{t^m}{(1+t)^n}F[z_{0}]\} \equiv I(a, b, m, n; F[z_{0}]),
+\end{equation}
+\begin{equation}   
+    F[z_0] = \exp[-2z_0],
+\end{equation}
+\begin{equation} 
+    z_0 = tD + \frac{t}{1 + t}R^2,
+\end{equation}
+\begin{equation}     
+    D = \alpha_1(b_1^{2}P^2 + m_1^2) + \alpha_2(b_2^{2}P^2 + m_2^2),
+\end{equation}
+\begin{equation} 
+        R^2 = (\alpha_1^{2}b_1^2 + \alpha_2^{2}b_2^2 + 2\alpha_{1}\alpha_{2}b_{1}b_2)P^2,
+\end{equation}
+\begin{equation} 
+    b_1 = -\frac{m_1}{m_1 + m_2},
+\end{equation}
+\begin{equation} 
+    b_2 = \frac{m_2}{m_1 + m_2},
+\end{equation}
+\begin{equation}
+    \alpha_1 = \alpha, \alpha_2 = 1 - \alpha.
+\end{equation}
+
+\noindent This integral is used in multiple calculations in the problem. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations. The integral (\ref{eq:the-integral}) also is interesting in that case, that it depends on two variables only, so it is can be used to test the integration framework we've been developing early in the development cycle. 
+
+\section{Usage of Neural Network Approach}
+
+As stated in the previous part, the integral (\ref{eq:the-integral}) has been already used to test the neural network approach. 
+
+It was firstly interpreted as a product of two integrals of single-variable functions ($\alpha_{1,2}$ were treated as constants). The first integral of function $\alpha^{a}(1 - \alpha)^b$ has a very simple analytical anti-derivative with any integer parameter $a$ and $b$ so it was easy to check the result of the integration. In most cases the neural network approach provided error bound $\varepsilon < 10^{-5}$. On the other hand, the second integral of function $\frac{t^m}{(1+t)^n}F[z_{0}]$ has a much more complex anti-derivative, so in this case the goal was to make the approximation bound of neural network $\hat{f}(x)$ was $\epsilon < 10^{-5}$ and this requirement was met.
+
+Secondly, the iterated integral (\ref{eq:the-integral}) was interpreted as a double integral:
+
+\begin{equation}
+    \label{eq:iterated-as-double}
+     \int_{0}^{1} \alpha^{a}(1 - \alpha)^bd\alpha \int_{0}^{\infty}\frac{t^m}{(1+t)^n}F[z_{0}]dt = 
+     \int_{0}^{1} \int_{0}^{\infty}\frac{t^m}{(1+t)^n}F[z_{0}]\alpha^{a}(1 - \alpha)^bdtd\alpha ,
+\end{equation}
+
+\noindent and this double integral function was used to train the neural network model to approximate it. The approximation error bound of $\epsilon < 10^{-5}$ was also met, but currently the software implementation of the formulae (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) requires further improvement and testing.
+
+Also both 1-dimensional ans 2-dimensional functionality was tested on simple arbitrary functions, e.g. transcendental functions.
 
 \section{Future development}
 
-text
+Currently, the further development of the neural network approach to the numerical integration continues. The resulting software will be tested on the integrals from the meson interaction modeling problem, which provides plenty of cases where numerical integration of high-dimensional functions is required. Also, we hope, the final product - the software library for numerical integration with use of numerical integration approach called \textit{Skuld} will help to solve difficult calculation problems in the meson interaction modeling problem domain as well, as in other fields, both theoretical and applied.
 
-
-%%
-%% Define the bibliography file to be used
 \bibliography{main}
 
-
 \end{document}
-
-%%% Local Variables:
-%%% mode: LaTeX
-%%% TeX-master: t
-%%% End:
