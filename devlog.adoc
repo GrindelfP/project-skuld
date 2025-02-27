@@ -1,0 +1,17 @@
+= Development Logs =
+
+== February 2025 ==
+
+=== 2025-02-27 ===
+
+Devlogs are now here, the https://github.com/GrindelfP/project-skuld/blob/main/README.adoc[README] should contain clean information on the project.
+
+=== Earlier in February 2025 ===
+
+- Tried using the task for the 1d integration - good accuracy achieved.
+- Tried using the task for the 2d integration - not so good.
+  
+== Before February 2025 ==
+
+- Creatred implementation for 1d integrals using PyTorch library for the neural network model.
+- Created a jupyter-notebook https://github.com/GrindelfP/nni-tutorial/tree/main[tutorial] on neural network integration of a 1d functions.
