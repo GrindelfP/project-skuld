@@ -21,15 +21,3 @@ Main goal:
 *Implement the Skuld library which can be used to integrate multi-dimensional functions.*
 
 Less general goals can be observed under the https://github.com/GrindelfP/project-skuld/milestones[Milestones] section. 
-
-== Development ==
-
-*_Before Feb 2025_*
-
-- Creatred implementation for 1d integrals using PyTorch library for the neural network model.
-- Created a jupyter-notebook https://github.com/GrindelfP/nni-tutorial/tree/main[tutorial] on neural network integration of a 1d functions.
-
-*_Feb 2025_*
-
-- Tried using the task for the 1d integration - good accuracy achieved.
-- Tried using the task for the 2d integration - not so good.
