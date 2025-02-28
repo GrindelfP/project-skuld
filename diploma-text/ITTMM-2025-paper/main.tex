@@ -4,6 +4,8 @@
 
 
 \usepackage{tikz}
+\usetikzlibrary{positioning}
+
 
 %%% One can fix some overfulls
 \sloppy
@@ -36,20 +38,20 @@
 %%
 %% The "author" command and its associated commands are used to define
 %% the authors and their affiliations.
-\author[1]{Gregory Alexandrovich Shipunov}[%
+\author[1]{Gregory A. Shipunov}[%
 orcid=0009-0007-7819-641X,
 email=shgregory3@gmail.com,
 ]
 \cormark[1]
 
-\author[1,2]{Oksana Ivanovna Streltsova}[%
+\author[1,2]{Oksana I. Streltsova}[%
 orcid=0000-0003-4522-6735,
-email=!!!,
+email=strel@jinr.ru,
 ]
 
-\author[1,2]{Yuriy Leonidovich Kalinovskiy}[%
-orcid=!!!,
-email=!!!,
+\author[1,2]{Yuriy L. Kalinovskiy}[%
+orcid=0000-0002-7596-5531,
+email=kalinov@jinr.ru,
 ]
 \address[1]{Dubna State University,
   19 Universitetskaya St, Dubna, 141980, Russian Federation}
@@ -90,7 +92,103 @@ This paper contains several parts. Firstly, we will give the description of the 
 
 \section{Neural Network Approach to Numerical Integration}
 
-The theory of the neural network approach can be summed in the following key points:
+The problem we are investigating in this paper is the calculation of approximate value of integral of a function, i.e. numerical integral with usage of neural network approach.
+
+Let a continuous real function $f$ be defined as $f: {\rm I\!R}^n \to {\rm I\!R}$. Let $\Omega$ be a compact subset of ${\rm I\!R}^n$ and let $G$ be a bounded convex subset of $\Omega$. Let, also, $\mathbf{x}$ be a vector of $n$ dimensions in $\Omega$. Than
+
+\begin{equation}
+    \label{eq: integral definition}
+    I(f) = \int_G f(\mathbf{x})d\mathbf{x},
+\end{equation}
+
+\noindent is a definite integral of $f$ across set $G$. Therefore, the problem is to get the $I(f)$ value calculated with use of neural network approach.
+
+The work of Lloyd et al.\cite{lloyd2020using} proposes, that function $f(\mathbf{x})$ can be approximated using a MLP (multilayer perceptron) neural network. Let this network contain of 3 layers with sizes $n$, $k$ and $1$ accordingly. $n$ is defined above as a number of variables, $k$ is the hidden-layer size which is set to minimize the approximation error and $1$ neuron of the output layer accumulates the approximated $f(\mathbf{x})$ value. While this value is not equal to the value $f(\mathbf{x})$ with given $\mathbf{x}$, let us denote it as $\hat{f}(\mathbf{x})$ and further on we will refer to the MLP network as $\hat{f}(\mathbf{x})$. Figure \ref{fig:structure} depicts the structure of the $\hat{f}(\mathbf{x})$ network. 
+
+\begin{figure}[h!]
+    \centering
+    % \includegraphics[width=0.6\linewidth]{structure.png}
+    \begin{tikzpicture}[
+            neuron/.style={circle, draw, minimum size=1.0cm, node distance=1cm},
+            bias/.style={circle, draw, minimum size=1.0cm, node distance=1cm, fill=gray!20},
+            layer/.style={draw=none, fill=none}
+        ]
+        
+        % Input layer
+        \node[neuron, fill=red!30] (x1) {$x_1$};
+        \node[neuron, below=0.5cm of x1, fill=red!30] (x2) {$x_2$};
+        \node[layer, below=0.5cm of x2] (dots1) {$\vdots$};
+        \node[neuron, below=0.5cm of dots1, fill=red!30 ] (xn) {$x_n$};
+        \node[bias, below=0.5cm of xn] (b1) {$b^{(1)}$};
+        
+        % Hidden layer
+        \node[neuron, right=3cm of x1, fill=yellow!30] (h1) {$\phi(\sum)$};
+        \node[neuron, below=0.5cm of h1, fill=yellow!30] (h2) {$\phi(\sum)$};
+        \node[layer, below=0.5cm of h2] (dots2) {$\vdots$};
+        \node[neuron, below=0.5cm of dots2, fill=yellow!30 ] (hK) {$\phi(\sum)$};
+        \node[bias, below=0.5cm of hK] (b2) {$b^{(2)}$};
+        
+        % Output layer
+        \node[neuron, right=3cm of h1, fill=green!30] (o) {$\hat{f}(x)$};
+        
+        
+        % Connections
+        \foreach \i in {x1,x2,xn,b1}{
+            \foreach \j in {h1,h2,hK}{
+                \draw[->] (\i) -- (\j);
+            }
+        }
+        
+        \foreach \i in {h1,h2,hK,b2}{
+            \draw[->] (\i) -- (o);
+        }
+
+        % Labels
+        \node[layer, above=0.5cm of x1] {$Input\:layer$};
+        \node[layer, above=0.5cm of h1] {$Hidden\:layer$};
+        \node[layer, above=0.5cm of o] {$Output\:layer$};
+        
+        \end{tikzpicture}
+    \caption{The MLP structure used in the neural network approach}
+    \label{fig:structure}
+\end{figure}
+
+MLP network can have activation functions applied to the neuron values before forward propagation. In our case both input and output layer has \textit{linear activation function} applied and the hidden layer has \textit{logistic sigmoid function} applied, which has the following definition:
+
+\begin{equation}
+    \label{eq:sigmoid}
+    \phi(z) = \frac{1}{1+\exp(-z)}.
+\end{equation}
+
+\noindent Given network structure's mathematical form is:
+
+\begin{equation}
+    \label{eq:math-form-mlp}
+    \hat{f}(x) = b^{(2)} + \sum_{j=1}^{k}w_j^{(2)}\phi(b_j^{(1)}+\sum_{i=1}^{n}w_{ji}^{(1)}x_{i}).
+\end{equation}
+
+So here Lloyd's et al. work puts the proposition to use the trained neural network $\hat{f}(\mathbf{x})$ to get the approximate value of integral (\ref{eq: integral definition}):
+
+\begin{equation}
+    \label{eq: ihatdef}
+    \hat{I}(f) = \int_G \hat{f}(\mathbf{x})d\mathbf{x}.
+\end{equation}
+
+\noindent To integrate the (\ref{eq: integral definition}) and get the value of $\hat{I}(f)$ let us apply following substitution:
+
+\begin{equation}
+    \label{eq:substitution-li-sigm}
+    -Li_0(-\exp(z)) = \frac{1}{1+\exp(-z)} = \phi(z),
+\end{equation}
+
+\noindent where $Li_0(u(z))$ is a Jonquière's function or the polylogarithm of order 0:
+
+\begin{equation}
+    \label{eq:li0-def}
+    Li_0(u) = \frac{u}{1 - u}.
+\end{equation}
+
+\noindent This substitution is required, because it is easy to integrate polylogarithm functions. With this in mind, the Lloyd's et al. propose this formulae as a numerical method to integrate $f(\mathbf{x})$ over given $G: [\alpha_1, \beta_1] \times...\times[\alpha_n, \beta_n]$.
 
 \begin{enumerate}
     \item Let 
@@ -130,19 +228,11 @@ The said MLP architecture should be described in details. The MLP neural network
 
 In our case the MLP architecture has 3 layers. The first, input layer, contains of $n$ neurons, where $n$ is the number of integral function variables. The second, hidden layer, contains of $k$ neurons, where $k$ is an arbitrary number greatly influenced by the neural network optimization process. This is the only layer which contains an activation function. The function is a logistic sigmoid function with the form:
 
-\begin{equation}
-\label{eq:sigmoid}
-    \phi(z) = \frac{1}{1+\exp(-z)}.
-\end{equation}
+
 
 \noindent The third, output layer, contains only one neuron where the $\hat{f}(x)$ value is accumulated. Figure \ref{fig:structure} shows the described architecture.
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.6\linewidth]{structure.png}
-    \caption{Described MLP structure}
-    \label{fig:structure}
-\end{figure}
+
 
 The mathematical form of this MLP structure is:
 
@@ -163,8 +253,10 @@ It is shown in item 3 in the key points of the neural network approach to the nu
 
 \begin{equation}
     \label{eq:li0-def}
-    Li_0(u) = \frac{u}{1 - u} = -\frac{1}{1 - u^{-1}}.
+    Li_0(u) = \frac{u}{1 - u}.
 \end{equation}
+
+
 
 With the help of this substitution the integral of the neural network $\hat{f}(x)$ of any number of variables is calculated simply using (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) where, as it can be clearly seen, the polylogarithm is of the same order $n$ as the number of the integration function's variables. (NB: in Python programming language there is mpmath library which contains the required functionality to calculate such an exotic function as the polylogarithm and our numerical integration method also utilizes it.) The whole calculus of the integral of (\ref{eq:math-form-mlp}) is a broad topic with requirement of its own theory but it is beyond the scope of this paper, but it may be observed in Lloyd's et al. work\cite{lloyd2020using}.
 
@@ -186,7 +278,7 @@ Let \tikz \fill[black] (0,0) circle [radius=1.ex]; be the \textit{form-factor} a
 
 \begin{equation}
     \label{eq:formfactorsize}
-    F(p^2)=\exp[\frac{-p^2}{\lambda^2}],
+    F(p^2)=\exp(\frac{-p^2}{\lambda^2}),
 \end{equation}
 
 \noindent so the form-factor size will be defined by the $F(p^2)$ as shown above (\ref{eq:formfactorsize}). To describe the particles we need to know masses, decay constants and the decay process. Let us denote the interaction diagram as \tikz[baseline=-0.5ex]{
@@ -293,6 +385,10 @@ Also both 1-dimensional ans 2-dimensional functionality was tested on simple arb
 \section{Future development}
 
 Currently, the further development of the neural network approach to the numerical integration continues. The resulting software will be tested on the integrals from the meson interaction modeling problem, which provides plenty of cases where numerical integration of high-dimensional functions is required. Also, we hope, the final product - the software library for numerical integration with use of numerical integration approach called \textit{Skuld} will help to solve difficult calculation problems in the meson interaction modeling problem domain as well, as in other fields, both theoretical and applied.
+
+\section{Acknowledgments}
+
+Authors of this work express their acknowledgments to Sara Shadmehri and Tatevik Bezhanyan from Meshcheryakov Laboratory of Information Technologies, JINR for their advices both in the field of neural networks and English language.
 
 \bibliography{main}
 
