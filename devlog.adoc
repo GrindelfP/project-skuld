@@ -4,7 +4,7 @@
 
 === 2025-02-28 ===
 
-Maybe a https://arxiv.org/pdf/2404.19756[KAN] architecture will be more useful for the function approximation. Hope KAN be integrated!!!
+Maybe a https://arxiv.org/pdf/2404.19756[KAN] neural network will be more useful for the function approximation. Hope KAN be integrated!!!
 
 === 2025-02-27 ===
 
