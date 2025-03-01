@@ -2,6 +2,10 @@
 
 == February 2025 ==
 
+=== 2025-02-28 ===
+
+Maybe a https://arxiv.org/pdf/2404.19756[KAN] architecture will be more useful for the function approximation. Hope KAN be integrated!!!
+
 === 2025-02-27 ===
 
 Devlogs are now here, the https://github.com/GrindelfP/project-skuld/blob/main/README.adoc[README] should contain clean information on the project.
