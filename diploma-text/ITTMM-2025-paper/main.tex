@@ -92,9 +92,9 @@ This paper contains several parts. Firstly, we will give the description of one 
 
 \section{Neural Network Approach to Numerical Integration}
 
-The problem we are investigating in this paper is the calculation of approximate value of integral of a function, i.e. numerical integral with usage of neural network approach.
+The problem we are investigating in this paper is the application of neural network approach to the calculation of approximate value of integral of a function, i.e. numerical integral with usage of neural network approach.
 
-Let a continuous real function $f$ be defined as $f: {\rm I\!R}^n \to {\rm I\!R}$. Let $\Omega$ be a compact subset of ${\rm I\!R}^n$ and let $G$ be a bounded convex subset of $\Omega$. Let, also, $\mathbf{x}$ be a vector of $n$ dimensions in $\Omega$. Than
+Let a continuous real function $f(\mathbf{x})$ be defined as $f: {\rm I\!R}^n \to {\rm I\!R}$. Let $\Omega$ be a compact subset of ${\rm I\!R}^n$ and let $G$ be a bounded convex subset of $\Omega$. Let, also, $\mathbf{x}$ be a vector of $n$ dimensions in $\Omega$. Than
 
 \begin{equation}
     \label{eq: integral definition}
@@ -103,7 +103,7 @@ Let a continuous real function $f$ be defined as $f: {\rm I\!R}^n \to {\rm I\!R}
 
 \noindent is a definite integral of $f$ across set $G$. Therefore, the problem is to get the $I(f)$ value calculated with use of neural network approach.
 
-The work of Lloyd et al.\cite{lloyd2020using} proposes, that function $f(\mathbf{x})$ can be approximated using a MLP (multilayer perceptron) neural network. Let this network contain of 3 layers with sizes $n$, $k$ and $1$ accordingly. $n$ is defined above as a number of variables, $k$ is the hidden-layer size which is set to minimize the approximation error and $1$ neuron of the output layer accumulates the approximated $f(\mathbf{x})$ value. While this value is not equal to the value $f(\mathbf{x})$ with given $\mathbf{x}$, let us denote it as $\hat{f}(\mathbf{x})$ and further on we will refer to the MLP network as $\hat{f}(\mathbf{x})$. Figure \ref{fig:structure} depicts the structure of the $\hat{f}(\mathbf{x})$ network. 
+The work of Lloyd et al.\cite{lloyd2020using} proposes, that function $f(\mathbf{x})$ can be approximated using an MLP (multilayer perceptron) neural network. Let this network contain of 3 layers with sizes $n$, $k$ and $1$ accordingly. $n$ is defined above as a number of dimensions of the function $f(\mathbf{x})$, $k$ is the hidden-layer size which is set to minimize the approximation error and $1$ neuron of the output layer accumulates the approximated $f(\mathbf{x})$ value. Because this value is not equal to the value $f(\mathbf{x})$ with given $\mathbf{x}$, let us denote it as $\hat{f}(\mathbf{x})$ and further on we will refer to the MLP network as $\hat{f}(\mathbf{x})$. Figure \ref{fig:structure} depicts the structure of the $\hat{f}(\mathbf{x})$ network. 
 
 \begin{figure}[h!]
     \centering
@@ -153,14 +153,14 @@ The work of Lloyd et al.\cite{lloyd2020using} proposes, that function $f(\mathbf
     \label{fig:structure}
 \end{figure}
 
-MLP network can have activation functions applied to the neuron values before forward propagation. In our case both input and output layer has \textit{linear activation function} applied and the hidden layer has \textit{logistic sigmoid function} applied, which has the following definition:
+MLP network can have activation functions applied to each neuron's value before this value propagates forward. In our case both input and output layer has \textit{linear activation function} applied and the hidden layer has \textit{logistic sigmoid function} applied. Last has the following definition:
 
 \begin{equation}
     \label{eq:sigmoid}
     \phi(z) = \frac{1}{1+\exp(-z)}.
 \end{equation}
 
-\noindent Given network structure's mathematical form is:
+\noindent With $\phi(z)$ defined, network structure's mathematical form is:
 
 \begin{equation}
     \label{eq:math-form-mlp}
@@ -174,7 +174,7 @@ So here Lloyd's et al. work puts the proposition to use the trained neural netwo
     \hat{I}(f) = \int_G \hat{f}(\mathbf{x})d\mathbf{x}.
 \end{equation}
 
-\noindent To integrate the (\ref{eq: integral definition}) and get the value of $\hat{I}(f)$ let us apply following substitution:
+\noindent To integrate the (\ref{eq:math-form-mlp}) and get the value of $\hat{I}(f)$ let us apply following substitution:
 
 \begin{equation}
     \label{eq:substitution-li-sigm}
@@ -188,18 +188,9 @@ So here Lloyd's et al. work puts the proposition to use the trained neural netwo
     Li_0(u) = \frac{u}{1 - u}.
 \end{equation}
 
-\noindent This substitution is required, because it is easy to integrate polylogarithm functions. With this in mind, the Lloyd's et al. propose this formulae as a numerical method to integrate $f(\mathbf{x})$ over given $G: [\alpha_1, \beta_1] \times...\times[\alpha_n, \beta_n]$.
+\noindent This substitution is proved to be numerically accurate in the Lloyd's et al. work\cite{lloyd2020using}. With substitution (\ref{eq:substitution-li-sigm}) network (\ref{eq:math-form-mlp}) can be integrated over given $G: [\alpha_1, \beta_1] \times...\times[\alpha_n, \beta_n]$ in ${\rm I\!R}^n$. to produce the following numerical integration formulae:
 
-\begin{enumerate}
-    \item Let 
-        \begin{equation}
-            I(f) = \int_G f(x)dx,
-        \end{equation}
-        be a numerical integral of a given function $ f(x) $ across region $G$.
-    \item $ f(x) $ can be approximated using a MLP (multi-layer perceptron) neural network $ \hat{f}(x) $.
-    \item $ \hat{f}(x) $ can be trained to approximate $ f(x) $ with an arbitrary $ \epsilon $ error bound.
-    \item The mathematical form of $ \hat{f}(x) $ can be integrated across given boundaries to produce $\hat{I}(f)$ -- the value of the integral, with the following form (this from is derived from the Lloyd's et al. work\cite{lloyd2020using}):
-        \begin{equation}
+\begin{equation}
         \label{eq:numerical_method_1}
             \hat{I}(f) = b^{(2)}\prod_{i=1}^{n}(\beta_i - \alpha_i) + \sum_{j=1}^{k}w_j^{(2)}[\prod_{i=1}^{n}(\beta_i - \alpha_i) + \frac{\Phi_j}{\prod_{i=1}^{n}w_{ij}^{(1)}}],
         \end{equation}
@@ -219,48 +210,10 @@ So here Lloyd's et al. work puts the proposition to use the trained neural netwo
                 \beta_i, & \text{if } [{r}/{2^{n-d}}] \% 2 \neq 0,
             \end{array}
         \right.
-        \end{equation}
-    where $b^{(1)}, b^{(2)}, w^{(1)}, w^{(2)}$ -- neural network's parameters, $\alpha_i, \beta_i, 1 \leq i \leq n$ -- integration boundaries, $n$ -- number of $ f(x) $ variables.
-    \item The $\hat{I}(f)$ value can be interpreted as a value of the given numerical integral with an integration error bound $\varepsilon$.
-\end{enumerate}
-
-The said MLP architecture should be described in details. The MLP neural network is a simple yet efficient neural network, which contains of several generally 1-dimensional layers $l_i$. Each of the layers contain 1 or many neurons and each neuron form $l_i$ is connected to the each neuron of the $l_{i+1}$ layer. Each neuron value can be changed using an activation function, which modifies the forward-propagated value of the neuron. 
-
-In our case the MLP architecture has 3 layers. The first, input layer, contains of $n$ neurons, where $n$ is the number of integral function variables. The second, hidden layer, contains of $k$ neurons, where $k$ is an arbitrary number greatly influenced by the neural network optimization process. This is the only layer which contains an activation function. The function is a logistic sigmoid function with the form:
-
-
-
-\noindent The third, output layer, contains only one neuron where the $\hat{f}(x)$ value is accumulated. Figure \ref{fig:structure} shows the described architecture.
-
-
-
-The mathematical form of this MLP structure is:
-
-\begin{equation}
-    \label{eq:math-form-mlp}
-    \hat{f}(x) = b^{(2)} + \sum_{j=1}^{k}w_j^{(2)}\phi(b_j^{(1)}+\sum_{i=1}^{n}w_{ji}^{(1)}x_{i}),
 \end{equation}
-where $b^{(1)}, b_j^{(2)}, w_{ji}^{(1)}, w_j^{(2)}$ -- neural network's parameters, $k$ -- number of hidden layer neurons, $n$ -- number of input layer neurons, $\phi$ -- sigmoid function (\ref{eq:sigmoid}).
+    where $b^{(1)}, b^{(2)}, w^{(1)}, w^{(2)}$ -- neural network's parameters, $\alpha_i, \beta_i, 1 \leq i \leq n$ -- integration boundaries for each dimension, $n$ -- number of $ f(x) $ dimensions.
 
-It is shown in item 3 in the key points of the neural network approach to the numerical integration theory that neural network $\hat{f}(x)$ can be integrated and this operation produces formulae (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}). The integration is done quite simply, because mathematical form of the MLP contains of simple arithmetic operation except the sigmoid function. But it also can be integrated simply by substitution:
-
-\begin{equation}
-    \label{eq:substitution-li-sigm}
-    -Li_0(-\exp(z)) = \frac{1}{1+\exp(-z)} = \phi(z),
-\end{equation}
-
-\noindent where $Li_0(u(z))$ is a Jonquière's function or the polylogarithm of order 0:
-
-\begin{equation}
-    \label{eq:li0-def}
-    Li_0(u) = \frac{u}{1 - u}.
-\end{equation}
-
-
-
-With the help of this substitution the integral of the neural network $\hat{f}(x)$ of any number of variables is calculated simply using (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) where, as it can be clearly seen, the polylogarithm is of the same order $n$ as the number of the integration function's variables. (NB: in Python programming language there is mpmath library which contains the required functionality to calculate such an exotic function as the polylogarithm and our numerical integration method also utilizes it.) The whole calculus of the integral of (\ref{eq:math-form-mlp}) is a broad topic with requirement of its own theory but it is beyond the scope of this paper, but it may be observed in Lloyd's et al. work\cite{lloyd2020using}.
-
-To conclude, the neural network approach to numerical integration is:
+The described neural network approach to numerical integration concludes to following steps:
 
 \begin{enumerate}
     \item generate the dataset to train, validate and test the neural network model (\ref{eq:math-form-mlp}) to approximate given integral function;
@@ -270,7 +223,7 @@ To conclude, the neural network approach to numerical integration is:
 
 \section{The problem of modeling of the particles formation and their properties in the NICA experiment}
 
-It is mentioned in the introduction to this paper, that the source to the development of the neural network approach was the problem of modeling of the particles formation and their properties in the NICA experiment.
+The introduction to this paper states, that the source-idea to the development of the neural network approach was the problem of modeling of the particles formation and their properties in the NICA experiment.
 
 The main task of this problem is to model particle formation ant their properties in the NICA experiment. The problem requires to build a model, which will describe the properties of light and heavy mesons. This will be a nonlocal interactions model!!!!!!\cite{blaschke2012meson}\cite{costa2003pseudoscalar}. The model concludes to the fact that meson (quark-antiquark pair) formation proceeds with a gluon exchange. But the gluon exchange cannot be described as a diagram sum, because perturbation theory cannot be applied here!!!!!!!.
 
@@ -332,7 +285,7 @@ To calculate these integrals let us use the equations:
 
 The cases of more than two mesons is described using triple and quadruple integrals.
 
-The amplitudes of particular decays and the squared amplitudes of particular decays are calculated using FORM (a software for analytical calculation). And the key problem is to calculate integrals of functions of multiple variables.
+The amplitudes of particular decays and the squared amplitudes of particular decays are calculated using FORM (a software for analytical calculation). But the key problem is to calculate integrals of functions of multiple variables.
 
 In the framework of this problem there is a particular iterated integral:
 
