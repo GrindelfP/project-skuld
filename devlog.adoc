@@ -1,5 +1,13 @@
 = Development Logs =
 
+== March 2025 ==
+
+=== 2025-03-10 ===
+
+Better results for 2D functions! One of the problem was connected to data distribution. I created a 'line', not a 'plane' of features and, because of that, NN was approximating the function perfectly, but only on a narrow line of features, but a 2D-integral is a volume under a plane, not under the line (if boundaries does not define otherwise, certainly).
+
+UPDATE: BIG success! I managed to reach 2 semi-correct (relative to standard numerical integration methods quad and trapz) digits for Oscillatory 2D function and 3 semi-correct digits for Corner Peak 2D. Both functions are from Genz numerical integration testing package.
+
 == February 2025 ==
 
 === 2025-02-28 ===
