@@ -2,6 +2,10 @@
 
 == March 2025 ==
 
+=== 2025-03-11 ===
+
+Began implementing data normalization and integral scaling.
+
 === 2025-03-10 ===
 
 Better results for 2D functions! One of the problem was connected to data distribution. I created a 'line', not a 'plane' of features and, because of that, NN was approximating the function perfectly, but only on a narrow line of features, but a 2D-integral is a volume under a plane, not under the line (if boundaries does not define otherwise, certainly).
