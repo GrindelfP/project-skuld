@@ -2,125 +2,134 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchsummary import summary
-
 import numpy as np
 from mpmath import polylog
-
 from sklearn.model_selection import train_test_split
+import scipy.integrate
+from mpl_toolkits.mplot3d import Axes3D
+from scipy.interpolate import griddata
+import matplotlib.pyplot as plt
+import math
+import random
+from sklearn.model_selection import train_test_split
+import time
+import itertools
+from sklearn.preprocessing import MinMaxScaler
 
 
 class MLP(nn.Module):
     """
-        Нейросеть, которая будет обучаться приближать функцию одной переменной.
-
-        Нейросеть имеет архитектуру:
-
-        Входной слой (1 нейрон для переменной функции + смещение, линейная функция активации)
-        Скрытый слой (произвольное количество нейронов + смещение, функция активации - сигмоида)
-        Выходной слой (1 нейрон для приближенного значения функции, линейная функция активации)
+        Class defining neural network approximator for the integrand.
     """
 
     def __init__(self, input_size, hidden_size):
         """
-            Конструктор для нейросети.
-            @param self        нейросеть (необходим для включения в класс)
-            @param hidden_size размер скрытого слоя (размеры входного и выходного слоёв равны одному
-                               в рамках данной задачи, так как у функции одна переменная и
-                               задача сводится к описанию функции, то есть числа, скаляра).
+            Main constructor.
+
+            :param input_size: input layer size (number of integrand dimensions)
+            :param hidden_size: hidden layer size (arbitrary value, which would be chosen when training the network)
         """
         super(MLP, self).__init__()
-        self.input_hidden_layer = nn.Linear(input_size, hidden_size)  # инициализация входного и скрытого слоя,
-        # размеры: 1 --> размер скрытого слоя
-        self.sigmoid_activation = nn.Sigmoid()  # инициализация функции активации скрытого слоя
-        self.output_layer = nn.Linear(hidden_size, 1)  # инициализация выходного слоя,
-        # размеры: размер скрытого слоя --> 1
+        self.input_size = input_size
+        self.input_hidden_layer = nn.Linear(input_size, hidden_size)  # initialisation of input->hidden layers structure
+        self.sigmoid_activation = nn.Sigmoid()  # hidden layer activation function
+        self.output_layer = nn.Linear(hidden_size, 1)  # output layer initialisation (always size 1)
 
     def forward(self, x):
         """
-            Функция распространения данных через нейросеть вперёд.
+            Forward propagation of the data through the network.
 
-            @param self   нейросеть (необходим для включения в класс)
-            @param x      данные
+            :param x:    the data to be propagated
 
-            @returns выход в выходном нейроне
+            :returns: data after the forward propagation
         """
-        x = self.input_hidden_layer(x)  # данные прошли входной слой и аккумулирвоаны в скрытом слое
-        x = self.sigmoid_activation(x)  # данные прошли функцию активации скрытого слоя
-        x = self.output_layer(x)  # данные прошли выходной слой
+        x = self.input_hidden_layer(x)  # input->hidden propagation
+        x = self.sigmoid_activation(x)  # sigmoid activation function applied
+        x = self.output_layer(x)  # hidden->output propagation
 
         return x
 
 
-def train_model(model, criterion, optimizer, x_train, y_train, epochs):
+def train(model, criterion, optimizer, x_train, y_train, epochs, verbose=True):
     """
         Trains the model.
 
-        @param model        The model to be trained
-        @param criterion    Loss function
-        @param optimizer    Optimization algorithm
-        @param x_train      Training inputs
-        @param y_train      True labels
-        @param epochs       Number of training epochs
+        :param model:      The model to be trained
+        :param criterion:  Loss function
+        :param optimizer:  Optimization algorithm
+        :param x_train:    Training inputs
+        :param y_train:    True labels
+        :param epochs:     Number of training epochs
+        :param verbose:    Boolean depicting whether should the network print each 100 epochs done message,
+                           or only the completion message.
+
+        :returns: loss functions history
     """
-    loss_history = []  # история обучения (изменения функции потерь)
+    loss_history = []
+    start_time = time.time()
     for epoch in range(epochs):
-        predictions = model(x_train)  # все переменные проводятся через нейросеть
-        # и формируются предскзания значений функции
-        loss = criterion(predictions, y_train)  # вычисляется функция потерь на данной эпохе
+        predictions = model(x_train)  # forward propagation of all the data
+        loss = criterion(predictions, y_train)  # loss function calculation
 
-        optimizer.zero_grad()  # обнуляются градиенты перед обратным распространением ошибки
-        loss.backward()  # обратное распространение ошибки
-        optimizer.step()  # шаг оптимизации - обновление параметров модели
+        optimizer.zero_grad()  # gradients are being reset
+        loss.backward()  # backwards data propagation
+        optimizer.step()  # optimization step (network params are being updated)
 
-        loss_history.append(loss.item())  # запись текущей функции потерь
+        loss_history.append(loss.item())  # current loss function added to history
 
-        if (epoch + 1) % 100 == 0:
-            print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.10f}')  # вывод информации об обучении
+        # hereon the logs are being printed
+        if verbose:
+            if (epoch + 1) % 100 == 0:
+                print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.10f}')
+    total_time = time.time() - start_time
+    print(f'Training done! Time elapsed: {total_time:.2f} seconds')
 
-    return loss_history  # возвращается история обучения
+    return loss_history  # loss history is returned
 
 
-def test_model(model, criterion, x_test, y_test):
+def test(model, criterion, x_test, y_test):
     """
         Tests the model.
 
-        @param model        The trained model
-        @param criterion    Loss function
-        @param x_test       Test inputs
-        @param y_test       True labels
+        :param model:     The trained model
+        :param criterion: Loss function
+        :param x_test:    Test inputs
+        :param y_test:    True labels
+
+        :returns: test loss function value
     """
-    with torch.no_grad():  # отключение расчета градиентов
-        # (расчет градиентов может происходить по умолчанию
-        # даже без использования их потом, что излишне нагружает память)
-        predictions = model(x_test)  # тестовые переменные проводятся через обученную модель
-        loss = criterion(predictions, y_test)  # вычисляется функция потерь для тестового набора
+    with torch.no_grad():  # no gradients will be calculated
+        predictions = model(x_test)  # forward data propagation
+        loss = criterion(predictions, y_test)  # loss function for the test data
 
-    # Возвращаем вычисленную функцию потерь
-    return loss.item()  # Возвращаем скалярное значение ошибки
+    return loss.item()  # loss function value (item() required to convert tensor to scalar)
 
 
-def predict_with_model(model, x_test):
+def predict_with(model, x_test):
     """
         Uses the model to predict values based on x_test arguments.
 
-        @param model        The trained model
-        @param x_test       Test inputs
+        :param model:  the trained model
+        :param x_test: test inputs
+
+        :returns: predicted function value
     """
     with torch.no_grad():
-        predictions = model(x_test)
+        prediction = model(x_test)  # forward data propagation
 
-    return predictions
+    return prediction
 
 
-def extract_model_params(model):
+def extract_params(model):
     """
-        Функция извлечения параметров нейросети.
-        @param model модель, из которой необходимо извлеч параметры
-        @returns 4 объекта типа numpy.array: смещения 1-го слоя, веса 1-го слоя,
-                 смещения 2-го слоя, веса 2-го слоя
+        Extracts weights and biases from the network.
+
+        :param model: the trained model
+
+        :returns: tuple of 4 numpy.ndarray-s with biases1, weights1, biases2 and weights2
+                  (number represents 1 - input->hidden layers params, 2 - hidden->output layers params)
     """
-    # detach() - возвращает выбранный параметр, numpy() конвертирует в формат numpy.array,
-    # flatten() для весов преобразует векторы-столбцы в векторы-строки.
+
     b1 = model.input_hidden_layer.bias.detach().numpy()
     w1 = model.input_hidden_layer.weight.detach().numpy()
     b2 = model.output_layer.bias.detach().numpy()
@@ -129,50 +138,77 @@ def extract_model_params(model):
     return b1, w1, b2, w2
 
 
-def get_NN_integral(alpha1, beta1, alpha2, beta2, b1, w1, b2, w2):
-    """
-        Функция, реализующая метод численного интегрирования функции одной переменной
-        на основе параметров нейросети. Реализует формулы (6.1) и (6.2).
+class NeuralNumericalIntegration:
 
-        @param alpha нижняя граница интегрирования
-        @param beta  верхняя граница интегрирования
-        @param b1    смещения между входным и скрытым слоями
-        @param w1    веса между входным и скрытым слоями
-        @param b2    смещения между скрытым и выходным слоями
-        @param w2    веса между скрытым и выходным слоями
-
-        @returns численный интеграл на основе параметров нейросети.
-    """
-
-    def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
+    @staticmethod
+    def calculate(alphas, betas, network_params, n_dims=1):
         """
-            Вложенная функция, реализующая разность полилогарифмов (6.2).
+            Calculates integrand value using neural network model params
+            across given boundaries.
 
-            @param alpha нижняя граница интегрирования
-            @param beta  верхняя граница интегрирования
-            @param b1_j  j-е смещение между входным и скрытым слоями
-            @param w1_j  j-тый вес между входным и скрытым слоями
+            :param alphas:         lower boundaries sequence (should be placed in integration order)
+            :param betas:          upper boundaries sequence (should be placed in integration order)
+            :param network_params: params for the trained neural network
+            :param n_dims:          number of integrand dimensions (default value is 1)
 
-            @returns разность полилогарифмов (6.2)
+            :returns: integrand value
         """
-        term_1 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * alpha2))
-        term_2 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * beta2))
-        term_3 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * alpha2))
-        term_4 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * beta2))
 
-        return term_1 - term_2 - term_3 + term_4
+        b1, w1, b2, w2 = network_params
 
-    bounds_factor = (beta2 - alpha2) * (beta1 - alpha1)
+        def Phi_j(b1_j_, w1_j_):
+            def xi(r_):
+                prod_ = 1
+                for d in range(1, n_dims + 1):
+                    prod_ *= (-1) ** (r_ / (2 ** (n_dims - d)))
 
-    integral_sum = 0
+                return prod_
 
-    for w2_j, w1_1j, w1_2j, b1_j in zip(w2, w1[0], w1[1], b1):
-        phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j)
-        integral_sum += w2_j * (bounds_factor + phi_j / w1_1j * w1_2j)
+            def l(i_, r_):
+                if r_ / (2 ** (n_dims - i_ + 1)) % 2 == 0:
+                    return alphas[i_]
+                else:
+                    return betas[i_]
 
-    return b2 * integral_sum + integral_sum
+            Phi_sum = 0
 
+            for r in range(1, 2 ** n_dims + 1):
+                sum_ = 0
+                for i in range(n_dims):
+                    sum_ += w1_j_[i] * l(i, r)
+                Phi_sum += xi(r) * polylog(n_dims, -np.exp(-b1_j_ - sum_))
 
-def integrate(alpha1, beta1, alpha2, beta2, model):
-    b1, w1, b2, w2 = extract_model_params(model)
-    return get_NN_integral(alpha1, beta1, alpha2, beta2, b1, w1, b2, w2)
+            return Phi_sum
+
+        integral_sum = 0
+
+        prod_bound = 1
+        for i in range(n_dims):
+            prod_bound *= betas[i] - alphas[i]
+
+        for w2_j, w1_j, b1_j in zip(w2, w1, b1):
+
+            Phi_j_ = Phi_j(b1_j, w1_j)
+            prod_w = 1
+            for i in range(n_dims):
+                prod_w *= w1_j[i]
+
+            integral_sum += w2_j * (prod_bound + Phi_j_ / prod_w)
+
+        return float((b2 * prod_bound + integral_sum)[0])
+
+    @staticmethod
+    def integrate(model, alphas, betas, n_dims=1):
+        """
+            Integrates function-approximator (model) of n-dim dimensions over given boundaries.
+
+            :model: the trained model-approximator
+            :param alphas: lower boundaries sequence (should be placed in integration order)
+            :param betas:  upper boundaries sequence (should be placed in integration order)
+            :param n_dims: number of integrand dimensions (default value is 1)
+
+            :returns: neural numeric integration result
+        """
+        network_params = MLP.extract_params(model)
+
+        return NeuralNumericalIntegration.calculate(alphas, betas, network_params, n_dims)
