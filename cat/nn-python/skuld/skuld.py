@@ -202,7 +202,7 @@ class NeuralNumericalIntegration:
         """
             Integrates function-approximator (model) of n-dim dimensions over given boundaries.
 
-            :model: the trained model-approximator
+            :param model: the trained model-approximator
             :param alphas: lower boundaries sequence (should be placed in integration order)
             :param betas:  upper boundaries sequence (should be placed in integration order)
             :param n_dims: number of integrand dimensions (default value is 1)
@@ -212,3 +212,29 @@ class NeuralNumericalIntegration:
         network_params = MLP.extract_params(model)
 
         return NeuralNumericalIntegration.calculate(alphas, betas, network_params, n_dims)
+
+
+def generate_data(func, lower, upper, n_samples=100, n_dim=1):
+    """
+        Generates data in the form of a 2D tensor of variables for the function and neural network input
+        as well as the function values for the generated tensor of variables.
+
+        :param func:     function to provide values for the variables
+        :param lower:    lower bounds of variable values
+        :param upper:    upper bounds of variable values
+        :param n_samples: number of points of data to generate per dimension (default value is 100)
+        :param n_dim:     number of dimensions of the function func (default value is 1)
+
+        :returns: dataset of variables X and function values y
+    """
+    X, y = None, None
+    if n_dim == 1:
+        X = torch.linspace(lower[0], upper[0], n_samples).view(n_samples, 1)
+        y = func(X).view(n_samples, 1)
+    else:
+        ranges = [torch.linspace(lower[n], upper[n], n_samples).tolist() for n in range(n_dim)]
+        combinations = list(itertools.product(*ranges))
+        X = torch.tensor(combinations, dtype=torch.float32)
+        y = func(X).view(-1, 1)
+
+    return X, y
