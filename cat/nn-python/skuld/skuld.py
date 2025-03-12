@@ -238,3 +238,46 @@ def generate_data(func, lower, upper, n_samples=100, n_dim=1):
         y = func(X).view(-1, 1)
 
     return X, y
+
+
+def scale_data_with_minmax(X_init, y_init, frange=(0, 1)):
+    scalerx = MinMaxScaler(frange)
+    scalery = MinMaxScaler(frange)
+    X = torch.tensor(scalerx.fit_transform(X_init), dtype=torch.float32)
+    y = torch.tensor(scalery.fit_transform(y_init), dtype=torch.float32)
+
+    return (X, y), (scalerx, scalery)
+
+
+def scale_data(X_init, y_init, frange=(0, 1), n_dim=2):
+    X, y = [], []
+    for i in range(n_dim):
+        xi_list = []
+        for j in range(len(X_init[i])):
+            xi = (frange[1] - frange[0]) / (max(X_init[i]) - min(X_init[i])) * (X_init[i][j] - min(X_init[i])) + frange[
+                0]
+            xi_list.append(xi)
+        X.append(xi_list)
+
+    for i in range(len(y_init)):
+        y_i = (frange[1] - frange[0]) / (max(y_init) - min(y_init)) * (y_init[i] - min(y_init)) + frange[0]
+        y.append(y_i)
+
+    return torch.tensor(X), torch.tensor(y)
+
+
+def descale_result(nni_scaled, scalerx, scalery, X_init, y_init, frange=(0, 1), n_dim=1):
+    x_p = scalerx.get_params()
+    y_p = scalery.get_params()
+    xmin = min(X_init)
+    xmax = max(X_init)
+    ymin = frange[0]
+    ymax = frange[1]
+    fmin = min(y_init)
+    fmax = max(y_init)
+    VS = 1
+    for n in range(n_dim):
+        VS *= (xmax[n] - xmin[n])
+    VSS = (ymax - ymin) ** n_dim
+
+    return nni_scaled * VS * (fmax - fmin) / (VSS * (ymax - ymin)) + (fmin - (fmax - fmin) / (ymax - ymin) * ymin) * VS
