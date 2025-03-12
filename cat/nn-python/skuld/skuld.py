@@ -165,14 +165,14 @@ class NeuralNumericalIntegration:
                 return prod_
 
             def l(i_, r_):
-                if r_ / (2 ** (n_dims - i_ + 1)) % 2 == 0:
+                if (r_ / (2 ** (n_dims - (i_ + 1)))) % 2 == 0:
                     return alphas[i_]
                 else:
                     return betas[i_]
 
             Phi_sum = 0
 
-            for r in range(1, 2 ** n_dims + 1):
+            for r in range(1, (2 ** n_dims) + 1):
                 sum_ = 0
                 for i in range(n_dims):
                     sum_ += w1_j_[i] * l(i, r)
@@ -209,7 +209,7 @@ class NeuralNumericalIntegration:
 
             :returns: neural numeric integration result
         """
-        network_params = MLP.extract_params(model)
+        network_params = extract_params(model)
 
         return NeuralNumericalIntegration.calculate(alphas, betas, network_params, n_dims)
 
