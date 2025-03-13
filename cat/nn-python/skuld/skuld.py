@@ -15,6 +15,7 @@ from sklearn.model_selection import train_test_split
 import time
 import itertools
 from sklearn.preprocessing import MinMaxScaler
+from sympy import Float
 
 
 class MLP(nn.Module):
@@ -195,8 +196,38 @@ class NeuralNumericalIntegration:
 
             integral_sum += w2_j * (prod_bound + Phi_j_ / prod_w)
 
-        return float((b2 * prod_bound + integral_sum)[0])
+        
+        result = b2 * prod_bound + integral_sum
+        #return np.real(result).astype(float)[0]
+        return result
 
+
+    @staticmethod
+    def calculate2(alphas, betas, network_params, n_dims=1):
+        alpha1, alpha2, beta1, beta2 = alphas[0], alphas[1], betas[0], betas[1]
+        b1, w1, b2, w2 = network_params
+        def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
+
+            term_1 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * alpha2))
+            term_2 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * beta2))
+            term_3 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * alpha2))
+            term_4 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * beta2))
+            
+            return term_1 - term_2 - term_3 + term_4
+   
+        integral_sum = 0 
+            
+        for w2_j, w1_1j, w1_2j, b1_j in zip(w2, w1[:, 0], w1[:, 1], b1):
+            phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j) 
+            summ = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j / (w1_1j * w1_2j))
+            integral_sum += summ
+
+        print(b2)
+        print(beta1 - alpha1) 
+        print(beta2 - alpha2)
+        
+        return b2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum 
+    
     @staticmethod
     def integrate(model, alphas, betas, n_dims=1):
         """
@@ -211,7 +242,7 @@ class NeuralNumericalIntegration:
         """
         network_params = extract_params(model)
 
-        return NeuralNumericalIntegration.calculate(alphas, betas, network_params, n_dims)
+        return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
 
 
 def generate_data(func, lower, upper, n_samples=100, n_dim=1):
@@ -240,44 +271,81 @@ def generate_data(func, lower, upper, n_samples=100, n_dim=1):
     return X, y
 
 
-def scale_data_with_minmax(X_init, y_init, frange=(0, 1)):
-    scalerx = MinMaxScaler(frange)
-    scalery = MinMaxScaler(frange)
-    X = torch.tensor(scalerx.fit_transform(X_init), dtype=torch.float32)
-    y = torch.tensor(scalery.fit_transform(y_init), dtype=torch.float32)
+def scale_data(
+    X_init: torch.Tensor, 
+    y_init: torch.Tensor, 
+    frange: tuple[int, int]=(0, 1), 
+    n_dim: int=1
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """
+        Scales function dataset to the specific range frange.
 
-    return (X, y), (scalerx, scalery)
+        :param X_init: initial variables
+        :param y_init: initial function values
+        :param frange: range of scaled values (default is [0, 1])
+        :param n_dim:  number of function dimensions (default is 1)
+
+        :returns: tuple of scaled X-s and y-s to range frange.
+    """
+    if not isinstance(X_init, torch.Tensor) or not isinstance(y_init, torch.Tensor):
+        raise TypeError("Input X_init and y_init must be torch tensors.")
+
+    if X_init.ndim != 2:
+        raise ValueError("X_init must be a 2D tensor (m, n_dim).")
+
+    if y_init.ndim != 2 or y_init.shape[1] != 1:
+        raise ValueError("y_init must be a 2D tensor (m, 1).")
+
+    if X_init.shape[0] != y_init.shape[0]:
+        raise ValueError("X_init and y_init must have the same number of rows (m).")
+
+    min_val_x = torch.min(X_init, dim=0).values
+    max_val_x = torch.max(X_init, dim=0).values
+    min_val_y = torch.min(y_init)
+    max_val_y = torch.max(y_init)
+
+    scaled_X = (frange[1] - frange[0]) * (X_init - min_val_x) / (max_val_x - min_val_x) + frange[0]
+    scaled_y = (frange[1] - frange[0]) * (y_init - min_val_y) / (max_val_y - min_val_y) + frange[0]
+
+    return scaled_X, scaled_y
 
 
-def scale_data(X_init, y_init, frange=(0, 1), n_dim=2):
-    X, y = [], []
-    for i in range(n_dim):
-        xi_list = []
-        for j in range(len(X_init[i])):
-            xi = (frange[1] - frange[0]) / (max(X_init[i]) - min(X_init[i])) * (X_init[i][j] - min(X_init[i])) + frange[
-                0]
-            xi_list.append(xi)
-        X.append(xi_list)
+def descale_result(
+    nni_scaled: float, 
+    X_init: torch.Tensor, 
+    y_init: torch.Tensor,     
+    frange: tuple[int, int]=(0, 1), 
+    n_dim: int=1
+) -> float:
+    """
+        Restores true value to the scaled integral.
 
-    for i in range(len(y_init)):
-        y_i = (frange[1] - frange[0]) / (max(y_init) - min(y_init)) * (y_init[i] - min(y_init)) + frange[0]
-        y.append(y_i)
+        :param nni_scaled: scaled integral value
+        :param X_init:     initial variables
+        :param y_init:     initial function values
+        :param frange:     range of scaled values (default is [0, 1])
+        :param n_dim:      number of function dimensions (default is 1)
 
-    return torch.tensor(X), torch.tensor(y)
+        :returns: descaled integral value.
+    """
+    if not isinstance(X_init, torch.Tensor) or not isinstance(y_init, torch.Tensor):
+        raise TypeError("Inputs must be torch tensors.")
 
+    if X_init.ndim != 2:
+        raise ValueError("X_init must be a 2D tensor.")
 
-def descale_result(nni_scaled, scalerx, scalery, X_init, y_init, frange=(0, 1), n_dim=1):
-    x_p = scalerx.get_params()
-    y_p = scalery.get_params()
-    xmin = min(X_init)
-    xmax = max(X_init)
-    ymin = frange[0]
-    ymax = frange[1]
-    fmin = min(y_init)
-    fmax = max(y_init)
-    VS = 1
-    for n in range(n_dim):
-        VS *= (xmax[n] - xmin[n])
-    VSS = (ymax - ymin) ** n_dim
+    if y_init.ndim != 1 and y_init.ndim != 2 :
+        raise ValueError("y_init must be a 2D tensor with shape (num_of_points,1).")
 
-    return nni_scaled * VS * (fmax - fmin) / (VSS * (ymax - ymin)) + (fmin - (fmax - fmin) / (ymax - ymin) * ymin) * VS
+    if y_init.ndim == 2 and y_init.shape[1] !=1:
+      raise ValueError("y_init must be a 2D tensor with shape (num_of_points,1).")
+
+    xmin = torch.min(X_init, dim=0).values
+    xmax = torch.max(X_init, dim=0).values
+    fmin = torch.min(y_init)
+    fmax = torch.max(y_init)
+    frange_size = frange[1] - frange[0]
+    VS = torch.prod(xmax - xmin)
+    VSS = (frange_size) ** n_dim
+
+    return nni_scaled * (VS * (fmax - fmin) / (VSS * (frange_size))) + (fmin - (fmax - fmin) / (frange_size) * frange[0]) * VS
