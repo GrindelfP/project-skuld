@@ -2,4 +2,12 @@
 .ipynb_checkpoints
 __pycache__
 *.idea
+*.bbl
+*.blg
+*.abs
+*.out
+*.aux
+*.xmpdata
+*.xmpi
+*.log
 
