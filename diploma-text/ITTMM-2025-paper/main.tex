@@ -86,7 +86,7 @@ email=kalinov@jinr.ru,
 
 The problem of numerical integration appears in both theoretical and applied calculations and potentially raises two obstacles. The first one is the complexity of the analytical form of the anti-derivative of the integral function (which is required to get the value of the definite integral). Sometimes it is just hard to produce the anti-derivative of the function and sometimes there are none. In general case there is no general algorithm to get a given function's anti-derivative. Methods of numerical integration exist (e.g. Simpson's method) to solve this problem by providing a formulae to get the value of an integral with some error without knowing the anti-derivative. But as the dimensions of the integral function's grow, the complexity of those methods also grows as well as the error bound. In this case the neural network approach to the numerical integration may help reduce the complexity as well as increase accuracy of the calculation.
 
-Currently, there were several works done in the field of application of neural networks to the numerical integration problem. We here will highlight the paper "Using neural networks for fast numerical integration and optimization" by Lloyd et al.\cite{lloyd2020using}. This work was served as an inspiration for the development of the neural network approach. Another source was the physics problem of modeling of the particles formation and their properties in the NICA experiment which involves solving the equations containing integrals of 7-dimensional, 10-dimensional and even higher-dimensional integrals. The development of this neural network approach to the numerical integration has the main goal of the development of a software library for the Python programming language with functionality of numerical integration based on neural network approach.
+Currently, there were several works done in the field of application of neural networks to the numerical integration problem. We here will highlight the paper "Using neural networks for fast numerical integration and optimization" by Lloyd et al.\cite{lloyd2020using}. This work was served as an inspiration for the development of the neural network approach. Another source was the physics problem of modeling of the particles formation and their properties in the NICA experiment which involves solving the equations containing double and triple integrals. The development of this neural network approach to the numerical integration has the main goal of the development of a software library for the Python programming language with functionality of numerical integration based on neural network approach.
 
 This paper contains several parts. Firstly, we will give the description of one of the possible neural network approaches to the numerical integration as well as highlight other potential approaches. Secondly, the physics problem of modeling of the of the particles formation and their properties in the NICA experiment will be depicted. Thirdly, we will give the observation on the results already reached in the development of the neural network approach to the numerical integration. Lastly, the insight on the future of this project will be given. 
 
@@ -108,47 +108,48 @@ The work of Lloyd et al.\cite{lloyd2020using} proposes, that function $f(\mathbf
 \begin{figure}[h!]
     \centering
     % \includegraphics[width=0.6\linewidth]{structure.png}
-    \begin{tikzpicture}[
-            neuron/.style={circle, draw, minimum size=1.0cm, node distance=1cm},
-            bias/.style={circle, draw, minimum size=1.0cm, node distance=1cm, fill=gray!20},
-            layer/.style={draw=none, fill=none}
-        ]
+    % \begin{tikzpicture}[
+    %         neuron/.style={circle, draw, minimum size=1.0cm, node distance=1cm},
+    %         bias/.style={circle, draw, minimum size=1.0cm, node distance=1cm, fill=gray!20},
+    %         layer/.style={draw=none, fill=none}
+    %     ]
         
-        % Input layer
-        \node[neuron, fill=red!30] (x1) {$x_1$};
-        \node[neuron, below=0.5cm of x1, fill=red!30] (x2) {$x_2$};
-        \node[layer, below=0.5cm of x2] (dots1) {$\vdots$};
-        \node[neuron, below=0.5cm of dots1, fill=red!30 ] (xn) {$x_n$};
-        \node[bias, below=0.5cm of xn] (b1) {$b^{(1)}$};
+    %     % Input layer
+    %     \node[neuron, fill=red!30] (x1) {$x_1$};
+    %     \node[neuron, below=0.5cm of x1, fill=red!30] (x2) {$x_2$};
+    %     \node[layer, below=0.5cm of x2] (dots1) {$\vdots$};
+    %     \node[neuron, below=0.5cm of dots1, fill=red!30 ] (xn) {$x_n$};
+    %     \node[bias, below=0.5cm of xn] (b1) {$b^{(1)}$};
         
-        % Hidden layer
-        \node[neuron, right=3cm of x1, fill=yellow!30] (h1) {$\phi(\sum)$};
-        \node[neuron, below=0.5cm of h1, fill=yellow!30] (h2) {$\phi(\sum)$};
-        \node[layer, below=0.5cm of h2] (dots2) {$\vdots$};
-        \node[neuron, below=0.5cm of dots2, fill=yellow!30 ] (hK) {$\phi(\sum)$};
-        \node[bias, below=0.5cm of hK] (b2) {$b^{(2)}$};
+    %     % Hidden layer
+    %     \node[neuron, right=3cm of x1, fill=yellow!30] (h1) {$\phi(\sum)$};
+    %     \node[neuron, below=0.5cm of h1, fill=yellow!30] (h2) {$\phi(\sum)$};
+    %     \node[layer, below=0.5cm of h2] (dots2) {$\vdots$};
+    %     \node[neuron, below=0.5cm of dots2, fill=yellow!30 ] (hK) {$\phi(\sum)$};
+    %     \node[bias, below=0.5cm of hK] (b2) {$b^{(2)}$};
         
-        % Output layer
-        \node[neuron, right=3cm of h1, fill=green!30] (o) {$\hat{f}(x)$};
+    %     % Output layer
+    %     \node[neuron, right=3cm of h1, fill=green!30] (o) {$\hat{f}(x)$};
         
         
-        % Connections
-        \foreach \i in {x1,x2,xn,b1}{
-            \foreach \j in {h1,h2,hK}{
-                \draw[->] (\i) -- (\j);
-            }
-        }
+    %     % Connections
+    %     \foreach \i in {x1,x2,xn,b1}{
+    %         \foreach \j in {h1,h2,hK}{
+    %             \draw[->] (\i) -- (\j);
+    %         }
+    %     }
         
-        \foreach \i in {h1,h2,hK,b2}{
-            \draw[->] (\i) -- (o);
-        }
+    %     \foreach \i in {h1,h2,hK,b2}{
+    %         \draw[->] (\i) -- (o);
+    %     }
 
-        % Labels
-        \node[layer, above=0.5cm of x1] {$Input\:layer$};
-        \node[layer, above=0.5cm of h1] {$Hidden\:layer$};
-        \node[layer, above=0.5cm of o] {$Output\:layer$};
+    %     % Labels
+    %     \node[layer, above=0.5cm of x1] {$Input\:layer$};
+    %     \node[layer, above=0.5cm of h1] {$Hidden\:layer$};
+    %     \node[layer, above=0.5cm of o] {$Output\:layer$};
         
-        \end{tikzpicture}
+    %     \end{tikzpicture}
+    \includegraphics[width=0.4\linewidth]{structre-as-photo.png}
     \caption{The MLP structure used in the neural network approach}
     \label{fig:structure}
 \end{figure}
@@ -314,6 +315,13 @@ In the framework of this problem there is a particular iterated integral:
 \begin{equation}
     \alpha_1 = \alpha, \alpha_2 = 1 - \alpha.
 \end{equation}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\linewidth]{f(t,a)33.png}
+    \caption{Integrand function (\ref{eq:the-integral}) plot - view from (0, 0, 0) and (0, 100, 0) corners}
+    \label{fig:integrand-plot}
+\end{figure}
 
 \noindent This integral is used in multiple calculations in the problem. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations. The integral (\ref{eq:the-integral}) also is interesting in that case, that it depends on two variables only, so it is can be used to test the integration framework we've been developing early in the development cycle. 
 
