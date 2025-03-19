@@ -258,7 +258,12 @@ class NeuralNumericalIntegration:
         """
         network_params = extract_params(model)
 
-        return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
+        if n_dims == 1:
+            return NeuralNumericalIntegration.calculate1(alphas, betas, network_params, n_dims)
+        elif n_dims == 2:
+            return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
+        else: 
+            return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
 
 
 def generate_data(func, lower, upper, n_samples=100, n_dim=1):
