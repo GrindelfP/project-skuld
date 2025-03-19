@@ -144,6 +144,7 @@ class NeuralNumericalIntegration:
     @staticmethod
     def calculate(alphas, betas, network_params, n_dims=1):
         """
+            GIVES WRONG RESULTS!!!
             Calculates integrand value using neural network model params
             across given boundaries.
 
@@ -198,7 +199,7 @@ class NeuralNumericalIntegration:
 
         
         result = b2 * prod_bound + integral_sum
-        #return np.real(result).astype(float)[0]
+
         return result
 
 
@@ -221,12 +222,27 @@ class NeuralNumericalIntegration:
             phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j) 
             summ = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j / (w1_1j * w1_2j))
             integral_sum += summ
-
-        print(b2)
-        print(beta1 - alpha1) 
-        print(beta2 - alpha2)
         
         return b2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum 
+
+    
+    @staticmethod
+    def calculate1(alphas, betas, network_params, n_dims=1):
+        alpha, beta = alphas[0], betas[0]
+        b1, w1, b2, w2 = network_params
+        w1 = w1.flatten()
+        def Phi_j(alpha, beta, b1_j, w1_j):
+            term_alpha = polylog(1, -np.exp(-b1_j - w1_j * alpha))
+            term_beta = polylog(1, -np.exp(-b1_j - w1_j * beta))
+            return term_alpha - term_beta
+
+        integral_sum = 0 
+        for w2_j, w1_j, b1_j in zip(w2, w1, b1):
+            phi_j = Phi_j(alpha, beta, b1_j, w1_j)
+            integral_sum += w2_j * ((beta - alpha) + phi_j / w1_j)
+        
+        return b2 * (beta - alpha) + integral_sum
+        
     
     @staticmethod
     def integrate(model, alphas, betas, n_dims=1):
