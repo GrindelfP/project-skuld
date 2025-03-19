@@ -90,5 +90,5 @@ def plot_2d_function_heatmap_with_log(X, y, name):
     plt.colorbar(label='ln(f(x1, x2)+c)')
     plt.xlabel('x1')
     plt.ylabel('x2')
-    plt.title('Poduct Peak 2D')
+    plt.title(name)
     plt.show()
