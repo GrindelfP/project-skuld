@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def plot_test_results(results: list):
@@ -50,4 +51,44 @@ def plot_test_results(results: list):
     ax6.legend()
     
     plt.tight_layout()
+    plt.show()
+
+
+def plot_1d_function(X, y, name):
+    x_np = X[:, 0].numpy()
+    y_np = y.numpy()
+    plt.plot(x_np, y_np)
+    plt.xlabel('x')
+    plt.ylabel('f(x)')
+    plt.title(name)
+    plt.grid(True)
+    plt.show()
+
+
+def plot_2d_function_heatmap(X, y, name):
+    x1_coords = X[:, 0].numpy()
+    x2_coords = X[:, 1].numpy()
+    values = y.squeeze().numpy()
+    
+    plt.figure(figsize=(8, 6))
+    plt.scatter(x1_coords, x2_coords, c=values, cmap='viridis', s=5)
+    plt.colorbar(label='f(x1, x2)')
+    plt.xlabel('x1')
+    plt.ylabel('x2')
+    plt.title(name)
+    plt.show()
+
+
+def plot_2d_function_heatmap_with_log(X, y, name):
+    x1_coords = X[:, 0].numpy()
+    x2_coords = X[:, 1].numpy()
+    values = y.squeeze().numpy()
+    values_log = np.log(values + 0.000000001)
+    
+    plt.figure(figsize=(8, 6))
+    plt.scatter(x1_coords, x2_coords, c=values_log, cmap='viridis', s=5, vmin=np.min(values_log), vmax=np.max(values_log))  # Use 'c' for color mapping
+    plt.colorbar(label='ln(f(x1, x2)+c)')
+    plt.xlabel('x1')
+    plt.ylabel('x2')
+    plt.title('Poduct Peak 2D')
     plt.show()

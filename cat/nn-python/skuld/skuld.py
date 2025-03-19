@@ -267,28 +267,29 @@ class NeuralNumericalIntegration:
             return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
 
 
-def generate_data(func, lower, upper, n_samples=100, n_dim=1):
+def generate_data(func, lower, upper, n_samples=100, n_dim=1, *func_args):
     """
-        Generates data in the form of a 2D tensor of variables for the function and neural network input
-        as well as the function values for the generated tensor of variables.
+    Generates data in the form of a 2D tensor of variables for the function and neural network input
+    as well as the function values for the generated tensor of variables.
 
-        :param func:     function to provide values for the variables
-        :param lower:    lower bounds of variable values
-        :param upper:    upper bounds of variable values
-        :param n_samples: number of points of data to generate per dimension (default value is 100)
-        :param n_dim:     number of dimensions of the function func (default value is 1)
+    :param func:      function to provide values for the variables
+    :param lower:     lower bounds of variable values
+    :param upper:     upper bounds of variable values
+    :param n_samples: number of points of data to generate per dimension (default value is 100)
+    :param n_dim:     number of dimensions of the function func (default value is 1)
+    :param *func_args: Additional arguments to pass to the function.
 
-        :returns: dataset of variables X and function values y
+    :returns: dataset of variables X and function values y
     """
     X, y = None, None
     if n_dim == 1:
         X = torch.linspace(lower[0], upper[0], n_samples).view(n_samples, 1)
-        y = func(X).view(n_samples, 1)
+        y = func(X, *func_args).view(n_samples, 1)
     else:
         ranges = [torch.linspace(lower[n], upper[n], n_samples).tolist() for n in range(n_dim)]
         combinations = list(itertools.product(*ranges))
         X = torch.tensor(combinations, dtype=torch.float32)
-        y = func(X).view(-1, 1)
+        y = func(X, *func_args).view(-1, 1)
 
     return X, y
 
@@ -370,4 +371,4 @@ def descale_result(
     VS = torch.prod(xmax - xmin)
     VSS = (frange_size) ** n_dim
 
-    return nni_scaled * (VS * (fmax - fmin) / (VSS * (frange_size))) + (fmin - (fmax - fmin) / (frange_size) * frange[0]) * VS
+    return (nni_scaled * (VS * (fmax - fmin) / (VSS * (frange_size))) + (fmin - (fmax - fmin) / (frange_size) * frange[0]) * VS).item()
