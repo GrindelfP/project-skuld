@@ -5,16 +5,10 @@ from torchsummary import summary
 import numpy as np
 from mpmath import polylog
 from sklearn.model_selection import train_test_split
-import scipy.integrate
-from mpl_toolkits.mplot3d import Axes3D
-from scipy.interpolate import griddata
-import matplotlib.pyplot as plt
 import math
 import random
-from sklearn.model_selection import train_test_split
 import time
 import itertools
-from sklearn.preprocessing import MinMaxScaler
 from sympy import Float
 
 
@@ -35,7 +29,10 @@ class MLP(nn.Module):
         self.input_hidden_layer = nn.Linear(input_size, hidden_size)  # initialisation of input->hidden layers structure
         self.sigmoid_activation = nn.Sigmoid()  # hidden layer activation function
         self.output_layer = nn.Linear(hidden_size, 1)  # output layer initialisation (always size 1)
+        self.criterion = None
+        self.optimizer = None
 
+    
     def forward(self, x):
         """
             Forward propagation of the data through the network.
@@ -51,92 +48,96 @@ class MLP(nn.Module):
         return x
 
 
-def train(model, criterion, optimizer, x_train, y_train, epochs, verbose=True):
-    """
-        Trains the model.
+    def compile(self, criterion, optimizer):
+        """
+            Compiles model. Sets learning criterion and optimizer model 
+            to those, provided as params.
 
-        :param model:      The model to be trained
-        :param criterion:  Loss function
-        :param optimizer:  Optimization algorithm
-        :param x_train:    Training inputs
-        :param y_train:    True labels
-        :param epochs:     Number of training epochs
-        :param verbose:    Boolean depicting whether should the network print each 100 epochs done message,
-                           or only the completion message.
+            :param criterion: loss function.
+            :param optimizer: optimizer for the model.
+        """
+        self.criterion = criterion
+        self.optimizer = optimizer
 
-        :returns: loss functions history
-    """
-    loss_history = []
-    start_time = time.time()
-    for epoch in range(epochs):
-        predictions = model(x_train)  # forward propagation of all the data
-        loss = criterion(predictions, y_train)  # loss function calculation
-
-        optimizer.zero_grad()  # gradients are being reset
-        loss.backward()  # backwards data propagation
-        optimizer.step()  # optimization step (network params are being updated)
-
-        loss_history.append(loss.item())  # current loss function added to history
-
-        # hereon the logs are being printed
-        if verbose:
-            if (epoch + 1) % 100 == 0:
-                print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.10f}')
-    total_time = time.time() - start_time
-    print(f'Training done! Time elapsed: {total_time:.2f} seconds')
-
-    return loss_history  # loss history is returned
-
-
-def test(model, criterion, x_test, y_test):
-    """
-        Tests the model.
-
-        :param model:     The trained model
-        :param criterion: Loss function
-        :param x_test:    Test inputs
-        :param y_test:    True labels
-
-        :returns: test loss function value
-    """
-    with torch.no_grad():  # no gradients will be calculated
-        predictions = model(x_test)  # forward data propagation
-        loss = criterion(predictions, y_test)  # loss function for the test data
-
-    return loss.item()  # loss function value (item() required to convert tensor to scalar)
+    
+    def train(self, x_train, y_train, epochs, verbose=True):
+        """
+            Trains the model.
+    
+            :param x_train:    Training inputs
+            :param y_train:    True labels
+            :param epochs:     Number of training epochs
+            :param verbose:    Boolean depicting whether should the network print each 100 epochs done message,
+                               or only the completion message.
+    
+            :returns: loss functions history
+        """
+        loss_history = []
+        start_time = time.time()
+        for epoch in range(epochs):
+            predictions = self(x_train)  # forward propagation of all the data
+            loss = self.criterion(predictions, y_train)  # loss function calculation
+    
+            self.optimizer.zero_grad()  # gradients are being reset
+            loss.backward()  # backwards data propagation
+            self.optimizer.step()  # optimization step (network params are being updated)
+    
+            loss_history.append(loss.item())  # current loss function added to history
+    
+            # hereon the logs are being printed
+            if verbose:
+                if (epoch + 1) % 100 == 0:
+                    print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.10f}')
+        total_time = time.time() - start_time
+        print(f'Training done! Time elapsed: {total_time:.2f} seconds')
+    
+        return loss_history  # loss history is returned
 
 
-def predict_with(model, x_test):
-    """
-        Uses the model to predict values based on x_test arguments.
+    def test(self, x_test, y_test):
+        """
+            Tests the model.
 
-        :param model:  the trained model
-        :param x_test: test inputs
+            :param x_test:    Test inputs
+            :param y_test:    True labels
+    
+            :returns: test loss function value
+        """
+        with torch.no_grad():  # no gradients will be calculated
+            predictions = self(x_test)  # forward data propagation
+            loss = self.criterion(predictions, y_test)  # loss function for the test data
+    
+        return loss.item()  # loss function value (item() required to convert tensor to scalar)
 
-        :returns: predicted function value
-    """
-    with torch.no_grad():
-        prediction = model(x_test)  # forward data propagation
 
-    return prediction
+    def predict_with(self, x_test):
+        """
+            Uses the model to predict values based on x_test arguments.
+    
+            :param x_test: test inputs
+    
+            :returns: predicted function value
+        """
+        with torch.no_grad():
+            prediction = self(x_test)  # forward data propagation
+    
+        return prediction
 
 
-def extract_params(model):
-    """
-        Extracts weights and biases from the network.
-
-        :param model: the trained model
-
-        :returns: tuple of 4 numpy.ndarray-s with biases1, weights1, biases2 and weights2
-                  (number represents 1 - input->hidden layers params, 2 - hidden->output layers params)
-    """
-
-    b1 = model.input_hidden_layer.bias.detach().numpy()
-    w1 = model.input_hidden_layer.weight.detach().numpy()
-    b2 = model.output_layer.bias.detach().numpy()
-    w2 = model.output_layer.weight.detach().numpy().flatten()
-
-    return b1, w1, b2, w2
+    def extract_params(self):
+        """
+            Extracts weights and biases from the network.
+        
+            :returns: tuple of 4 numpy.ndarray-s with biases1, weights1, biases2 and weights2
+                      (number represents 1 - input->hidden layers params, 2 - hidden->output layers params)
+        """
+    
+        b1 = self.input_hidden_layer.bias.detach().numpy()
+        w1 = self.input_hidden_layer.weight.detach().numpy()
+        b2 = self.output_layer.bias.detach().numpy()
+        w2 = self.output_layer.weight.detach().numpy().flatten()
+    
+        return b1, w1, b2, w2
 
 
 class NeuralNumericalIntegration:
@@ -256,7 +257,7 @@ class NeuralNumericalIntegration:
 
             :returns: neural numeric integration result
         """
-        network_params = extract_params(model)
+        network_params = model.extract_params()
 
         if n_dims == 1:
             return NeuralNumericalIntegration.calculate1(alphas, betas, network_params, n_dims)
