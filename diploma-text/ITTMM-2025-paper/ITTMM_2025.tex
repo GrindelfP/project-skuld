@@ -222,25 +222,55 @@ The described neural network approach to numerical integration concludes to foll
     \item extract parameters of the network (\ref{eq:math-form-mlp}) and use them with (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_4}) to calculate the numerical integral.
 \end{enumerate}
 
-\section{The problem of modeling of the particles formation and their properties in the NICA experiment}
+\section{Modeling of the  formation of particles and their properties for the NICA experiment}
 
-The introduction to this paper states, that the source-idea to the development of the neural network approach was the problem of modeling of the particles formation and their properties in the NICA experiment.
+The main task is to build a model for the unified description of both light and heavy mesons formed in heavy ion collisions.
 
-The main task of this problem is to model particle formation ant their properties in the NICA experiment. The problem requires to build a model, which will describe the properties of light and heavy mesons. This will be a nonlocal interactions model!!!!!!\cite{blaschke2012meson}\cite{costa2003pseudoscalar}. The model concludes to the fact that meson (quark-antiquark pair) formation proceeds with a gluon exchange. But the gluon exchange cannot be described as a diagram sum, because perturbation theory cannot be applied here!!!!!!!.
+ This will be a nonlocal interaction model \cite{blaschke, costa}. 
+ The model concludes to the fact that meson (quark-antiquark pair) formation proceeds with a gluon exchange. But the gluon exchange cannot be described as a diagram sum, because perturbation theory cannot be applied here. 
+ 
+ Mesons can be described as $q\bar{q}$ bound states by 
+the Bethe-Salpeter equation
 
-Let \tikz \fill[black] (0,0) circle [radius=1.ex]; be the \textit{form-factor} and let us use Gaussian-type model:
+\begin{eqnarray}\label{BS}
+  \Gamma (q,P) = -\frac{4}{3} \int \frac{d^4 p}{(2\pi)^4}
+  D(q-p) \gamma_\alpha S_1 \Gamma (q,P)
+S_2 \gamma_\alpha \  .
+\end{eqnarray}
 
-\begin{equation}
-    \label{eq:formfactorsize}
-    F(p^2)=\exp\left(\frac{-p^2}{\lambda^2}\right),
+The vertex function $\Gamma (p,P)$ depends on the relative
+momentum $p$, and the total momentum of the bound state $P$. 
+$S_i(p)$ are the dressed quark propagator in the Euclidean space 
+\begin{equation}\label{Eqn:q_prop}
+S_i(p_i)=\frac{1}{i (p_i\cdot \gamma) + m_i}
 \end{equation}
+The momenta $p_i=p+q_i$, $q_i = b_i P$, $i=1,2$ with 
+$b_1 =- m_1/(m_1+m_2)$, $b_2 = m_2/(m_1+m_2)$, $m_i$ are the constituent quark masses. 
 
-\noindent so the form-factor size will be defined by the $F(p^2)$ as shown above (\ref{eq:formfactorsize}). To describe the particles we need to know masses, decay constants and the decay process. Let us denote the interaction diagram as \tikz[baseline=-0.5ex]{
-        \filldraw (0, 0) circle (0.1cm);
-        \filldraw (1, 0) circle (0.1cm);
-        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, 0.05);
-        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
-    } and than we can use it in the equations:
+Equation (\ref{BS}) contains the interaction kernel $D(q-p)$ 
+which describes the effective gluon interaction within a meson. 
+We consider the rank -1 separable  model 
+\begin{eqnarray}\label{kernel}
+  D(q-p) = D_0 F(q^2) F(p^2) \, ,
+\end{eqnarray}
+where $D_0$ is the coupling constant and the function 
+$F(p^2)$ is related to scalar part of Bethe - Salpeter  vertex
+function. We employ  $F(q^2)$  in the Gaussian form 
+$F(p^2)= e^{-p^2/\lambda^2}$ with the parameter $\lambda$ which  characterizes the finite size of the meson. 
+
+This separable Anzatz of the interaction kernel (\ref{kernel}) allows to write the meson observables in the term of the polarization operator (the buble diagram): 
+
+%\begin{equation}
+%    \label{eq:formfactorsize}
+%    F(p^2)=\exp\left(\frac{-p^2}{\lambda^2}\right),
+%\end{equation}
+
+%\noindent so the form-factor size will be defined by the $F(p^2)$ %as shown above (\ref{eq:formfactorsize}). To describe the particles %we need to know masses, decay constants and the decay process. Let %us denote the interaction diagram as \tikz[baseline=-0.5ex]{
+%        \filldraw (0, 0) circle (0.1cm);
+%        \filldraw (1, 0) circle (0.1cm);
+%        \draw[->, thick] (0.1, 0.05) to[out=45, in=135] (0.9, %0.05);
+%        \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, %-0.05);
+%    } and than we can use it in the equations:
 
 \begin{equation}
         \tikz[baseline=-0.5ex]{
@@ -265,7 +295,7 @@ Let \tikz \fill[black] (0,0) circle [radius=1.ex]; be the \textit{form-factor} a
         \draw[<-, thick] (0.1, -0.05) to[out=-45, in=-135] (0.9, -0.05);
     }},
 \end{equation}
-
+where 
 \begin{equation}
         \tikz[baseline=-0.5ex]{
         \filldraw (0, 0) circle (0.1cm);
@@ -275,18 +305,19 @@ Let \tikz \fill[black] (0,0) circle [radius=1.ex]; be the \textit{form-factor} a
     } \to \int_{0}^{\infty}\frac{dp}{2\pi^4}F(p^2)\frac{1}{u_1u_2} = \int_{0}^{\infty}\frac{dp}{2\pi^4}F(p^2)\frac{1}{[(p + q_1)^2 + m_1^2][(p + q_2)^2 + m_2^2]}.
 \end{equation}
 
-To calculate these integrals let us use the equations:
+To calculate these integrals we use the equations:
 
 \begin{equation}
-    \frac{1}{(p + q_1)^2 + m_1^2} = \int_{0}^{\infty}dt\{\exp(-t[(p + q_i)^2 + m_i^2])\}, 
+    \frac{1}{(p + q_i)^2 + m_i^2} = \int_{0}^{\infty}dt\{\exp(-t[(p + q_i)^2 + m_i^2])\}, 
 \end{equation}
 \begin{equation}
     F(p^2) = \int_{0}^{\infty}ds\{\exp(-sp^2)F(s)\} .
 \end{equation}
 
-The cases of more than two mesons is described using triple and quadruple integrals.
+The case of more than two mesons is described using triple and quadruple integrals.
 
-The amplitudes of particular decays and the squared amplitudes of particular decays are calculated using FORM (a software for analytical calculation). But the key problem is to calculate integrals of functions of multiple variables.
+The amplitudes of particular decays and the squared amplitudes of particular decays are calculated using FORM 
+(software for analytical calculation). But the key problem is to calculate integrals of functions of multiple variables.
 
 In the framework of this problem there is a particular iterated integral:
 
@@ -295,7 +326,7 @@ In the framework of this problem there is a particular iterated integral:
     \int_{0}^{1}d\alpha\{\alpha^{a}(1 - \alpha)^b\}\int_{0}^{\infty}dt\{\frac{t^m}{(1+t)^n}F[z_{0}]\} \equiv I(a, b, m, n; F[z_{0}]),
 \end{equation}
 \begin{equation}   
-    F[z_0] = \exp(-2z_0),
+    F[z_0] = \exp[-2z_0],
 \end{equation}
 \begin{equation} 
     z_0 = tD + \frac{t}{1 + t}R^2,
@@ -319,11 +350,11 @@ In the framework of this problem there is a particular iterated integral:
 \begin{figure}
     \centering
     \includegraphics[width=0.8\linewidth]{f(t,a)33.png}
-    \caption{Integrand function (\ref{eq:the-integral}) plot - view from (0, 0, 0) and (0, 100, 0) corners}
+    \caption{Integrand function (\ref{eq:the-integral}) plot - view from (0, 0, 0) and (100, 0, 0) corners}
     \label{fig:integrand-plot}
 \end{figure}
 
-\noindent This integral is used in multiple calculations in the problem. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations. The integral (\ref{eq:the-integral}) also is interesting in that case, that it depends on two variables only, so it is can be used to test the integration framework we've been developing early in the development cycle. 
+\noindent This integral is used in multiple calculations in the problem. Shape of its 2-dimensional integral is sown on Figure 2. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations. The integral (\ref{eq:the-integral}) also is interesting in that case, that it depends on two variables only, so it is can be used to test the integration framework we've been developing early in the development cycle. 
 
 \section{Approach testing}
 
