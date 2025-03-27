@@ -228,13 +228,13 @@ Formulae (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_last}) can be ext
 
 \section{Approach testing}
 
-The 6 families of functions for testing the numerical integration proposed originally in 1984 by Alan Genz\cite{genz} (their definitions can be found in the related works). This functions were used to evaluate the accuracy of the neural network approach. The approach was tested on the 1- and 2-dimensional. The resulting integral values were compared to Python \textit{scipy.integrate.quad} method results for the same functions and so the MAE (mean absolute error) values were produced. The logarithmized values of MAE for each integrand family is shown on Figure \ref{fig:genz-rests}.
+The 6 families of functions for testing the numerical integration proposed originally in 1984 by Alan Genz\cite{genz} (their definitions can be found in the related works). This functions were used to evaluate the accuracy of the neural network approach. The approach was tested on the 1- and 2-dimensional. The resulting integral values were compared to Python \textit{scipy.integrate.quad} method results for the same functions and so the MAE (mean absolute error) values were produced. The logarithmized values of MAE for each integrand family is shown on Figure \ref{fig:genz-tests}.
 
-\begin{figure}[h!]
+\begin{figure}
 \centering
-\includegraphics[width=0.75\linewidth]{maes.png}
+\includegraphics[width=0.5\linewidth]{maes.png}
 \caption{ $ln($MAE$)$ values for tested Genz integrands}
-\label{fig:genz-rests}
+\label{fig:genz-tests}
 \end{figure}
 
 
@@ -370,27 +370,28 @@ In the framework of this problem there is a particular iterated integral:
 
 \noindent This integral is used in multiple calculations in the problem and its value describes the form of the mesons. Shape of the integrand is shown on Figure 2. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations.
 
-\section{Usage of Neural Network Approach}
+\section{Application of Neural Network Approach}
 
-As stated in the previous part, the integral (\ref{eq:the-integral}) has been already used to test the neural network approach. 
-
-It was firstly interpreted as a product of two integrals of single-variable functions ($\alpha_{1,2}$ were treated as constants). The first integral of function $\alpha^{a}(1 - \alpha)^b$ has a very simple analytical anti-derivative with any integer parameter $a$ and $b$ so it was easy to check the result of the integration. In most cases the neural network approach provided error bound $\varepsilon < 10^{-5}$. On the other hand, the second integral of function $\frac{t^m}{(1+t)^n}F[z_{0}]$ has a much more complex anti-derivative, so in this case the goal was to make the approximation bound of neural network $\hat{f}(x)$ was $\epsilon < 10^{-5}$ and this requirement was met.
-
-Secondly, the iterated integral (\ref{eq:the-integral}) was interpreted as a double integral:
+The iterated integral (\ref{eq:the-integral}) was firstly interpreted as a double integral:
 
 \begin{equation}
     \label{eq:iterated-as-double}
      \int_{0}^{1} \alpha^{a}(1 - \alpha)^bd\alpha \int_{0}^{\infty}\frac{t^m}{(1+t)^n}F[z_{0}]dt = 
-     \int_{0}^{1} \int_{0}^{\infty}\frac{t^m}{(1+t)^n}F[z_{0}]\alpha^{a}(1 - \alpha)^bdtd\alpha ,
+     \int_{0}^{1} \int_{0}^{\infty} dtd\alpha \frac{t^m}{(1+t)^n}F[z_{0}]\alpha^{a}(1 - \alpha)^b,
 \end{equation}
 
-\noindent and this double integral function was used to train the neural network model to approximate it. The approximation error bound of $\epsilon < 10^{-5}$ was also met, but currently the software implementation of the formulae (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_last}) requires further improvement and testing.
+\noindent to fit the (\ref{eq: integral definition}). Than the integrand from (\ref{eq:iterated-as-double}) was used to train the neural network models to approximate it with different parameters $a, b, m, n$. The models' testing MSE were less than AAAAAA. The MAE value for those integrands is shown on Figure \ref{fig:ph-tests}.
 
-Also both 1-dimensional ans 2-dimensional functionality was tested on simple arbitrary functions, e.g. transcendental functions.
+\begin{figure}
+\centering
+\includegraphics[width=0.5\linewidth]{maes.png}
+\caption{ PLACEHOLDER!!!!!}
+\label{fig:ph-tests}
+\end{figure}
 
-\section{Future development}
+\section{Conclusion}
 
-Currently, the further development of the neural network approach to the numerical integration continues. The resulting software will be tested on the integrals from the meson interaction modeling problem, which provides plenty of cases where numerical integration of high-dimensional functions is required. Also, we hope, the final product - the software library for numerical integration with use of numerical integration approach called \textit{Skuld} will help to solve difficult calculation problems in the meson interaction modeling problem domain as well, as in other fields, both theoretical and applied.
+The physics task described in section 4 will require fast and accurate calculation of the 2- and 3-dimensional integrands and so the future development of the project is required. It will focus both the rise of the accuracy as well as the ability to integrate functions of higher and higher dimensions. The described approach also may not be the only one appropriate to the task. The propositions of KANs \cite{liu} seems promising for even better integrand approximation and some more interesting approaches are proposed in related works.
 
 \section{Acknowledgments}
 
