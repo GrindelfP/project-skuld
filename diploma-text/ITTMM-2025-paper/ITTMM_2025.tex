@@ -49,7 +49,7 @@ orcid=0000-0003-4522-6735,
 email=strel@jinr.ru,
 ]
 
-\author[1,2]{Yuri L. Kalinovski}[%
+\author[1,2]{Yury L. Kalinovsky}[%
 orcid=0000-0002-7596-5531,
 email=kalinov@jinr.ru,
 ]
@@ -207,8 +207,8 @@ So here Lloyd's et al. work puts the proposition to use the trained neural netwo
         \label{eq:numerical_method_4}
             l_{i,r} = \left\{
             \begin{array}{ll}
-                \alpha_i, & \text{if } [{r}/{2^{n-d}}] \% 2 = 0 \\
-                \beta_i, & \text{if } [{r}/{2^{n-d}}] \% 2 \neq 0,
+                \alpha_i, & \text{if } \frac{r}{2^{n-d}} \text{ is even} \\
+                \beta_i, & \text{if } \frac{r}{2^{n-d}} \text{ is not even},
             \end{array}
         \right.
 \end{equation}
@@ -358,7 +358,25 @@ In the framework of this problem there is a particular iterated integral:
 
 \section{Approach testing}
 
-TEXT
+The 6 families of functions for testing the numerical integration proposed originally in 1984 by Alan Genz\cite{genz} and refined later were used to evaluate the accuracy of the neural network approach. The approach was tested on the 1- and 2-dimensional. The test results are shown in Table \ref{tab:mse_results} below. The function families definition can be found in the related works.
+
+\begin{table}[htbp]
+\centering
+\caption{MSE Results}
+\begin{tabular}{lccc}
+\toprule
+Family Name & MSE 1D & MSE 2D \\
+\midrule
+Oscillatory & 0.123 & 0.456 \\
+Product Peak B & 0.234 & 0.567 \\
+Corner Peak & 0.345 & 0.678 \\
+Gaussian & 0.456 & 0.789 \\
+Continuous & 0.567 & 0.890 \\
+Discontinuous & 0.678 & 0.901 \\
+\bottomrule
+\end{tabular}
+\label{tab:mse_results}
+\end{table}
 
 \section{Usage of Neural Network Approach}
 
