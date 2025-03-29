@@ -185,7 +185,7 @@ MLP network can have activation functions applied to each neuron's value before 
 
 \noindent where $Li_0(u(z))$ is a Jonquière's function or the polylogarithm of order 0. This substitution is proved to be numerically accurate in \cite{lloyd2020using}.
 
-Let number of dimensions $n = 1$. With substitution (\ref{eq:substitution-li-sigm}) network (\ref{eq:math-form-mlp}) can be integrated over given boundaries $[\alpha, \beta]$ to produce the following numerical integration formulae for 1-dimensional case:
+Let number of dimensions $n = 1$. With substitution (\ref{eq:substitution-li-sigm}) equation (\ref{eq:math-form-mlp}) can be integrated over given boundaries $[\alpha, \beta]$ to produce the following numerical integration formulae for 1-dimensional case:
 
 \begin{equation}
 	\label{eq:numerical_method_1}
@@ -228,12 +228,12 @@ Formulae (\ref{eq:numerical_method_1}-\ref{eq:numerical_method_last}) can be ext
 
 \section{Approach testing}
 
-The 6 families of functions for testing the numerical integration were originally proposed in 1984 by Alan Genz\cite{genz} (their definitions can be found in the related works). This functions were used to evaluate the accuracy of the neural network approach. The approach was tested on the 1- and 2-dimensional. The resulting integral values were compared to Python \textit{scipy.integrate.quad} method results for the same functions and so the MAE (mean absolute error) values were produced. Logarithmic-scaled values of MAE for each integrand family is shown on Figure \ref{fig:genz-tests}.
+The 6 families of functions for testing the numerical integration were originally proposed in 1984 by Alan Genz\cite{genz} (their definitions can be found in the related works). In our work this functions were used to evaluate the accuracy of the neural network approach. The approach was tested on the 1- and 2-dimensional functions. The resulting integrand values were compared to Python \textit{scipy.integrate.quad} method results for the same functions and thus the MAE (mean absolute error) values were produced. Logarithmic-scaled values of MAE for each integrand family is shown on Figure \ref{fig:genz-tests}. Each of the function was integrated 10 times using neural network approach and \textit{quad} function. The Product Peak and Discontinuous functions were hard to integrate and show the worst MAE results. This is mostly due to this functions being very hard to integrate numerically in general, especially the last one, because (as its name states) it is discontinuous and it is not proved that discontinuous functions can be correctly approximated using MLPs. 
 
 \begin{figure}
 \centering
 \includegraphics[width=0.85\linewidth]{maes.png}
-\caption{ MAE values for tested Genz neural network integrand values relative to \textit{quad} integrand values (logarithmic scale)}
+\caption{ MAE between neural network numerical integration values and \textit{quad} numerical integration values (logarithmic scale)}
 \label{fig:genz-tests}
 \end{figure}
 
@@ -341,34 +341,36 @@ In the framework of this problem there is a particular iterated integral:
     \label{eq:the-integral}
     \int_{0}^{1}d\alpha\{\alpha^{a}(1 - \alpha)^b\}\int_{0}^{\infty}dt\{\frac{t^m}{(1+t)^n}F[z_{0}]\} \equiv I(a, b, m, n; F[z_{0}]),
 \end{equation}
-\begin{equation}   
+\begin{equation*}   
     F[z_0] = \exp[-2z_0],
-\end{equation}
-\begin{equation} 
+\end{equation*}
+\begin{equation*} 
     z_0 = tD + \frac{t}{1 + t}R^2,
-\end{equation}
-\begin{equation}     
+\end{equation*}
+\begin{equation*}     
     D = \alpha_1(b_1^{2}P^2 + m_1^2) + \alpha_2(b_2^{2}P^2 + m_2^2),
-\end{equation}
-\begin{equation} 
+\end{equation*}
+\begin{equation*} 
         R^2 = (\alpha_1^{2}b_1^2 + \alpha_2^{2}b_2^2 + 2\alpha_{1}\alpha_{2}b_{1}b_2)P^2,
-\end{equation}
-\begin{equation} 
+\end{equation*}
+\begin{equation*} 
     b_1 = -\frac{m_1}{m_1 + m_2},
     b_2 = \frac{m_2}{m_1 + m_2},
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
     \alpha_1 = \alpha, \alpha_2 = 1 - \alpha.
-\end{equation}
+\end{equation*}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\linewidth]{f(t,a)33.png}
-    \caption{Integrand function (\ref{eq:the-integral}) plot - view from (0, 0, 0) and (100, 0, 0) corners}
-    \label{fig:integrand-plot}
-\end{figure}
+%\begin{figure}
+%    \centering
+%    \includegraphics[width=0.8\linewidth]{f(t,a)33.png}
+%    \caption{Integrand function (\ref{eq:the-integral}) plot - view from (0, 0, 0) and (100, 0, 0) corners}
+%    \label{fig:integrand-plot}
+%\end{figure}
 
-\noindent This integral is used in multiple calculations in the problem and its value describes the form of the mesons. Shape of the integrand is shown on Figure 2. As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations.
+\noindent This integral is used in multiple calculations in the problem and its value describes the form of the mesons. 
+% Shape of the integrand is shown on Figure 2. 
+As it can be seen in (\ref{eq:the-integral}) it is denoted as $I(a, b, m, n; F[z_{0}])$, and with different combination of parameters it is used multiple times in the calculations.
 
 \section{Application of Neural Network Approach}
 
@@ -380,18 +382,45 @@ The iterated integral (\ref{eq:the-integral}) was firstly interpreted as a doubl
      \int_{0}^{1} \int_{0}^{\infty} dtd\alpha \frac{t^m}{(1+t)^n}F[z_{0}]\alpha^{a}(1 - \alpha)^b,
 \end{equation}
 
-\noindent to fit the (\ref{eq: integral definition}). Than the integrand from (\ref{eq:iterated-as-double}) was used to train the neural network models to approximate it with different parameters $a, b, m, n$. The models' testing MSE were less than AAAAAA. The MAE value for those integrands is shown on Figure \ref{fig:ph-tests}.
+\noindent to fit the (\ref{eq: integral definition}). Than the integrand from (\ref{eq:iterated-as-double}) was used to train the neural network models to approximate it with different parameters $a, b, m, n$. These parameters define the shape of the function, as well as the size of the volume under the surface defined by them. 8 values were calculated using neural networks approach and than compared to values calculated previously using \textit{qdag} function of FORTRAN programming language. The resulting absolute errors of neural network approach integral values relative to \textit{qdag} results are shown on Figure \ref{fig:ph-tests}. 
+%The values thermselves are presented in Table \ref{tab:integral_values}.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.85\linewidth]{maes.png}
-\caption{ PLACEHOLDER!!!!!}
+\includegraphics[width=0.85\linewidth]{iaes.png}
+\caption{ Absolute errors between numerical integral values calculated using neural network approach and FORTRAN function \textit{qdag} }
 \label{fig:ph-tests}
 \end{figure}
 
+%\begin{table}[h]
+%\centering
+%\caption{Integral (\ref{eq:iterated-as-double}) values calculated with neural network approach (NN) and using FORTRAN \textit{qdag} function (FORTRAN)}
+%\label{tab:integral_values}
+%\begin{tabular}{ccc}
+%\toprule
+%I[a, b, m, n] & NN & FRTN \\
+%\midrule
+%I[0, 0, 1, 2] & 5.61E-01 & 5.73E-01 \\
+%I[0, 1, 1, 2] & 2.75E-01 & 2.86E-01 \\
+%I[1, 0, 1, 2] & 2.75E-01 & 2.86E-01 \\
+%I[1, 1, 1, 2] & 1.05E-01 & 1.09E-01 \\
+%I[0, 0, 2, 3] & 3.42E-01 & 3.49E-01 \\
+%I[0, 1, 2, 3] & 1.71E-01 & 1.75E-01 \\
+%I[1, 0, 2, 3] & 1.72E-01 & 1.75E-01 \\
+%I[1, 1, 2, 3] & 6.47E-02 & 6.87E-02 \\
+%\bottomrule
+%\end{tabular}
+%\end{table}
+
+It can be observed, that absolute error reduces as the numerical integral values decrease which is mostly connected to the scaling, required to restore the correct value of the integral after the integrand's dataset was scaled to normalize data for neural network model training. The process of scaling the data and restoring the numerical integral value should have further improvement. 
+
 \section{Conclusion}
 
-The physics task described in section 4 will require fast and accurate calculation of the 2- and 3-dimensional integrands and so the future development of the project is required. It will focus both the rise of the accuracy as well as the ability to integrate functions of higher and higher dimensions. The described approach also may not be the only one appropriate to the task. The propositions of KANs \cite{liu} seems promising for even better integrand approximation and some more interesting approaches are proposed in related works.
+The neural network approach to numerical integration is being developed for the physics task of building a model for the unified description of both light and heavy mesons. Currently, the approach is capable of numerical integration of 2-dimensional functions.
+
+The approach was tested using Alan Genz's package for testing the numerical integration. Than it was applied to iterated integral from the physics task.
+
+Further development of the approach will include implementation of functionality to integrate functions of higher dimensions and optimization of the approach to produce higher accuracy of integration.
 
 \section{Acknowledgments}
 
