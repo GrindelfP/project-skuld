@@ -205,7 +205,8 @@ class NeuralNumericalIntegration:
 
 
     @staticmethod
-    def calculate2(alphas, betas, network_params, n_dims=1):
+    def calculate2(alphas, betas, network_params, n_dims=2):
+        print("2d")
         alpha1, alpha2, beta1, beta2 = alphas[0], alphas[1], betas[0], betas[1]
         b1, w1, b2, w2 = network_params
         def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
@@ -229,6 +230,7 @@ class NeuralNumericalIntegration:
     
     @staticmethod
     def calculate1(alphas, betas, network_params, n_dims=1):
+        print("1d")
         alpha, beta = alphas[0], betas[0]
         b1, w1, b2, w2 = network_params
         w1 = w1.flatten()
