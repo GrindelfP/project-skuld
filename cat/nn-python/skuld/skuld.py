@@ -143,7 +143,7 @@ class MLP(nn.Module):
 class NeuralNumericalIntegration:
 
     @staticmethod
-    def calculate(alphas, betas, network_params, n_dims=1):
+    def calculate(alphas, betas, network_params, n_dims):
         """
             GIVES WRONG RESULTS!!!
             Calculates integrand value using neural network model params
@@ -152,7 +152,7 @@ class NeuralNumericalIntegration:
             :param alphas:         lower boundaries sequence (should be placed in integration order)
             :param betas:          upper boundaries sequence (should be placed in integration order)
             :param network_params: params for the trained neural network
-            :param n_dims:          number of integrand dimensions (default value is 1)
+            :param n_dims:          number of integrand dimensions
 
             :returns: integrand value
         """
@@ -206,7 +206,18 @@ class NeuralNumericalIntegration:
 
     @staticmethod
     def calculate2(alphas, betas, network_params, n_dims=2):
-        print("2d")
+        """
+            Calculates 2D integrand value using neural network model params
+            across given boundaries.
+
+            :param alphas:         lower boundaries sequence (should be placed in integration order)
+            :param betas:          upper boundaries sequence (should be placed in integration order)
+            :param network_params: params for the trained neural network
+            :param n_dims:          number of integrand dimensions (default value is 2)
+
+            :returns: integrand value
+        """
+        print("2D Integration started!")
         alpha1, alpha2, beta1, beta2 = alphas[0], alphas[1], betas[0], betas[1]
         b1, w1, b2, w2 = network_params
         def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
@@ -230,7 +241,18 @@ class NeuralNumericalIntegration:
     
     @staticmethod
     def calculate1(alphas, betas, network_params, n_dims=1):
-        print("1d")
+        """
+            Calculates 1D integrand value using neural network model params
+            across given boundaries.
+
+            :param alphas:         lower boundaries sequence (should be placed in integration order)
+            :param betas:          upper boundaries sequence (should be placed in integration order)
+            :param network_params: params for the trained neural network
+            :param n_dims:          number of integrand dimensions (default value is 1)
+
+            :returns: integrand value
+        """
+        print("1D Integration started!")
         alpha, beta = alphas[0], betas[0]
         b1, w1, b2, w2 = network_params
         w1 = w1.flatten()
@@ -248,14 +270,14 @@ class NeuralNumericalIntegration:
         
     
     @staticmethod
-    def integrate(model, alphas, betas, n_dims=1):
+    def integrate(model, alphas, betas, n_dims):
         """
             Integrates function-approximator (model) of n-dim dimensions over given boundaries.
 
             :param model: the trained model-approximator
             :param alphas: lower boundaries sequence (should be placed in integration order)
             :param betas:  upper boundaries sequence (should be placed in integration order)
-            :param n_dims: number of integrand dimensions (default value is 1)
+            :param n_dims: number of integrand dimensions
 
             :returns: neural numeric integration result
         """
@@ -292,6 +314,33 @@ def generate_data(func, lower, upper, n_samples=100, n_dim=1, *func_args):
         combinations = list(itertools.product(*ranges))
         X = torch.tensor(combinations, dtype=torch.float32)
         y = func(X, *func_args).view(-1, 1)
+
+    return X, y
+
+
+def generate_data_uniform(func, lower, upper, n_samples=100, n_dim=1, *func_args):
+    """
+    Generates data UNIFORMLY DISTRIBUTED in the form of a 2D tensor of variables for the 
+    function and neural network input as well as the function values for the generated 
+    tensor of variables.
+
+    :param func:      function to provide values for the variables
+    :param lower:     lower bounds of variable values
+    :param upper:     upper bounds of variable values
+    :param n_samples: number of points of data to generate per dimension (default value is 100)
+    :param n_dim:     number of dimensions of the function func (default value is 1)
+    :param *func_args: Additional arguments to pass to the function.
+
+    :returns: dataset of variables X and function values y
+    """
+    if n_dim == 1:
+        X = torch.rand(n_samples, 1) * (upper[0] - lower[0]) + lower[0]
+        y = func(X, *func_args).view(n_samples, 1)
+    else:
+        X = torch.rand(n_samples, n_dim)
+        for i in range(n_dim):
+            X[:, i] = X[:, i] * (upper[i] - lower[i]) + lower[i]
+        y = func(X, *func_args).view(n_samples, 1)
 
     return X, y
 
