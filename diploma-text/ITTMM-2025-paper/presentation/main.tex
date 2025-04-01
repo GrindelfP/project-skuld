@@ -18,14 +18,12 @@
 
 %Information to be included in the title page:
 \title{Application of Neural Network Approach to Numerical Integration}
-\author{Gregory A. Shipunov, student of gr. 4181\inst{1} \\ Oksana I. Streltsova, thesis supervisor\inst{1, 2} \\ Yury L. Kalinovsky, thesis consultant\inst{1, 2}}
+\author{Gregory A. Shipunov, student of gr. 4181\inst{1} \\ supervisors: Oksana I. Streltsova,\inst{1, 2} Yury L. Kalinovsky\inst{1, 2}}
 \institute{
     \inst{1} Dubna State University, 19 Universitetskaya St, Dubna, 141980, Russian Federation \\
     \inst{2} Joint Institute for Nuclear Research, 6 Joliot-Curie St, Dubna, 141980, Russian Federation
 }
-\date{2025}
-
-\usepackage{tikz}
+\date{}
 
 \newcommand{\logoLeft}[1]{
     \begin{tikzpicture}[remember picture,overlay]
@@ -41,7 +39,7 @@
 
 \newcommand{\logoBottomLeft}[1]{
     \begin{tikzpicture}[remember picture,overlay]
-        \node[anchor=south west, inner sep=10pt, xshift=-0.5cm] at (current page.south west) {\includegraphics[width=3.5cm]{#1}};
+        \node[anchor=south west, inner sep=10pt, yshift=0.4cm, xshift=-0.1cm] at (current page.south west) {\includegraphics[width=1.5cm]{#1}};
     \end{tikzpicture}
 }
 
@@ -69,8 +67,11 @@
     \titlepage
     \logoLeft{logo_new_small_eng.png}  
     \logoRight{logo_jinr_21.jpg} 
-    \logoBottomLeft{isau.png} 
+    \logoBottomLeft{isau.pdf} 
     \logoBottomRight{mlit.png}
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[anchor=south, yshift=0.7cm] at (current page.south) {2025};
+    \end{tikzpicture}
 }
 
 \begin{frame}
@@ -81,17 +82,17 @@
 \section{Problem Statement}
 
 \begin{frame}{Problem Statement 1}
-This work is dedicated to developing the software for numerical calculations in domain of modelling of physical processes for NICA collider. Numericall modelling of physical processes involves studying of particles’ properties based on Bethe-Salpeter equation.
+This work is dedicated to developing the software for numerical calculations in domain of modelling of physical processes for NICA collider. Numerical modeling of physical processes involves studying of the particle properties based on Bethe-Salpeter equation:
 
 \begin{eqnarray}\label{BS}
   \Gamma (q,P) = -\frac{4}{3} \int \frac{d^4 p}{(2\pi)^4}
   D(q-p) \gamma_\alpha S_1 \Gamma (q,P)
-S_2 \gamma_\alpha \  .
+S_2 \gamma_\alpha .
 \end{eqnarray}
 
 The vertex function $\Gamma (p,P)$ depends on the relative
 momentum $p$, and the total momentum of the bound state $P$. 
-$S_i(p)$ are the dressed quark propagator in the Euclidean space 
+$S_i(p)$ are the dressed quark propagator in the Euclidean space: 
 \begin{equation}\label{Eqn:q_prop}
 S_i(p_i)=\frac{1}{i (p_i\cdot \gamma) + m_i}
 \end{equation}
@@ -208,10 +209,19 @@ Let a continuous real function $f(\mathbf{x})$ be defined as $f: {\rm I\!R}^n \t
 
 \begin{equation}
     \label{eq: integral definition}
-    I(f) = \int_G f(\mathbf{x})d\mathbf{x},
+    I(f) = \int_G d\mathbf{x} f(\mathbf{x}),
 \end{equation}
 
-\noindent is a definite integral of $f$ across set $G$. Therefore, the problem is to get the $I(f)$ value calculated with use of neural network approach.    
+\noindent is a definite integral of $f$ across set $G$. 
+
+Therefore, the problem is to get the $I(f)$ value calculated with use of neural network approach. The neural network model will be used to approximate the function $f(\mathbf{x})$\footnote{S. Lloyd, R. A. Irani, M. Ahmadi, Using neural networks for fast numerical integration and
+optimization, IEEE Access 8 (2020) 84519–84531.}. Than this model will be used to calculate the approximate integral value:
+
+\begin{equation}
+    \label{eq: integral definition}
+    \hat{I}(f) = \int_G d\mathbf{x} \hat{f}(\mathbf{x}),
+\end{equation}
+
 \end{frame}
 
 \begin{frame}{Problem Statement 6}
@@ -223,7 +233,7 @@ Let a continuous real function $f(\mathbf{x})$ be defined as $f: {\rm I\!R}^n \t
     \label{fig:structure}
 \end{figure}
 
-Current MLP structure will have logistic sigmoid as activation function on the hidden layer:
+The MLP structure will have logistic sigmoid as activation function on the hidden layer:
 
 \begin{equation}
     \label{eq:sigmoid}
@@ -282,11 +292,13 @@ Thus we have got the numerical integration method.
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{maes.png}
-    \caption{The MLP structure used in the neural network approach}
+    \caption{The MAE between neural network numerical integration values and quad numerical integration values}
     \label{fig:maes}
 \end{figure}
 
-Figure \ref{fig:maes} depicts the mean absolute errors of integration of Alan Genz's package 1D and 2D functions compared to results calculated using \textit{scipy.integrate.quad} fucntion of Python programming language.
+Figure \ref{fig:maes} depicts the mean absolute errors of integration of Alan Genz's package\footnote{A. Genz, Testing multidimensional integration routines, in: Proc. of international confer-
+ence on Tools, methods and languages for scientific and engineering computation, 1984, pp.
+81–94.} 1D and 2D functions compared to results calculated using \textit{scipy.integrate.quad} fucntion of Python programming language. The neural network model had hidden layer size was k = 100. 
     
 \end{frame}
 
@@ -295,11 +307,11 @@ Figure \ref{fig:maes} depicts the mean absolute errors of integration of Alan Ge
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.7\linewidth]{iaes.png}
-    \caption{The MLP structure used in the neural network approach}
+    \caption{The absolute errors between numerical integral values calculated using neural network approach and FORTRAN function qdag}
     \label{fig:iaes}
 \end{figure}
 
-Figure \ref{fig:iaes} depicts the absolute errors of integration of equation (\ref{eq:the-integral}) compared to results calculated previously using \textit{qdag} function of FORTRAN programming language.
+Figure \ref{fig:iaes} depicts the absolute errors of integration of equation (\ref{eq:the-integral}) compared to results calculated previously using \textit{qdag} function of FORTRAN programming language. The neural network model had hidden layer size was k = 100.
     
 \end{frame}
 
@@ -308,8 +320,8 @@ Figure \ref{fig:iaes} depicts the absolute errors of integration of equation (\r
 \begin{frame}{Benefits of using neural network approach}
 
 \begin{itemize}
-    \item Integration of similar function across different boundaries time efficiency.
-    \item High-dimensional functions integration time and accuracy efficency.
+    \item The integration of similar function across different boundaries time efficiency.
+    \item The integration of functions of high-dimensions.
 \end{itemize}
     
 \end{frame}
@@ -320,8 +332,8 @@ Figure \ref{fig:iaes} depicts the absolute errors of integration of equation (\r
 
 \begin{itemize}
     \item Improve accuracy of integration.
-    \item Try other ways to use neural networks for numerical integration.
     \item Implement higher dimensions numerical integration functionality.
+    \item Consider other ways to use neural networks for numerical integration.
 \end{itemize}
     
 \end{frame}
