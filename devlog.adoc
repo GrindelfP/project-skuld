@@ -1,5 +1,11 @@
 = Development Logs =
 
+== April 2025 ==
+
+=== 2025-04-04 ===
+
+MAE for Oscillatory 2D hit 0.0029!!!!!
+
 == March 2025 ==
 
 === 2025-03-11 ===
