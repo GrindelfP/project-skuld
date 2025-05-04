@@ -10,16 +10,17 @@ from global_definitions import Vector, Matrix
 
 ########### 1D FUNCTIONS ###########
 def osc_1d(X: Vector, u: float , c: float) -> Tensor:
-    return torch.cos(2 * math.pi * u + X * c)
+    return torch.cos(torch.Tensor(2 * math.pi * u + X * c))
 
 def prod_peak_1d(X: Vector, u: float , c: float) -> Tensor:
     return 1 / (c**(-2) + (X - u)**2)
 
 def corn_peek_1d(X: Vector, u: float , c: float) -> Tensor:
-    return (1 + c * X) ** (-2)
+    base: Vector = torch.Tensor(1 + c * X)
+    return torch.pow(base, -2)
 
 def gauss_1d(X: Vector, u: float , c: float) -> Tensor:
-    return torch.exp(- c**2 * (X - u)**2)
+    return torch.exp(torch.Tensor(-c**2 * (X - u)**2))
 
 def cont_1d(X: Vector, u: float , c: float) -> Tensor:
     return torch.exp(- c * abs(X - u))
@@ -44,7 +45,7 @@ def osc_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
 
     return torch.cos(2 * math.pi * u[0] + sum_)
 
-def prod_peek_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
+def prod_peak_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
     prod_ = 1
     for i in range(2):
         prod_ *= (c[i] ** (-2) + (X[:, i] - u[i])**2) ** (-1)
