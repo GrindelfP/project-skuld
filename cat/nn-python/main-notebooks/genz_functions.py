@@ -23,7 +23,7 @@ def gauss_1d(X: Vector, u: float , c: float) -> Tensor:
     return torch.exp(torch.Tensor(-c**2 * (X - u)**2))
 
 def cont_1d(X: Vector, u: float , c: float) -> Tensor:
-    return torch.exp(- c * abs(X - u))
+    return torch.exp(torch.Tensor(-c * abs(X - u)))
 
 def disco_1d(X: Vector, u: float , c: float) -> Tensor:
     y_list = []
