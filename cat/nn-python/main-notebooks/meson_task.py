@@ -34,7 +34,7 @@ def funcI2(t, alp1, a, b, m, n):
 
 def funcI2_wrapper(X: Matrix, a: float, b: float, m: float, n: float):
 
-    t: Vector = X[:, 0]
-    alp: Vector = X[:, 1]
+    t: Vector = X[:, 1]
+    alp: Vector = X[:, 0]
 
     return funcI2(t, alp, a, b, m, n)
