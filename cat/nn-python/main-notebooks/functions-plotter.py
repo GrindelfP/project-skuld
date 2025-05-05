@@ -4,25 +4,31 @@
 
 from genz_functions import *
 from plotly_plots import *
+from meson_task import funcI2_wrapper
 
 
 ############ PARAMETERS ############
-u: float = 10
-c: float = 10
+u: float = 0.5
+c: float = 10.5
 uu: list[float] = [u, u]
 cc: list[float] = [c, c]
 num_points: int = 500
 unit_cube_range: tuple[int, int] = (0, 1)
-
+x_range: tuple[int, int] = (0, 2)
+y_range: tuple[int, int] = (0, 50)
+a_ = 1
+b_ = 0
+m_ = 2
+n_ = 3
 
 ############ PROGRAM ############
 def plot_genz():
         ### 1D CASE
         plot_line(
-            func=corn_peek_1d,
+            func=disco_1d,
             x_range=unit_cube_range,
             num_points=500,
-            title='',
+            title=f'DISCONTINUOUS: u = {u}, c = {c}.',
             x_label='X',
             y_label='Y',
             u=u,
@@ -31,16 +37,16 @@ def plot_genz():
 
         ### 2D CASE
         plot_surface(
-            func=corn_peek_2d,
+            func=disco_2d,
             x_range=unit_cube_range,
             y_range=unit_cube_range,
             num_points=num_points,
-            title='',
+            title=f'DISCONTINUOUS: u = {uu}, c = {cc}.',
             x_label='X',
             y_label='Y',
             z_label='Z',
             u=uu,
-            c=cc,
+            c=cc
         ).show()
 
 def main():
