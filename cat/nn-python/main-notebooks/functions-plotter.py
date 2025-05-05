@@ -1,11 +1,12 @@
+########################################
+   ####### FUNCTIONS PLOTTER #######
+########################################
+
 from genz_functions import *
 from plotly_plots import *
 
 
-########################################
-   ############ PROGRAM ############
-########################################
-
+############ PARAMETERS ############
 u: float = 10
 c: float = 10
 uu: list[float] = [u, u]
@@ -14,7 +15,7 @@ num_points: int = 500
 unit_cube_range: tuple[int, int] = (0, 1)
 
 
-
+############ PROGRAM ############
 def plot_genz():
         ### 1D CASE
         plot_line(
@@ -44,7 +45,6 @@ def plot_genz():
 
 def main():
     plot_genz()
-
 
 if __name__ == '__main__':
     main()
