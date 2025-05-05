@@ -14,12 +14,6 @@ uu: list[float] = [u, u]
 cc: list[float] = [c, c]
 num_points: int = 500
 unit_cube_range: tuple[int, int] = (0, 1)
-x_range: tuple[int, int] = (0, 2)
-y_range: tuple[int, int] = (0, 50)
-a_ = 1
-b_ = 0
-m_ = 2
-n_ = 3
 
 ############ PROGRAM ############
 def plot_genz():
