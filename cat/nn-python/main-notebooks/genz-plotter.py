@@ -2,10 +2,8 @@
    ####### FUNCTIONS PLOTTER #######
 ########################################
 
-from genz_functions import *
-from plotly_plots import *
-from meson_task import funcI2_wrapper
-
+from genz.genz_functions import *
+from utils.plotly_plots import *
 
 ############ PARAMETERS ############
 u: float = 0.5
