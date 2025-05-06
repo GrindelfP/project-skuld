@@ -2,7 +2,6 @@
    ####### FUNCTIONS PLOTTER #######
 ########################################
 
-from genz_functions import *
 from plotly_plots import *
 from meson_task import funcI2_wrapper
 
