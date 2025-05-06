@@ -1,4 +1,8 @@
-import scipy.integrate
+#########################################################
+  ##### SCIPY.INTEGRATE-BASED INTEGRATION METHODS #####
+#########################################################
+
+from scipy.integrate import quad, nquad
 import numpy as np
 import torch
 
@@ -17,9 +21,9 @@ def integrate_1d_quad(func, a, b, *params):
     if params:
         def wrapped_func(x):
             return func(x, *params)
-        result, error = scipy.integrate.quad(wrapped_func, a, b)
+        result = quad(wrapped_func, a, b)
     else:
-        result, error = scipy.integrate.quad(func, a, b)
+        result = quad(func, a, b)
     return result
     
 
@@ -41,7 +45,7 @@ def integrate_2d_nquad(func, lower, upper, *params):
         def func_for_nquad(x, y):
             return func([x, y])
 
-    return scipy.integrate.nquad(func_for_nquad, [[lower[0], upper[0]], [lower[1], upper[1]]])[0]
+    return nquad(func_for_nquad, [[lower[0], upper[0]], [lower[1], upper[1]]])[0]
     
 
 def integrate_2d_trapz(func, lower, upper, num_points=100, *params):

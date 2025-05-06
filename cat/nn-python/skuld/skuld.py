@@ -1,20 +1,35 @@
+#################################################
+
+        #################################
+        ####### SKULD NNI LIBRARY #######
+        #################################
+
+      ###### a neural network based ######
+      ### numerical integration library ###
+#################################################
+
+
 from typing import Tuple
+from torch import Tensor
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
-from torch import Tensor
-from torchsummary import summary
+
 import numpy as np
+
 from mpmath import polylog
+
 from sklearn.model_selection import train_test_split
-import math
-import random
+
 import time
 import itertools
-from sympy import Float
 
+########################################################################################################################
 
+####################################################
+  ######### MULTILAYER PERCEPTRON CLASS ##########
+####################################################
 class MLP(nn.Module):
     """
         Class defining neural network approximator for the integrand.
@@ -35,6 +50,7 @@ class MLP(nn.Module):
         self.criterion = None
         self.optimizer = None
 
+    
     def forward(self, x):
         """
             Forward propagation of the data through the network.
@@ -49,6 +65,7 @@ class MLP(nn.Module):
 
         return x
 
+
     def compile(self, criterion, optimizer):
         """
             Compiles model. Sets learning criterion and model's optimizer
@@ -60,6 +77,7 @@ class MLP(nn.Module):
         self.criterion = criterion
         self.optimizer = optimizer
 
+
     def compile_default(self, learning_rate: float) -> None:
         """
             Compiles model with default hyperparams.
@@ -70,16 +88,17 @@ class MLP(nn.Module):
         self.criterion = nn.MSELoss()
         self.optimizer = optim.Adam(self.parameters(), lr=learning_rate)
 
+    
     def train(self, x_train, y_train, epochs, verbose=True):
         """
             Trains the model.
-
+    
             :param x_train:    Training inputs
             :param y_train:    True labels
             :param epochs:     Number of training epochs
             :param verbose:    Boolean depicting whether should the network print each 100 epochs done message,
                                or only the completion message.
-
+    
             :returns: loss functions history
         """
         loss_history = []
@@ -87,21 +106,22 @@ class MLP(nn.Module):
         for epoch in range(epochs):
             predictions = self(x_train)  # forward propagation of all the data
             loss = self.criterion(predictions, y_train)  # loss function calculation
-
+    
             self.optimizer.zero_grad()  # gradients are being reset
             loss.backward()  # backwards data propagation
             self.optimizer.step()  # optimization step (network params are being updated)
-
+    
             loss_history.append(loss.item())  # current loss function added to history
-
+    
             # hereon the logs are being printed
             if verbose:
                 if (epoch + 1) % 100 == 0:
                     print(f'Epoch [{epoch + 1}/{epochs}], Loss: {loss.item():.10f}')
         total_time = time.time() - start_time
         print(f'Training done! Time elapsed: {total_time:.2f} seconds')
-
+    
         return loss_history  # loss history is returned
+
 
     def test(self, x_test, y_test):
         """
@@ -109,44 +129,49 @@ class MLP(nn.Module):
 
             :param x_test:    Test inputs
             :param y_test:    True labels
-
+    
             :returns: test loss function value
         """
         with torch.no_grad():  # no gradients will be calculated
             predictions = self(x_test)  # forward data propagation
             loss = self.criterion(predictions, y_test)  # loss function for the test data
-
+    
         return loss.item()  # loss function value (item() required to convert tensor to scalar)
+
 
     def predict_with(self, x_test):
         """
             Uses the model to predict values based on x_test arguments.
-
+    
             :param x_test: test inputs
-
+    
             :returns: predicted function value
         """
         with torch.no_grad():
             prediction = self(x_test)  # forward data propagation
-
+    
         return prediction
+
 
     def extract_params(self):
         """
             Extracts weights and biases from the network.
-
+        
             :returns: tuple of 4 numpy.ndarray-s with biases1, weights1, biases2 and weights2
                       (number represents 1 - input->hidden layers params, 2 - hidden->output layers params)
         """
-
+    
         b1 = self.input_hidden_layer.bias.detach().numpy()
         w1 = self.input_hidden_layer.weight.detach().numpy()
         b2 = self.output_layer.bias.detach().numpy()
         w2 = self.output_layer.weight.detach().numpy().flatten()
-
+    
         return b1, w1, b2, w2
 
 
+####################################################
+      ######### MLP MODEL WRAPPERS ##########
+####################################################
 def init_model(input_size: int, hidden_size: int) -> MLP:
     return MLP(input_size=input_size, hidden_size=hidden_size)
 
@@ -154,7 +179,11 @@ def init_model(input_size: int, hidden_size: int) -> MLP:
 def split_data(X: Tensor, y: Tensor, test_size: float, shuffle: bool) -> Tuple[Tensor, Tensor, Tensor, Tensor]:
     return train_test_split(X, y, test_size=test_size, shuffle=shuffle)
 
+########################################################################################################################
 
+####################################################
+  ###### NEURAL NUMERICAL INTEGRATION CLASS #######
+####################################################
 class NeuralNumericalIntegration:
 
     @staticmethod
@@ -213,9 +242,11 @@ class NeuralNumericalIntegration:
 
             integral_sum += w2_j * (prod_bound + Phi_j_ / prod_w)
 
+        
         result = b2 * prod_bound + integral_sum
 
         return result
+
 
     @staticmethod
     def calculate2(alphas, betas, network_params, n_dims=2):
@@ -233,24 +264,25 @@ class NeuralNumericalIntegration:
         print("2D Integration started!")
         alpha1, alpha2, beta1, beta2 = alphas[0], alphas[1], betas[0], betas[1]
         b1, w1, b2, w2 = network_params
-
         def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
+
             term_1 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * alpha2))
             term_2 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * beta2))
             term_3 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * alpha2))
             term_4 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * beta2))
-
+            
             return term_1 - term_2 - term_3 + term_4
-
-        integral_sum = 0
-
+   
+        integral_sum = 0 
+            
         for w2_j, w1_1j, w1_2j, b1_j in zip(w2, w1[:, 0], w1[:, 1], b1):
-            phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j)
+            phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j) 
             summ = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j / (w1_1j * w1_2j))
             integral_sum += summ
+        
+        return b2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum 
 
-        return b2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum
-
+    
     @staticmethod
     def calculate1(alphas, betas, network_params, n_dims=1):
         """
@@ -268,19 +300,19 @@ class NeuralNumericalIntegration:
         alpha, beta = alphas[0], betas[0]
         b1, w1, b2, w2 = network_params
         w1 = w1.flatten()
-
         def Phi_j(alpha, beta, b1_j, w1_j):
             term_alpha = polylog(1, -np.exp(-b1_j - w1_j * alpha))
             term_beta = polylog(1, -np.exp(-b1_j - w1_j * beta))
             return term_alpha - term_beta
 
-        integral_sum = 0
+        integral_sum = 0 
         for w2_j, w1_j, b1_j in zip(w2, w1, b1):
             phi_j = Phi_j(alpha, beta, b1_j, w1_j)
             integral_sum += w2_j * ((beta - alpha) + phi_j / w1_j)
-
+        
         return b2 * (beta - alpha) + integral_sum
-
+        
+    
     @staticmethod
     def integrate(model, alphas, betas, n_dims):
         """
@@ -299,10 +331,14 @@ class NeuralNumericalIntegration:
             return NeuralNumericalIntegration.calculate1(alphas, betas, network_params, n_dims)
         elif n_dims == 2:
             return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
-        else:
+        else: 
             return NeuralNumericalIntegration.calculate2(alphas, betas, network_params, n_dims)
 
+########################################################################################################################
 
+####################################################
+        ######### DATA GENERATORS ##########
+####################################################
 def generate_data(func, lower, upper, n_samples=100, n_dim=1, *func_args):
     """
     Generates data in the form of a 2D tensor of variables for the function and neural network input
@@ -356,12 +392,14 @@ def generate_data_uniform(func, lower, upper, n_samples=100, n_dim=1, *func_args
 
     return X, y
 
-
+####################################################
+         ######### DATA SCALERS ##########
+####################################################
 def scale_data(
-        X_init: torch.Tensor,
-        y_init: torch.Tensor,
-        frange: tuple[int, int] = (0, 1),
-        n_dim: int = 1
+    X_init: torch.Tensor, 
+    y_init: torch.Tensor, 
+    frange: tuple[int, int]=(0, 1), 
+    n_dim: int=1
 ) -> tuple[torch.Tensor, torch.Tensor]:
     """
         Scales function dataset to the specific range frange.
@@ -397,11 +435,11 @@ def scale_data(
 
 
 def descale_result(
-        nni_scaled: float,
-        X_init: torch.Tensor,
-        y_init: torch.Tensor,
-        frange: tuple[int, int] = (0, 1),
-        n_dim: int = 1
+    nni_scaled: float, 
+    X_init: torch.Tensor, 
+    y_init: torch.Tensor,     
+    frange: tuple[int, int]=(0, 1), 
+    n_dim: int=1
 ) -> float:
     """
         Restores true value to the scaled integral.
@@ -420,11 +458,11 @@ def descale_result(
     if X_init.ndim != 2:
         raise ValueError("X_init must be a 2D tensor.")
 
-    if y_init.ndim != 1 and y_init.ndim != 2:
+    if y_init.ndim != 1 and y_init.ndim != 2 :
         raise ValueError("y_init must be a 2D tensor with shape (num_of_points,1).")
 
-    if y_init.ndim == 2 and y_init.shape[1] != 1:
-        raise ValueError("y_init must be a 2D tensor with shape (num_of_points,1).")
+    if y_init.ndim == 2 and y_init.shape[1] !=1:
+      raise ValueError("y_init must be a 2D tensor with shape (num_of_points,1).")
 
     xmin = torch.min(X_init, dim=0).values
     xmax = torch.max(X_init, dim=0).values
@@ -434,5 +472,4 @@ def descale_result(
     VS = torch.prod(xmax - xmin)
     VSS = (frange_size) ** n_dim
 
-    return (nni_scaled * (VS * (fmax - fmin) / (VSS * (frange_size))) + (
-                fmin - (fmax - fmin) / (frange_size) * frange[0]) * VS).item()
+    return (nni_scaled * (VS * (fmax - fmin) / (VSS * (frange_size))) + (fmin - (fmax - fmin) / (frange_size) * frange[0]) * VS).item()
