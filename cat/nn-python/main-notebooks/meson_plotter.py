@@ -16,26 +16,15 @@ num_points: int = 500
 unit_cube_range: tuple[int, int] = (0, 1)
 x_range: tuple[int, int] = (0, 1)
 y_range: tuple[int, int] = (0, 30)
-a_ = 1
-b_ = 0
-m_ = 2
-n_ = 3
+A = [0, 1, 0, 1]
+B = [0, 0, 1, 1]
+M = [2, 2, 2, 2]
+N = [3, 3, 3, 3]
 
 ############ PROGRAM ############
-def plot_genz():
-        ### 1D CASE
-        # plot_line(
-        #     func=disco_1d,
-        #     x_range=unit_cube_range,
-        #     num_points=500,
-        #     title=f'DISCONTINUOUS: u = {u}, c = {c}.',
-        #     x_label='X',
-        #     y_label='Y',
-        #     u=u,
-        #     c=c
-        # ).show()
+def plot_i2():
 
-        ### 2D CASE
+    for a_, b_, m_, n_ in zip(A, B, M, N):
         plot_surface(
             func=funcI2_wrapper,
             x_range=x_range,
@@ -52,7 +41,7 @@ def plot_genz():
         ).show()
 
 def main():
-    plot_genz()
+    plot_i2()
 
 if __name__ == '__main__':
     main()
