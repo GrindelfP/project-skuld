@@ -1,9 +1,9 @@
 #########################################################################
 ###                         LIBRARIES IMPORTS                         ###
 #########################################################################
-from typing import TypeAlias, Annotated   # typing enhancements
-import torch                              # for torch-based sin/cos
-from torch import Tensor                  # for typing
+from typing import TypeAlias, Annotated, Any  # typing enhancements
+import torch                                  # for torch-based sin/cos
+from torch import Tensor                      # for typing
 from skuld.skuld import (
 generate_data, scale_data, init_model, split_data,
 NeuralNumericalIntegration, descale_result
@@ -16,7 +16,7 @@ Matrix: TypeAlias = Annotated[Tensor, "torch.float32", (None, None)]
 #########################################################################
 ###                       INTEGRAND DEFINITION                        ###
 #########################################################################
-def func(XY: Matrix) -> Vector:           # integrand definition
+def func(XY: Matrix, *args: Any) -> Vector:        # integrand definition
     X: Vector = XY[:, 0]                  # first column, x variable
     Y: Vector = XY[:, 1]                  # second column, y variable
     return torch.cos(X) * torch.sin(Y)    # cos(x)sin(y)
@@ -34,7 +34,6 @@ X_scaled, y_scaled = scale_data(
     X_init=X_init,      # variables
     y_init=y_init,      # function values
     frange=(0, 1),      # normalisation range
-    n_dim=2             # number of integrand dimensions
 )                       # normalize (scale) dataset
 x_train, x_test, y_train, y_test = split_data(
     X_scaled,           # scaled variables
@@ -52,7 +51,7 @@ model = init_model(
 model.compile_default(
     learning_rate=0.001 # learning rate coefficient of the Adam algorithm
 )                       # compile the network with default hyperparams
-train_history = model.train(
+train_history = model.fit(
     x_train=x_train,    # train dataset variables
     y_train=y_train,    # train dataset function values
     epochs=5000,        # number of training epochs (iterations)
