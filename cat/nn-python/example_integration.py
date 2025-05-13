@@ -26,7 +26,7 @@ def func(XY: Matrix) -> Vector:           # integrand definition
 X_init, y_init = generate_data(
     func=func,          # function to integrate (defined above)
     lower=[0.0, 0.0],   # lower dataset boundaries
-    upper=[10.0, 1.0],  # upper dataset boundaries
+    upper=[1.0, 1.0],  # upper dataset boundaries
     n_samples=300,      # number of points (square root for n_dim=2)
     n_dim=2             # number of integrand dimensions
 )                       # generate dataset
