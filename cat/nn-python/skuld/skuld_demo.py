@@ -9,9 +9,7 @@
 ##########################################################################
 ###                          LIBRARIES IMPORTS                         ###
 ##########################################################################
-from typing import Tuple, TypeAlias, Annotated, Callable
-
-import numpy
+from typing import Tuple, TypeAlias, Annotated, Callable, Any
 from torch import Tensor
 import torch
 import torch.nn as nn
@@ -40,15 +38,13 @@ class MLP(nn.Module):
             which would be chosen when training the network)
         """
         super(MLP, self).__init__()
-        self.input_size = input_size
-        # initialisation of input->hidden layers structure
+        self.input_size: int = input_size
+        self.hidden_size: int = hidden_size
         self.input_hidden_layer = nn.Linear(input_size, hidden_size)
-        # hidden layer activation function
         self.sigmoid_activation = nn.Sigmoid()
-        # output layer initialisation (always size 1)
         self.output_layer = nn.Linear(hidden_size, 1)
-        self.criterion = None
-        self.optimizer = None
+        self.criterion: nn.modules.loss = None
+        self.optimizer: optim.Optimizer | None = None
 
     def forward(self, x):
         """
@@ -81,10 +77,16 @@ class MLP(nn.Module):
             Sets learning criterion to MSE and optimizer to Adam.
             :param learning_rate: rate of the optimizer algorithm.
         """
-        self.criterion: nn.modules.loss = nn.MSELoss()
-        self.optimizer: optim.Optimizer = optim.Adam(self.parameters(), lr=learning_rate)
+        self.criterion = nn.MSELoss()
+        self.optimizer = optim.Adam(self.parameters(), lr=learning_rate)
 
-    def train(self, x_train: Matrix, y_train: Vector, epochs: int, verbose: bool = True):
+    def fit(
+            self,
+            x_train: Matrix,
+            y_train: Vector,
+            epochs: int,
+            verbose: bool = True
+    ) -> list[float]:
         """
             Trains the model.
             :param x_train:    Training inputs
@@ -95,10 +97,10 @@ class MLP(nn.Module):
             completion message.
             :returns: loss functions history
         """
-        loss_history = []
-        start_time = time.time()
+        loss_history: list[float] = []
+        start_time: float = time.time()
         for epoch in range(epochs):
-            predictions = self(x_train)  # forward propagation
+            predictions: Vector = self(x_train)  # forward propagation
             loss = self.criterion(predictions, y_train)  # loss function
             self.optimizer.zero_grad()  # gradients are being reset
             loss.backward()  # backwards data propagation
@@ -111,11 +113,11 @@ class MLP(nn.Module):
                 if (epoch + 1) % 100 == 0:
                     print(f'Epoch [{epoch + 1}/{epochs}], '
                           f'Loss: {loss.item():.10f}')
-        total_time = time.time() - start_time
+        total_time: float = time.time() - start_time
         print(f'Training done! Time elapsed: {total_time:.2f} seconds')
         return loss_history  # loss history is returned
 
-    def test(self, x_test: Matrix, y_test: Vector):
+    def test(self, x_test: Matrix, y_test: Vector) -> float:
         """
             Tests the model.
             :param x_test:    Test inputs
@@ -123,7 +125,7 @@ class MLP(nn.Module):
             :returns: test loss function value
         """
         with torch.no_grad():  # no gradients will be calculated
-            predictions = self(x_test)  # forward data propagation
+            predictions: Vector = self(x_test)  # forward data propagation
             loss = self.criterion(predictions, y_test)  # loss function
         return loss.item()  # loss function value (item() required to
         # convert tensor to scalar)
@@ -135,20 +137,21 @@ class MLP(nn.Module):
             :returns: predicted function value
         """
         with torch.no_grad():
-            prediction = self(x_test)  # forward data propagation
+            prediction: Vector = self(x_test)  # forward data propagation
         return prediction
 
-    def extract_params(self):
+    def extract_params(self) -> tuple[np.ndarray, np.ndarray,
+                                                np.ndarray, np.ndarray]:
         """
             Extracts weights and biases from the network.
             :returns: tuple of 4 numpy.ndarray-s with biases1,
             weights1, biases2 and weights2 (number represents 1 -
             input->hidden layers params, 2 - hidden->output layers params)
         """
-        b1 = self.input_hidden_layer.bias.detach().numpy()
-        w1 = self.input_hidden_layer.weight.detach().numpy()
-        b2 = self.output_layer.bias.detach().numpy()
-        w2 = self.output_layer.weight.detach().numpy().flatten()
+        b1: np.ndarray = self.input_hidden_layer.bias.detach().numpy()
+        w1: np.ndarray = self.input_hidden_layer.weight.detach().numpy()
+        b2: np.ndarray = self.output_layer.bias.detach().numpy()
+        w2: np.ndarray = self.output_layer.weight.detach().numpy().flatten()
         return b1, w1, b2, w2
 ##########################################################################
 ###                            MLP WRAPPERS                            ###
@@ -156,8 +159,8 @@ class MLP(nn.Module):
 def init_model(input_size: int, hidden_size: int) -> MLP:
     return MLP(input_size=input_size, hidden_size=hidden_size)
 
-def split_data(X: Tensor, y: Tensor, test_size: float, shuffle: bool
-               ) -> Tuple[Tensor, Tensor, Tensor, Tensor]:
+def split_data(X: Matrix, y: Vector, test_size: float, shuffle: bool
+               ) -> Tuple[Matrix, Matrix, Vector, Vector]:
     return train_test_split(X, y, test_size=test_size, shuffle=shuffle)
 ##########################################################################
 ###                  NEURAL NETWORK INTEGRATION CLASS                  ###
@@ -168,8 +171,9 @@ class NeuralNumericalIntegration:
     def calculate2(
             alphas: list[int],
             betas: list[int],
-            network_params: tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray, numpy.ndarray]
-    ):
+            network_params: tuple[np.ndarray, np.ndarray,
+                                    np.ndarray, np.ndarray]
+    ) -> float:
         """
             Calculates 2D integrand value using neural network params
             across given boundaries.
@@ -178,34 +182,34 @@ class NeuralNumericalIntegration:
             :param betas:          upper boundaries sequence
             (should be placed in integration order)
             :param network_params: params for the trained neural network
-            :param n_dims:          number of integrand dimensions
             (default value is 2)
             :returns: integrand value
         """
-        print("2D Integration started!")
         alpha1, alpha2, beta1, beta2 = alphas[0], alphas[1], betas[0], betas[1]
-        b1, w1, b2, w2 = network_params
+        B1, W1, B2, W2 = network_params
 
-        def Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j):
-            term_1 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * alpha2))
-            term_2 = polylog(2, -np.exp(-b1_j - w1_1j * alpha1 - w1_2j * beta2))
-            term_3 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * alpha2))
-            term_4 = polylog(2, -np.exp(-b1_j - w1_1j * beta1 - w1_2j * beta2))
+        def Phi_j(alp1: float, bt1: float, alp2: float, bt2: float,
+                  b1: float, w1_1: float, w1_2: float) -> float:
+            term_1: float = polylog(2, -np.exp(-b1 - w1_1 * alp1 - w1_2 * alp2))
+            term_2: float = polylog(2, -np.exp(-b1 - w1_1 * alp1 - w1_2 * bt2))
+            term_3: float = polylog(2, -np.exp(-b1 - w1_1 * bt1 - w1_2 * alp2))
+            term_4: float = polylog(2, -np.exp(-b1 - w1_1 * bt1 - w1_2 * bt2))
             return term_1 - term_2 - term_3 + term_4
 
-        integral_sum = 0
-        for w2_j, w1_1j, w1_2j, b1_j in zip(w2, w1[:, 0], w1[:, 1], b1):
-            phi_j = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j)
-            summ = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j /
+        integral_sum: float = 0.0
+        for w2_j, w1_1j, w1_2j, b1_j in zip(W2, W1[:, 0], W1[:, 1], B1):
+            phi_j: float = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j)
+            sum_: float = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j /
                            (w1_1j * w1_2j))
-            integral_sum += summ
-        return b2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum
+            integral_sum += sum_
+        return B2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum
 
     @staticmethod
     def calculate1(
             alphas: list[int],
             betas: list[int],
-            network_params: tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray, numpy.ndarray]
+            network_params: tuple[np.ndarray, np.ndarray,
+                                    np.ndarray, np.ndarray]
     ):
         """
             Calculates 1D integrand value using neural network model params
@@ -215,25 +219,23 @@ class NeuralNumericalIntegration:
             :param betas:          upper boundaries sequence
             (should be placed in integration order)
             :param network_params: params for the trained neural network
-            :param n_dims:         number of integrand dimensions
             (default value is 1)
             :returns: integrand value
         """
-        print("1D Integration started!")
         alpha, beta = alphas[0], betas[0]
-        b1, w1, b2, w2 = network_params
-        w1 = w1.flatten()
+        B1, W1, B2, W2 = network_params
+        W1 = W1.flatten()
 
-        def Phi_j(alpha, beta, b1_j, w1_j):
-            term_alpha = polylog(1, -np.exp(-b1_j - w1_j * alpha))
-            term_beta = polylog(1, -np.exp(-b1_j - w1_j * beta))
+        def Phi_j(alp: float, bt: float, b1: float, w1: float) -> float:
+            term_alpha: float = polylog(1, -np.exp(-b1 - w1 * alp))
+            term_beta: float = polylog(1, -np.exp(-b1 - w1 * bt))
             return term_alpha - term_beta
 
-        integral_sum = 0
-        for w2_j, w1_j, b1_j in zip(w2, w1, b1):
-            phi_j = Phi_j(alpha, beta, b1_j, w1_j)
+        integral_sum: float = 0.0
+        for w2_j, w1_j, b1_j in zip(W2, W1, B1):
+            phi_j: float = Phi_j(alpha, beta, b1_j, w1_j)
             integral_sum += w2_j * ((beta - alpha) + phi_j / w1_j)
-        return b2 * (beta - alpha) + integral_sum
+        return B2 * (beta - alpha) + integral_sum
 
     @staticmethod
     def integrate(
@@ -268,13 +270,13 @@ class NeuralNumericalIntegration:
 ###                          DATA GENERATORS                           ###
 ##########################################################################
 def generate_data(
-        func: Callable[[Matrix], Vector],
+        func: Callable[[Matrix, ...], Vector],
         lower: list[float],
         upper: list[float],
         n_samples: int = 100,
         n_dim: int = 1,
-        *func_args
-):
+        *func_args: Any
+) -> tuple[Matrix, Vector]:
     """
         Generates data in the form of a 2D tensor of variables for the
         function and neural
@@ -291,24 +293,24 @@ def generate_data(
         :returns: dataset of variables X and function values y
     """
     if n_dim == 1:
-        X = torch.linspace(lower[0], upper[0], n_samples).view(n_samples, 1)
-        y = func(X, *func_args).view(n_samples, 1)
+        X: Matrix = torch.linspace(lower[0], upper[0], n_samples).view(n_samples, 1)
+        y: Vector = func(X, *func_args).view(n_samples, 1)
     else:
         ranges = [torch.linspace(lower[n], upper[n], n_samples).tolist()
                   for n in range(n_dim)]
-        combinations = list(itertools.product(*ranges))
-        X = torch.tensor(combinations, dtype=torch.float32)
-        y = func(X, *func_args).view(-1, 1)
+        combinations: list = list(itertools.product(*ranges))
+        X: Matrix = torch.tensor(combinations, dtype=torch.float32)
+        y: Vector = func(X, *func_args).view(-1, 1)
     return X, y
 
 def generate_data_uniform(
-        func: Callable[[Matrix], Vector],
+        func: Callable[[Matrix, ...], Vector],
         lower: list[float],
         upper: list[float],
         n_samples: int = 100,
         n_dim: int = 1,
-        *func_args
-):
+        *func_args: Any
+) -> tuple[Matrix, Vector]:
     """
         Generates data UNIFORMLY DISTRIBUTED in the form of a 2D tensor
         of variables
@@ -326,13 +328,13 @@ def generate_data_uniform(
         :returns: dataset of variables X and function values y
     """
     if n_dim == 1:
-        X = torch.rand(n_samples, 1) * (upper[0] - lower[0]) + lower[0]
-        y = func(X, *func_args).view(n_samples, 1)
+        X: Matrix = torch.rand(n_samples, 1) * (upper[0] - lower[0]) + lower[0]
+        y: Vector = func(X, *func_args).view(n_samples, 1)
     else:
-        X = torch.rand(n_samples, n_dim)
+        X: Matrix = torch.rand(n_samples, n_dim)
         for i in range(n_dim):
             X[:, i] = X[:, i] * (upper[i] - lower[i]) + lower[i]
-        y = func(X, *func_args).view(n_samples, 1)
+        y: Vector = func(X, *func_args).view(n_samples, 1)
     return X, y
 ##########################################################################
 ###                           DATA SCALERS                             ###
@@ -341,7 +343,6 @@ def scale_data(
         X_init: Matrix,
         y_init: Vector,
         frange: tuple[int, int] = (0, 1),
-        n_dim: int = 1
 ) -> tuple[Matrix, Vector]:
     """
         Scales function dataset to the specific range frange.
