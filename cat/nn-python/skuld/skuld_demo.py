@@ -202,7 +202,7 @@ class NeuralNumericalIntegration:
             sum_: float = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j /
                            (w1_1j * w1_2j))
             integral_sum += sum_
-        return B2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum
+        return float(B2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum)
 
     @staticmethod
     def calculate1(
@@ -210,7 +210,7 @@ class NeuralNumericalIntegration:
             betas: list[int],
             network_params: tuple[np.ndarray, np.ndarray,
                                     np.ndarray, np.ndarray]
-    ):
+    ) -> float:
         """
             Calculates 1D integrand value using neural network model params
             across given boundaries.
@@ -235,7 +235,7 @@ class NeuralNumericalIntegration:
         for w2_j, w1_j, b1_j in zip(W2, W1, B1):
             phi_j: float = Phi_j(alpha, beta, b1_j, w1_j)
             integral_sum += w2_j * ((beta - alpha) + phi_j / w1_j)
-        return B2 * (beta - alpha) + integral_sum
+        return float(B2 * (beta - alpha) + integral_sum)
 
     @staticmethod
     def integrate(
@@ -243,7 +243,7 @@ class NeuralNumericalIntegration:
             alphas: list[int],
             betas: list[int],
             n_dims: int
-    ):
+    ) -> float | None:
         """
             Integrates function-approximator (model) of n-dim dimensions over
             given boundaries.
