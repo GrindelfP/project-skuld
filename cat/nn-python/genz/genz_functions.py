@@ -1,7 +1,14 @@
 import math
+from typing import TypeAlias, Annotated
+
 import torch
 from torch import Tensor
-from global_definitions import Vector, Matrix
+
+#########################################################################
+###                          EXPLICIT TYPING                          ###
+#########################################################################
+Vector: TypeAlias = Annotated[Tensor, "torch.float32", (None, 1)]
+Matrix: TypeAlias = Annotated[Tensor, "torch.float32", (None, None)]
 
 
 ########################################
@@ -9,23 +16,28 @@ from global_definitions import Vector, Matrix
 ########################################
 
 ########### 1D FUNCTIONS ###########
-def osc_1d(X: Vector, u: float , c: float) -> Tensor:
+def osc_1d(X: Vector, u: float, c: float) -> Tensor:
     return torch.cos(torch.Tensor(2 * math.pi * u + X * c))
 
-def prod_peak_1d(X: Vector, u: float , c: float) -> Tensor:
-    return 1 / (c**(-2) + (X - u)**2)
 
-def corn_peek_1d(X: Vector, u: float , c: float) -> Tensor:
+def prod_peak_1d(X: Vector, u: float, c: float) -> Tensor:
+    return 1 / (c ** (-2) + (X - u) ** 2)
+
+
+def corn_peek_1d(X: Vector, u: float, c: float) -> Tensor:
     base: Vector = torch.Tensor(1 + c * X)
     return torch.pow(base, -2)
 
-def gauss_1d(X: Vector, u: float , c: float) -> Tensor:
-    return torch.exp(torch.Tensor(-c**2 * (X - u)**2))
 
-def cont_1d(X: Vector, u: float , c: float) -> Tensor:
+def gauss_1d(X: Vector, u: float, c: float) -> Tensor:
+    return torch.exp(torch.Tensor(-c ** 2 * (X - u) ** 2))
+
+
+def cont_1d(X: Vector, u: float, c: float) -> Tensor:
     return torch.exp(torch.Tensor(-c * abs(X - u)))
 
-def disco_1d(X: Vector, u: float , c: float) -> Tensor:
+
+def disco_1d(X: Vector, u: float, c: float) -> Tensor:
     y_list = []
 
     for x in X:
@@ -45,11 +57,13 @@ def osc_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
 
     return torch.cos(2 * math.pi * u[0] + sum_)
 
+
 def prod_peak_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
     prod_ = 1
     for i in range(2):
-        prod_ *= (c[i] ** (-2) + (X[:, i] - u[i])**2) ** (-1)
+        prod_ *= (c[i] ** (-2) + (X[:, i] - u[i]) ** 2) ** (-1)
     return prod_
+
 
 def corn_peek_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
     sum_ = 0
@@ -57,16 +71,18 @@ def corn_peek_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
         sum_ += c[i] * X[:, i]
     return (1 + sum_) ** (-3)
 
+
 def gauss_2d(X, u, c):
     sum_ = 0
     for i in range(2):
         sum_ += (c[i] ** 2) * ((X[:, i] - u[i]) ** 2)
     return torch.exp(-sum_)
 
+
 def cont_2d(X: Matrix, u: list[float], c: list[float]) -> Tensor:
     sum_ = 0
     for i in range(2):
-        sum_ += c[i]  * abs(X[:, i] - u[i])
+        sum_ += c[i] * abs(X[:, i] - u[i])
     return torch.exp(-sum_)
 
 
