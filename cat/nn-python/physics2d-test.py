@@ -66,6 +66,7 @@ if __name__ == "__main__":
     plot_i2()  # plot functions
 
     integrals: list[float] = []  # integrals values list
+    # PROBLEM WITH PASSING PARAMETERS
     for a_, b_, m_, n_ in zip(A, B, M, N):
         integrals.append(integrate(a_, b_, m_, n_))  # calculation of each integral
 
