@@ -303,7 +303,7 @@ def generate_data(
         upper: list[float],
         n_samples: int = 100,
         n_dim: int = 1,
-        *func_args: Any
+        **func_params: Any
 ) -> tuple[Matrix, Vector]:
     """
         Generates data in the form of a 2D tensor of variables for the function and neural
@@ -320,13 +320,13 @@ def generate_data(
     """
     if n_dim == 1:
         X: Matrix = torch.linspace(lower[0], upper[0], n_samples).view(n_samples, 1)
-        y: Vector = func(X, *func_args).view(n_samples, 1)
+        y: Vector = func(X, **func_params).view(n_samples, 1)
     else:
         ranges = [torch.linspace(lower[n], upper[n], n_samples).tolist()
                   for n in range(n_dim)]
         combinations: list = list(itertools.product(*ranges))
         X: Matrix = torch.tensor(combinations, dtype=torch.float32)
-        y: Vector = func(X, *func_args).view(-1, 1)
+        y: Vector = func(X, **func_params).view(-1, 1)
 
     return X, y
 
@@ -337,7 +337,7 @@ def generate_data_uniform(
         upper: list[float],
         n_samples: int = 100,
         n_dim: int = 1,
-        *func_args: Any
+        **func_args: Any
 ) -> tuple[Matrix, Vector]:
     """
         Generates data UNIFORMLY DISTRIBUTED in the form of a 2D tensor of variables
@@ -349,18 +349,18 @@ def generate_data_uniform(
         :param upper:     upper bounds of variable values
         :param n_samples: number of points of data to generate per dimension (default value 100)
         :param n_dim:     number of dimensions of the function func (default value 1)
-        :param *func_args: Additional arguments to pass to the function.
+        :param **func_args: Additional arguments to pass to the function.
 
         :returns: dataset of variables X and function values y
     """
     if n_dim == 1:
         X: Matrix = torch.rand(n_samples, 1) * (upper[0] - lower[0]) + lower[0]
-        y: Vector = func(X, *func_args).view(n_samples, 1)
+        y: Vector = func(X, **func_args).view(n_samples, 1)
     else:
         X: Matrix = torch.rand(n_samples, n_dim)
         for i in range(n_dim):
             X[:, i] = X[:, i] * (upper[i] - lower[i]) + lower[i]
-        y: Vector = func(X, *func_args).view(n_samples, 1)
+        y: Vector = func(X, **func_args).view(n_samples, 1)
     return X, y
 
 
