@@ -1,16 +1,19 @@
-from typing import Tuple, Any
+from typing import Tuple, Any, TypeAlias, Annotated
 import numpy as np
 import torch
 from torch import Tensor
 from typing_extensions import Callable
-from global_definitions import Vector, Matrix
 import plotly.graph_objects as go
 
+#########################################################################
+###                          EXPLICIT TYPING                          ###
+#########################################################################
+Vector: TypeAlias = Annotated[Tensor, "torch.float32", (None, 1)]
+Matrix: TypeAlias = Annotated[Tensor, "torch.float32", (None, None)]
 
-########################################
-######### PLOTTING FUNCTIONS ###########
-########################################
-
+#########################################################################
+###                        PLOTTING FUNCTIONS                         ###
+#########################################################################
 def plot_surface(
     func: Callable[[Matrix, ...], Tensor],
     x_range: Tuple[float, float],

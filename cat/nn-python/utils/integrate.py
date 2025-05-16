@@ -1,5 +1,5 @@
 #########################################################
-  ##### SCIPY.INTEGRATE-BASED INTEGRATION METHODS #####
+###      SCIPY.INTEGRATE-BASED INTEGRATION METHODS    ###
 #########################################################
 
 from scipy.integrate import quad, nquad
@@ -21,11 +21,12 @@ def integrate_1d_quad(func, a, b, *params):
     if params:
         def wrapped_func(x):
             return func(x, *params)
+
         result = quad(wrapped_func, a, b)
     else:
         result = quad(func, a, b)
     return result
-    
+
 
 def integrate_2d_nquad(func, lower, upper, *params):
     """
@@ -46,7 +47,7 @@ def integrate_2d_nquad(func, lower, upper, *params):
             return func([x, y])
 
     return nquad(func_for_nquad, [[lower[0], upper[0]], [lower[1], upper[1]]])[0]
-    
+
 
 def integrate_2d_trapz(func, lower, upper, num_points=100, *params):
     x = np.linspace(lower[0], upper[0], num_points)
@@ -54,6 +55,5 @@ def integrate_2d_trapz(func, lower, upper, num_points=100, *params):
     xv, yv = np.meshgrid(x, y)
     points = np.stack((xv.flatten(), yv.flatten()), axis=-1)
     z = func(torch.tensor(points), *params).numpy().reshape(num_points, num_points)
-    
-    return np.trapz(np.trapz(z, x), y)
 
+    return np.trapz(np.trapz(z, x), y)
