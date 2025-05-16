@@ -199,9 +199,8 @@ class NeuralNumericalIntegration:
         integral_sum: float = 0.0
         for w2_j, w1_1j, w1_2j, b1_j in zip(W2, W1[:, 0], W1[:, 1], B1):
             phi_j: float = Phi_j(alpha1, beta1, alpha2, beta2, b1_j, w1_1j, w1_2j)
-            sum_: float = w2_j * ((beta1 - alpha1) * (beta2 - alpha2) + phi_j /
-                           (w1_1j * w1_2j))
-            integral_sum += sum_
+            integral_sum += w2_j * ((beta1 - alpha1) * (beta2 - alpha2) +
+                                    phi_j / (w1_1j * w1_2j))
         return float(B2 * (beta1 - alpha1) * (beta2 - alpha2) + integral_sum)
 
     @staticmethod
@@ -349,7 +348,6 @@ def scale_data(
         :param X_init: initial variables
         :param y_init: initial function values
         :param frange: range of scaled values (default is [0, 1])
-        :param n_dim:  number of function dimensions (default is 1)
         :returns: tuple of scaled X-s and y-s to range frange.
     """
     if not isinstance(X_init, torch.Tensor) or not isinstance(
