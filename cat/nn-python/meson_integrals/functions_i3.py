@@ -10,9 +10,10 @@ la = 1.0
 m1_global = (1.4 / la)
 m2_global = (1.4 / la)
 m3_global = (1.4 / la)
-p11_global = - (0.14 / la)**2
-p22_global = - (0.14 / la)**2
-PP_global = - (1.2 / la)**2
+p11_global = - (0.14 / la) ** 2
+p22_global = - (0.14 / la) ** 2
+PP_global = - (1.2 / la) ** 2
+
 
 def funcI3(t):
     """The integral function (FORTRAN funcI3)"""
@@ -23,11 +24,13 @@ def funcI3(t):
     k = param1['k']
     l = param1['l']
 
-    RR = alp1**2.0 * p11_global + alp2**2.0 * p22_global - alp1 * alp2 * (PP_global - p11_global - p22_global)
-    DD = alp1 * (p11_global + m1_global**2) + alp2 * (p22_global + m2_global**2) + (1.0 - alp1 - alp2) * (m3_global**2) - RR
+    RR = alp1 ** 2.0 * p11_global + alp2 ** 2.0 * p22_global - alp1 * alp2 * (PP_global - p11_global - p22_global)
+    DD = alp1 * (p11_global + m1_global ** 2) + alp2 * (p22_global + m2_global ** 2) + (1.0 - alp1 - alp2) * (
+                m3_global ** 2) - RR
     z0 = t * DD + t / (1.0 + t) * RR
     Fz0 = np.exp(-3.0 * z0)
-    return (alp1**m) * (alp2**n) * (t**k / (1.0 + t)**l) * Fz0
+    return (alp1 ** m) * (alp2 ** n) * (t ** k / (1.0 + t) ** l) * Fz0
+
 
 def funcI31(alp2a):
     """The first integration (FORTRAN funcI31)"""
@@ -37,9 +40,11 @@ def funcI31(alp2a):
     result = quad(funcI3, 0.0, 100.0, epsabs=errabs, epsrel=errrel)
     return result
 
+
 def ff(x):
     """FORTRAN function ff"""
     return 1.0 - 2.0 * x
+
 
 def funcI32(alp1a):
     """The second integration (FORTRAN funcI32)"""
@@ -50,6 +55,7 @@ def funcI32(alp1a):
     bbb = 1.0 - ff(alp1a)
     result = quad(funcI31, aaa, bbb, epsabs=errabs, epsrel=errrel)
     return result
+
 
 def funcI33(mm, nn, kk, ll):
     """The third integration (FORTRAN funcI33)"""
@@ -64,11 +70,12 @@ def funcI33(mm, nn, kk, ll):
     result = quad(funcI32, aaa, bbb, epsabs=errabs, epsrel=errrel)
     return result
 
+
 if __name__ == "__main__":
     # The main program (FORTRAN program integralI3)
     # Note: The original FORTRAN code had a commented-out print statement
     # print *, funcI3(0.1)
-    # Since funcI3 relies on global variables set within the integration functions,
+    # Since funcI3 relies on global_region variables set within the integration functions,
     # directly calling it here without that context might not yield the intended result.
 
     print(funcI33(0, 0, 0, 0))

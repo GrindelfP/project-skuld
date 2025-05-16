@@ -1,8 +1,16 @@
 #########################################
-   ####### MESON TASK INTEGRALS #######
+####### MESON TASK INTEGRALS #######
 #########################################
+from typing import TypeAlias, Annotated
+
 import numpy as np
-from global_definitions import Matrix, Vector
+from torch import Tensor
+
+#########################################################################
+###                          EXPLICIT TYPING                          ###
+#########################################################################
+Vector: TypeAlias = Annotated[Tensor, "torch.float32", (None, 1)]
+Matrix: TypeAlias = Annotated[Tensor, "torch.float32", (None, None)]
 
 #### CONSTANTS ####
 la = 2.4
@@ -11,19 +19,19 @@ m2 = 1.7 / la
 PP = -(3.09688 / la) ** 2
 
 #### BOUNDARIES ####
-a1 = 0.0 # t lower
-b1 = 50.0000000 # t upper
-a2 = 0.0000000 # α lower
-b2 = 1.0 # α upper
+a1 = 0.0  # t lower
+b1 = 50.0000000  # t upper
+a2 = 0.0000000  # α lower
+b2 = 1.0  # α upper
+
 
 #### INTEGRAND ####
 def funcI2(t, alp1, a, b, m, n):
-
     global m1, m2, PP
 
     b_1 = -m1 / (m1 + m2)
     b_2 = m2 / (m1 + m2)
-    RR = (alp1**2.0 * (b_1 * b_1) + (1.0 - alp1)**2.0 * (b_2 * b_2) + 2.0 * alp1 * (1.0 - alp1) * (b_1 * b_2)) * PP
+    RR = (alp1 ** 2.0 * (b_1 * b_1) + (1.0 - alp1) ** 2.0 * (b_2 * b_2) + 2.0 * alp1 * (1.0 - alp1) * (b_1 * b_2)) * PP
     DD = alp1 * ((b_1 * b_1) * PP + m1 * m1) + (1.0 - alp1) * ((b_2 * b_2) * PP + m2 * m2) - RR
     z0 = t * DD + t / (1.0 + t) * RR
     Fz0 = np.exp(-2.0 * z0)
@@ -32,8 +40,7 @@ def funcI2(t, alp1, a, b, m, n):
     return f
 
 
-def funcI2_wrapper(X: Matrix, a: float, b: float, m: float, n: float):
-
+def funcI2_wrapper(X: Matrix, a: float, b: float, m: float, n: float) -> Vector:
     t: Vector = X[:, 1]
     alp: Vector = X[:, 0]
 
