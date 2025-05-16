@@ -1,7 +1,7 @@
 #########################################
 ####### MESON TASK INTEGRALS #######
 #########################################
-from typing import TypeAlias, Annotated
+from typing import TypeAlias, Annotated, Any
 
 import numpy as np
 from torch import Tensor
@@ -40,7 +40,12 @@ def funcI2(t, alp1, a, b, m, n):
     return f
 
 
-def funcI2_wrapper(X: Matrix, a: float, b: float, m: float, n: float) -> Vector:
+def funcI2_wrapper(X: Matrix, **func_params: Any) -> Vector:
+    a = func_params["a"]
+    b = func_params["b"]
+    m = func_params["m"]
+    n = func_params["n"]
+
     t: Vector = X[:, 1]
     alp: Vector = X[:, 0]
 
