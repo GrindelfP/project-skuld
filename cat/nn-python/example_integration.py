@@ -5,9 +5,8 @@ from typing import TypeAlias, Annotated, Any  # typing enhancements
 import torch                                  # for torch-based sin/cos
 from torch import Tensor                      # for typing
 from skuld.skuld import (
-generate_data, scale_data, init_model, split_data,
-NeuralNumericalIntegration, descale_result
-)                   # required neural network approach functionality
+generate_data,scale_data,init_model,split_data,NeuralNumericalIntegration,
+descale_result)          # required neural network approach functionality
 #########################################################################
 ###                          EXPLICIT TYPING                          ###
 #########################################################################
@@ -75,9 +74,7 @@ nni_scaled = NeuralNumericalIntegration.integrate(
 ###                     INTEGRAL VALUE DESCALING                      ###
 #########################################################################
 nni_result = descale_result(
-    nni_scaled=float(
-        nni_scaled[0]
-    ),                 # scaled numerical integral value (converted to float)
+    nni_scaled,        # scaled numerical integral value
     X_init=X_init,     # unscaled variables
     y_init=y_init,     # unscaled function values
     frange=(0, 1),     # normalisation range
