@@ -16,10 +16,10 @@ from i2_plotter import plot_i2
 #########################################################################
 ###                              PARAMETERS                           ###
 #########################################################################
-A = [0, 1, 0, 1]
-B = [0, 0, 1, 1]
-M = [2, 2, 2, 2]
-N = [3, 3, 3, 3]
+A = [0, 1, 0, 1, 0, 1, 0, 1]
+B = [0, 0, 1, 1, 0, 0, 1, 1]
+M = [1, 1, 1, 1, 2, 2, 2, 2]
+N = [2, 2, 2, 2, 3, 3, 3, 3]
 
 
 #########################################################################
@@ -38,6 +38,10 @@ def integrate(a_: float, b_: float, m_: float, n_: float) -> float:
         m=m_,
         n=n_
     )
+
+    # TODO: 1. ADD DIFFERENT RANGES FOR DIFFERENT FUNCTIONS
+    # TODO: 2. CLEAR JUPYTER NOTEBOOK
+
     # 2. Normalize (scale) dataset
     X_scaled, y_scaled = scale_data(X_init, y_init)
     # 3. Split scaled dataset into train and test subsets
@@ -67,8 +71,8 @@ if __name__ == "__main__":
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS
-    for a_, b_, m_, n_ in zip(A, B, M, N):
-        integrals.append(integrate(a_, b_, m_, n_))  # calculation of each integral
+    for a, b, m, n in zip(A, B, M, N):
+        integrals.append(integrate(a, b, m, n))  # calculation of each integral
 
     for integral in integrals:
         print("\nI(f) =", integral)  # printing of the integrals
