@@ -54,11 +54,13 @@ def integrate(
         xrange: tuple[float, float],
         yrange: tuple[float, float]
 ) -> float:
-    k: int = 25
-    lr: float = 0.1
-    epochs: int = 5000
-    N_SIZE: int = 10000
-    DIS_TYPE: str = "SUD"
+    global k, lr, epochs, N_SIZE, DIS_TYPE
+
+    # k: int = 25
+    # lr: float = 0.1
+    # epochs: int = 5000
+    # N_SIZE: int = 10000
+    # DIS_TYPE: str = "SUD"
 
     # 1. Generate dataset
     X_init, y_init = generate_data_uniform(
@@ -103,6 +105,7 @@ def integrate(
 
     return nni_result
 
+
 def integrate_no_scaling(
         a_: float,
         b_: float,
@@ -111,11 +114,13 @@ def integrate_no_scaling(
         xrange: tuple[float, float],
         yrange: tuple[float, float]
 ) -> float:
-    k: int = 35
-    lr: float = 0.1
-    epochs: int = 5000
-    N_SIZE: int = 90000
-    DIS_TYPE: str = "SUD"
+    global k, lr, epochs, N_SIZE, DIS_TYPE
+
+    # k: int = 35
+    # lr: float = 0.1
+    # epochs: int = 5000
+    # N_SIZE: int = 90000
+    # DIS_TYPE: str = "SUD"
 
     # 1. Generate dataset
     X_init, y_init = generate_data_uniform(
@@ -160,10 +165,16 @@ def integrate_no_scaling(
 ###                              PROGRAM                              ###
 #########################################################################
 if __name__ == "__main__":
-    plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
+    k: int = 25
+    lr: float = 0.05
+    epochs: int = 2500
+    N_SIZE: int = 5000
+    DIS_TYPE: str = "SUD"
+
+    # plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     with open("results", "a") as file:
-        file.write("=======================\nTest 8 (Lower N)\n=======================\n")
+        file.write("=======================\nTest 27\n=======================\n")
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS
