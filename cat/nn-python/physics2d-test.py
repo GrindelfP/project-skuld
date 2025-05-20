@@ -64,7 +64,7 @@ def integrate(
     lr: float = 0.1
     epochs: int = 5000
     N_SIZE: int = 90000
-    DISTYPE: str = "uniform"
+    DIS_TYPE: str = "SUD"
 
     # 1. Generate dataset
     X_init, y_init = generate_data_uniform(
@@ -101,7 +101,7 @@ def integrate(
     with open("results", "a") as results_file:
         results_file.write(
             f"I[{a_}, {b_}, {m_}, {n_}] = {nni_result}. lr = {lr}, epochs = {epochs}, k = {k}, "
-            f"N = {N_SIZE}, Distribution type: {DISTYPE}\n"
+            f"N = {N_SIZE}, Distribution type: {DIS_TYPE}\n"
         )
 
     with open("histories", "a") as history_file:
@@ -117,7 +117,7 @@ if __name__ == "__main__":
     plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     with open("results", "a") as file:
-        file.write("=======================\nTest 4\n=======================\n")
+        file.write("=======================\nTest 5\n=======================\n")
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS

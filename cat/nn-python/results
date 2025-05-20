@@ -25,3 +25,10 @@ I[1, 1, 2, 3] = 0.06874041259288788. lr = 0.1, epochs = 5000, k = 25, N = 90000
 Test 4
 =======================
 I[0, 0, 1, 2] = 0.5146356225013733. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[1, 0, 1, 2] = 0.2859272062778473. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[0, 1, 1, 2] = 0.28611987829208374. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[1, 1, 1, 2] = 0.1092432364821434. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[0, 0, 2, 3] = 0.3394773006439209. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[1, 0, 2, 3] = 0.1739991456270218. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[0, 1, 2, 3] = 0.17412641644477844. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
+I[1, 1, 2, 3] = 0.06873517483472824. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: uniform
