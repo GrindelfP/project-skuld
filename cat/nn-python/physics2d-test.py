@@ -54,10 +54,10 @@ def integrate(
         xrange: tuple[float, float],
         yrange: tuple[float, float]
 ) -> float:
-    k: int = 35
+    k: int = 25
     lr: float = 0.1
     epochs: int = 5000
-    N_SIZE: int = 90000
+    N_SIZE: int = 10000
     DIS_TYPE: str = "SUD"
 
     # 1. Generate dataset
@@ -163,7 +163,7 @@ if __name__ == "__main__":
     plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     with open("results", "a") as file:
-        file.write("=======================\nTest 7 (Higher k)\n=======================\n")
+        file.write("=======================\nTest 8 (Lower N)\n=======================\n")
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS
