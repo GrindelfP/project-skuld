@@ -39,8 +39,28 @@ y_ranges: list[tuple[float, float]] = [
     (0.0, 25.0),
     (0.0, 25.0),
     (0.0, 25.0),
-    (0.0, 25.0)
+    (0.0, 25.5)
 ]
+# x_ranges: list[tuple[float, float]] = [
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0),
+#     (0.0, 1.0)
+# ]
+# y_ranges: list[tuple[float, float]] = [
+#     (0.0, 22.0),
+#     (0.0, 19.0),
+#     (0.0, 19.0),
+#     (0.0, 15.0),
+#     (0.0, 22.0),
+#     (0.0, 19.0),
+#     (0.0, 19.0),
+#     (0.0, 15.5)
+# ]
 
 
 #########################################################################
@@ -55,12 +75,6 @@ def integrate(
         yrange: tuple[float, float]
 ) -> float:
     global k, lr, epochs, N_SIZE, DIS_TYPE
-
-    # k: int = 25
-    # lr: float = 0.1
-    # epochs: int = 5000
-    # N_SIZE: int = 10000
-    # DIS_TYPE: str = "SUD"
 
     # 1. Generate dataset
     X_init, y_init = generate_data_uniform(
@@ -116,12 +130,6 @@ def integrate_no_scaling(
 ) -> float:
     global k, lr, epochs, N_SIZE, DIS_TYPE
 
-    # k: int = 35
-    # lr: float = 0.1
-    # epochs: int = 5000
-    # N_SIZE: int = 90000
-    # DIS_TYPE: str = "SUD"
-
     # 1. Generate dataset
     X_init, y_init = generate_data_uniform(
         func=funcI2_wrapper,
@@ -166,15 +174,15 @@ def integrate_no_scaling(
 #########################################################################
 if __name__ == "__main__":
     k: int = 25
-    lr: float = 0.05
+    lr: float = 0.1
     epochs: int = 2500
-    N_SIZE: int = 5000
+    N_SIZE: int = 90000
     DIS_TYPE: str = "SUD"
 
-    # plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
+    plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     with open("results", "a") as file:
-        file.write("=======================\nTest 27\n=======================\n")
+        file.write("=======================\nTest 37\n=======================\n")
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS

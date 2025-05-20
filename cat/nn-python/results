@@ -323,3 +323,111 @@ I[1, 0, 2, 3] = 0.17021875083446503. lr = 0.05, epochs = 2500, k = 25, N = 5000,
 I[0, 1, 2, 3] = 0.17684541642665863. lr = 0.05, epochs = 2500, k = 25, N = 5000, Distribution type: SUD
 I[1, 1, 2, 3] = 0.06918748468160629. lr = 0.05, epochs = 2500, k = 25, N = 5000, Distribution type: SUD
 
+=======================
+Test 29
+=======================
+I[0, 0, 1, 2] = 0.5734346508979797. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28404757380485535. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2864132225513458. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.1087629497051239. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.34689077734947205. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17456673085689545. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.1736203283071518. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06910137832164764. lr = 0.1, epochs = 2500, k = 25, N = 50000, Distribution type: SUD
+
+=======================
+Test 30
+=======================
+I[0, 0, 1, 2] = 0.5648370385169983. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28327053785324097. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2827802002429962. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10839442908763885. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3595367968082428. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17458882927894592. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17414286732673645. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06946709007024765. lr = 0.1, epochs = 5000, k = 34, N = 1000, Distribution type: SUD
+
+=======================
+Test 31
+=======================
+I[0, 0, 1, 2] = 0.570809543132782. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.2860177755355835. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.28514835238456726. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10921647399663925. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3483811616897583. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.18975308537483215. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17413215339183807. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06560367345809937. lr = 0.1, epochs = 2500, k = 25, N = 150000, Distribution type: SUD
+
+=======================
+Test 32
+=======================
+I[0, 0, 1, 2] = 0.5718673467636108. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28594568371772766. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2854553759098053. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10920681059360504. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3484499752521515. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.16735681891441345. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17419317364692688. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.056872811168432236. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+
+=======================
+Test 33
+=======================
+I[0, 0, 1, 2] = 0.5724684596061707. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.2858942449092865. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2859918177127838. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10951685160398483. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3488544523715973. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17429257929325104. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17416895925998688. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06779976189136505. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+
+=======================
+Test 34
+=======================
+I[0, 0, 1, 2] = 0.5682553052902222. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28577327728271484. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2515219748020172. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10931423306465149. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3485942482948303. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17432309687137604. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.1746683418750763. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06510084122419357. lr = 0.1, epochs = 5000, k = 25, N = 150000, Distribution type: SUD
+
+=======================
+Test 35 (ADAPTIVE BOUNDARIES)
+=======================
+I[0, 0, 1, 2] = 0.5725555419921875. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28506821393966675. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.28478166460990906. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10723927617073059. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.4007696211338043. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17355658113956451. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17411358654499054. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.0800754725933075. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+
+=======================
+Test 36
+=======================
+I[0, 0, 1, 2] = 0.5733859539031982. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.28518909215927124. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2863413989543915. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10911395400762558. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.34402456879615784. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.1792011559009552. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17439480125904083. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06869962811470032. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+
+=======================
+Test 37
+=======================
+I[0, 0, 1, 2] = 0.572967529296875. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.2870044410228729. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.28758785128593445. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10968255996704102. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3491586744785309. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.1738598346710205. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17376010119915009. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.0695992037653923. lr = 0.1, epochs = 2500, k = 25, N = 90000, Distribution type: SUD
+
