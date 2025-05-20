@@ -16,21 +16,52 @@ from i2_plotter import plot_i2
 #########################################################################
 ###                              PARAMETERS                           ###
 #########################################################################
-A = [0, 1, 0, 1, 0, 1, 0, 1]
-B = [0, 0, 1, 1, 0, 0, 1, 1]
-M = [1, 1, 1, 1, 2, 2, 2, 2]
-N = [2, 2, 2, 2, 3, 3, 3, 3]
+# A: list[int] = [0, 1, 0, 1, 0, 1, 0, 1]
+# B: list[int] = [0, 0, 1, 1, 0, 0, 1, 1]
+# M: list[int] = [1, 1, 1, 1, 2, 2, 2, 2]
+# N: list[int] = [2, 2, 2, 2, 3, 3, 3, 3]
+x_ranges: list[tuple[float, float]] = [
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0),
+    (0.0, 1.0)
+]
+y_ranges: list[tuple[float, float]] = [
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0),
+    (0.0, 25.0)
+]
+A = [0]
+B = [0]
+M = [1]
+N = [2]
 
 
 #########################################################################
 ###                         INTEGRATION FUNCTIONS                     ###
 #########################################################################
-def integrate(a_: float, b_: float, m_: float, n_: float) -> float:
+def integrate(
+        a_: float,
+        b_: float,
+        m_: float,
+        n_: float,
+        xrange: tuple[float, float],
+        yrange: tuple[float, float]
+) -> float:
     # 1. Generate dataset
     X_init, y_init = generate_data(
         func=funcI2_wrapper,
-        lower=[0.0, 0.0],
-        upper=[1.0, 1.0],
+        lower=[xrange[0], yrange[0]],
+        upper=[xrange[1], yrange[1]],
         n_samples=300,
         n_dim=2,
         a=a_,
@@ -39,7 +70,6 @@ def integrate(a_: float, b_: float, m_: float, n_: float) -> float:
         n=n_
     )
 
-    # TODO: 1. ADD DIFFERENT RANGES FOR DIFFERENT FUNCTIONS
     # TODO: 2. CLEAR JUPYTER NOTEBOOK
 
     # 2. Normalize (scale) dataset
@@ -49,9 +79,9 @@ def integrate(a_: float, b_: float, m_: float, n_: float) -> float:
     # 4. Initialize neural network
     model = init_model(input_size=2, hidden_size=25)
     # 5. Compile neural network
-    model.compile_default(learning_rate=0.001)
+    model.compile_default(learning_rate=0.01)
     # 6. Train the neural network
-    model.fit(x_train, y_train, epochs=5000)
+    model.fit(x_train, y_train, epochs=10000)
     # 7. Test the neural network
     test_loss = model.test(x_test, y_test)
     print(f"Test Loss: {test_loss:.10f}")
@@ -67,12 +97,12 @@ def integrate(a_: float, b_: float, m_: float, n_: float) -> float:
 ###                              PROGRAM                              ###
 #########################################################################
 if __name__ == "__main__":
-    plot_i2()  # plot functions
+    plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS
-    for a, b, m, n in zip(A, B, M, N):
-        integrals.append(integrate(a, b, m, n))  # calculation of each integral
+    for a, b, m, n, xr, yr in zip(A, B, M, N, x_ranges, y_ranges):
+        integrals.append(integrate(a, b, m, n, xr, yr))  # calculation of each integral
 
     for integral in integrals:
         print("\nI(f) =", integral)  # printing of the integrals
