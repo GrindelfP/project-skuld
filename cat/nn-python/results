@@ -71,3 +71,27 @@ I[1, 0, 2, 3] = 0.18071366846561432. lr = 0.1, epochs = 5000, k = 25, N = 90000,
 I[0, 1, 2, 3] = 0.17441482841968536. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: SUD
 I[1, 1, 2, 3] = 0.06850739568471909. lr = 0.1, epochs = 5000, k = 25, N = 90000, Distribution type: SUD
 
+=======================
+Test 8 (Lower N)
+=======================
+I[0, 0, 1, 2] = 0.5704877376556396. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.2862361967563629. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.28315478563308716. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.10900478065013885. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.34933316707611084. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.17370979487895966. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17339587211608887. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06863272935152054. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+
+=======================
+Test 9 (Lower N)
+=======================
+I[0, 0, 1, 2] = 0.5710656046867371. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 0, 1, 2] = 0.2867763042449951. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 1, 1, 2] = 0.2855411171913147. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 1, 1, 2] = 0.11100437492132187. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 0, 2, 3] = 0.3520585000514984. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 0, 2, 3] = 0.16948123276233673. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[0, 1, 2, 3] = 0.17330823838710785. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+I[1, 1, 2, 3] = 0.06905832886695862. lr = 0.1, epochs = 5000, k = 25, N = 10000, Distribution type: SUD
+
