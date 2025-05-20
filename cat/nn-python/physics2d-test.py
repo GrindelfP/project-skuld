@@ -43,12 +43,6 @@ y_ranges: list[tuple[float, float]] = [
 ]
 
 
-# A = [0]
-# B = [0]
-# M = [1]
-# N = [2]
-
-
 #########################################################################
 ###                         INTEGRATION FUNCTIONS                     ###
 #########################################################################
@@ -60,7 +54,7 @@ def integrate(
         xrange: tuple[float, float],
         yrange: tuple[float, float]
 ) -> float:
-    k: int = 25
+    k: int = 35
     lr: float = 0.1
     epochs: int = 5000
     N_SIZE: int = 90000
@@ -109,6 +103,58 @@ def integrate(
 
     return nni_result
 
+def integrate_no_scaling(
+        a_: float,
+        b_: float,
+        m_: float,
+        n_: float,
+        xrange: tuple[float, float],
+        yrange: tuple[float, float]
+) -> float:
+    k: int = 35
+    lr: float = 0.1
+    epochs: int = 5000
+    N_SIZE: int = 90000
+    DIS_TYPE: str = "SUD"
+
+    # 1. Generate dataset
+    X_init, y_init = generate_data_uniform(
+        func=funcI2_wrapper,
+        lower=[xrange[0], yrange[0]],
+        upper=[xrange[1], yrange[1]],
+        n_samples=N_SIZE,
+        n_dim=2,
+        a=a_,
+        b=b_,
+        m=m_,
+        n=n_
+    )
+
+    # 3. Split scaled dataset into train and test subsets
+    x_train, x_test, y_train, y_test = split_data(X_init, y_init, test_size=0.1, shuffle=True)
+    # 4. Initialize neural network
+    model = init_model(input_size=2, hidden_size=k)
+    # 5. Compile neural network
+    model.compile_default(learning_rate=lr)
+    # 6. Train the neural network
+    history = model.fit(x_train, y_train, epochs=epochs)
+    # 7. Test the neural network
+    test_loss = model.test(x_test, y_test)
+    print(f"Test Loss: {test_loss:.10f}")
+    # 8. Integrate
+    nni_result = NeuralNumericalIntegration.integrate(model, [xrange[0], yrange[0]], [xrange[1], yrange[1]], n_dims=2)
+
+    with open("results", "a") as results_file:
+        results_file.write(
+            f"I[{a_}, {b_}, {m_}, {n_}] = {nni_result}. lr = {lr}, epochs = {epochs}, k = {k}, "
+            f"N = {N_SIZE}, Distribution type: {DIS_TYPE}\n"
+        )
+
+    with open("histories", "a") as history_file:
+        history_file.write(f"=======================\nlr = {lr}, epochs = {epochs}\nhist = {history}\n")
+
+    return nni_result
+
 
 #########################################################################
 ###                              PROGRAM                              ###
@@ -117,7 +163,7 @@ if __name__ == "__main__":
     plot_i2(A, B, M, N, x_ranges, y_ranges)  # plot functions
 
     with open("results", "a") as file:
-        file.write("=======================\nTest 5\n=======================\n")
+        file.write("=======================\nTest 7 (Higher k)\n=======================\n")
 
     integrals: list[float] = []  # integrals values list
     # PROBLEM WITH PASSING PARAMETERS
@@ -128,4 +174,4 @@ if __name__ == "__main__":
         print("\nI(f) =", integral)  # printing of the integrals
 
     with open("results", "a") as file:
-        file.write("")
+        file.write("\n")
