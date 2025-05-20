@@ -266,8 +266,8 @@ class NeuralNumericalIntegration:
     @staticmethod
     def integrate(
             model: MLP,
-            alphas: list[int],
-            betas: list[int],
+            alphas: list[float],
+            betas: list[float],
             n_dims: int
     ) -> float | None:
         """
