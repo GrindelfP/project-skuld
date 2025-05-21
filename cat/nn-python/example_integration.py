@@ -48,12 +48,12 @@ model = init_model(
     hidden_size=25      # size of hidden layer (k value)
 )                       # initialize neural network
 model.compile_default(
-    learning_rate=0.001 # learning rate coefficient of the Adam algorithm
+    learning_rate=0.1 # learning rate coefficient of the Adam algorithm
 )                       # compile the network with default hyperparams
 train_history = model.fit(
     x_train=x_train,    # train dataset variables
     y_train=y_train,    # train dataset function values
-    epochs=5000,        # number of training epochs (iterations)
+    epochs=2500,        # number of training epochs (iterations)
     verbose=True        # print the progress messages to std out
 )                       # train the neural network
 test_loss = model.test(
