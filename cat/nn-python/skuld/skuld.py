@@ -10,15 +10,22 @@
 ###                          LIBRARIES IMPORTS                         ###
 ##########################################################################
 from typing import Tuple, TypeAlias, Annotated, Callable, Any
+
 from torch import Tensor
+from torch.optim import Optimizer
+from torch.nn import Linear, Sigmoid
+# noinspection PyProtectedMember
+from torch.nn.modules.loss import _Loss
+
+from mpmath import polylog
+from sklearn.model_selection import train_test_split
+
 import torch
+import time
+import itertools
 import torch.nn as nn
 import torch.optim as optim
 import numpy as np
-from mpmath import polylog
-from sklearn.model_selection import train_test_split
-import time
-import itertools
 
 #########################################################################
 ###                          EXPLICIT TYPING                          ###
@@ -33,7 +40,10 @@ Matrix: TypeAlias = Annotated[Tensor, "torch.float32", (None, None)]
 class MLP(nn.Module):
     """ Class defining neural network approximator for the integrand. """
 
-    def __init__(self, input_size: int, hidden_size: int) -> None:
+    def __init__(self,
+                 input_size: int,
+                 hidden_size: int
+                 ) -> None:
         """
             Main constructor.
 
@@ -44,11 +54,12 @@ class MLP(nn.Module):
         super(MLP, self).__init__()
         self.input_size: int = input_size
         self.hidden_size: int = hidden_size
-        self.input_hidden_layer = nn.Linear(input_size, hidden_size)
-        self.sigmoid_activation = nn.Sigmoid()
-        self.output_layer = nn.Linear(hidden_size, 1)
-        self.criterion: nn.modules.loss = None
-        self.optimizer: optim.Optimizer | None = None
+        self.input_hidden_layer: Linear = nn.Linear(input_size, hidden_size)
+        self.sigmoid_activation: Sigmoid = nn.Sigmoid()
+        self.output_layer: Linear = nn.Linear(hidden_size, 1)
+        self.criterion: _Loss = None   # type: ignore[annotation-unchecked]
+        self.optimizer: Optimizer = None   # type: ignore[annotation-unchecked]
+
 
     def forward(self, x):
         """
@@ -66,11 +77,12 @@ class MLP(nn.Module):
 
     def compile(
             self,
-            criterion: nn.modules.loss,
-            optimizer: optim.Optimizer
+            criterion: _Loss,
+            optimizer: Optimizer
     ) -> None:
         """
-            Compiles model. Sets learning criterion and model's optimizer to those, provided as params.
+            Compiles model for re-usage. Normally the constructor compiles it.
+            Sets learning criterion and model's optimizer to those, provided as params.
 
             :param criterion: loss function.
             :param optimizer: optimizer for the model.
@@ -87,6 +99,7 @@ class MLP(nn.Module):
         """
         self.criterion = nn.MSELoss()
         self.optimizer = optim.Adam(self.parameters(), lr=learning_rate)
+
 
     def fit(
             self,
@@ -107,6 +120,11 @@ class MLP(nn.Module):
 
             :returns: loss functions history
         """
+
+        # check for compilation of model is done
+        if self.criterion is None or self.optimizer is None:
+            raise RuntimeError("Model must be compiled before fitting!!!")
+
         loss_history: list[float] = []
         start_time: float = time.time()
         for epoch in range(epochs):
@@ -126,6 +144,7 @@ class MLP(nn.Module):
 
         return loss_history  # loss history is returned
 
+
     def test(self, x_test: Matrix, y_test: Vector) -> float:
         """
             Tests the model.
@@ -135,11 +154,16 @@ class MLP(nn.Module):
 
             :returns: test loss function value
         """
+
+        if self.criterion is None or self.optimizer is None:
+            raise RuntimeError("Model must be compiled before testing!!!")
+
         with torch.no_grad():  # no gradients will be calculated
             predictions: Vector = self(x_test)  # forward data propagation
             loss = self.criterion(predictions, y_test)  # loss function
 
         return loss.item()  # loss function value (item() required to convert tensor to scalar)
+
 
     def predict_with(self, x_test: Matrix) -> Vector:
         """
@@ -149,10 +173,15 @@ class MLP(nn.Module):
 
             :returns: predicted function value
         """
+
+        if self.criterion is None or self.optimizer is None:
+            raise RuntimeError("Model must be compiled before testing!!!")
+
         with torch.no_grad():
             prediction: Vector = self(x_test)  # forward data propagation
 
         return prediction
+
 
     def extract_params(self) -> tuple[np.ndarray, np.ndarray,
     np.ndarray, np.ndarray]:
@@ -177,6 +206,12 @@ def init_model(
         input_size: int,
         hidden_size: int
 ) -> MLP:
+    """
+        Initializes an MLP model with default hyperparams (Adam optimizer).
+        :param input_size: input layer size (number of integrand dimensions)
+        :param hidden_size: hidden layer size (arbitrary value, which would be chosen
+
+    """
     return MLP(input_size=input_size, hidden_size=hidden_size)
 
 
@@ -197,8 +232,8 @@ class NeuralNumericalIntegration:
 
     @staticmethod
     def calculate2(
-            alphas: list[int],
-            betas: list[int],
+            alphas: list[float],
+            betas: list[float],
             network_params: tuple[np.ndarray, np.ndarray,
             np.ndarray, np.ndarray]
     ) -> float:
@@ -232,8 +267,8 @@ class NeuralNumericalIntegration:
 
     @staticmethod
     def calculate1(
-            alphas: list[int],
-            betas: list[int],
+            alphas: list[float],
+            betas: list[float],
             network_params: tuple[np.ndarray, np.ndarray,
             np.ndarray, np.ndarray]
     ) -> float:
@@ -314,7 +349,7 @@ def generate_data(
         :param upper:     upper bounds of variable values
         :param n_samples: number of points of data to generate per dimension (default value 100)
         :param n_dim:     number of dimensions of the function func (default value 1)
-        :param *func_args: Additional arguments to pass to the function.
+        :param func_params: Additional arguments to pass to the function.
 
         :returns: dataset of variables X and function values y
     """
@@ -349,7 +384,7 @@ def generate_data_uniform(
         :param upper:     upper bounds of variable values
         :param n_samples: number of points of data to generate per dimension (default value 100)
         :param n_dim:     number of dimensions of the function func (default value 1)
-        :param **func_args: Additional arguments to pass to the function.
+        :param func_args: Additional arguments to pass to the function.
 
         :returns: dataset of variables X and function values y
     """
