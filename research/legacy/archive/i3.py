@@ -5,7 +5,7 @@ import numpy as np
 from skuld import *
 import datetime
 
-path_f: str = "legacy/archive/test-i3.txt"
+path_f: str = "test-i3.txt"
 path_mm: str = "test-i3-15.txt"
 rounds: int = 1
 

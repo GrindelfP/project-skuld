@@ -3,8 +3,8 @@ from skuld import *
 from scipy import integrate
 import matplotlib.pyplot as plt
 
-path_f: str = "legacy/archive/test-i3.txt"
-path_mm: str = "legacy/archive/test-i3-15.txt"
+path_f: str = "test-i3.txt"
+path_mm: str = "test-i3-15.txt"
 rounds: int = 1
 number_of_epochs: int = 5000
 

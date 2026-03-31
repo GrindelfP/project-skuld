@@ -1,5 +1,4 @@
 import datetime
-from pathlib import Path
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -9,7 +8,7 @@ RES_DIR = get_mirror_path(__file__, "results")
 CSV_PATH = RES_DIR / "results_grid.csv"
 
 if not CSV_PATH.exists():
-    raise FileNotFoundError(f"результаты не найдены в {CSV_PATH}")
+    raise FileNotFoundError(f"results not found {CSV_PATH}")
 
 df = pd.read_csv(CSV_PATH)
 
@@ -63,7 +62,6 @@ print("=== Best config ===")
 print(best[["hidden_size", "epochs", "n_samples", "lr",
             "mean_err", "max_err", "test_loss", "train_sec"]])
 
-labels = [c.replace("err_", "I(") + ")" for c in err_cols]
 labels = [f"I({c[4]},{c[5]},{c[6]},{c[7]})" for c in err_cols]
 vals   = [best[c] for c in err_cols]
 

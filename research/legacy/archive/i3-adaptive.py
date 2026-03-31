@@ -10,8 +10,8 @@ from skuld import *
 first_stage_epochs: int = 1000
 second_stage_epochs: int = 0
 
-path_f: str = "legacy/archive/test-i3-adapt.txt"
-path_mm: str = "legacy/archive/test-i3-15-adapt.txt"
+path_f: str = "test-i3-adapt.txt"
+path_mm: str = "test-i3-15-adapt.txt"
 rounds: int = 1
 la = 1.0
 m1 = 0.3 / la
