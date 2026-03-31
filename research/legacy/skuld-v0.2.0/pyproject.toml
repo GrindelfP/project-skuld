@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "skuld"
+version = "0.2.1"
+description = "A neural network based numerical integration library"
+authors = [{name = "GrindelfP", email = "grindelf.perlomutrovij@gmail.com"}]
+dependencies = [
+    "torch",     
+    "numpy",
+    "typing",
+    "mpmath",
+    "scikit-learn"
+]
+requires-python = ">=3.8"
+
+[tool.setuptools.packages.find]
+where = ["."]

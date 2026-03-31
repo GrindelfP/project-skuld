@@ -1,17 +1,5 @@
+__pycache__/
+.idea/
+*.egg-info/
 .DS_Store
-.ipynb_checkpoints
-__pycache__
-*.idea
-*.bbl
-*.blg
-*.abs
-*.out
-*.aux
-*.xmpdata
-*.xmpi
-*.log
-*.gz
-diploma-text/Application of Neural Network Approach to Numerical Integration.pdf
-diploma-text/Application of Neural Network Approach to Numerical Integration.zip
-diploma-text/Application of Neural Network Approach to Numerical Integration/
 
