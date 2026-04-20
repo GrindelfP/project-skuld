@@ -11,9 +11,10 @@ dependencies = [
     "torch",     
     "numpy",
     "mpmath",
-    "scikit-learn"
+    "scikit-learn",
+    "typing"
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 
 [tool.setuptools.packages.find]
 include = ["skuld*"]

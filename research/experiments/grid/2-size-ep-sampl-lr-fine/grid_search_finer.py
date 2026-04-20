@@ -18,14 +18,10 @@ RES_DIR = get_mirror_path(__file__, "results")
 CSV_PATH = RES_DIR / "results_grid.csv"
 
 # ── physics ───────────────────────────────────────────────────────────
-la = 1.0
-m1 = 0.3 / la;
-m2 = 0.3 / la;
-m3 = 0.3 / la
-p1p1 = -(0.14 / la) ** 2;
-p2p2 = -(0.14 / la) ** 2;
-PP = -(0.7 / la) ** 2
-BB = 100
+la   = 1.0
+m1   = 0.3/la; m2 = 0.3/la; m3 = 0.3/la
+p1p1 = -(0.14/la)**2; p2p2 = -(0.14/la)**2; PP = -(0.7/la)**2
+BB   = 100
 
 A_VALS = [0, 0, 1, 1, 0, 0, 1, 1]
 B_VALS = [0, 1, 0, 1, 0, 1, 0, 1]
@@ -33,30 +29,27 @@ M_VALS = [1, 1, 1, 1, 2, 2, 2, 2]
 N_VALS = [2, 2, 2, 2, 3, 3, 3, 3]
 
 N_INT_DIMS = 3
-N_PARAMS = 4
+N_PARAMS   = 4
 INPUT_SIZE = N_INT_DIMS + N_PARAMS
 
 
 def integrand_xyz(x, y, t, a, b, m, n):
     alp1 = x
     alp2 = y * (1.0 - x)
-    RR = alp1 ** 2 * p1p1 + alp2 ** 2 * p2p2 - alp1 * alp2 * (PP - p1p1 - p2p2)
-    DD = alp1 * (p1p1 + m1 ** 2) + alp2 * (p2p2 + m2 ** 2) + (1 - alp1 - alp2) * m3 ** 2 - RR
-    z0 = t * DD + t / (1 + t) * RR
-    return alp1 ** a * alp2 ** b * (1 - x) * t ** m / (1 + t) ** n * np.exp(-z0)
+    RR   = alp1**2*p1p1 + alp2**2*p2p2 - alp1*alp2*(PP - p1p1 - p2p2)
+    DD   = alp1*(p1p1+m1**2) + alp2*(p2p2+m2**2) + (1-alp1-alp2)*m3**2 - RR
+    z0   = t*DD + t/(1+t)*RR
+    return alp1**a * alp2**b * (1-x) * t**m / (1+t)**n * np.exp(-z0)
 
 
 def numerical_for(a, b, m, n):
     def it(t, x, y): return integrand_xyz(x, y, t, a, b, m, n)
-
     def iy(y, x):
         v, _ = integrate.quad(it, 0, BB, args=(x, y), limit=200)
         return v
-
     def ix(x):
         v, _ = integrate.quad(iy, 0, 1, args=(x,), limit=200)
         return v
-
     result, _ = integrate.quad(ix, 0, 1, limit=200)
     return result
 
@@ -65,9 +58,7 @@ def build_dataset(n_samples_per_config: int):
     X_all, y_all = [], []
     for a, b, m, n in zip(A_VALS, B_VALS, M_VALS, N_VALS):
         def wrapper(X: torch.Tensor, _a=a, _b=b, _m=m, _n=n):
-            xv = X[:, 0].numpy()
-            yv = X[:, 1].numpy()
-            tv = X[:, 2].numpy()
+            xv = X[:, 0].numpy(); yv = X[:, 1].numpy(); tv = X[:, 2].numpy()
             vals = torch.tensor(
                 integrand_xyz(xv, yv, tv, _a, _b, _m, _n), dtype=torch.float32)
             return vals.view(-1, 1)
@@ -125,20 +116,20 @@ def run_experiment(hidden_size, epochs, n_samples, lr, num_refs):
         errors.append(abs(nni - num_refs[(a, b, m, n)]))
 
     return {
-        "mean_err": float(np.mean(errors)),
-        "max_err": float(np.max(errors)),
+        "mean_err":  float(np.mean(errors)),
+        "max_err":   float(np.max(errors)),
         "test_loss": float(test_loss),
         "train_sec": round(train_time, 1),
-        "errors": errors,
+        "errors":    errors,
     }
 
 
 # ── grid definition ───────────────────────────────────────────────────
 GRID = {
-    "hidden_size": [50, 100, 150, 200],
-    "epochs": [1000, 3000, 5000],
-    "n_samples": [20 ** 3, 30 ** 3, 50 ** 3],
-    "lr": [0.01, 0.1],
+    "hidden_size": [125, 150, 175, 200],
+    "epochs":      [4000, 5000, 6000],
+    "n_samples":   [27000, 75000],
+    "lr":          [0.01],
 }
 
 CSV_FIELDS = [
@@ -176,18 +167,18 @@ def main():
             result = run_experiment(**cfg, num_refs=num_refs)
 
             row = {
-                "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                "timestamp":   datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                 **cfg,
-                "mean_err": f"{result['mean_err']:.6e}",
-                "max_err": f"{result['max_err']:.6e}",
-                "test_loss": f"{result['test_loss']:.6e}",
-                "train_sec": result["train_sec"],
+                "mean_err":    f"{result['mean_err']:.6e}",
+                "max_err":     f"{result['max_err']:.6e}",
+                "test_loss":   f"{result['test_loss']:.6e}",
+                "train_sec":   result["train_sec"],
                 **{f"err_{a}{b}{m}{n}": f"{e:.6e}"
                    for (a, b, m, n), e in zip(
-                        zip(A_VALS, B_VALS, M_VALS, N_VALS), result["errors"])},
+                       zip(A_VALS, B_VALS, M_VALS, N_VALS), result["errors"])},
             }
             writer.writerow(row)
-            f.flush()  # write immediately — safe to Ctrl+C mid-run
+            f.flush()   # write immediately — safe to Ctrl+C mid-run
 
             print(f"mean_err={result['mean_err']:.3e}  "
                   f"max_err={result['max_err']:.3e}  "
