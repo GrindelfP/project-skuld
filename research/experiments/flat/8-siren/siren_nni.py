@@ -129,7 +129,7 @@ def center_value(a: float, b: float, m: float, n: float) -> float:
 #
 #     The derivative ∂sin(ω·x)/∂x = ω·cos(ω·x), so each autograd
 #     differentiation brings down a factor ω — three derivatives ⇒ ω³.
-#     This is accounted for by the output_scale initialisation.
+#     This is accounted for by the output_scale initialization.
 ##############################################################################
 
 class SirenLayer(nn.Module):
@@ -455,7 +455,7 @@ def main():
 
     # ── Hyperparameters ────────────────────────────────────────────────────
     HIDDEN       = [128, 128, 128]
-    OMEGA_0      = 20.0     # SIREN frequency; try 20–40 for this integrand
+    OMEGA_0      = 30.0     # SIREN frequency
     N_EPOCHS     = 8000
     N_PER_PARAM  = 1024
     LR           = 5e-4

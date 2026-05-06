@@ -376,20 +376,18 @@ def main():
     torch.manual_seed(42)
     np.random.seed(42)
 
-    # device = torch.device(
-    #     "mps" if torch.backends.mps.is_available() else
-    #     "cuda" if torch.cuda.is_available() else
-    #     "cpu"
-    # )
-
-    device = torch.device("cpu")
+    device = torch.device(
+        "mps" if torch.backends.mps.is_available() else
+        "cuda" if torch.cuda.is_available() else
+        "cpu"
+    )
 
     torch.set_default_dtype(FLOATING_POINT_PRECISION)
 
-    HIDDEN = [64, 64, 64]
-    N_EPOCHS = 5000
-    N_PER_PARAM = 1024  # 512
-    LR = 1e-3
+    HIDDEN       = [128, 128, 128] # [64, 64, 64]
+    N_EPOCHS     = 8000 # 5000
+    N_PER_PARAM  = 1024  # 512
+    LR           = 1e-3
     OUTPUT_SCALE = 1e4
 
     net = PrimitiveNet(

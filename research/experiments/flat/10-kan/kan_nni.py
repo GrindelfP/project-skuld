@@ -147,7 +147,7 @@ def center_value(a, b, m, n):
 #
 #      out_j = sum_i [ w_ij * SiLU(x_i) + sum_g c_{ijg} * B_{g,k}(x_i) ]
 #
-#  Input normalisation: the physical inputs span [0,1] (u-variables) and
+#  Input normalization: the physical inputs span [0,1] (u-variables) and
 #  {0,1,2,3} (integer params). We map everything to [-1,1] before entering
 #  KAN layers, and apply a LayerNorm between layers so spline knots stay
 #  in the calibrated range.
@@ -628,7 +628,7 @@ def main():
     LR          = 2e-3
     # d^3/du^3 of a degree-k spline is a step function (degree k-3 = 0);
     # the scale is set by the spline coefficient magnitudes, which we
-    # initialise with std ~ 0.1/sqrt(in*n_basis) already small -- no
+    # initialize with std ~ 0.1/sqrt(in*n_basis) already small -- no
     # additional compensation needed beyond a modest output_scale.
     OUTPUT_SCALE = 1.0
 

@@ -103,7 +103,7 @@ def center_value(a, b, m, n):
 ##############################################################################
 # 4.  WIRE ARCHITECTURE
 #
-#  Wire = "Wavelet Implicit neural REpresentations"
+#  Wire = "Wavelet Implicit neural Representations"
 #  Reference: Saragadam et al. 2023  https://arxiv.org/abs/2301.05187
 #
 #  Core idea:
@@ -118,7 +118,7 @@ def center_value(a, b, m, n):
 #     in t and is supported on the simplex (alpha1+alpha2<=1), so
 #     large portions of the domain carry very little weight. Wire's
 #     Gaussian envelope naturally provides LOCAL support, letting
-#     neurons specialise to the active region without fighting the
+#     neurons specialize to the active region without fighting the
 #     global periodicity of sin.
 #
 #  2. Three autograd derivatives of a Gabor wavelet:
@@ -209,7 +209,7 @@ class WireResidualBlock(nn.Module):
         # Linear projection for skip (no activation)
         self.skip   = nn.Linear(features, features, bias=False)
 
-        # Initialise skip as near-identity to preserve gradient flow
+        # Initialize skip as near-identity to preserve gradient flow
         with torch.no_grad():
             nn.init.eye_(self.skip.weight) if features == features else \
                 nn.init.xavier_uniform_(self.skip.weight)
@@ -367,7 +367,7 @@ def train(net: WirePrimitiveNet,
           device:        torch.device = torch.device("cpu"),
           verbose_every: int   = 500) -> tuple:
 
-    # AdamW with weight decay for better generalisation
+    # AdamW with weight decay for better generalization
     optimizer = torch.optim.AdamW(net.parameters(), lr=lr, weight_decay=1e-5)
 
     # Cosine annealing with warm restarts — helps escape local minima
@@ -558,7 +558,7 @@ def main():
 
     tee_print(f"\n  Architecture : Wire (Morlet wavelet) + Residual blocks")
     tee_print(f"  Entry layer  : 7 -> {mid_dim}  (WireLayer, is_first=True)")
-    tee_print(f"  Residual blks: {N_BLOCKS} x WireResidualBlock ({mid_dim} channels each)")
+    tee_print(f"  Residual blocks: {N_BLOCKS} x WireResidualBlock ({mid_dim} channels each)")
     tee_print(f"  Output layer : {mid_dim} -> 1  (linear)")
     tee_print(f"  omega_0      : {OMEGA_0}   sigma_0: {SIGMA_0}")
     tee_print(f"  Parameters   : {n_p:,}")
