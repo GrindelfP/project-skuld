@@ -1,0 +1,100 @@
+
+════════════════════════════════════════════════════════════════════════
+  PRECISION DIAGNOSTIC -- device=cpu, epochs=2000, seed=42
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (float64, done once)...
+Done.
+
+--- Config #1: hidden=[128, 128, 128, 128] omega0=30.0 lr=0.0002 n_per_param=512 epochs=2000 ---
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=4.0445e-01  lr=2.00e-04  (0.5s)
+
+  Done in 242.1s | min loss = 3.3618e-05
+
+    [A: train f32 / eval f32 (=m2 baseline)] min_loss=3.362e-05  min_digits=4  mean_relerr=2.133e-04  (243.4s)
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=4.0445e-01  lr=2.00e-04  (0.1s)
+
+  Done in 231.9s | min loss = 3.3618e-05
+
+    [B-train: (same as A, kept for eval-only reuse)] min_loss=3.362e-05  min_digits=4  mean_relerr=2.133e-04  (231.9s)
+    [B: train f32 / eval f64]  min_digits=4  mean_relerr=2.133e-04  (eval-only re-run, ~free)
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=3.5219e-01  lr=2.00e-04  (0.2s)
+
+  Done in 268.6s | min loss = 3.3041e-05
+
+    [C: train f64 / eval f64] min_loss=3.304e-05  min_digits=4  mean_relerr=6.907e-04  (268.6s)
+
+--- Config #2: hidden=[128, 128, 128] omega0=45.0 lr=0.0002 n_per_param=512 epochs=2000 ---
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=3.2168e-01  lr=2.00e-04  (0.1s)
+
+  Done in 171.0s | min loss = 3.7919e-05
+
+    [A: train f32 / eval f32 (=m2 baseline)] min_loss=3.792e-05  min_digits=4  mean_relerr=3.864e-04  (171.0s)
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=3.2168e-01  lr=2.00e-04  (0.1s)
+
+  Done in 173.6s | min loss = 3.7919e-05
+
+    [B-train: (same as A, kept for eval-only reuse)] min_loss=3.792e-05  min_digits=4  mean_relerr=3.864e-04  (173.6s)
+    [B: train f32 / eval f64]  min_digits=4  mean_relerr=3.864e-04  (eval-only re-run, ~free)
+
+════════════════════════════════════════════════════════════════
+  Training: 2000 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cpu
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/2000  loss=3.7578e-01  lr=2.00e-04  (0.1s)
+
+  Done in 191.7s | min loss = 3.3424e-05
+
+    [C: train f64 / eval f64] min_loss=3.342e-05  min_digits=4  mean_relerr=4.075e-04  (191.7s)
+
+════════════════════════════════════════════════════════════════════════
+  HOW TO READ THIS:
+  - If B ~= A (no digit gain from float64 eval alone): the corner-sum
+    cancellation in compute_integral() is NOT the bottleneck.
+  - If B > A (digit gain, still cheap): switch compute_integral() to
+    float64 permanently -- free win, keep training on GPU/float32 as-is.
+  - If C > B (float64 training needed to go further): the ceiling is in
+    the optimization/representation itself, not just the final sum --
+    you'd need float64 training, which is impractical on your GPU; the
+    fallback is training on CPU in float64 for final high-precision runs
+    only (small nets like [128,128,128] make this tolerable), or look at
+    architecture changes (e.g. per-param-set heads) instead.
+════════════════════════════════════════════════════════════════════════
+

@@ -1,0 +1,529 @@
+
+════════════════════════════════════════════════════════════════════════
+  SUPER-TEST  —  36 configs × 1500 epochs, device=cuda
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/36] hidden=[64, 64, 64] omega0=15.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=1.00e-03  (0.2s)
+
+  Done in 13.9s | min loss = 1.9071e-04
+
+    -> min_loss=1.907e-04  mean_rel_err=2.214e-03  min_digits=3  (15.5s)
+[2/36] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=5.00e-04  (0.0s)
+
+  Done in 14.6s | min loss = 2.9376e-04
+
+    -> min_loss=2.938e-04  mean_rel_err=9.303e-04  min_digits=3  (14.6s)
+[3/36] hidden=[64, 64, 64] omega0=15.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=2.00e-04  (0.0s)
+
+  Done in 16.5s | min loss = 5.3929e-04
+
+    -> min_loss=5.393e-04  mean_rel_err=1.186e-03  min_digits=3  (16.5s)
+[4/36] hidden=[64, 64, 64] omega0=30.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=1.00e-03  (0.0s)
+
+  Done in 16.5s | min loss = 1.1002e-04
+
+    -> min_loss=1.100e-04  mean_rel_err=7.567e-04  min_digits=3  (16.5s)
+[5/36] hidden=[64, 64, 64] omega0=30.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=5.00e-04  (0.0s)
+
+  Done in 16.8s | min loss = 1.4052e-04
+
+    -> min_loss=1.405e-04  mean_rel_err=1.108e-03  min_digits=3  (16.8s)
+[6/36] hidden=[64, 64, 64] omega0=30.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=2.00e-04  (0.0s)
+
+  Done in 16.8s | min loss = 2.7386e-04
+
+    -> min_loss=2.739e-04  mean_rel_err=8.386e-04  min_digits=4  (16.8s)
+[7/36] hidden=[64, 64, 64] omega0=45.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=1.00e-03  (0.0s)
+
+  Done in 18.5s | min loss = 9.5814e-05
+
+    -> min_loss=9.581e-05  mean_rel_err=1.604e-03  min_digits=3  (18.5s)
+[8/36] hidden=[64, 64, 64] omega0=45.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=5.00e-04  (0.0s)
+
+  Done in 18.7s | min loss = 1.1620e-04
+
+    -> min_loss=1.162e-04  mean_rel_err=4.472e-04  min_digits=4  (18.7s)
+[9/36] hidden=[64, 64, 64] omega0=45.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.4799e-01  lr=2.00e-04  (0.0s)
+
+  Done in 17.3s | min loss = 2.6304e-04
+
+    -> min_loss=2.630e-04  mean_rel_err=6.419e-04  min_digits=4  (17.3s)
+[10/36] hidden=[128, 128, 128] omega0=15.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=1.00e-03  (0.0s)
+
+  Done in 18.3s | min loss = 7.9803e-05
+
+    -> min_loss=7.980e-05  mean_rel_err=2.101e-03  min_digits=3  (18.3s)
+[11/36] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=5.00e-04  (0.0s)
+
+  Done in 18.3s | min loss = 8.6704e-05
+
+    -> min_loss=8.670e-05  mean_rel_err=3.191e-03  min_digits=3  (18.3s)
+[12/36] hidden=[128, 128, 128] omega0=15.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=2.00e-04  (0.0s)
+
+  Done in 18.2s | min loss = 1.3695e-04
+
+    -> min_loss=1.369e-04  mean_rel_err=1.410e-03  min_digits=3  (18.2s)
+[13/36] hidden=[128, 128, 128] omega0=30.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=1.00e-03  (0.0s)
+
+  Done in 18.4s | min loss = 5.3143e-05
+
+    -> min_loss=5.314e-05  mean_rel_err=1.891e-03  min_digits=3  (18.4s)
+[14/36] hidden=[128, 128, 128] omega0=30.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=5.00e-04  (0.0s)
+
+  Done in 18.8s | min loss = 4.3185e-05
+
+    -> min_loss=4.318e-05  mean_rel_err=5.639e-04  min_digits=4  (18.8s)
+[15/36] hidden=[128, 128, 128] omega0=30.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=2.00e-04  (0.0s)
+
+  Done in 18.6s | min loss = 6.8818e-05
+
+    -> min_loss=6.882e-05  mean_rel_err=8.323e-04  min_digits=4  (18.6s)
+[16/36] hidden=[128, 128, 128] omega0=45.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=1.00e-03  (0.0s)
+
+  Done in 18.8s | min loss = 2.0792e-04
+
+    -> min_loss=2.079e-04  mean_rel_err=7.535e-03  min_digits=2  (18.8s)
+[17/36] hidden=[128, 128, 128] omega0=45.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=5.00e-04  (0.0s)
+
+  Done in 19.0s | min loss = 4.5106e-05
+
+    -> min_loss=4.511e-05  mean_rel_err=4.393e-04  min_digits=4  (19.0s)
+[18/36] hidden=[128, 128, 128] omega0=45.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.2168e-01  lr=2.00e-04  (0.0s)
+
+  Done in 19.0s | min loss = 5.2764e-05
+
+    -> min_loss=5.276e-05  mean_rel_err=8.324e-04  min_digits=4  (19.0s)
+[19/36] hidden=[128, 128, 128, 128] omega0=15.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0446e-01  lr=1.00e-03  (0.0s)
+
+  Done in 23.7s | min loss = 5.5858e-05
+
+    -> min_loss=5.586e-05  mean_rel_err=1.918e-03  min_digits=3  (23.7s)
+[20/36] hidden=[128, 128, 128, 128] omega0=15.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0446e-01  lr=5.00e-04  (0.0s)
+
+  Done in 24.3s | min loss = 5.7981e-05
+
+    -> min_loss=5.798e-05  mean_rel_err=2.264e-03  min_digits=3  (24.3s)
+[21/36] hidden=[128, 128, 128, 128] omega0=15.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0446e-01  lr=2.00e-04  (0.0s)
+
+  Done in 25.1s | min loss = 8.1285e-05
+
+    -> min_loss=8.129e-05  mean_rel_err=1.628e-03  min_digits=3  (25.1s)
+[22/36] hidden=[128, 128, 128, 128] omega0=30.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=1.00e-03  (0.0s)
+
+  Done in 25.1s | min loss = 7.9443e-05
+
+    -> min_loss=7.944e-05  mean_rel_err=1.813e-03  min_digits=4  (25.1s)
+[23/36] hidden=[128, 128, 128, 128] omega0=30.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=5.00e-04  (0.0s)
+
+  Done in 24.2s | min loss = 4.1310e-05
+
+    -> min_loss=4.131e-05  mean_rel_err=5.614e-04  min_digits=4  (24.2s)
+[24/36] hidden=[128, 128, 128, 128] omega0=30.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=2.00e-04  (0.0s)
+
+  Done in 24.6s | min loss = 4.8562e-05
+
+    -> min_loss=4.856e-05  mean_rel_err=1.077e-03  min_digits=4  (24.6s)
+[25/36] hidden=[128, 128, 128, 128] omega0=45.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=1.00e-03  (0.0s)
+
+  Done in 24.3s | min loss = 2.5301e-01
+
+    -> min_loss=2.530e-01  mean_rel_err=5.603e-01  min_digits=1  (24.4s)
+[26/36] hidden=[128, 128, 128, 128] omega0=45.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=5.00e-04  (0.0s)
+
+  Done in 24.9s | min loss = 5.2982e-05
+
+    -> min_loss=5.298e-05  mean_rel_err=2.306e-03  min_digits=3  (24.9s)
+[27/36] hidden=[128, 128, 128, 128] omega0=45.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=4.0445e-01  lr=2.00e-04  (0.0s)
+
+  Done in 25.7s | min loss = 4.4198e-05
+
+    -> min_loss=4.420e-05  mean_rel_err=6.155e-04  min_digits=4  (25.7s)
+[28/36] hidden=[256, 256] omega0=15.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8730e-01  lr=1.00e-03  (0.0s)
+
+  Done in 21.4s | min loss = 3.9871e-04
+
+    -> min_loss=3.987e-04  mean_rel_err=1.841e-03  min_digits=3  (21.4s)
+[29/36] hidden=[256, 256] omega0=15.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8730e-01  lr=5.00e-04  (0.0s)
+
+  Done in 21.1s | min loss = 4.7805e-04
+
+    -> min_loss=4.780e-04  mean_rel_err=2.079e-03  min_digits=3  (21.1s)
+[30/36] hidden=[256, 256] omega0=15.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=15.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8730e-01  lr=2.00e-04  (0.0s)
+
+  Done in 21.2s | min loss = 7.3916e-04
+
+    -> min_loss=7.392e-04  mean_rel_err=2.380e-03  min_digits=3  (21.2s)
+[31/36] hidden=[256, 256] omega0=30.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=1.00e-03  (0.0s)
+
+  Done in 21.0s | min loss = 2.9590e-04
+
+    -> min_loss=2.959e-04  mean_rel_err=6.813e-03  min_digits=3  (21.0s)
+[32/36] hidden=[256, 256] omega0=30.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=5.00e-04  (0.0s)
+
+  Done in 20.9s | min loss = 1.0077e-04
+
+    -> min_loss=1.008e-04  mean_rel_err=7.063e-04  min_digits=4  (20.9s)
+[33/36] hidden=[256, 256] omega0=30.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=30.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=2.00e-04  (0.0s)
+
+  Done in 20.1s | min loss = 1.0789e-04
+
+    -> min_loss=1.079e-04  mean_rel_err=1.057e-03  min_digits=3  (20.1s)
+[34/36] hidden=[256, 256] omega0=45.0 lr=0.001 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.001 -> 0.0001  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=1.00e-03  (0.0s)
+
+  Done in 18.8s | min loss = 2.9463e-03
+
+    -> min_loss=2.946e-03  mean_rel_err=9.438e-03  min_digits=2  (18.8s)
+[35/36] hidden=[256, 256] omega0=45.0 lr=0.0005 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 5e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=5.00e-04  (0.0s)
+
+  Done in 18.7s | min loss = 1.1040e-04
+
+    -> min_loss=1.104e-04  mean_rel_err=1.392e-03  min_digits=3  (18.7s)
+[36/36] hidden=[256, 256] omega0=45.0 lr=0.0002 N=512 ...
+
+════════════════════════════════════════════════════════════════
+  Training: 1500 epochs | 512 pts/set | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0002 -> 2e-05  (CosineAnnealing)
+  Network: SIREN  omega_0=45.0
+════════════════════════════════════════════════════════════════
+  Epoch     1/1500  loss=3.8729e-01  lr=2.00e-04  (0.0s)
+
+  Done in 19.0s | min loss = 5.1746e-05
+
+    -> min_loss=5.175e-05  mean_rel_err=1.159e-03  min_digits=3  (19.0s)
+
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+  RANKED RESULTS (best first)
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    # hidden                omega0        lr  N/param    params    min_loss  mean_relerr  min_dig  time(s)
+----------------------------------------------------------------------------------------------------------------------
+    1 [128, 128, 128]         45.0   5.0e-04      512    34,177   4.511e-05    4.393e-04        4     19.0
+    2 [64, 64, 64]            45.0   5.0e-04      512     8,897   1.162e-04    4.472e-04        4     18.7
+    3 [128, 128, 128, 128]    30.0   5.0e-04      512    50,689   4.131e-05    5.614e-04        4     24.2
+    4 [128, 128, 128]         30.0   5.0e-04      512    34,177   4.318e-05    5.639e-04        4     18.8
+    5 [128, 128, 128, 128]    45.0   2.0e-04      512    50,689   4.420e-05    6.155e-04        4     25.7
+    6 [64, 64, 64]            45.0   2.0e-04      512     8,897   2.630e-04    6.419e-04        4     17.3
+    7 [256, 256]              30.0   5.0e-04      512    68,097   1.008e-04    7.063e-04        4     20.9
+    8 [128, 128, 128]         30.0   2.0e-04      512    34,177   6.882e-05    8.323e-04        4     18.6
+    9 [128, 128, 128]         45.0   2.0e-04      512    34,177   5.276e-05    8.324e-04        4     19.0
+   10 [64, 64, 64]            30.0   2.0e-04      512     8,897   2.739e-04    8.386e-04        4     16.8
+   11 [128, 128, 128, 128]    30.0   2.0e-04      512    50,689   4.856e-05    1.077e-03        4     24.6
+   12 [128, 128, 128, 128]    30.0   1.0e-03      512    50,689   7.944e-05    1.813e-03        4     25.1
+   13 [64, 64, 64]            30.0   1.0e-03      512     8,897   1.100e-04    7.567e-04        3     16.5
+   14 [64, 64, 64]            15.0   5.0e-04      512     8,897   2.938e-04    9.303e-04        3     14.6
+   15 [256, 256]              30.0   2.0e-04      512    68,097   1.079e-04    1.057e-03        3     20.1
+   16 [64, 64, 64]            30.0   5.0e-04      512     8,897   1.405e-04    1.108e-03        3     16.8
+   17 [256, 256]              45.0   2.0e-04      512    68,097   5.175e-05    1.159e-03        3     19.0
+   18 [64, 64, 64]            15.0   2.0e-04      512     8,897   5.393e-04    1.186e-03        3     16.5
+   19 [256, 256]              45.0   5.0e-04      512    68,097   1.104e-04    1.392e-03        3     18.7
+   20 [128, 128, 128]         15.0   2.0e-04      512    34,177   1.369e-04    1.410e-03        3     18.2
+   21 [64, 64, 64]            45.0   1.0e-03      512     8,897   9.581e-05    1.604e-03        3     18.5
+   22 [128, 128, 128, 128]    15.0   2.0e-04      512    50,689   8.129e-05    1.628e-03        3     25.1
+   23 [256, 256]              15.0   1.0e-03      512    68,097   3.987e-04    1.841e-03        3     21.4
+   24 [128, 128, 128]         30.0   1.0e-03      512    34,177   5.314e-05    1.891e-03        3     18.4
+   25 [128, 128, 128, 128]    15.0   1.0e-03      512    50,689   5.586e-05    1.918e-03        3     23.7
+   26 [256, 256]              15.0   5.0e-04      512    68,097   4.780e-04    2.079e-03        3     21.1
+   27 [128, 128, 128]         15.0   1.0e-03      512    34,177   7.980e-05    2.101e-03        3     18.3
+   28 [64, 64, 64]            15.0   1.0e-03      512     8,897   1.907e-04    2.214e-03        3     15.5
+   29 [128, 128, 128, 128]    15.0   5.0e-04      512    50,689   5.798e-05    2.264e-03        3     24.3
+   30 [128, 128, 128, 128]    45.0   5.0e-04      512    50,689   5.298e-05    2.306e-03        3     24.9
+   31 [256, 256]              15.0   2.0e-04      512    68,097   7.392e-04    2.380e-03        3     21.2
+   32 [128, 128, 128]         15.0   5.0e-04      512    34,177   8.670e-05    3.191e-03        3     18.3
+   33 [256, 256]              30.0   1.0e-03      512    68,097   2.959e-04    6.813e-03        3     21.0
+   34 [128, 128, 128]         45.0   1.0e-03      512    34,177   2.079e-04    7.535e-03        2     18.8
+   35 [256, 256]              45.0   1.0e-03      512    68,097   2.946e-03    9.438e-03        2     18.8
+   36 [128, 128, 128, 128]    45.0   1.0e-03      512    50,689   2.530e-01    5.603e-01        1     24.4
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  BEST CONFIG:
+    hidden_sizes = [128, 128, 128]
+    omega_0      = 45.0
+    lr           = 0.0005
+    n_per_param  = 512
+    -> min 4 correct digits, mean rel. err 4.393e-04
+
+  Full results saved -> sweep_results_2026-09-25_16-00.csv
+

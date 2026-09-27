@@ -1,0 +1,780 @@
+
+════════════════════════════════════════════════════════════════════════
+  SUPER-TEST (Wire)  —  54 configs × 1500 epochs, device=cuda
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/54] omega0=5.0 sigma0=5.0 width=32 blocks=2 lr=0.0005 ...
+/zfs/store1.hydra.local/user/g/gshipunv/.local/lib/python3.12/site-packages/torch/autograd/graph.py:841: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:270.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.8677e-01  lr=5.00e-04  (0.3s)
+
+  Done in 82.5s | min loss = 2.1883e-03
+
+    -> min_loss=2.188e-03  mean_rel_err=1.358e-03  min_digits=3  params=16,833  (83.8s)
+[2/54] omega0=5.0 sigma0=5.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.7855e-01  lr=5.00e-04  (0.1s)
+
+  Done in 104.1s | min loss = 1.0567e-03
+
+    -> min_loss=1.057e-03  mean_rel_err=1.987e-03  min_digits=3  params=25,089  (104.1s)
+[3/54] omega0=5.0 sigma0=5.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.9839e-01  lr=5.00e-04  (0.1s)
+
+  Done in 134.3s | min loss = 7.8164e-04
+
+    -> min_loss=7.816e-04  mean_rel_err=7.774e-04  min_digits=3  params=33,345  (134.4s)
+[4/54] omega0=5.0 sigma0=5.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.9296e-01  lr=5.00e-04  (0.1s)
+
+  Done in 80.2s | min loss = 8.3167e-04
+
+    -> min_loss=8.317e-04  mean_rel_err=2.093e-03  min_digits=3  params=66,433  (80.2s)
+[5/54] omega0=5.0 sigma0=5.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.4479e-01  lr=5.00e-04  (0.1s)
+
+  Done in 112.1s | min loss = 4.3082e-04
+
+    -> min_loss=4.308e-04  mean_rel_err=3.242e-04  min_digits=4  params=99,329  (112.1s)
+[6/54] omega0=5.0 sigma0=5.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=4.2266e-01  lr=5.00e-04  (0.1s)
+
+  Done in 141.6s | min loss = 3.2982e-04
+
+    -> min_loss=3.298e-04  mean_rel_err=6.842e-04  min_digits=4  params=132,225  (141.6s)
+[7/54] omega0=5.0 sigma0=10.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.8692e-01  lr=5.00e-04  (0.1s)
+
+  Done in 75.7s | min loss = 2.1345e-03
+
+    -> min_loss=2.135e-03  mean_rel_err=2.787e-03  min_digits=3  params=16,833  (75.7s)
+[8/54] omega0=5.0 sigma0=10.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.8184e-01  lr=5.00e-04  (0.1s)
+
+  Done in 103.1s | min loss = 1.0154e-03
+
+    -> min_loss=1.015e-03  mean_rel_err=1.659e-03  min_digits=3  params=25,089  (103.1s)
+[9/54] omega0=5.0 sigma0=10.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.0924e-01  lr=5.00e-04  (0.1s)
+
+  Done in 132.0s | min loss = 9.2166e-04
+
+    -> min_loss=9.217e-04  mean_rel_err=1.500e-03  min_digits=3  params=33,345  (132.0s)
+[10/54] omega0=5.0 sigma0=10.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.9318e-01  lr=5.00e-04  (0.1s)
+
+  Done in 72.4s | min loss = 8.3637e-04
+
+    -> min_loss=8.364e-04  mean_rel_err=2.753e-03  min_digits=3  params=66,433  (72.4s)
+[11/54] omega0=5.0 sigma0=10.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.4507e-01  lr=5.00e-04  (0.1s)
+
+  Done in 100.6s | min loss = 3.8888e-04
+
+    -> min_loss=3.889e-04  mean_rel_err=8.304e-04  min_digits=4  params=99,329  (100.6s)
+[12/54] omega0=5.0 sigma0=10.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.3061e-01  lr=5.00e-04  (0.1s)
+
+  Done in 129.6s | min loss = 4.2319e-04
+
+    -> min_loss=4.232e-04  mean_rel_err=1.139e-03  min_digits=3  params=132,225  (129.6s)
+[13/54] omega0=5.0 sigma0=15.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.8695e-01  lr=5.00e-04  (0.0s)
+
+  Done in 69.9s | min loss = 2.1833e-03
+
+    -> min_loss=2.183e-03  mean_rel_err=2.880e-03  min_digits=3  params=16,833  (69.9s)
+[14/54] omega0=5.0 sigma0=15.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.8248e-01  lr=5.00e-04  (0.1s)
+
+  Done in 99.6s | min loss = 1.0292e-03
+
+    -> min_loss=1.029e-03  mean_rel_err=3.077e-03  min_digits=3  params=25,089  (99.6s)
+[15/54] omega0=5.0 sigma0=15.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.1325e-01  lr=5.00e-04  (0.1s)
+
+  Done in 130.4s | min loss = 8.6754e-04
+
+    -> min_loss=8.675e-04  mean_rel_err=1.435e-03  min_digits=3  params=33,345  (130.4s)
+[16/54] omega0=5.0 sigma0=15.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.9324e-01  lr=5.00e-04  (0.0s)
+
+  Done in 70.4s | min loss = 7.6721e-04
+
+    -> min_loss=7.672e-04  mean_rel_err=9.747e-04  min_digits=3  params=66,433  (70.4s)
+[17/54] omega0=5.0 sigma0=15.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.4508e-01  lr=5.00e-04  (0.1s)
+
+  Done in 100.6s | min loss = 3.8038e-04
+
+    -> min_loss=3.804e-04  mean_rel_err=8.647e-04  min_digits=4  params=99,329  (100.6s)
+[18/54] omega0=5.0 sigma0=15.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=5.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.3409e-01  lr=5.00e-04  (0.1s)
+
+  Done in 129.0s | min loss = 4.1811e-04
+
+    -> min_loss=4.181e-04  mean_rel_err=1.444e-03  min_digits=4  params=132,225  (129.0s)
+[19/54] omega0=10.0 sigma0=5.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.8730e-01  lr=5.00e-04  (0.0s)
+
+  Done in 69.6s | min loss = 8.1867e-04
+
+    -> min_loss=8.187e-04  mean_rel_err=4.750e-04  min_digits=4  params=16,833  (69.6s)
+[20/54] omega0=10.0 sigma0=5.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.7231e-01  lr=5.00e-04  (0.1s)
+
+  Done in 101.5s | min loss = 5.0500e-04
+
+    -> min_loss=5.050e-04  mean_rel_err=1.032e-03  min_digits=3  params=25,089  (101.6s)
+[21/54] omega0=10.0 sigma0=5.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.9062e-01  lr=5.00e-04  (0.1s)
+
+  Done in 130.6s | min loss = 3.1472e-04
+
+    -> min_loss=3.147e-04  mean_rel_err=1.476e-03  min_digits=3  params=33,345  (130.6s)
+[22/54] omega0=10.0 sigma0=5.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.9472e-01  lr=5.00e-04  (0.0s)
+
+  Done in 71.1s | min loss = 2.5197e-04
+
+    -> min_loss=2.520e-04  mean_rel_err=1.996e-03  min_digits=3  params=66,433  (71.1s)
+[23/54] omega0=10.0 sigma0=5.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.4681e-01  lr=5.00e-04  (0.1s)
+
+  Done in 100.3s | min loss = 1.4512e-04
+
+    -> min_loss=1.451e-04  mean_rel_err=1.017e-03  min_digits=3  params=99,329  (100.3s)
+[24/54] omega0=10.0 sigma0=5.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=4.2395e-01  lr=5.00e-04  (0.1s)
+
+  Done in 130.2s | min loss = 1.9635e-04
+
+    -> min_loss=1.963e-04  mean_rel_err=6.594e-04  min_digits=4  params=132,225  (130.2s)
+[25/54] omega0=10.0 sigma0=10.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.8825e-01  lr=5.00e-04  (0.0s)
+
+  Done in 69.8s | min loss = 7.7081e-04
+
+    -> min_loss=7.708e-04  mean_rel_err=1.156e-03  min_digits=3  params=16,833  (69.8s)
+[26/54] omega0=10.0 sigma0=10.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.7426e-01  lr=5.00e-04  (0.1s)
+
+  Done in 99.6s | min loss = 4.3900e-04
+
+    -> min_loss=4.390e-04  mean_rel_err=7.080e-04  min_digits=4  params=25,089  (99.6s)
+[27/54] omega0=10.0 sigma0=10.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.0848e-01  lr=5.00e-04  (0.1s)
+
+  Done in 131.2s | min loss = 3.5380e-04
+
+    -> min_loss=3.538e-04  mean_rel_err=7.011e-04  min_digits=3  params=33,345  (131.2s)
+[28/54] omega0=10.0 sigma0=10.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.9493e-01  lr=5.00e-04  (0.1s)
+
+  Done in 71.1s | min loss = 2.3523e-04
+
+    -> min_loss=2.352e-04  mean_rel_err=1.396e-03  min_digits=3  params=66,433  (71.1s)
+[29/54] omega0=10.0 sigma0=10.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.4771e-01  lr=5.00e-04  (0.1s)
+
+  Done in 101.0s | min loss = 1.7345e-04
+
+    -> min_loss=1.735e-04  mean_rel_err=1.082e-03  min_digits=4  params=99,329  (101.0s)
+[30/54] omega0=10.0 sigma0=10.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.3412e-01  lr=5.00e-04  (0.1s)
+
+  Done in 132.8s | min loss = 2.0026e-04
+
+    -> min_loss=2.003e-04  mean_rel_err=5.192e-04  min_digits=4  params=132,225  (132.8s)
+[31/54] omega0=10.0 sigma0=15.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.8852e-01  lr=5.00e-04  (0.0s)
+
+  Done in 70.6s | min loss = 7.6423e-04
+
+    -> min_loss=7.642e-04  mean_rel_err=9.998e-04  min_digits=3  params=16,833  (70.6s)
+[32/54] omega0=10.0 sigma0=15.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.7464e-01  lr=5.00e-04  (0.1s)
+
+  Done in 100.9s | min loss = 3.9851e-04
+
+    -> min_loss=3.985e-04  mean_rel_err=1.699e-03  min_digits=3  params=25,089  (100.9s)
+[33/54] omega0=10.0 sigma0=15.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.1460e-01  lr=5.00e-04  (0.1s)
+
+  Done in 130.1s | min loss = 3.7152e-04
+
+    -> min_loss=3.715e-04  mean_rel_err=8.466e-04  min_digits=4  params=33,345  (130.1s)
+[34/54] omega0=10.0 sigma0=15.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.9501e-01  lr=5.00e-04  (0.0s)
+
+  Done in 71.7s | min loss = 2.3897e-04
+
+    -> min_loss=2.390e-04  mean_rel_err=1.860e-03  min_digits=3  params=66,433  (71.7s)
+[35/54] omega0=10.0 sigma0=15.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.4774e-01  lr=5.00e-04  (0.1s)
+
+  Done in 101.3s | min loss = 2.0415e-04
+
+    -> min_loss=2.042e-04  mean_rel_err=6.369e-04  min_digits=4  params=99,329  (101.3s)
+[36/54] omega0=10.0 sigma0=15.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=10.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.3857e-01  lr=5.00e-04  (0.1s)
+
+  Done in 133.7s | min loss = 2.4001e-04
+
+    -> min_loss=2.400e-04  mean_rel_err=6.783e-04  min_digits=4  params=132,225  (133.7s)
+[37/54] omega0=15.0 sigma0=5.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.8700e-01  lr=5.00e-04  (0.1s)
+
+  Done in 74.2s | min loss = 5.0980e-04
+
+    -> min_loss=5.098e-04  mean_rel_err=8.167e-04  min_digits=3  params=16,833  (74.2s)
+[38/54] omega0=15.0 sigma0=5.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.7116e-01  lr=5.00e-04  (0.1s)
+
+  Done in 102.0s | min loss = 3.2068e-04
+
+    -> min_loss=3.207e-04  mean_rel_err=1.613e-03  min_digits=3  params=25,089  (102.0s)
+[39/54] omega0=15.0 sigma0=5.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.8765e-01  lr=5.00e-04  (0.1s)
+
+  Done in 131.8s | min loss = 2.8724e-04
+
+    -> min_loss=2.872e-04  mean_rel_err=6.593e-04  min_digits=4  params=33,345  (131.8s)
+[40/54] omega0=15.0 sigma0=5.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.9419e-01  lr=5.00e-04  (0.1s)
+
+  Done in 72.1s | min loss = 1.5889e-04
+
+    -> min_loss=1.589e-04  mean_rel_err=9.813e-04  min_digits=3  params=66,433  (72.1s)
+[41/54] omega0=15.0 sigma0=5.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=3.4518e-01  lr=5.00e-04  (0.1s)
+
+  Done in 102.7s | min loss = 1.6270e-04
+
+    -> min_loss=1.627e-04  mean_rel_err=6.097e-04  min_digits=4  params=99,329  (102.7s)
+[42/54] omega0=15.0 sigma0=5.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=5.0
+====================================================================
+  Epoch     1/1500  loss=4.1690e-01  lr=5.00e-04  (0.1s)
+
+  Done in 132.4s | min loss = 1.5641e-04
+
+    -> min_loss=1.564e-04  mean_rel_err=8.500e-04  min_digits=4  params=132,225  (132.4s)
+[43/54] omega0=15.0 sigma0=10.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.8678e-01  lr=5.00e-04  (0.0s)
+
+  Done in 72.7s | min loss = 4.1693e-04
+
+    -> min_loss=4.169e-04  mean_rel_err=1.173e-03  min_digits=3  params=16,833  (72.7s)
+[44/54] omega0=15.0 sigma0=10.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.7143e-01  lr=5.00e-04  (0.1s)
+
+  Done in 102.5s | min loss = 3.2884e-04
+
+    -> min_loss=3.288e-04  mean_rel_err=2.021e-03  min_digits=3  params=25,089  (102.5s)
+[45/54] omega0=15.0 sigma0=10.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.0310e-01  lr=5.00e-04  (0.1s)
+
+  Done in 133.0s | min loss = 2.3580e-04
+
+    -> min_loss=2.358e-04  mean_rel_err=1.841e-03  min_digits=3  params=33,345  (133.1s)
+[46/54] omega0=15.0 sigma0=10.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.9425e-01  lr=5.00e-04  (0.1s)
+
+  Done in 74.9s | min loss = 1.6554e-04
+
+    -> min_loss=1.655e-04  mean_rel_err=1.765e-03  min_digits=3  params=66,433  (74.9s)
+[47/54] omega0=15.0 sigma0=10.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=3.4567e-01  lr=5.00e-04  (0.1s)
+
+  Done in 105.4s | min loss = 1.4803e-04
+
+    -> min_loss=1.480e-04  mean_rel_err=9.611e-04  min_digits=3  params=99,329  (105.4s)
+[48/54] omega0=15.0 sigma0=10.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=10.0
+====================================================================
+  Epoch     1/1500  loss=4.2789e-01  lr=5.00e-04  (0.1s)
+
+  Done in 135.2s | min loss = 2.2795e-04
+
+    -> min_loss=2.280e-04  mean_rel_err=5.358e-04  min_digits=4  params=132,225  (135.2s)
+[49/54] omega0=15.0 sigma0=15.0 width=32 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.8673e-01  lr=5.00e-04  (0.1s)
+
+  Done in 72.3s | min loss = 3.8921e-04
+
+    -> min_loss=3.892e-04  mean_rel_err=1.560e-03  min_digits=3  params=16,833  (72.3s)
+[50/54] omega0=15.0 sigma0=15.0 width=32 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.7159e-01  lr=5.00e-04  (0.1s)
+
+  Done in 101.6s | min loss = 2.4867e-04
+
+    -> min_loss=2.487e-04  mean_rel_err=1.557e-03  min_digits=3  params=25,089  (101.6s)
+[51/54] omega0=15.0 sigma0=15.0 width=32 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.1120e-01  lr=5.00e-04  (0.1s)
+
+  Done in 132.6s | min loss = 2.3657e-04
+
+    -> min_loss=2.366e-04  mean_rel_err=6.105e-04  min_digits=3  params=33,345  (132.6s)
+[52/54] omega0=15.0 sigma0=15.0 width=64 blocks=2 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.9433e-01  lr=5.00e-04  (0.0s)
+
+  Done in 71.9s | min loss = 1.6899e-04
+
+    -> min_loss=1.690e-04  mean_rel_err=2.050e-03  min_digits=3  params=66,433  (71.9s)
+[53/54] omega0=15.0 sigma0=15.0 width=64 blocks=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=3.4600e-01  lr=5.00e-04  (0.1s)
+
+  Done in 103.1s | min loss = 1.5172e-04
+
+    -> min_loss=1.517e-04  mean_rel_err=1.518e-03  min_digits=3  params=99,329  (103.1s)
+[54/54] omega0=15.0 sigma0=15.0 width=64 blocks=4 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  lr: 0.0005 -> 1e-05  (CosineAnnealingWarmRestarts)
+  Network: Wire  omega_0=15.0  sigma_0=15.0
+====================================================================
+  Epoch     1/1500  loss=4.3512e-01  lr=5.00e-04  (0.1s)
+
+  Done in 134.6s | min loss = 2.2895e-04
+
+    -> min_loss=2.289e-04  mean_rel_err=5.675e-04  min_digits=4  params=132,225  (134.6s)
+
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+  RANKED RESULTS (best first)
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    #  omega0  sigma0  width  blocks        lr    params    min_loss  mean_relerr  min_dig  time(s)
+--------------------------------------------------------------------------------------------------------------------------------
+    1     5.0     5.0     64       3   5.0e-04    99,329   4.308e-04    3.242e-04        4    112.1
+    2    10.0     5.0     32       2   5.0e-04    16,833   8.187e-04    4.750e-04        4     69.6
+    3    10.0    10.0     64       4   5.0e-04   132,225   2.003e-04    5.192e-04        4    132.8
+    4    15.0    10.0     64       4   5.0e-04   132,225   2.280e-04    5.358e-04        4    135.2
+    5    15.0    15.0     64       4   5.0e-04   132,225   2.289e-04    5.675e-04        4    134.6
+    6    15.0     5.0     64       3   5.0e-04    99,329   1.627e-04    6.097e-04        4    102.7
+    7    10.0    15.0     64       3   5.0e-04    99,329   2.042e-04    6.369e-04        4    101.3
+    8    15.0     5.0     32       4   5.0e-04    33,345   2.872e-04    6.593e-04        4    131.8
+    9    10.0     5.0     64       4   5.0e-04   132,225   1.963e-04    6.594e-04        4    130.2
+   10    10.0    15.0     64       4   5.0e-04   132,225   2.400e-04    6.783e-04        4    133.7
+   11     5.0     5.0     64       4   5.0e-04   132,225   3.298e-04    6.842e-04        4    141.6
+   12    10.0    10.0     32       3   5.0e-04    25,089   4.390e-04    7.080e-04        4     99.6
+   13     5.0    10.0     64       3   5.0e-04    99,329   3.889e-04    8.304e-04        4    100.6
+   14    10.0    15.0     32       4   5.0e-04    33,345   3.715e-04    8.466e-04        4    130.1
+   15    15.0     5.0     64       4   5.0e-04   132,225   1.564e-04    8.500e-04        4    132.4
+   16     5.0    15.0     64       3   5.0e-04    99,329   3.804e-04    8.647e-04        4    100.6
+   17    10.0    10.0     64       3   5.0e-04    99,329   1.735e-04    1.082e-03        4    101.0
+   18     5.0    15.0     64       4   5.0e-04   132,225   4.181e-04    1.444e-03        4    129.0
+   19    15.0    15.0     32       4   5.0e-04    33,345   2.366e-04    6.105e-04        3    132.6
+   20    10.0    10.0     32       4   5.0e-04    33,345   3.538e-04    7.011e-04        3    131.2
+   21     5.0     5.0     32       4   5.0e-04    33,345   7.816e-04    7.774e-04        3    134.4
+   22    15.0     5.0     32       2   5.0e-04    16,833   5.098e-04    8.167e-04        3     74.2
+   23    15.0    10.0     64       3   5.0e-04    99,329   1.480e-04    9.611e-04        3    105.4
+   24     5.0    15.0     64       2   5.0e-04    66,433   7.672e-04    9.747e-04        3     70.4
+   25    15.0     5.0     64       2   5.0e-04    66,433   1.589e-04    9.813e-04        3     72.1
+   26    10.0    15.0     32       2   5.0e-04    16,833   7.642e-04    9.998e-04        3     70.6
+   27    10.0     5.0     64       3   5.0e-04    99,329   1.451e-04    1.017e-03        3    100.3
+   28    10.0     5.0     32       3   5.0e-04    25,089   5.050e-04    1.032e-03        3    101.6
+   29     5.0    10.0     64       4   5.0e-04   132,225   4.232e-04    1.139e-03        3    129.6
+   30    10.0    10.0     32       2   5.0e-04    16,833   7.708e-04    1.156e-03        3     69.8
+   31    15.0    10.0     32       2   5.0e-04    16,833   4.169e-04    1.173e-03        3     72.7
+   32     5.0     5.0     32       2   5.0e-04    16,833   2.188e-03    1.358e-03        3     83.8
+   33    10.0    10.0     64       2   5.0e-04    66,433   2.352e-04    1.396e-03        3     71.1
+   34     5.0    15.0     32       4   5.0e-04    33,345   8.675e-04    1.435e-03        3    130.4
+   35    10.0     5.0     32       4   5.0e-04    33,345   3.147e-04    1.476e-03        3    130.6
+   36     5.0    10.0     32       4   5.0e-04    33,345   9.217e-04    1.500e-03        3    132.0
+   37    15.0    15.0     64       3   5.0e-04    99,329   1.517e-04    1.518e-03        3    103.1
+   38    15.0    15.0     32       3   5.0e-04    25,089   2.487e-04    1.557e-03        3    101.6
+   39    15.0    15.0     32       2   5.0e-04    16,833   3.892e-04    1.560e-03        3     72.3
+   40    15.0     5.0     32       3   5.0e-04    25,089   3.207e-04    1.613e-03        3    102.0
+   41     5.0    10.0     32       3   5.0e-04    25,089   1.015e-03    1.659e-03        3    103.1
+   42    10.0    15.0     32       3   5.0e-04    25,089   3.985e-04    1.699e-03        3    100.9
+   43    15.0    10.0     64       2   5.0e-04    66,433   1.655e-04    1.765e-03        3     74.9
+   44    15.0    10.0     32       4   5.0e-04    33,345   2.358e-04    1.841e-03        3    133.1
+   45    10.0    15.0     64       2   5.0e-04    66,433   2.390e-04    1.860e-03        3     71.7
+   46     5.0     5.0     32       3   5.0e-04    25,089   1.057e-03    1.987e-03        3    104.1
+   47    10.0     5.0     64       2   5.0e-04    66,433   2.520e-04    1.996e-03        3     71.1
+   48    15.0    10.0     32       3   5.0e-04    25,089   3.288e-04    2.021e-03        3    102.5
+   49    15.0    15.0     64       2   5.0e-04    66,433   1.690e-04    2.050e-03        3     71.9
+   50     5.0     5.0     64       2   5.0e-04    66,433   8.317e-04    2.093e-03        3     80.2
+   51     5.0    10.0     64       2   5.0e-04    66,433   8.364e-04    2.753e-03        3     72.4
+   52     5.0    10.0     32       2   5.0e-04    16,833   2.135e-03    2.787e-03        3     75.7
+   53     5.0    15.0     32       2   5.0e-04    16,833   2.183e-03    2.880e-03        3     69.9
+   54     5.0    15.0     32       3   5.0e-04    25,089   1.029e-03    3.077e-03        3     99.6
+════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  BEST CONFIG:
+    omega_0 = 5.0   sigma_0 = 5.0   entry_width = 64   n_blocks = 3   lr = 0.0005
+    -> min 4 correct digits, mean rel. err 3.242e-04
+
+  Full results saved -> sweep_wire_results_2026-09-25_17-21.csv
+

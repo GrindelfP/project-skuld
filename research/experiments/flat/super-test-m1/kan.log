@@ -1,0 +1,1237 @@
+
+════════════════════════════════════════════════════════════════════════
+  SUPER-TEST (KAN)  —  81 configs × 1500 epochs, device=cuda
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/81] width=16 depth=1 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2262e-01  lr=8.01e-05  (1.0s)
+
+  Done in 78.5s | min loss = 6.1520e-03
+
+    -> min_loss=6.152e-03  mean_rel_err=1.182e-01  min_digits=1  params=1,198  (79.9s)
+[2/81] width=16 depth=1 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2262e-01  lr=4.00e-05  (0.0s)
+
+  Done in 75.7s | min loss = 8.7034e-03
+
+    -> min_loss=8.703e-03  mean_rel_err=1.131e-01  min_digits=2  params=1,198  (75.7s)
+[3/81] width=16 depth=1 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2262e-01  lr=2.00e-05  (0.0s)
+
+  Done in 75.9s | min loss = 1.1924e-02
+
+    -> min_loss=1.192e-02  mean_rel_err=1.402e-01  min_digits=2  params=1,198  (75.9s)
+[4/81] width=16 depth=1 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3477e-01  lr=8.01e-05  (0.1s)
+
+  Done in 77.6s | min loss = 6.2701e-03
+
+    -> min_loss=6.270e-03  mean_rel_err=7.743e-02  min_digits=1  params=1,582  (77.6s)
+[5/81] width=16 depth=1 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3477e-01  lr=4.00e-05  (0.1s)
+
+  Done in 80.0s | min loss = 7.9444e-03
+
+    -> min_loss=7.944e-03  mean_rel_err=9.961e-02  min_digits=1  params=1,582  (80.1s)
+[6/81] width=16 depth=1 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3477e-01  lr=2.00e-05  (0.1s)
+
+  Done in 80.7s | min loss = 8.2925e-03
+
+    -> min_loss=8.292e-03  mean_rel_err=5.111e-02  min_digits=1  params=1,582  (80.7s)
+[7/81] width=16 depth=1 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1573e-01  lr=8.01e-05  (0.1s)
+
+  Done in 84.5s | min loss = 6.0999e-03
+
+    -> min_loss=6.100e-03  mean_rel_err=1.110e-01  min_digits=2  params=2,094  (84.6s)
+[8/81] width=16 depth=1 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1573e-01  lr=4.00e-05  (0.1s)
+
+  Done in 83.1s | min loss = 6.2247e-03
+
+    -> min_loss=6.225e-03  mean_rel_err=1.572e-01  min_digits=1  params=2,094  (83.1s)
+[9/81] width=16 depth=1 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1573e-01  lr=2.00e-05  (0.1s)
+
+  Done in 78.1s | min loss = 8.1906e-03
+
+    -> min_loss=8.191e-03  mean_rel_err=9.904e-02  min_digits=2  params=2,094  (78.1s)
+[10/81] width=16 depth=2 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6418e-01  lr=8.01e-05  (0.1s)
+
+  Done in 114.7s | min loss = 1.6759e-03
+
+    -> min_loss=1.676e-03  mean_rel_err=1.253e-01  min_digits=2  params=3,534  (114.7s)
+[11/81] width=16 depth=2 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6418e-01  lr=4.00e-05  (0.1s)
+
+  Done in 111.6s | min loss = 2.6341e-03
+
+    -> min_loss=2.634e-03  mean_rel_err=1.298e-01  min_digits=2  params=3,534  (111.6s)
+[12/81] width=16 depth=2 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6418e-01  lr=2.00e-05  (0.1s)
+
+  Done in 113.5s | min loss = 3.7739e-03
+
+    -> min_loss=3.774e-03  mean_rel_err=1.047e-01  min_digits=1  params=3,534  (113.5s)
+[13/81] width=16 depth=2 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.2140e-01  lr=8.01e-05  (0.1s)
+
+  Done in 111.4s | min loss = 1.6179e-03
+
+    -> min_loss=1.618e-03  mean_rel_err=7.590e-02  min_digits=2  params=4,686  (111.4s)
+[14/81] width=16 depth=2 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.2140e-01  lr=4.00e-05  (0.1s)
+
+  Done in 109.9s | min loss = 1.9505e-03
+
+    -> min_loss=1.950e-03  mean_rel_err=5.778e-02  min_digits=2  params=4,686  (109.9s)
+[15/81] width=16 depth=2 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.2140e-01  lr=2.00e-05  (0.1s)
+
+  Done in 110.0s | min loss = 3.1635e-03
+
+    -> min_loss=3.164e-03  mean_rel_err=7.405e-02  min_digits=2  params=4,686  (110.0s)
+[16/81] width=16 depth=2 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.4022e-01  lr=8.01e-05  (0.1s)
+
+  Done in 109.6s | min loss = 1.0153e-03
+
+    -> min_loss=1.015e-03  mean_rel_err=5.401e-02  min_digits=2  params=6,222  (109.6s)
+[17/81] width=16 depth=2 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.4022e-01  lr=4.00e-05  (0.1s)
+
+  Done in 110.3s | min loss = 1.4036e-03
+
+    -> min_loss=1.404e-03  mean_rel_err=7.638e-02  min_digits=2  params=6,222  (110.3s)
+[18/81] width=16 depth=2 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.4022e-01  lr=2.00e-05  (0.1s)
+
+  Done in 110.8s | min loss = 2.3392e-03
+
+    -> min_loss=2.339e-03  mean_rel_err=7.595e-02  min_digits=2  params=6,222  (110.8s)
+[19/81] width=16 depth=3 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=4.0141e-01  lr=8.01e-05  (0.1s)
+
+  Done in 147.7s | min loss = 1.0704e-03
+
+    -> min_loss=1.070e-03  mean_rel_err=6.420e-02  min_digits=2  params=5,870  (147.7s)
+[20/81] width=16 depth=3 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=4.0141e-01  lr=4.00e-05  (0.1s)
+
+  Done in 150.3s | min loss = 1.2818e-03
+
+    -> min_loss=1.282e-03  mean_rel_err=7.930e-02  min_digits=2  params=5,870  (150.3s)
+[21/81] width=16 depth=3 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=4.0141e-01  lr=2.00e-05  (0.1s)
+
+  Done in 149.3s | min loss = 2.0267e-03
+
+    -> min_loss=2.027e-03  mean_rel_err=1.408e-01  min_digits=2  params=5,870  (149.3s)
+[22/81] width=16 depth=3 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0006e-01  lr=8.01e-05  (0.1s)
+
+  Done in 151.1s | min loss = 9.7466e-04
+
+    -> min_loss=9.747e-04  mean_rel_err=1.326e-01  min_digits=1  params=7,790  (151.1s)
+[23/81] width=16 depth=3 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0006e-01  lr=4.00e-05  (0.1s)
+
+  Done in 149.4s | min loss = 1.3433e-03
+
+    -> min_loss=1.343e-03  mean_rel_err=5.693e-02  min_digits=2  params=7,790  (149.4s)
+[24/81] width=16 depth=3 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0006e-01  lr=2.00e-05  (0.1s)
+
+  Done in 149.1s | min loss = 2.2017e-03
+
+    -> min_loss=2.202e-03  mean_rel_err=6.655e-02  min_digits=2  params=7,790  (149.1s)
+[25/81] width=16 depth=3 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2119e+00  lr=8.01e-05  (0.1s)
+
+  Done in 151.6s | min loss = 6.8549e-04
+
+    -> min_loss=6.855e-04  mean_rel_err=6.551e-02  min_digits=2  params=10,350  (151.6s)
+[26/81] width=16 depth=3 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2119e+00  lr=4.00e-05  (0.1s)
+
+  Done in 151.8s | min loss = 9.7709e-04
+
+    -> min_loss=9.771e-04  mean_rel_err=8.364e-02  min_digits=2  params=10,350  (151.8s)
+[27/81] width=16 depth=3 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.2119e+00  lr=2.00e-05  (0.1s)
+
+  Done in 152.9s | min loss = 1.4702e-03
+
+    -> min_loss=1.470e-03  mean_rel_err=1.120e-01  min_digits=1  params=10,350  (152.9s)
+[28/81] width=32 depth=1 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0420e-01  lr=8.01e-05  (0.0s)
+
+  Done in 71.4s | min loss = 2.6226e-03
+
+    -> min_loss=2.623e-03  mean_rel_err=1.595e-01  min_digits=1  params=2,382  (71.4s)
+[29/81] width=32 depth=1 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0420e-01  lr=4.00e-05  (0.0s)
+
+  Done in 71.0s | min loss = 3.5881e-03
+
+    -> min_loss=3.588e-03  mean_rel_err=1.069e-01  min_digits=2  params=2,382  (71.0s)
+[30/81] width=32 depth=1 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0420e-01  lr=2.00e-05  (0.0s)
+
+  Done in 72.4s | min loss = 4.7234e-03
+
+    -> min_loss=4.723e-03  mean_rel_err=8.213e-02  min_digits=1  params=2,382  (72.4s)
+[31/81] width=32 depth=1 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0177e-01  lr=8.01e-05  (0.1s)
+
+  Done in 72.4s | min loss = 2.9094e-03
+
+    -> min_loss=2.909e-03  mean_rel_err=1.039e-01  min_digits=2  params=3,150  (72.4s)
+[32/81] width=32 depth=1 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0177e-01  lr=4.00e-05  (0.1s)
+
+  Done in 73.5s | min loss = 3.4203e-03
+
+    -> min_loss=3.420e-03  mean_rel_err=9.258e-02  min_digits=1  params=3,150  (73.5s)
+[33/81] width=32 depth=1 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0177e-01  lr=2.00e-05  (0.1s)
+
+  Done in 74.3s | min loss = 5.2363e-03
+
+    -> min_loss=5.236e-03  mean_rel_err=1.102e-01  min_digits=1  params=3,150  (74.3s)
+[34/81] width=32 depth=1 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=7.5707e-01  lr=8.01e-05  (0.1s)
+
+  Done in 81.7s | min loss = 2.7936e-03
+
+    -> min_loss=2.794e-03  mean_rel_err=6.588e-02  min_digits=2  params=4,174  (81.7s)
+[35/81] width=32 depth=1 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=7.5707e-01  lr=4.00e-05  (0.1s)
+
+  Done in 81.7s | min loss = 3.4324e-03
+
+    -> min_loss=3.432e-03  mean_rel_err=8.207e-02  min_digits=2  params=4,174  (81.8s)
+[36/81] width=32 depth=1 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=7.5707e-01  lr=2.00e-05  (0.1s)
+
+  Done in 76.1s | min loss = 4.3683e-03
+
+    -> min_loss=4.368e-03  mean_rel_err=6.627e-02  min_digits=2  params=4,174  (76.1s)
+[37/81] width=32 depth=2 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3061e-01  lr=8.01e-05  (0.1s)
+
+  Done in 113.1s | min loss = 3.8216e-04
+
+    -> min_loss=3.822e-04  mean_rel_err=6.817e-02  min_digits=2  params=11,662  (113.1s)
+[38/81] width=32 depth=2 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3061e-01  lr=4.00e-05  (0.1s)
+
+  Done in 112.5s | min loss = 6.2248e-04
+
+    -> min_loss=6.225e-04  mean_rel_err=7.899e-02  min_digits=2  params=11,662  (112.5s)
+[39/81] width=32 depth=2 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.3061e-01  lr=2.00e-05  (0.1s)
+
+  Done in 113.6s | min loss = 9.9610e-04
+
+    -> min_loss=9.961e-04  mean_rel_err=1.097e-01  min_digits=2  params=11,662  (113.6s)
+[40/81] width=32 depth=2 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7739e-01  lr=8.01e-05  (0.1s)
+
+  Done in 121.6s | min loss = 4.2407e-04
+
+    -> min_loss=4.241e-04  mean_rel_err=3.238e-02  min_digits=2  params=15,502  (121.6s)
+[41/81] width=32 depth=2 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7739e-01  lr=4.00e-05  (0.1s)
+
+  Done in 120.7s | min loss = 5.5921e-04
+
+    -> min_loss=5.592e-04  mean_rel_err=3.568e-02  min_digits=2  params=15,502  (120.7s)
+[42/81] width=32 depth=2 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7739e-01  lr=2.00e-05  (0.1s)
+
+  Done in 116.0s | min loss = 8.0267e-04
+
+    -> min_loss=8.027e-04  mean_rel_err=3.188e-02  min_digits=2  params=15,502  (116.0s)
+[43/81] width=32 depth=2 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6743e+00  lr=8.01e-05  (0.1s)
+
+  Done in 138.9s | min loss = 2.3119e-04
+
+    -> min_loss=2.312e-04  mean_rel_err=4.475e-02  min_digits=2  params=20,622  (138.9s)
+[44/81] width=32 depth=2 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6743e+00  lr=4.00e-05  (0.1s)
+
+  Done in 142.3s | min loss = 3.0519e-04
+
+    -> min_loss=3.052e-04  mean_rel_err=4.938e-02  min_digits=2  params=20,622  (142.3s)
+[45/81] width=32 depth=2 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.6743e+00  lr=2.00e-05  (0.1s)
+
+  Done in 145.4s | min loss = 5.1127e-04
+
+    -> min_loss=5.113e-04  mean_rel_err=5.624e-02  min_digits=2  params=20,622  (145.4s)
+[46/81] width=32 depth=3 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.6086e-01  lr=8.01e-05  (0.1s)
+
+  Done in 155.0s | min loss = 2.6563e-04
+
+    -> min_loss=2.656e-04  mean_rel_err=5.266e-02  min_digits=2  params=20,942  (155.0s)
+[47/81] width=32 depth=3 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.6086e-01  lr=4.00e-05  (0.1s)
+
+  Done in 156.5s | min loss = 3.8108e-04
+
+    -> min_loss=3.811e-04  mean_rel_err=6.965e-02  min_digits=2  params=20,942  (156.5s)
+[48/81] width=32 depth=3 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.6086e-01  lr=2.00e-05  (0.1s)
+
+  Done in 154.1s | min loss = 6.3201e-04
+
+    -> min_loss=6.320e-04  mean_rel_err=6.893e-02  min_digits=2  params=20,942  (154.1s)
+[49/81] width=32 depth=3 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0839e-01  lr=8.01e-05  (0.1s)
+
+  Done in 170.1s | min loss = 2.1653e-04
+
+    -> min_loss=2.165e-04  mean_rel_err=4.487e-02  min_digits=2  params=27,854  (170.1s)
+[50/81] width=32 depth=3 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0839e-01  lr=4.00e-05  (0.1s)
+
+  Done in 155.5s | min loss = 2.9324e-04
+
+    -> min_loss=2.932e-04  mean_rel_err=3.277e-02  min_digits=2  params=27,854  (155.5s)
+[51/81] width=32 depth=3 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=9.0839e-01  lr=2.00e-05  (0.1s)
+
+  Done in 153.7s | min loss = 4.4483e-04
+
+    -> min_loss=4.448e-04  mean_rel_err=3.794e-02  min_digits=2  params=27,854  (153.7s)
+[52/81] width=32 depth=3 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.6491e+00  lr=8.01e-05  (0.1s)
+
+  Done in 154.5s | min loss = 1.6219e-04
+
+    -> min_loss=1.622e-04  mean_rel_err=3.834e-02  min_digits=2  params=37,070  (154.5s)
+[53/81] width=32 depth=3 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.6491e+00  lr=4.00e-05  (0.1s)
+
+  Done in 153.9s | min loss = 2.2412e-04
+
+    -> min_loss=2.241e-04  mean_rel_err=4.749e-02  min_digits=2  params=37,070  (153.9s)
+[54/81] width=32 depth=3 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.6491e+00  lr=2.00e-05  (0.1s)
+
+  Done in 150.7s | min loss = 3.6683e-04
+
+    -> min_loss=3.668e-04  mean_rel_err=5.173e-02  min_digits=2  params=37,070  (150.7s)
+[55/81] width=64 depth=1 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0617e-01  lr=8.01e-05  (0.1s)
+
+  Done in 72.2s | min loss = 1.7056e-03
+
+    -> min_loss=1.706e-03  mean_rel_err=1.274e-01  min_digits=1  params=4,750  (72.2s)
+[56/81] width=64 depth=1 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0617e-01  lr=4.00e-05  (0.1s)
+
+  Done in 72.1s | min loss = 2.2832e-03
+
+    -> min_loss=2.283e-03  mean_rel_err=1.002e-01  min_digits=1  params=4,750  (72.1s)
+[57/81] width=64 depth=1 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.0617e-01  lr=2.00e-05  (0.1s)
+
+  Done in 70.6s | min loss = 3.3525e-03
+
+    -> min_loss=3.353e-03  mean_rel_err=9.005e-02  min_digits=2  params=4,750  (70.6s)
+[58/81] width=64 depth=1 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.1565e-01  lr=8.01e-05  (0.1s)
+
+  Done in 71.2s | min loss = 1.6891e-03
+
+    -> min_loss=1.689e-03  mean_rel_err=1.053e-01  min_digits=2  params=6,286  (71.2s)
+[59/81] width=64 depth=1 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.1565e-01  lr=4.00e-05  (0.1s)
+
+  Done in 71.1s | min loss = 2.3739e-03
+
+    -> min_loss=2.374e-03  mean_rel_err=1.128e-01  min_digits=2  params=6,286  (71.1s)
+[60/81] width=64 depth=1 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.1565e-01  lr=2.00e-05  (0.0s)
+
+  Done in 71.2s | min loss = 3.7484e-03
+
+    -> min_loss=3.748e-03  mean_rel_err=1.338e-01  min_digits=2  params=6,286  (71.2s)
+[61/81] width=64 depth=1 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.1727e-01  lr=8.01e-05  (0.0s)
+
+  Done in 72.5s | min loss = 1.6431e-03
+
+    -> min_loss=1.643e-03  mean_rel_err=7.878e-02  min_digits=2  params=8,334  (72.5s)
+[62/81] width=64 depth=1 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.1727e-01  lr=4.00e-05  (0.1s)
+
+  Done in 71.4s | min loss = 2.2243e-03
+
+    -> min_loss=2.224e-03  mean_rel_err=4.938e-02  min_digits=2  params=8,334  (71.4s)
+[63/81] width=64 depth=1 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=6.1727e-01  lr=2.00e-05  (0.0s)
+
+  Done in 71.4s | min loss = 2.9949e-03
+
+    -> min_loss=2.995e-03  mean_rel_err=5.190e-02  min_digits=2  params=8,334  (71.4s)
+[64/81] width=64 depth=2 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.5393e-01  lr=8.01e-05  (0.1s)
+
+  Done in 110.5s | min loss = 1.7994e-04
+
+    -> min_loss=1.799e-04  mean_rel_err=6.709e-02  min_digits=2  params=41,742  (110.5s)
+[65/81] width=64 depth=2 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.5393e-01  lr=4.00e-05  (0.1s)
+
+  Done in 110.0s | min loss = 2.9464e-04
+
+    -> min_loss=2.946e-04  mean_rel_err=6.385e-02  min_digits=2  params=41,742  (110.0s)
+[66/81] width=64 depth=2 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.5393e-01  lr=2.00e-05  (0.1s)
+
+  Done in 108.7s | min loss = 4.8208e-04
+
+    -> min_loss=4.821e-04  mean_rel_err=5.701e-02  min_digits=2  params=41,742  (108.7s)
+[67/81] width=64 depth=2 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.8698e-01  lr=8.01e-05  (0.1s)
+
+  Done in 109.2s | min loss = 1.5355e-04
+
+    -> min_loss=1.535e-04  mean_rel_err=3.711e-02  min_digits=2  params=55,566  (109.2s)
+[68/81] width=64 depth=2 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.8698e-01  lr=4.00e-05  (0.1s)
+
+  Done in 109.5s | min loss = 2.2187e-04
+
+    -> min_loss=2.219e-04  mean_rel_err=3.285e-02  min_digits=3  params=55,566  (109.5s)
+[69/81] width=64 depth=2 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.8698e-01  lr=2.00e-05  (0.1s)
+
+  Done in 112.2s | min loss = 3.6846e-04
+
+    -> min_loss=3.685e-04  mean_rel_err=3.197e-02  min_digits=2  params=55,566  (112.2s)
+[70/81] width=64 depth=2 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.4091e+00  lr=8.01e-05  (0.1s)
+
+  Done in 120.1s | min loss = 1.2179e-04
+
+    -> min_loss=1.218e-04  mean_rel_err=3.888e-02  min_digits=2  params=73,998  (120.1s)
+[71/81] width=64 depth=2 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.4091e+00  lr=4.00e-05  (0.1s)
+
+  Done in 118.7s | min loss = 1.7834e-04
+
+    -> min_loss=1.783e-04  mean_rel_err=3.869e-02  min_digits=2  params=73,998  (118.7s)
+[72/81] width=64 depth=2 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=1.4091e+00  lr=2.00e-05  (0.1s)
+
+  Done in 118.9s | min loss = 2.8476e-04
+
+    -> min_loss=2.848e-04  mean_rel_err=4.931e-02  min_digits=2  params=73,998  (118.9s)
+[73/81] width=64 depth=3 G=5 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0925e-01  lr=8.01e-05  (0.1s)
+
+  Done in 153.6s | min loss = 1.1413e-04
+
+    -> min_loss=1.141e-04  mean_rel_err=4.664e-02  min_digits=2  params=78,734  (153.6s)
+[74/81] width=64 depth=3 G=5 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0925e-01  lr=4.00e-05  (0.1s)
+
+  Done in 152.1s | min loss = 1.4241e-04
+
+    -> min_loss=1.424e-04  mean_rel_err=4.583e-02  min_digits=2  params=78,734  (152.1s)
+[75/81] width=64 depth=3 G=5 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=2.0925e-01  lr=2.00e-05  (0.1s)
+
+  Done in 150.5s | min loss = 2.0805e-04
+
+    -> min_loss=2.080e-04  mean_rel_err=7.417e-02  min_digits=2  params=78,734  (150.5s)
+[76/81] width=64 depth=3 G=8 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1431e-01  lr=8.01e-05  (0.1s)
+
+  Done in 154.2s | min loss = 1.1631e-04
+
+    -> min_loss=1.163e-04  mean_rel_err=5.524e-02  min_digits=2  params=104,846  (154.2s)
+[77/81] width=64 depth=3 G=8 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1431e-01  lr=4.00e-05  (0.1s)
+
+  Done in 152.2s | min loss = 1.3664e-04
+
+    -> min_loss=1.366e-04  mean_rel_err=5.019e-02  min_digits=2  params=104,846  (152.2s)
+[78/81] width=64 depth=3 G=8 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=5.1431e-01  lr=2.00e-05  (0.1s)
+
+  Done in 151.3s | min loss = 2.0159e-04
+
+    -> min_loss=2.016e-04  mean_rel_err=4.984e-02  min_digits=2  params=104,846  (151.3s)
+[79/81] width=64 depth=3 G=12 k=3 lr=0.002 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.002, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7783e+00  lr=8.01e-05  (0.2s)
+
+  Done in 164.9s | min loss = 1.0733e-04
+
+    -> min_loss=1.073e-04  mean_rel_err=3.842e-02  min_digits=2  params=139,662  (164.9s)
+[80/81] width=64 depth=3 G=12 k=3 lr=0.001 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.001, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7783e+00  lr=4.00e-05  (0.1s)
+
+  Done in 165.8s | min loss = 1.3117e-04
+
+    -> min_loss=1.312e-04  mean_rel_err=4.284e-02  min_digits=2  params=139,662  (165.8s)
+[81/81] width=64 depth=3 G=12 k=3 lr=0.0005 ...
+
+====================================================================
+  Training: 1500 epochs | 8 sets
+  Per epoch: 4096 pts | device: cuda
+  Optimizer: Adam + OneCycleLR  (max_lr=0.0005, warm-up 15%)
+  Loss: HuberLoss (delta=0.5)
+  Network: KAN  (B-spline edges, cubic k=3)
+====================================================================
+  Epoch     1/1500  loss=3.7783e+00  lr=2.00e-05  (0.1s)
+
+  Done in 168.2s | min loss = 1.7849e-04
+
+    -> min_loss=1.785e-04  mean_rel_err=3.799e-02  min_digits=2  params=139,662  (168.2s)
+
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+  RANKED RESULTS (best first)
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+    #  width  depth    G   k        lr    params    min_loss  mean_relerr  min_dig  time(s)
+--------------------------------------------------------------------------------------------------------------------------
+    1     64      2    8   3   1.0e-03    55,566   2.219e-04    3.285e-02        3    109.5
+    2     32      2    8   3   5.0e-04    15,502   8.027e-04    3.188e-02        2    116.0
+    3     64      2    8   3   5.0e-04    55,566   3.685e-04    3.197e-02        2    112.2
+    4     32      2    8   3   2.0e-03    15,502   4.241e-04    3.238e-02        2    121.6
+    5     32      3    8   3   1.0e-03    27,854   2.932e-04    3.277e-02        2    155.5
+    6     32      2    8   3   1.0e-03    15,502   5.592e-04    3.568e-02        2    120.7
+    7     64      2    8   3   2.0e-03    55,566   1.535e-04    3.711e-02        2    109.2
+    8     32      3    8   3   5.0e-04    27,854   4.448e-04    3.794e-02        2    153.7
+    9     64      3   12   3   5.0e-04   139,662   1.785e-04    3.799e-02        2    168.2
+   10     32      3   12   3   2.0e-03    37,070   1.622e-04    3.834e-02        2    154.5
+   11     64      3   12   3   2.0e-03   139,662   1.073e-04    3.842e-02        2    164.9
+   12     64      2   12   3   1.0e-03    73,998   1.783e-04    3.869e-02        2    118.7
+   13     64      2   12   3   2.0e-03    73,998   1.218e-04    3.888e-02        2    120.1
+   14     64      3   12   3   1.0e-03   139,662   1.312e-04    4.284e-02        2    165.8
+   15     32      2   12   3   2.0e-03    20,622   2.312e-04    4.475e-02        2    138.9
+   16     32      3    8   3   2.0e-03    27,854   2.165e-04    4.487e-02        2    170.1
+   17     64      3    5   3   1.0e-03    78,734   1.424e-04    4.583e-02        2    152.1
+   18     64      3    5   3   2.0e-03    78,734   1.141e-04    4.664e-02        2    153.6
+   19     32      3   12   3   1.0e-03    37,070   2.241e-04    4.749e-02        2    153.9
+   20     64      2   12   3   5.0e-04    73,998   2.848e-04    4.931e-02        2    118.9
+   21     32      2   12   3   1.0e-03    20,622   3.052e-04    4.938e-02        2    142.3
+   22     64      1   12   3   1.0e-03     8,334   2.224e-03    4.938e-02        2     71.4
+   23     64      3    8   3   5.0e-04   104,846   2.016e-04    4.984e-02        2    151.3
+   24     64      3    8   3   1.0e-03   104,846   1.366e-04    5.019e-02        2    152.2
+   25     32      3   12   3   5.0e-04    37,070   3.668e-04    5.173e-02        2    150.7
+   26     64      1   12   3   5.0e-04     8,334   2.995e-03    5.190e-02        2     71.4
+   27     32      3    5   3   2.0e-03    20,942   2.656e-04    5.266e-02        2    155.0
+   28     16      2   12   3   2.0e-03     6,222   1.015e-03    5.401e-02        2    109.6
+   29     64      3    8   3   2.0e-03   104,846   1.163e-04    5.524e-02        2    154.2
+   30     32      2   12   3   5.0e-04    20,622   5.113e-04    5.624e-02        2    145.4
+   31     16      3    8   3   1.0e-03     7,790   1.343e-03    5.693e-02        2    149.4
+   32     64      2    5   3   5.0e-04    41,742   4.821e-04    5.701e-02        2    108.7
+   33     16      2    8   3   1.0e-03     4,686   1.950e-03    5.778e-02        2    109.9
+   34     64      2    5   3   1.0e-03    41,742   2.946e-04    6.385e-02        2    110.0
+   35     16      3    5   3   2.0e-03     5,870   1.070e-03    6.420e-02        2    147.7
+   36     16      3   12   3   2.0e-03    10,350   6.855e-04    6.551e-02        2    151.6
+   37     32      1   12   3   2.0e-03     4,174   2.794e-03    6.588e-02        2     81.7
+   38     32      1   12   3   5.0e-04     4,174   4.368e-03    6.627e-02        2     76.1
+   39     16      3    8   3   5.0e-04     7,790   2.202e-03    6.655e-02        2    149.1
+   40     64      2    5   3   2.0e-03    41,742   1.799e-04    6.709e-02        2    110.5
+   41     32      2    5   3   2.0e-03    11,662   3.822e-04    6.817e-02        2    113.1
+   42     32      3    5   3   5.0e-04    20,942   6.320e-04    6.893e-02        2    154.1
+   43     32      3    5   3   1.0e-03    20,942   3.811e-04    6.965e-02        2    156.5
+   44     16      2    8   3   5.0e-04     4,686   3.164e-03    7.405e-02        2    110.0
+   45     64      3    5   3   5.0e-04    78,734   2.080e-04    7.417e-02        2    150.5
+   46     16      2    8   3   2.0e-03     4,686   1.618e-03    7.590e-02        2    111.4
+   47     16      2   12   3   5.0e-04     6,222   2.339e-03    7.595e-02        2    110.8
+   48     16      2   12   3   1.0e-03     6,222   1.404e-03    7.638e-02        2    110.3
+   49     64      1   12   3   2.0e-03     8,334   1.643e-03    7.878e-02        2     72.5
+   50     32      2    5   3   1.0e-03    11,662   6.225e-04    7.899e-02        2    112.5
+   51     16      3    5   3   1.0e-03     5,870   1.282e-03    7.930e-02        2    150.3
+   52     32      1   12   3   1.0e-03     4,174   3.432e-03    8.207e-02        2     81.8
+   53     16      3   12   3   1.0e-03    10,350   9.771e-04    8.364e-02        2    151.8
+   54     64      1    5   3   5.0e-04     4,750   3.353e-03    9.005e-02        2     70.6
+   55     16      1   12   3   5.0e-04     2,094   8.191e-03    9.904e-02        2     78.1
+   56     32      1    8   3   2.0e-03     3,150   2.909e-03    1.039e-01        2     72.4
+   57     64      1    8   3   2.0e-03     6,286   1.689e-03    1.053e-01        2     71.2
+   58     32      1    5   3   1.0e-03     2,382   3.588e-03    1.069e-01        2     71.0
+   59     32      2    5   3   5.0e-04    11,662   9.961e-04    1.097e-01        2    113.6
+   60     16      1   12   3   2.0e-03     2,094   6.100e-03    1.110e-01        2     84.6
+   61     64      1    8   3   1.0e-03     6,286   2.374e-03    1.128e-01        2     71.1
+   62     16      1    5   3   1.0e-03     1,198   8.703e-03    1.131e-01        2     75.7
+   63     16      2    5   3   2.0e-03     3,534   1.676e-03    1.253e-01        2    114.7
+   64     16      2    5   3   1.0e-03     3,534   2.634e-03    1.298e-01        2    111.6
+   65     64      1    8   3   5.0e-04     6,286   3.748e-03    1.338e-01        2     71.2
+   66     16      1    5   3   5.0e-04     1,198   1.192e-02    1.402e-01        2     75.9
+   67     16      3    5   3   5.0e-04     5,870   2.027e-03    1.408e-01        2    149.3
+   68     16      1    8   3   5.0e-04     1,582   8.292e-03    5.111e-02        1     80.7
+   69     16      1    8   3   2.0e-03     1,582   6.270e-03    7.743e-02        1     77.6
+   70     32      1    5   3   5.0e-04     2,382   4.723e-03    8.213e-02        1     72.4
+   71     32      1    8   3   1.0e-03     3,150   3.420e-03    9.258e-02        1     73.5
+   72     16      1    8   3   1.0e-03     1,582   7.944e-03    9.961e-02        1     80.1
+   73     64      1    5   3   1.0e-03     4,750   2.283e-03    1.002e-01        1     72.1
+   74     16      2    5   3   5.0e-04     3,534   3.774e-03    1.047e-01        1    113.5
+   75     32      1    8   3   5.0e-04     3,150   5.236e-03    1.102e-01        1     74.3
+   76     16      3   12   3   5.0e-04    10,350   1.470e-03    1.120e-01        1    152.9
+   77     16      1    5   3   2.0e-03     1,198   6.152e-03    1.182e-01        1     79.9
+   78     64      1    5   3   2.0e-03     4,750   1.706e-03    1.274e-01        1     72.2
+   79     16      3    8   3   2.0e-03     7,790   9.747e-04    1.326e-01        1    151.1
+   80     16      1   12   3   1.0e-03     2,094   6.225e-03    1.572e-01        1     83.1
+   81     32      1    5   3   2.0e-03     2,382   2.623e-03    1.595e-01        1     71.4
+══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  BEST CONFIG:
+    width = 64   depth = 2   G = 8   k = 3   lr = 0.001
+    -> min 3 correct digits, mean rel. err 3.285e-02
+
+  Full results saved -> sweep_kan_results_2026-09-25_18-25.csv
+
