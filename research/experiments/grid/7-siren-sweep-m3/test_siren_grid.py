@@ -77,7 +77,7 @@ def main():
         })
 
     # Save results
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/7-siren-sweep-m3')
+    results_dir = os.path.join(os.path.dirname(__file__), '../../../results/grid/7-siren-sweep-m3')
     os.makedirs(results_dir, exist_ok=True)
     out_path = os.path.join(results_dir, 'test_siren_grid.out')
     with open(out_path, 'w') as f:

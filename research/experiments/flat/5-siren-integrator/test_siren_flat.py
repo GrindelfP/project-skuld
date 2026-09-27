@@ -62,7 +62,7 @@ def main():
     print(f"    Error: {abs_err:.3e} (rel: {rel_err:.3e})")
 
     # Save results
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/flat/5-siren-integrator')
+    results_dir = os.path.join(os.path.dirname(__file__), '../../../results/flat/5-siren-integrator')
     os.makedirs(results_dir, exist_ok=True)
     out_path = os.path.join(results_dir, 'test_siren_flat.out')
     with open(out_path, 'w') as f:
