@@ -15,7 +15,7 @@ import numpy as np
 import torch
 
 from skuld.siren import SirenIntegrator
-from physics import integrand_transformed, reference_scipy, PARAM_SETS, FLOATING_POINT_PRECISION
+from research.utils.physics import integrand_transformed, reference_scipy, PARAM_SETS, FLOATING_POINT_PRECISION
 
 ##############################################################################
 #  MAIN

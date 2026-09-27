@@ -20,13 +20,12 @@ from datetime import datetime
 
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../flat/5-siren-integrator'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
 
 import torch
 
 from skuld.siren import SirenIntegrator
-from physics import integrand_transformed, reference_scipy, PARAM_SETS
+from research.utils.physics import integrand_transformed, reference_scipy, PARAM_SETS
 
 # ─────────────────────────────────────────────────────────────────────────
 # 1. HYPERPARAMETER GRID  — edit these lists to taste
