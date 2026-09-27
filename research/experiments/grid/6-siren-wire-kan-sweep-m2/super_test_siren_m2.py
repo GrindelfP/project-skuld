@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib')
 import torch
 
 from skuld.siren import SirenIntegrator
-from research.utils.physics import integrand_transformed, reference_scipy, PARAM_SETS
+from physics import integrand_transformed, reference_scipy, PARAM_SETS
 
 # ─────────────────────────────────────────────────────────────────────────
 # 1. HYPERPARAMETER GRID  — edit these lists to taste

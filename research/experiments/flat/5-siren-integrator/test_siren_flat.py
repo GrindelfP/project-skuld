@@ -12,12 +12,11 @@ import sys
 import math
 import time
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
-
 import torch
 
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 from skuld.siren import SirenIntegrator
-from research.utils.physics import integrand_transformed, reference_scipy, PARAM_SETS
+from physics import integrand_transformed, reference_scipy, PARAM_SETS
 
 def main():
     torch.manual_seed(42)
