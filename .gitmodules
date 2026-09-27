@@ -1,3 +1,6 @@
 [submodule ".private"]
 	path = .private
 	url = git@github.com:GrindelfP/project-skuld-private-config.git
+[submodule "skuld-site"]
+	path = skuld-site
+	url = ./skuld-site
