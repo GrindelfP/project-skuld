@@ -1,0 +1,13 @@
+QUICK FLAT TEST: KANIntegrator
+============================================================
+Network: 15,502 parameters
+Epochs: 50
+N per param: 256
+Training time: 8.6s
+Final loss: 1.181813e-02
+Min loss: 6.301617e-03
+
+Result for params (0, 0, 1, 2):
+  NNI:   9.62742897e-01
+  Ref:   1.02433391e+00
+  Error: 6.159e-02 (rel: 6.013e-02)

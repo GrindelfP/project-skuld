@@ -1,0 +1,13 @@
+QUICK FLAT TEST: BrokNetIntegrator
+============================================================
+Network: 17,282 parameters (2 experts)
+Epochs: 50
+N per expert: 256
+Training time: 1.0s
+Final loss: 3.029864e-01
+Min loss: 3.029864e-01
+
+Result for params (0, 0, 1, 2):
+  NNI:   2.65304334e-02
+  Ref:   1.02433391e+00
+  Error: 9.978e-01 (rel: 9.741e-01)

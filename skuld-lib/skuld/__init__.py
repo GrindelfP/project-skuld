@@ -35,6 +35,27 @@ from .siren import (
         mixed_partial_3,
 )
 
+from .wire import (
+        WireLayer,
+        WireResidualBlock,
+        WirePrimitiveNet,
+        WireIntegrator,
+)
+
+from .kan import (
+        BSplineBasis,
+        KANLayer,
+        KANPrimitiveNet,
+        KANIntegrator,
+)
+
+from .broknet import (
+        SindriNet,
+        BrokNet,
+        BrokNetIntegrator,
+        mixed_partial_3_expert,
+)
+
 __all__ = [
         "MLP",
         "NeuralNumericalIntegration",
@@ -48,4 +69,16 @@ __all__ = [
         "SirenPrimitiveNet",
         "SirenIntegrator",
         "mixed_partial_3",
+        "WireLayer",
+        "WireResidualBlock",
+        "WirePrimitiveNet",
+        "WireIntegrator",
+        "BSplineBasis",
+        "KANLayer",
+        "KANPrimitiveNet",
+        "KANIntegrator",
+        "SindriNet",
+        "BrokNet",
+        "BrokNetIntegrator",
+        "mixed_partial_3_expert",
 ]

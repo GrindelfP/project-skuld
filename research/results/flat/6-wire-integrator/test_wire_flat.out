@@ -1,0 +1,13 @@
+QUICK FLAT TEST: WireIntegrator
+============================================================
+Network: 99,329 parameters
+Epochs: 50
+N per param: 256
+Training time: 4.5s
+Final loss: 1.811963e-01
+Min loss: 2.058236e-02
+
+Result for params (0, 0, 1, 2):
+  NNI:   7.92216003e-01
+  Ref:   1.02433391e+00
+  Error: 2.321e-01 (rel: 2.266e-01)
