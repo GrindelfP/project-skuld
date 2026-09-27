@@ -21,7 +21,7 @@ from datetime import datetime
 
 import sys
 import os
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../flat/5-siren'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../flat/5-siren-integrator'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
 
 import torch
@@ -231,7 +231,7 @@ def main():
     print(SEP)
 
     # ── save CSV to mirroring results directory ──────────────────────────
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/6-super-test-m2')
+    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/6-siren-wire-kan-sweep-m2')
     os.makedirs(results_dir, exist_ok=True)
     out_path = args.out or os.path.join(results_dir, f"sweep_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     with open(out_path, "w", newline="", encoding="utf-8") as fh:

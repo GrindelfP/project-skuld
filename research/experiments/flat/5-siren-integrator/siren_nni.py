@@ -103,7 +103,7 @@ def main():
     print(f"\n  Run finished : {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
     # Save log to mirroring results directory
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/flat/5-siren')
+    results_dir = os.path.join(os.path.dirname(__file__), '../../results/flat/5-siren-integrator')
     os.makedirs(results_dir, exist_ok=True)
     log_filename = os.path.join(results_dir, f"results_siren_{timestamp}.out")
     try:
