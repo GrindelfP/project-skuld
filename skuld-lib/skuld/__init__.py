@@ -28,6 +28,13 @@ from .generators import (
         generate_data,
 )
 
+from .siren import (
+        SirenLayer,
+        SirenPrimitiveNet,
+        SirenIntegrator,
+        mixed_partial_3,
+)
+
 __all__ = [
         "MLP",
         "NeuralNumericalIntegration",
@@ -36,5 +43,9 @@ __all__ = [
         "scale_data",
         "descale_result",
         "generate_data",
-        "set_global_device"
+        "set_global_device",
+        "SirenLayer",
+        "SirenPrimitiveNet",
+        "SirenIntegrator",
+        "mixed_partial_3",
 ]

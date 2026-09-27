@@ -1,26 +1,17 @@
 """
-super_test_m2.py — hyperparameter × epoch-budget sweep for siren_nni.py
+super_test_siren_m2.py — hyperparameter × epoch-budget sweep for SirenIntegrator.
 
-Runs SirenPrimitiveNet training over a grid of (hidden_sizes, omega_0, lr,
+Runs SirenIntegrator training over a grid of (hidden_sizes, omega_0, lr,
 n_per_param) combinations CROSSED with a ladder of epoch budgets
 (1500 -> 10000), evaluates each trained net against the scipy reference
 integrals (computed once, since they don't depend on the network or the
 epoch budget), and ranks all runs by accuracy / speed.
 
-This is m2: same hyperparameter grid as super_test_siren.py, but instead of
-a single fixed --epochs value, EVERY config is retrained from scratch at
-each epoch budget in EPOCHS_GRID, so you can see accuracy-vs-training-time
-tradeoffs directly (does config X need 10000 epochs, or does it plateau at
-3000?).
-
 Usage:
     python super_test_siren_m2.py                # full grid × full epoch ladder
     python super_test_siren_m2.py --quick         # smaller grid + shorter ladder
     python super_test_siren_m2.py --epochs 3000 5000 10000   # custom epoch ladder
-
-Place this file in the SAME directory as siren_nni.py.
 """
-
 import argparse
 import csv
 import itertools
@@ -28,10 +19,15 @@ import math
 import time
 from datetime import datetime
 
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../flat/5-siren'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
+
 import torch
 
-import siren_nni as base  # reuse model / training / integral code as-is
-
+from skuld.siren import SirenIntegrator
+from physics import integrand_transformed, reference_scipy, PARAM_SETS
 
 # ─────────────────────────────────────────────────────────────────────────
 # 1. HYPERPARAMETER GRID  — edit these lists to taste
@@ -45,7 +41,7 @@ GRID = {
     ],
     "omega_0": [15.0, 30.0, 45.0],
     "lr": [1e-3, 5e-4, 2e-4],
-    "n_per_param": [512],   # kept fixed by default; add e.g. 1024 to sweep it too
+    "n_per_param": [512],
 }
 
 QUICK_GRID = {
@@ -55,12 +51,8 @@ QUICK_GRID = {
     "n_per_param": [512],
 }
 
-# ─────────────────────────────────────────────────────────────────────────
 # Epoch ladder — every hyperparameter config is retrained from scratch at
-# each of these budgets. Non-uniform step: dense at the low end (where
-# accuracy still moves fast per epoch), coarser near 10000 (diminishing
-# returns region), so we don't waste time densely sampling the plateau.
-# ─────────────────────────────────────────────────────────────────────────
+# each of these budgets.
 EPOCHS_GRID = [1500, 2000, 3000, 4500, 6500, 10000]
 QUICK_EPOCHS_GRID = [1500, 3000, 10000]
 
@@ -81,19 +73,19 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
     omega_0 = cfg["omega_0"]
     output_scale = 1.0 / (omega_0 ** 3)
 
-    net = base.SirenPrimitiveNet(
+    integrator = SirenIntegrator(
         n_params=4,
         n_int_vars=3,
         hidden_sizes=cfg["hidden_sizes"],
         omega_0=omega_0,
         output_scale=output_scale,
     )
-    n_params_total = sum(p.numel() for p in net.parameters())
+    n_params_total = integrator.n_weights
 
     t0 = time.time()
-    history, norm_cache = base.train(
-        net,
-        param_sets=base.PARAM_SETS,
+    history, norm_cache = integrator.train(
+        integrand_fn=integrand_transformed,
+        param_sets=PARAM_SETS,
         n_epochs=n_epochs,
         n_per_param=cfg["n_per_param"],
         lr=cfg["lr"],
@@ -104,9 +96,9 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
 
     # ── accuracy vs. precomputed scipy reference ──────────────────────────
     abs_errs, rel_errs, digits = [], [], []
-    for (a, b, m, n) in base.PARAM_SETS:
-        nni_val = base.compute_integral(net, a, b, m, n,
-                                         norm_cache=norm_cache, device=device)
+    for (a, b, m, n) in PARAM_SETS:
+        nni_val = integrator.integrate((a, b, m, n),
+                                        norm_cache=norm_cache, device=device)
         ref_val, _ = refs[(a, b, m, n)]
         abs_err = abs(nni_val - ref_val)
         rel_err = abs_err / (abs(ref_val) + 1e-30)
@@ -136,12 +128,12 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
 # 3. MAIN SWEEP
 # ─────────────────────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(description="Hyperparameter × epoch-budget sweep for siren_nni.py")
+    parser = argparse.ArgumentParser(description="Hyperparameter × epoch-budget sweep for SirenIntegrator")
     parser.add_argument("--epochs", type=int, nargs="+", default=None,
                          help=f"epoch budgets to sweep, space-separated "
                               f"(default: {EPOCHS_GRID}, or {QUICK_EPOCHS_GRID} with --quick)")
     parser.add_argument("--quick", action="store_true",
-                         help="use a smaller hyperparameter grid AND a shorter epoch ladder, for a fast sanity pass")
+                         help="use a smaller hyperparameter grid AND a shorter epoch ladder")
     parser.add_argument("--verbose-every", type=int, default=0,
                          help="print training progress every N epochs (0 = silent per-epoch)")
     parser.add_argument("--out", type=str, default=None,
@@ -153,14 +145,13 @@ def main():
         "cuda:1" if torch.cuda.is_available() else
         "cpu"
     )
-    torch.set_default_dtype(base.FLOATING_POINT_PRECISION)
 
     grid = QUICK_GRID if args.quick else GRID
     epochs_grid = args.epochs if args.epochs is not None else (
         QUICK_EPOCHS_GRID if args.quick else EPOCHS_GRID
     )
     configs = make_configs(grid)
-    runs = list(itertools.product(configs, epochs_grid))  # (cfg, n_epochs) pairs
+    runs = list(itertools.product(configs, epochs_grid))
 
     print(f"\n{'═' * 72}")
     print(f"  SUPER-TEST m2  —  {len(configs)} configs × {len(epochs_grid)} epoch "
@@ -170,8 +161,8 @@ def main():
     # Reference values depend only on (a,b,m,n) — compute ONCE, reuse everywhere.
     print("Computing scipy reference integrals (shared across all configs)...")
     refs = {}
-    for (a, b, m, n) in base.PARAM_SETS:
-        r, e = base.reference_scipy(a, b, m, n)
+    for (a, b, m, n) in PARAM_SETS:
+        r, e = reference_scipy(a, b, m, n)
         refs[(a, b, m, n)] = (r, e)
     print("Done.\n")
 
@@ -195,8 +186,7 @@ def main():
         return
 
     # ── rank: best = highest min_correct_digits, tiebreak by mean_rel_err,
-    #    tiebreak by fewer epochs (cheaper win beats an equally-accurate
-    #    but more expensive one) ─────────────────────────────────────────
+    #    tiebreak by fewer epochs ─────────────────────────────────────────
     results.sort(key=lambda r: (-r["min_correct_digits"], r["mean_rel_err"], r["n_epochs"]))
 
     SEP = "═" * 128
@@ -209,8 +199,9 @@ def main():
     print("-" * 128)
     for i, r in enumerate(results, 1):
         print(f"  {i:>3} {str(r['hidden_sizes']):<20} {r['omega_0']:>7.1f} {r['lr']:>9.1e} "
-              f"{r['n_per_param']:>8} {r['n_epochs']:>7} {r['n_params_total']:>9,} {r['min_loss']:>11.3e} "
-              f"{r['mean_rel_err']:>12.3e} {r['min_correct_digits']:>8} {r['elapsed_s']:>8.1f}")
+              f"{r['n_per_param']:>8} {r['n_epochs']:>7} {r['n_params_total']:>9,} "
+              f"{r['min_loss']:>11.3e} {r['mean_rel_err']:>12.3e} "
+              f"{r['min_correct_digits']:>8} {r['elapsed_s']:>8.1f}")
     print(SEP)
     best = results[0]
     print(f"\n  BEST CONFIG:")
@@ -222,7 +213,7 @@ def main():
     print(f"    -> min {best['min_correct_digits']} correct digits, "
           f"mean rel. err {best['mean_rel_err']:.3e}\n")
 
-    # ── per-config epoch-scan: does more training actually help? ───────────
+    # ── per-config epoch-scan ────────────────────────────────────────────
     print(f"{SEP}")
     print(f"  ACCURACY vs EPOCHS, per hyperparameter config")
     print(SEP)
@@ -239,8 +230,10 @@ def main():
                   f"mean_relerr={r['mean_rel_err']:.3e}  time={r['elapsed_s']:.1f}s")
     print(SEP)
 
-    # ── save CSV ─────────────────────────────────────────────────────────
-    out_path = args.out or f"sweep_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv"
+    # ── save CSV to mirroring results directory ──────────────────────────
+    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/6-super-test-m2')
+    os.makedirs(results_dir, exist_ok=True)
+    out_path = args.out or os.path.join(results_dir, f"sweep_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     with open(out_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(results[0].keys()))
         writer.writeheader()

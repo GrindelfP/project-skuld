@@ -1,19 +1,16 @@
 """
-super_test.py — hyperparameter sweep for siren_nni.py
+super_test_siren.py — hyperparameter sweep for SirenIntegrator.
 
-Runs SirenPrimitiveNet training over a grid of (hidden_sizes, omega_0, lr,
+Runs SirenIntegrator training over a grid of (hidden_sizes, omega_0, lr,
 n_per_param) combinations, evaluates each trained net against the scipy
 reference integrals (computed once, since they don't depend on the network),
 and ranks configs by accuracy / speed.
 
 Usage:
-    python super_test.py                      # default grid, 1500 epochs/config
-    python super_test.py --epochs 3000
-    python super_test.py --epochs 800 --quick  # smaller grid, fast sanity pass
-
-Place this file in the SAME directory as siren_nni.py.
+    python super_test_siren.py                      # default grid, 1500 epochs/config
+    python super_test_siren.py --epochs 3000
+    python super_test_siren.py --epochs 800 --quick  # smaller grid, fast sanity pass
 """
-
 import argparse
 import csv
 import itertools
@@ -21,10 +18,15 @@ import math
 import time
 from datetime import datetime
 
+import sys
+import os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../flat/5-siren'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
+
 import torch
 
-import siren_nni as base  # reuse model / training / integral code as-is
-
+from skuld.siren import SirenIntegrator
+from physics import integrand_transformed, reference_scipy, PARAM_SETS
 
 # ─────────────────────────────────────────────────────────────────────────
 # 1. HYPERPARAMETER GRID  — edit these lists to taste
@@ -38,7 +40,7 @@ GRID = {
     ],
     "omega_0": [15.0, 30.0, 45.0],
     "lr": [1e-3, 5e-4, 2e-4],
-    "n_per_param": [512],   # kept fixed by default; add e.g. 1024 to sweep it too
+    "n_per_param": [512],
 }
 
 QUICK_GRID = {
@@ -65,19 +67,19 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
     omega_0 = cfg["omega_0"]
     output_scale = 1.0 / (omega_0 ** 3)
 
-    net = base.SirenPrimitiveNet(
+    integrator = SirenIntegrator(
         n_params=4,
         n_int_vars=3,
         hidden_sizes=cfg["hidden_sizes"],
         omega_0=omega_0,
         output_scale=output_scale,
     )
-    n_params_total = sum(p.numel() for p in net.parameters())
+    n_params_total = integrator.n_weights
 
     t0 = time.time()
-    history, norm_cache = base.train(
-        net,
-        param_sets=base.PARAM_SETS,
+    history, norm_cache = integrator.train(
+        integrand_fn=integrand_transformed,
+        param_sets=PARAM_SETS,
         n_epochs=n_epochs,
         n_per_param=cfg["n_per_param"],
         lr=cfg["lr"],
@@ -88,9 +90,9 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
 
     # ── accuracy vs. precomputed scipy reference ──────────────────────────
     abs_errs, rel_errs, digits = [], [], []
-    for (a, b, m, n) in base.PARAM_SETS:
-        nni_val = base.compute_integral(net, a, b, m, n,
-                                         norm_cache=norm_cache, device=device)
+    for (a, b, m, n) in PARAM_SETS:
+        nni_val = integrator.integrate((a, b, m, n),
+                                        norm_cache=norm_cache, device=device)
         ref_val, _ = refs[(a, b, m, n)]
         abs_err = abs(nni_val - ref_val)
         rel_err = abs_err / (abs(ref_val) + 1e-30)
@@ -119,9 +121,9 @@ def run_one(cfg: dict, n_epochs: int, device: torch.device,
 # 3. MAIN SWEEP
 # ─────────────────────────────────────────────────────────────────────────
 def main():
-    parser = argparse.ArgumentParser(description="Hyperparameter sweep for siren_nni.py")
+    parser = argparse.ArgumentParser(description="Hyperparameter sweep for SirenIntegrator")
     parser.add_argument("--epochs", type=int, default=1500,
-                         help="epochs per config (default 1500; full run in siren_nni.py uses 8000)")
+                         help="epochs per config (default 1500; full run uses 8000)")
     parser.add_argument("--quick", action="store_true",
                          help="use a smaller grid for a fast sanity pass")
     parser.add_argument("--verbose-every", type=int, default=0,
@@ -135,7 +137,6 @@ def main():
         "cuda:" if torch.cuda.is_available() else
         "cpu"
     )
-    torch.set_default_dtype(base.FLOATING_POINT_PRECISION)
 
     grid = QUICK_GRID if args.quick else GRID
     configs = make_configs(grid)
@@ -147,8 +148,8 @@ def main():
     # Reference values depend only on (a,b,m,n) — compute ONCE, reuse everywhere.
     print("Computing scipy reference integrals (shared across all configs)...")
     refs = {}
-    for (a, b, m, n) in base.PARAM_SETS:
-        r, e = base.reference_scipy(a, b, m, n)
+    for (a, b, m, n) in PARAM_SETS:
+        r, e = reference_scipy(a, b, m, n)
         refs[(a, b, m, n)] = (r, e)
     print("Done.\n")
 
@@ -195,8 +196,10 @@ def main():
     print(f"    -> min {best['min_correct_digits']} correct digits, "
           f"mean rel. err {best['mean_rel_err']:.3e}\n")
 
-    # ── save CSV ─────────────────────────────────────────────────────────
-    out_path = args.out or f"sweep_results_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv"
+    # ── save CSV to mirroring results directory ──────────────────────────
+    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/5-super-test-m1')
+    os.makedirs(results_dir, exist_ok=True)
+    out_path = args.out or os.path.join(results_dir, f"sweep_results_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     with open(out_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(results[0].keys()))
         writer.writeheader()
