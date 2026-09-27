@@ -9,10 +9,14 @@ Usage:
 """
 import math
 import os
+import sys
 from datetime import datetime
 
 import numpy as np
 import torch
+
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
 
 from skuld.siren import SirenIntegrator
 from physics import integrand_transformed, reference_scipy, PARAM_SETS, FLOATING_POINT_PRECISION
@@ -103,7 +107,7 @@ def main():
     print(f"\n  Run finished : {datetime.now().strftime('%Y-%m-%d %H:%M')}")
 
     # Save log to mirroring results directory
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/flat/5-siren-integrator')
+    results_dir = os.path.join(os.path.dirname(__file__), '../../../results/flat/5-siren-integrator')
     os.makedirs(results_dir, exist_ok=True)
     log_filename = os.path.join(results_dir, f"results_siren_{timestamp}.out")
     try:
