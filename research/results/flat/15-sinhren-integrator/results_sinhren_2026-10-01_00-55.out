@@ -1,0 +1,20 @@
+Run: 2026-10-01 00:55:41.534000
+Device: mps
+Architecture: SINHREN [128, 128, 128] (no omega_0)
+Parameters: 34,178
+Output scale: 1.000e+00 (learnable)
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 9.2565e-02
+Min loss: 8.7389e-02
+
+Results:
+  (0,0,1,2):  NNI=9.793165e-01  ref=1.024334e+00  abs_err=4.502e-02  rel_err=4.395e-02  digits=2
+  (0,1,1,2):  NNI=3.628998e-01  ref=3.758095e-01  abs_err=1.291e-02  rel_err=3.435e-02  digits=2
+  (1,0,1,2):  NNI=3.731565e-01  ref=3.758095e-01  abs_err=2.653e-03  rel_err=7.060e-03  digits=3
+  (1,1,1,2):  NNI=1.136658e-01  ref=1.142569e-01  abs_err=5.911e-04  rel_err=5.173e-03  digits=4
+  (0,0,2,3):  NNI=8.055805e-01  ref=8.247579e-01  abs_err=1.918e-02  rel_err=2.325e-02  digits=2
+  (0,1,2,3):  NNI=2.873134e-01  ref=3.074143e-01  abs_err=2.010e-02  rel_err=6.539e-02  digits=2
+  (1,0,2,3):  NNI=2.981536e-01  ref=3.074143e-01  abs_err=9.261e-03  rel_err=3.012e-02  digits=3
+  (1,1,2,3):  NNI=9.250608e-02  ref=9.614571e-02  abs_err=3.640e-03  rel_err=3.786e-02  digits=3
