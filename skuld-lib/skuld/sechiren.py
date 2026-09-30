@@ -42,7 +42,7 @@ class SechirenLayer(nn.Module):
             self.linear.bias.uniform_(-bound, bound)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return torch.sech(self.omega_0 * self.linear(x))
+        return 1.0 / torch.cosh(self.omega_0 * self.linear(x))
 
 
 class SechirenPrimitiveNet(nn.Module):
