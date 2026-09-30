@@ -53,6 +53,12 @@ from .sechiren import (
         SechirenIntegrator,
 )
 
+from .gudermannian import (
+        GudermannianLayer,
+        GudermannianPrimitiveNet,
+        GudermannianIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -96,6 +102,9 @@ __all__ = [
         "SechirenLayer",
         "SechirenPrimitiveNet",
         "SechirenIntegrator",
+        "GudermannianLayer",
+        "GudermannianPrimitiveNet",
+        "GudermannianIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",
