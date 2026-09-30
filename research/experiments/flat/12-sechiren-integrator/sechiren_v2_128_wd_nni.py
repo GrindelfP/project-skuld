@@ -1,13 +1,11 @@
 """
-sechiren_v2_128_nni.py — SECHIREN v2 with [128, 128, 128] hidden layers.
+sechiren_v2_128_wd_nni.py — SECHIREN v2 [128,128,128] with weight decay.
 
-Improvements over v1:
-  - Learnable omega_0 per layer (init 30)
-  - Learnable output scale
-  - 16000 epochs (double v1)
+Same as sechiren_v2_128_nni.py but adds L2 regularization (weight decay)
+to combat overfitting observed in the 16000-epoch run.
 
 Usage:
-    python sechiren_v2_128_nni.py
+    python sechiren_v2_128_wd_nni.py
 """
 import math
 import os
@@ -45,6 +43,7 @@ def main():
     N_PER_PARAM = 1024
     LR = 5e-4
     OUTPUT_SCALE = 1.0 / (OMEGA_0 ** 3)
+    WEIGHT_DECAY = 1e-4
 
     run_start = datetime.now()
     timestamp = run_start.strftime("%Y-%m-%d_%H-%M")
@@ -59,12 +58,13 @@ def main():
         omega_0=OMEGA_0,
         output_scale=OUTPUT_SCALE,
     )
-    print(f"\n  Architecture : SECHIREN v2  {HIDDEN}  omega_0={OMEGA_0} (learnable)")
+    print(f"\n  Architecture : SECHIREN v2 WD  {HIDDEN}  omega_0={OMEGA_0} (learnable)")
     print(f"  Parameters   : {integrator.n_weights:,}")
     print(f"  Output scale : {OUTPUT_SCALE:.3e} (learnable)")
     print(f"  Epochs       : {N_EPOCHS}")
+    print(f"  Weight decay : {WEIGHT_DECAY}")
 
-    # Train
+    # Train with weight decay
     history, norm_cache = integrator.train(
         integrand_fn=integrand_transformed,
         param_sets=PARAM_SETS,
@@ -73,6 +73,7 @@ def main():
         lr=LR,
         device=device,
         verbose_every=1000,
+        weight_decay=WEIGHT_DECAY,
     )
 
     # Reference values
@@ -112,17 +113,18 @@ def main():
     # Save log to mirroring results directory
     results_dir = os.path.join(os.path.dirname(__file__), '../../../results/flat/12-sechiren-integrator')
     os.makedirs(results_dir, exist_ok=True)
-    log_filename = os.path.join(results_dir, f"results_sechiren_v2_128_{timestamp}.out")
+    log_filename = os.path.join(results_dir, f"results_sechiren_v2_128_wd_{timestamp}.out")
     try:
         with open(log_filename, "w", encoding="utf-8") as fh:
             fh.write(f"Run: {run_start}\n")
             fh.write(f"Device: {device}\n")
-            fh.write(f"Architecture: SECHIREN v2 {HIDDEN} omega_0={OMEGA_0} (learnable)\n")
+            fh.write(f"Architecture: SECHIREN v2 WD {HIDDEN} omega_0={OMEGA_0} (learnable)\n")
             fh.write(f"Parameters: {integrator.n_weights:,}\n")
             fh.write(f"Output scale: {OUTPUT_SCALE:.3e} (learnable)\n")
             fh.write(f"Epochs: {N_EPOCHS}\n")
             fh.write(f"N per param: {N_PER_PARAM}\n")
             fh.write(f"LR: {LR}\n")
+            fh.write(f"Weight decay: {WEIGHT_DECAY}\n")
             fh.write(f"Final loss: {history[-1]:.4e}\n")
             fh.write(f"Min loss: {min(history):.4e}\n")
             fh.write("\nResults:\n")

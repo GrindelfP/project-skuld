@@ -207,12 +207,13 @@ class SechirenIntegrator:
               n_per_param: int = 512,
               lr: float = 1e-3,
               device: torch.device = None,
-              verbose_every: int = 500) -> tuple:
+              verbose_every: int = 500,
+              weight_decay: float = 0.0) -> tuple:
         """Train the SECHIREN to approximate the antiderivative."""
         if device is None:
             device = torch.device("cpu")
 
-        optimizer = torch.optim.Adam(self.net.parameters(), lr=lr)
+        optimizer = torch.optim.Adam(self.net.parameters(), lr=lr, weight_decay=weight_decay)
         scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
             optimizer, T_max=n_epochs, eta_min=lr / 10
         )
