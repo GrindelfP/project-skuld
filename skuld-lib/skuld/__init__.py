@@ -65,6 +65,12 @@ from .gaussian import (
         GaussianIntegrator,
 )
 
+from .sinhren import (
+        SinhrenLayer,
+        SinhrenPrimitiveNet,
+        SinhrenIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -114,6 +120,9 @@ __all__ = [
         "GaussianLayer",
         "GaussianPrimitiveNet",
         "GaussianIntegrator",
+        "SinhrenLayer",
+        "SinhrenPrimitiveNet",
+        "SinhrenIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",
