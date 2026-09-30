@@ -41,6 +41,12 @@ from .cosiren import (
         CosirenIntegrator,
 )
 
+from .cosiren_ps import (
+        CosirenPSLayer,
+        CosirenPSPrimitiveNet,
+        CosirenPSIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -78,6 +84,9 @@ __all__ = [
         "CosirenLayer",
         "CosirenPrimitiveNet",
         "CosirenIntegrator",
+        "CosirenPSLayer",
+        "CosirenPSPrimitiveNet",
+        "CosirenPSIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",
