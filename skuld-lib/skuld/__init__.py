@@ -35,6 +35,12 @@ from .siren import (
         mixed_partial_3,
 )
 
+from .cosiren import (
+        CosirenLayer,
+        CosirenPrimitiveNet,
+        CosirenIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -69,6 +75,9 @@ __all__ = [
         "SirenPrimitiveNet",
         "SirenIntegrator",
         "mixed_partial_3",
+        "CosirenLayer",
+        "CosirenPrimitiveNet",
+        "CosirenIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",
