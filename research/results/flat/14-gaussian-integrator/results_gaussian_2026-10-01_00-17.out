@@ -1,0 +1,20 @@
+Run: 2026-10-01 00:17:38.862146
+Device: mps
+Architecture: GAUSSIAN [128, 128, 128] omega_0=30.0
+Parameters: 34,178
+Output scale: 3.704e-05 (learnable)
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 2.1072e-05
+Min loss: 1.4309e-05
+
+Results:
+  (0,0,1,2):  NNI=1.023288e+00  ref=1.024334e+00  abs_err=1.046e-03  rel_err=1.021e-03  digits=3
+  (0,1,1,2):  NNI=3.755571e-01  ref=3.758095e-01  abs_err=2.525e-04  rel_err=6.718e-04  digits=4
+  (1,0,1,2):  NNI=3.756449e-01  ref=3.758095e-01  abs_err=1.647e-04  rel_err=4.381e-04  digits=4
+  (1,1,1,2):  NNI=1.143339e-01  ref=1.142569e-01  abs_err=7.693e-05  rel_err=6.733e-04  digits=5
+  (0,0,2,3):  NNI=8.239995e-01  ref=8.247579e-01  abs_err=7.583e-04  rel_err=9.194e-04  digits=4
+  (0,1,2,3):  NNI=3.067961e-01  ref=3.074143e-01  abs_err=6.181e-04  rel_err=2.011e-03  digits=4
+  (1,0,2,3):  NNI=3.072922e-01  ref=3.074143e-01  abs_err=1.221e-04  rel_err=3.972e-04  digits=4
+  (1,1,2,3):  NNI=9.612377e-02  ref=9.614571e-02  abs_err=2.194e-05  rel_err=2.282e-04  digits=5

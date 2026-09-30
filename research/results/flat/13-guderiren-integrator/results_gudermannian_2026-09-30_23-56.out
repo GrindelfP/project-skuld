@@ -1,0 +1,20 @@
+Run: 2026-09-30 23:56:13.798164
+Device: mps
+Architecture: GUDERMANIAN [128, 128, 128] omega_0=30.0
+Parameters: 34,178
+Output scale: 3.704e-05 (learnable)
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 3.3394e-01
+Min loss: 3.0800e-01
+
+Results:
+  (0,0,1,2):  NNI=4.003190e-09  ref=1.024334e+00  abs_err=1.024e+00  rel_err=1.000e+00  digits=0
+  (0,1,1,2):  NNI=2.001595e-10  ref=3.758095e-01  abs_err=3.758e-01  rel_err=1.000e+00  digits=1
+  (1,0,1,2):  NNI=0.000000e+00  ref=3.758095e-01  abs_err=3.758e-01  rel_err=1.000e+00  digits=1
+  (1,1,1,2):  NNI=-2.001595e-10  ref=1.142569e-01  abs_err=1.143e-01  rel_err=1.000e+00  digits=1
+  (0,0,2,3):  NNI=-7.116783e-10  ref=8.247579e-01  abs_err=8.248e-01  rel_err=1.000e+00  digits=1
+  (0,1,2,3):  NNI=5.337587e-10  ref=3.074143e-01  abs_err=3.074e-01  rel_err=1.000e+00  digits=1
+  (1,0,2,3):  NNI=7.116783e-10  ref=3.074143e-01  abs_err=3.074e-01  rel_err=1.000e+00  digits=1
+  (1,1,2,3):  NNI=1.779196e-10  ref=9.614571e-02  abs_err=9.615e-02  rel_err=1.000e+00  digits=2
