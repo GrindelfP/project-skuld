@@ -59,6 +59,12 @@ from .gudermannian import (
         GudermannianIntegrator,
 )
 
+from .gaussian import (
+        GaussianLayer,
+        GaussianPrimitiveNet,
+        GaussianIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -105,6 +111,9 @@ __all__ = [
         "GudermannianLayer",
         "GudermannianPrimitiveNet",
         "GudermannianIntegrator",
+        "GaussianLayer",
+        "GaussianPrimitiveNet",
+        "GaussianIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",
