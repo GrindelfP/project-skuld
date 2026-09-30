@@ -1,0 +1,20 @@
+Run: 2026-09-30 21:50:37.629866
+Device: mps
+Architecture: COSIREN [128, 128, 128] omega_0=30.0
+Parameters: 34,177
+Output scale: 3.704e-05
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 1.5272e-05
+Min loss: 5.6205e-06
+
+Results:
+  (0,0,1,2):  NNI=1.022385e+00  ref=1.024334e+00  abs_err=1.949e-03  rel_err=1.903e-03  digits=3
+  (0,1,1,2):  NNI=3.748727e-01  ref=3.758095e-01  abs_err=9.368e-04  rel_err=2.493e-03  digits=4
+  (1,0,1,2):  NNI=3.750676e-01  ref=3.758095e-01  abs_err=7.420e-04  rel_err=1.974e-03  digits=4
+  (1,1,1,2):  NNI=1.140984e-01  ref=1.142569e-01  abs_err=1.586e-04  rel_err=1.388e-03  digits=4
+  (0,0,2,3):  NNI=8.226100e-01  ref=8.247579e-01  abs_err=2.148e-03  rel_err=2.604e-03  digits=3
+  (0,1,2,3):  NNI=3.066989e-01  ref=3.074143e-01  abs_err=7.154e-04  rel_err=2.327e-03  digits=4
+  (1,0,2,3):  NNI=3.067557e-01  ref=3.074143e-01  abs_err=6.586e-04  rel_err=2.142e-03  digits=4
+  (1,1,2,3):  NNI=9.603301e-02  ref=9.614571e-02  abs_err=1.127e-04  rel_err=1.172e-03  digits=4
