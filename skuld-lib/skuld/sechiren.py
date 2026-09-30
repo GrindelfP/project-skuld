@@ -6,6 +6,8 @@
 #
 #  sech(x) = 1/cosh(x) — a localized bump function, not periodic.
 #  This makes SECHIREN more like an RBF network than a SIREN.
+#
+#  v2: learnable omega_0 per layer + learnable output scale.
 ##############################################################################
 import itertools
 import math
@@ -22,22 +24,22 @@ import torch.nn as nn
 ##############################################################################
 
 class SechirenLayer(nn.Module):
-    """Single SECHIREN linear + sech layer."""
+    """Single SECHIREN linear + sech layer with learnable omega_0."""
 
     def __init__(self, in_features: int, out_features: int,
                  omega_0: float = 30.0, is_first: bool = False):
         super().__init__()
-        self.omega_0 = omega_0
+        self.omega_0 = nn.Parameter(torch.tensor(float(omega_0)))
         self.is_first = is_first
         self.linear = nn.Linear(in_features, out_features)
-        self._init_weights(in_features)
+        self._init_weights(in_features, omega_0)
 
-    def _init_weights(self, fan_in: int):
+    def _init_weights(self, fan_in: int, omega_0: float):
         with torch.no_grad():
             if self.is_first:
                 bound = 1.0 / fan_in
             else:
-                bound = math.sqrt(6.0 / fan_in) / self.omega_0
+                bound = math.sqrt(6.0 / fan_in) / omega_0
             self.linear.weight.uniform_(-bound, bound)
             self.linear.bias.uniform_(-bound, bound)
 
@@ -50,6 +52,7 @@ class SechirenPrimitiveNet(nn.Module):
     SECHIREN-based primitive network N(s, u) ≈ F(s; u).
 
     Architecture: SECHIREN hidden layers + linear output (no final sech).
+    Learnable output scale on the final layer.
     """
 
     def __init__(self,
@@ -74,20 +77,19 @@ class SechirenPrimitiveNet(nn.Module):
                                         is_first=(i == 0)))
             in_dim = h
 
-        # Final linear layer — no sech activation
+        # Final linear layer — no sech activation, learnable output scale
         final = nn.Linear(in_dim, 1)
         with torch.no_grad():
             bound = math.sqrt(6.0 / in_dim) / omega_0
             final.weight.uniform_(-bound, bound)
             final.bias.uniform_(-bound, bound)
-            final.weight.data *= output_scale
-            final.bias.data *= output_scale
+        self.output_scale = nn.Parameter(torch.tensor(float(output_scale)))
         layers.append(final)
 
         self.net = nn.Sequential(*layers)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        return self.net(x)
+        return self.net(x) * self.output_scale
 
 
 ##############################################################################
