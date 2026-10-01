@@ -1,0 +1,20 @@
+Run: 2026-10-01 20:01:37.662678
+Device: cuda
+Architecture: SECHIREN v2 [256, 256, 256] omega_0=30.0 (learnable)
+Parameters: 133,893
+Output scale: 3.704e-05 (learnable)
+Epochs: 16000
+N per param: 1024
+LR: 0.0005
+Final loss: 1.1904e-05
+Min loss: 2.3821e-06
+
+Results:
+  (0,0,1,2):  NNI=1.026250e+00  ref=1.024334e+00  abs_err=1.916e-03  rel_err=1.870e-03  digits=3
+  (0,1,1,2):  NNI=3.770975e-01  ref=3.758095e-01  abs_err=1.288e-03  rel_err=3.427e-03  digits=3
+  (1,0,1,2):  NNI=3.771718e-01  ref=3.758095e-01  abs_err=1.362e-03  rel_err=3.625e-03  digits=3
+  (1,1,1,2):  NNI=1.149329e-01  ref=1.142569e-01  abs_err=6.760e-04  rel_err=5.916e-03  digits=4
+  (0,0,2,3):  NNI=8.256722e-01  ref=8.247579e-01  abs_err=9.143e-04  rel_err=1.109e-03  digits=4
+  (0,1,2,3):  NNI=3.082988e-01  ref=3.074143e-01  abs_err=8.845e-04  rel_err=2.877e-03  digits=4
+  (1,0,2,3):  NNI=3.082823e-01  ref=3.074143e-01  abs_err=8.680e-04  rel_err=2.824e-03  digits=4
+  (1,1,2,3):  NNI=9.657215e-02  ref=9.614571e-02  abs_err=4.264e-04  rel_err=4.435e-03  digits=4

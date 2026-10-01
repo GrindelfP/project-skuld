@@ -1,0 +1,21 @@
+Run: 2026-09-30 23:44:31.965202
+Device: mps
+Architecture: SECHIREN v2 WD [128, 128, 128] omega_0=30.0 (learnable)
+Parameters: 34,181
+Output scale: 3.704e-05 (learnable)
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Weight decay: 0.0001
+Final loss: 3.4865e-05
+Min loss: 2.2576e-05
+
+Results:
+  (0,0,1,2):  NNI=1.023724e+00  ref=1.024334e+00  abs_err=6.098e-04  rel_err=5.954e-04  digits=4
+  (0,1,1,2):  NNI=3.755308e-01  ref=3.758095e-01  abs_err=2.787e-04  rel_err=7.416e-04  digits=4
+  (1,0,1,2):  NNI=3.758544e-01  ref=3.758095e-01  abs_err=4.487e-05  rel_err=1.194e-04  digits=5
+  (1,1,1,2):  NNI=1.141876e-01  ref=1.142569e-01  abs_err=6.935e-05  rel_err=6.070e-04  digits=5
+  (0,0,2,3):  NNI=8.248437e-01  ref=8.247579e-01  abs_err=8.584e-05  rel_err=1.041e-04  digits=5
+  (0,1,2,3):  NNI=3.073058e-01  ref=3.074143e-01  abs_err=1.085e-04  rel_err=3.528e-04  digits=4
+  (1,0,2,3):  NNI=3.071962e-01  ref=3.074143e-01  abs_err=2.181e-04  rel_err=7.093e-04  digits=4
+  (1,1,2,3):  NNI=9.593715e-02  ref=9.614571e-02  abs_err=2.086e-04  rel_err=2.169e-03  digits=4

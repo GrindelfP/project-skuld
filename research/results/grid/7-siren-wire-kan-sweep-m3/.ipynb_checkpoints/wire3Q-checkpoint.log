@@ -1,0 +1,12 @@
+SKULD is using device: cuda
+
+════════════════════════════════════════════════════════════════════════
+  BETHE–SALPETER WIRE m3  —  16 configs × 3 epoch budgets [3000, 7000, 10000] = 48 runs, device=cuda:1
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+  Results CSV (online): /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/grid/7-siren-wire-kan-sweep-m3/../../results/grid/7-siren-wire-kan-sweep-m3/sweep_results_m3_2026-09-29_22-21.csv
+
+[1/48] omega0=12.0 sigma0=3.0 width=64 blocks=3 lr=0.0004 epochs=3000 ...
