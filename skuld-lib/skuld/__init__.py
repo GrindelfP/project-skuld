@@ -71,6 +71,12 @@ from .sinhren import (
         SinhrenIntegrator,
 )
 
+from .mixiren import (
+        MixirenLayer,
+        MixirenPrimitiveNet,
+        MixirenIntegrator,
+)
+
 from .wire import (
         WireLayer,
         WireResidualBlock,
@@ -123,6 +129,9 @@ __all__ = [
         "SinhrenLayer",
         "SinhrenPrimitiveNet",
         "SinhrenIntegrator",
+        "MixirenLayer",
+        "MixirenPrimitiveNet",
+        "MixirenIntegrator",
         "WireLayer",
         "WireResidualBlock",
         "WirePrimitiveNet",

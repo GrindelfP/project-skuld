@@ -1,0 +1,23 @@
+Run: 2026-10-01 20:26:34.858504
+Seed: 42
+Device: mps
+Architecture: MIXIREN [sech,sin,sech] [128, 128, 128]
+omega_0 sech: 30.0 (learnable)
+omega_0 sin: 1.0 (fixed)
+Parameters: 34,180
+Output scale: 1.111e-03
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 4.8785e-05
+Min loss: 3.5853e-05
+
+Results:
+  (0,0,1,2):  NNI=1.024070e+00  ref=1.024334e+00  abs_err=2.641e-04  rel_err=2.578e-04  digits=4
+  (0,1,1,2):  NNI=3.759879e-01  ref=3.758095e-01  abs_err=1.783e-04  rel_err=4.746e-04  digits=4
+  (1,0,1,2):  NNI=3.767561e-01  ref=3.758095e-01  abs_err=9.465e-04  rel_err=2.519e-03  digits=4
+  (1,1,1,2):  NNI=1.142800e-01  ref=1.142569e-01  abs_err=2.303e-05  rel_err=2.016e-04  digits=5
+  (0,0,2,3):  NNI=8.238550e-01  ref=8.247579e-01  abs_err=9.028e-04  rel_err=1.095e-03  digits=4
+  (0,1,2,3):  NNI=3.074733e-01  ref=3.074143e-01  abs_err=5.905e-05  rel_err=1.921e-04  digits=5
+  (1,0,2,3):  NNI=3.074845e-01  ref=3.074143e-01  abs_err=7.026e-05  rel_err=2.286e-04  digits=5
+  (1,1,2,3):  NNI=9.610236e-02  ref=9.614571e-02  abs_err=4.335e-05  rel_err=4.509e-04  digits=5
