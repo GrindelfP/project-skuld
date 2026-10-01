@@ -1,0 +1,21 @@
+Run: 2026-10-01 22:21:20.771958
+Seed: 42
+Device: mps
+Architecture: SECHIREN [128, 128, 128] omega_0=30.0
+Parameters: 34,181
+Output scale: 3.704e-05
+Epochs: 4000
+N per param: 1024
+LR: 0.0005
+Final loss: 4.5256e-05
+Min loss: 3.9535e-05
+
+Results:
+  (0,0,1,2):  NNI=1.024126e+00  ref=1.024334e+00  abs_err=2.083e-04  rel_err=2.034e-04  digits=4
+  (0,1,1,2):  NNI=3.757887e-01  ref=3.758095e-01  abs_err=2.086e-05  rel_err=5.550e-05  digits=5
+  (1,0,1,2):  NNI=3.760974e-01  ref=3.758095e-01  abs_err=2.879e-04  rel_err=7.660e-04  digits=4
+  (1,1,1,2):  NNI=1.143128e-01  ref=1.142569e-01  abs_err=5.590e-05  rel_err=4.892e-04  digits=5
+  (0,0,2,3):  NNI=8.242280e-01  ref=8.247579e-01  abs_err=5.298e-04  rel_err=6.424e-04  digits=4
+  (0,1,2,3):  NNI=3.074865e-01  ref=3.074143e-01  abs_err=7.219e-05  rel_err=2.348e-04  digits=5
+  (1,0,2,3):  NNI=3.072229e-01  ref=3.074143e-01  abs_err=1.914e-04  rel_err=6.225e-04  digits=4
+  (1,1,2,3):  NNI=9.609580e-02  ref=9.614571e-02  abs_err=4.991e-05  rel_err=5.191e-04  digits=5

@@ -1,0 +1,19 @@
+Run: 2026-10-02 00:16:47.288892
+Seed: 42
+Device: mps
+Architecture: SECHIREN-DIRECT [128,128,128] omega_0=30
+Epochs: 8000
+LR: 0.0005
+N precompute: 10000
+Final loss: 5.6515e-06
+Min loss: 5.2687e-06
+
+Results:
+  (0,0,1,2):  NNI=1.003487e+00  ref=1.024334e+00  abs_err=2.085e-02  rel_err=2.035e-02  digits=2
+  (0,1,1,2):  NNI=3.719434e-01  ref=3.758095e-01  abs_err=3.866e-03  rel_err=1.029e-02  digits=3
+  (1,0,1,2):  NNI=3.719780e-01  ref=3.758095e-01  abs_err=3.832e-03  rel_err=1.020e-02  digits=3
+  (1,1,1,2):  NNI=1.119523e-01  ref=1.142569e-01  abs_err=2.305e-03  rel_err=2.017e-02  digits=3
+  (0,0,2,3):  NNI=8.026388e-01  ref=8.247579e-01  abs_err=2.212e-02  rel_err=2.682e-02  digits=2
+  (0,1,2,3):  NNI=3.075458e-01  ref=3.074143e-01  abs_err=1.315e-04  rel_err=4.277e-04  digits=4
+  (1,0,2,3):  NNI=2.967581e-01  ref=3.074143e-01  abs_err=1.066e-02  rel_err=3.466e-02  digits=2
+  (1,1,2,3):  NNI=9.246172e-02  ref=9.614571e-02  abs_err=3.684e-03  rel_err=3.832e-02  digits=3
