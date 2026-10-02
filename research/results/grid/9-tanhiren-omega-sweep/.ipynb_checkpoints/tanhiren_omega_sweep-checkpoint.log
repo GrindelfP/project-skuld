@@ -1,0 +1,17 @@
+SKULD is using device: cuda
+
+════════════════════════════════════════════════════════════════════════
+  TANHIREN OMEGA_0 SWEEP  —  5 omegas × 3 seeds = 15 runs, device=cuda:0
+  omega_0 grid: [10.0, 20.0, 30.0, 40.0, 50.0]
+  seeds: [42, 43, 44]
+  fixed: hidden=[128, 128, 128], lr=0.0005, epochs=8000, N=1024
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+  Results CSV (online): /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/grid/9-tanhiren-omega-sweep/../../results/grid/9-tanhiren-omega-sweep/sweep_results_2026-10-02_11-47.csv
+
+[1/15] omega_0=10.0 seed=42 ...
+/zfs/store1.hydra.local/user/g/gshipunv/.local/lib/python3.12/site-packages/torch/autograd/graph.py:841: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:270.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass

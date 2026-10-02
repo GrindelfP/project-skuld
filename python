@@ -1,0 +1,51 @@
+/zfs/store1.hydra.local/user/g/gshipunv/.local/lib/python3.12/site-packages/torch/autograd/graph.py:841: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:270.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+SKULD is using device: cuda
+
+  Run started : 2026-10-02 11:43
+  Device      : cuda
+
+  Architecture : TANHIREN  [128, 128, 128]  (omega_0=30.0)
+  Parameters   : 34,177
+  Output scale : 1.000e+00 (learnable)
+  Epoch     1/8000  loss=4.1521e-01  lr=5.00e-04  (0.3s)
+  Epoch  1000/8000  loss=2.0499e-02  lr=4.83e-04  (10.1s)
+  Epoch  2000/8000  loss=1.4314e-02  lr=4.34e-04  (20.0s)
+  Epoch  3000/8000  loss=3.0049e-03  lr=3.61e-04  (29.8s)
+  Epoch  4000/8000  loss=1.7140e-03  lr=2.75e-04  (39.6s)
+  Epoch  5000/8000  loss=8.0152e-04  lr=1.89e-04  (49.6s)
+  Epoch  6000/8000  loss=5.6536e-04  lr=1.16e-04  (59.4s)
+  Epoch  7000/8000  loss=3.3076e-04  lr=6.71e-05  (69.2s)
+  Epoch  8000/8000  loss=2.5875e-04  lr=5.00e-05  (79.1s)
+
+Computing reference values (scipy) ...
+
+  (0,0,1,2):  1.024334e+00  +/-  1.1e-13
+  (0,1,1,2):  3.758095e-01  +/-  1.3e-13
+  (1,0,1,2):  3.758095e-01  +/-  1.6e-13
+  (1,1,1,2):  1.142569e-01  +/-  8.7e-14
+  (0,0,2,3):  8.247579e-01  +/-  1.1e-13
+  (0,1,2,3):  3.074143e-01  +/-  1.5e-13
+  (1,0,2,3):  3.074143e-01  +/-  1.6e-13
+  (1,1,2,3):  9.614571e-02  +/-  9.1e-14
+
+====================================================================================
+   (a,b,m,n)         NNI            scipy         |delta|    |delta|/ref  Digits
+====================================================================================
+   (0,0,1,2)       1.019400e+00    1.024334e+00    4.934e-03  4.816e-03    3   
+   (0,1,1,2)       3.747298e-01    3.758095e-01    1.080e-03  2.873e-03    3   
+   (1,0,1,2)       3.761085e-01    3.758095e-01    2.990e-04  7.956e-04    4   
+   (1,1,1,2)       1.145823e-01    1.142569e-01    3.253e-04  2.847e-03    4   
+   (0,0,2,3)       8.225378e-01    8.247579e-01    2.220e-03  2.692e-03    3   
+   (0,1,2,3)       3.083750e-01    3.074143e-01    9.607e-04  3.125e-03    4   
+   (1,0,2,3)       3.061003e-01    3.074143e-01    1.314e-03  4.274e-03    3   
+   (1,1,2,3)       9.542528e-02    9.614571e-02    7.204e-04  7.493e-03    4   
+====================================================================================
+
+  Final loss   : 2.5875e-04
+  Minimum loss : 2.3854e-04
+  Loss @ epoch 1: 4.1521e-01
+
+  Run finished : 2026-10-02 11:44
+
+  Log saved -> /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/flat/18-tanhiren-integrator/../../../results/flat/18-tanhiren-integrator/results_tanhiren_2026-10-02_11-43.out
