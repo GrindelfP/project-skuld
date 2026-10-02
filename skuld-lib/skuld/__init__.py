@@ -71,6 +71,12 @@ from .sinhren import (
         SinhrenIntegrator,
 )
 
+from .tanhiren import (
+        TanhrenLayer,
+        TanhrenPrimitiveNet,
+        TanhrenIntegrator,
+)
+
 from .mixiren import (
         MixirenLayer,
         MixirenPrimitiveNet,
@@ -129,6 +135,9 @@ __all__ = [
         "SinhrenLayer",
         "SinhrenPrimitiveNet",
         "SinhrenIntegrator",
+        "TanhrenLayer",
+        "TanhrenPrimitiveNet",
+        "TanhrenIntegrator",
         "MixirenLayer",
         "MixirenPrimitiveNet",
         "MixirenIntegrator",
