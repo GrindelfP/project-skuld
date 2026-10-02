@@ -1,0 +1,19 @@
+==================================================================
+Job ID:     2444954
+Script:     ../project-skuld/research/experiments/grid/8-sechiren-sweep-m1/super_test_sechiren_m1.py
+Arguments:  
+Log file:   ../project-skuld/research/results/grid/8-sechiren-sweep-m1/slurm-2444954.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:
+==================================================================
+SKULD is using device: cuda
+
+========================================================================
+  SECHIREN SWEEP m1  —  24 configs × 3 seeds = 72 runs, device=cuda
+========================================================================
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=1.00e-04  (0.2s)

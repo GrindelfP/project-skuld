@@ -1,0 +1,17 @@
+==================================================================
+Job ID:     2444945
+Script:     research/experiments/grid/8-sechiren-sweep-m1/super_test_sechiren_m1.py
+Arguments:  
+Log file:   research/results/grid/8-sechiren-sweep-m1/slurm-2444945.log
+==================================================================
+SKULD is using device: cuda
+
+========================================================================
+  SECHIREN SWEEP m1  —  24 configs × 3 seeds = 72 runs, device=cuda
+========================================================================
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000 seed=42 ...
+/tmp/slurmd/job2444945/slurm_script: line 34: 2576661 Killed                  $PY_BIN -u "$@"

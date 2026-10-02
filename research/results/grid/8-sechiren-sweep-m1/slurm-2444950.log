@@ -1,0 +1,12 @@
+==================================================================
+Job ID:     2444950
+Script:     ../project-skuld/research/experiments/grid/8-sechiren-sweep-m1/super_test_sechiren_m1.py
+Arguments:  
+Log file:   ../project-skuld/research/results/grid/8-sechiren-sweep-m1/slurm-2444950.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+==================================================================
+SKULD is using device: cuda
+Traceback (most recent call last):
+  File "/lustre/projects/g/gshipunv/runscripts/../project-skuld/research/experiments/grid/8-sechiren-sweep-m1/super_test_sechiren_m1.py", line 35, in <module>
+    from physics import integrand_transformed, reference_scipy, PARAM_SETS
+ModuleNotFoundError: No module named 'physics'

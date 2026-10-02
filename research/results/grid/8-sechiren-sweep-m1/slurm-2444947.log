@@ -1,0 +1,373 @@
+==================================================================
+Job ID:     2444947
+Script:     research/experiments/grid/8-sechiren-sweep-m1/super_test_sechiren_m1.py
+Arguments:  
+Log file:   research/results/grid/8-sechiren-sweep-m1/slurm-2444947.log
+==================================================================
+SKULD is using device: cuda
+
+========================================================================
+  SECHIREN SWEEP m1  —  24 configs × 3 seeds = 72 runs, device=cuda
+========================================================================
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=1.00e-04  (0.3s)
+    -> min_loss=1.394e-03  mean_rel_err=6.118e-03  min_dig=2  mean_dig=3.4  max_dig=4  (55.1s)
+[2/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.446e-03  mean_rel_err=8.109e-03  min_dig=2  mean_dig=3.1  max_dig=4  (54.2s)
+[3/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6027e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.464e-03  mean_rel_err=4.102e-03  min_dig=2  mean_dig=3.5  max_dig=4  (53.7s)
+[4/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.406e-04  mean_rel_err=7.024e-04  min_dig=3  mean_dig=4.0  max_dig=5  (53.2s)
+[5/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.482e-04  mean_rel_err=1.594e-03  min_dig=3  mean_dig=3.9  max_dig=5  (53.1s)
+[6/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6027e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.742e-04  mean_rel_err=2.380e-03  min_dig=3  mean_dig=3.6  max_dig=4  (53.7s)
+[7/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.448e-04  mean_rel_err=2.082e-03  min_dig=3  mean_dig=3.9  max_dig=4  (107.3s)
+[8/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.221e-04  mean_rel_err=2.497e-03  min_dig=3  mean_dig=3.9  max_dig=6  (107.0s)
+[9/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6027e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.397e-04  mean_rel_err=2.567e-03  min_dig=3  mean_dig=3.8  max_dig=4  (108.2s)
+[10/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=9.618e-05  mean_rel_err=5.534e-04  min_dig=4  mean_dig=4.5  max_dig=5  (106.9s)
+[11/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=8.908e-05  mean_rel_err=1.025e-03  min_dig=4  mean_dig=4.0  max_dig=4  (107.1s)
+[12/72] hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6027e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=9.792e-05  mean_rel_err=3.471e-04  min_dig=4  mean_dig=4.8  max_dig=6  (108.7s)
+[13/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=8.205e-04  mean_rel_err=2.615e-03  min_dig=3  mean_dig=3.6  max_dig=4  (52.8s)
+[14/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.331e-03  mean_rel_err=6.186e-03  min_dig=3  mean_dig=3.4  max_dig=4  (53.3s)
+[15/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6027e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.230e-03  mean_rel_err=2.234e-03  min_dig=3  mean_dig=3.8  max_dig=4  (53.1s)
+[16/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.766e-04  mean_rel_err=7.930e-04  min_dig=4  mean_dig=4.2  max_dig=5  (53.7s)
+[17/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.620e-04  mean_rel_err=9.559e-04  min_dig=3  mean_dig=4.1  max_dig=5  (53.0s)
+[18/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6027e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.719e-04  mean_rel_err=1.929e-03  min_dig=3  mean_dig=3.8  max_dig=4  (53.2s)
+[19/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=2.476e-04  mean_rel_err=1.062e-03  min_dig=3  mean_dig=4.0  max_dig=5  (107.1s)
+[20/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=3.981e-04  mean_rel_err=1.027e-03  min_dig=3  mean_dig=4.0  max_dig=5  (106.1s)
+[21/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6027e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=3.552e-04  mean_rel_err=3.324e-04  min_dig=4  mean_dig=4.9  max_dig=6  (106.1s)
+[22/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=6.419e-05  mean_rel_err=8.224e-04  min_dig=3  mean_dig=4.5  max_dig=6  (106.9s)
+[23/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=9.191e-05  mean_rel_err=7.978e-04  min_dig=3  mean_dig=4.0  max_dig=5  (106.2s)
+[24/72] hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6027e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.081e-04  mean_rel_err=6.814e-04  min_dig=4  mean_dig=4.2  max_dig=5  (107.5s)
+[25/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=7.090e-04  mean_rel_err=2.298e-03  min_dig=3  mean_dig=3.8  max_dig=5  (52.6s)
+[26/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.262e-03  mean_rel_err=2.603e-03  min_dig=3  mean_dig=4.1  max_dig=7  (52.8s)
+[27/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6026e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.234e-03  mean_rel_err=1.216e-03  min_dig=4  mean_dig=4.1  max_dig=5  (53.7s)
+[28/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.664e-04  mean_rel_err=2.414e-03  min_dig=3  mean_dig=3.6  max_dig=5  (52.4s)
+[29/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=3.181e-04  mean_rel_err=1.140e-03  min_dig=3  mean_dig=4.2  max_dig=5  (53.1s)
+[30/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.6026e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.055e-04  mean_rel_err=2.167e-03  min_dig=3  mean_dig=3.9  max_dig=5  (53.7s)
+[31/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=2.441e-04  mean_rel_err=4.884e-04  min_dig=4  mean_dig=4.5  max_dig=6  (107.1s)
+[32/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.150e-04  mean_rel_err=1.100e-03  min_dig=4  mean_dig=4.4  max_dig=6  (107.7s)
+[33/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6026e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=3.935e-04  mean_rel_err=7.485e-04  min_dig=3  mean_dig=4.2  max_dig=5  (106.6s)
+[34/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.6667e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=7.415e-05  mean_rel_err=2.135e-03  min_dig=3  mean_dig=3.5  max_dig=4  (108.3s)
+[35/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.8288e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.073e-04  mean_rel_err=3.811e-03  min_dig=3  mean_dig=3.8  max_dig=5  (108.0s)
+[36/72] hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.6026e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=8.195e-05  mean_rel_err=5.907e-04  min_dig=3  mean_dig=4.2  max_dig=5  (107.7s)
+[37/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=3.406e-04  mean_rel_err=1.408e-03  min_dig=3  mean_dig=3.9  max_dig=4  (52.8s)
+[38/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=2.929e-04  mean_rel_err=1.393e-03  min_dig=3  mean_dig=4.0  max_dig=5  (53.5s)
+[39/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.298e-04  mean_rel_err=1.991e-03  min_dig=3  mean_dig=3.9  max_dig=5  (53.1s)
+[40/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=7.269e-05  mean_rel_err=2.650e-03  min_dig=3  mean_dig=3.6  max_dig=4  (52.9s)
+[41/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=6.883e-05  mean_rel_err=4.617e-04  min_dig=4  mean_dig=4.6  max_dig=5  (53.0s)
+[42/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=8.285e-05  mean_rel_err=6.295e-04  min_dig=4  mean_dig=4.5  max_dig=6  (53.1s)
+[43/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=9.080e-05  mean_rel_err=9.893e-04  min_dig=4  mean_dig=4.1  max_dig=5  (106.6s)
+[44/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=8.635e-05  mean_rel_err=6.542e-04  min_dig=4  mean_dig=4.2  max_dig=5  (106.1s)
+[45/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.160e-04  mean_rel_err=6.355e-04  min_dig=3  mean_dig=4.5  max_dig=6  (107.1s)
+[46/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.724e-05  mean_rel_err=4.524e-04  min_dig=4  mean_dig=4.5  max_dig=5  (107.4s)
+[47/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.312e-05  mean_rel_err=2.600e-04  min_dig=4  mean_dig=4.8  max_dig=6  (105.3s)
+[48/72] hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.863e-05  mean_rel_err=1.096e-03  min_dig=4  mean_dig=4.0  max_dig=4  (106.1s)
+[49/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=3.065e-04  mean_rel_err=7.930e-04  min_dig=4  mean_dig=4.4  max_dig=6  (53.3s)
+[50/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.733e-04  mean_rel_err=1.098e-03  min_dig=4  mean_dig=4.4  max_dig=5  (52.5s)
+[51/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=2.745e-04  mean_rel_err=5.223e-04  min_dig=4  mean_dig=4.8  max_dig=6  (53.8s)
+[52/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=6.122e-05  mean_rel_err=2.769e-03  min_dig=3  mean_dig=3.5  max_dig=4  (53.2s)
+[53/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=4.825e-05  mean_rel_err=3.054e-03  min_dig=3  mean_dig=3.5  max_dig=4  (53.2s)
+[54/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=4.077e-05  mean_rel_err=1.397e-03  min_dig=3  mean_dig=3.8  max_dig=4  (53.0s)
+[55/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=8.031e-05  mean_rel_err=8.545e-04  min_dig=3  mean_dig=4.1  max_dig=5  (106.3s)
+[56/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=5.160e-05  mean_rel_err=8.700e-04  min_dig=3  mean_dig=4.2  max_dig=6  (105.6s)
+[57/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=6.775e-05  mean_rel_err=4.343e-04  min_dig=4  mean_dig=4.6  max_dig=5  (106.6s)
+[58/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.043e-05  mean_rel_err=6.002e-04  min_dig=3  mean_dig=4.2  max_dig=5  (106.4s)
+[59/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.795e-05  mean_rel_err=7.613e-04  min_dig=3  mean_dig=3.9  max_dig=4  (106.4s)
+[60/72] hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.231e-05  mean_rel_err=1.383e-03  min_dig=3  mean_dig=3.9  max_dig=5  (105.6s)
+[61/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=2.474e-04  mean_rel_err=1.025e-03  min_dig=3  mean_dig=4.0  max_dig=5  (53.8s)
+[62/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.758e-04  mean_rel_err=1.120e-03  min_dig=3  mean_dig=3.8  max_dig=4  (53.2s)
+[63/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=1.714e-04  mean_rel_err=5.923e-04  min_dig=4  mean_dig=4.4  max_dig=5  (53.1s)
+[64/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=4000 seed=42 ...
+  Epoch     1/4000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=4.660e-05  mean_rel_err=2.377e-03  min_dig=3  mean_dig=3.6  max_dig=4  (52.8s)
+[65/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=4000 seed=137 ...
+  Epoch     1/4000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=3.925e-05  mean_rel_err=1.868e-03  min_dig=3  mean_dig=3.8  max_dig=4  (52.8s)
+[66/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=4000 seed=2024 ...
+  Epoch     1/4000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=3.914e-05  mean_rel_err=2.472e-04  min_dig=4  mean_dig=4.8  max_dig=5  (52.3s)
+[67/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=7.242e-05  mean_rel_err=8.060e-04  min_dig=3  mean_dig=4.2  max_dig=5  (107.4s)
+[68/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.661e-05  mean_rel_err=3.422e-04  min_dig=4  mean_dig=4.8  max_dig=6  (105.3s)
+[69/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=1.00e-04  (0.0s)
+    -> min_loss=4.658e-05  mean_rel_err=6.199e-04  min_dig=4  mean_dig=4.2  max_dig=5  (106.3s)
+[70/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=8000 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.806e-05  mean_rel_err=6.556e-04  min_dig=3  mean_dig=4.4  max_dig=5  (105.7s)
+[71/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=8000 seed=137 ...
+  Epoch     1/8000  loss=3.6347e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.399e-05  mean_rel_err=5.072e-04  min_dig=4  mean_dig=4.6  max_dig=5  (105.9s)
+[72/72] hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=8000 seed=2024 ...
+  Epoch     1/8000  loss=3.3827e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.345e-05  mean_rel_err=5.399e-04  min_dig=4  mean_dig=4.5  max_dig=5  (105.3s)
+
+================================================================================================================================
+  RANKED RESULTS (best first)
+================================================================================================================================
+    # hidden                omega0        lr  epochs  seed    params    min_loss  mean_relerr  min_dig  mean_dig  max_dig  time(s)
+--------------------------------------------------------------------------------------------------------------------------------
+    1 [128, 128, 128]         20.0   5.0e-04    4000  2024    34,181   3.914e-05    2.472e-04        4       4.8        5     52.3
+    2 [128, 128, 128]         10.0   5.0e-04    8000   137    34,181   2.312e-05    2.600e-04        4       4.8        6    105.3
+    3 [64, 64, 64]            15.0   1.0e-04    8000  2024     8,901   3.552e-04    3.324e-04        4       4.9        6    106.1
+    4 [128, 128, 128]         20.0   1.0e-04    8000   137    34,181   4.661e-05    3.422e-04        4       4.8        6    105.3
+    5 [64, 64, 64]            10.0   5.0e-04    8000  2024     8,901   9.792e-05    3.471e-04        4       4.8        6    108.7
+    6 [128, 128, 128]         15.0   1.0e-04    8000  2024    34,181   6.775e-05    4.343e-04        4       4.6        5    106.6
+    7 [128, 128, 128]         10.0   5.0e-04    8000    42    34,181   2.724e-05    4.524e-04        4       4.5        5    107.4
+    8 [128, 128, 128]         10.0   5.0e-04    4000   137    34,181   6.883e-05    4.617e-04        4       4.6        5     53.0
+    9 [64, 64, 64]            20.0   1.0e-04    8000    42     8,901   2.441e-04    4.884e-04        4       4.5        6    107.1
+   10 [128, 128, 128]         20.0   5.0e-04    8000   137    34,181   1.399e-05    5.072e-04        4       4.6        5    105.9
+   11 [128, 128, 128]         15.0   1.0e-04    4000  2024    34,181   2.745e-04    5.223e-04        4       4.8        6     53.8
+   12 [128, 128, 128]         20.0   5.0e-04    8000  2024    34,181   1.345e-05    5.399e-04        4       4.5        5    105.3
+   13 [64, 64, 64]            10.0   5.0e-04    8000    42     8,901   9.618e-05    5.534e-04        4       4.5        5    106.9
+   14 [128, 128, 128]         20.0   1.0e-04    4000  2024    34,181   1.714e-04    5.923e-04        4       4.4        5     53.1
+   15 [128, 128, 128]         20.0   1.0e-04    8000  2024    34,181   4.658e-05    6.199e-04        4       4.2        5    106.3
+   16 [128, 128, 128]         10.0   5.0e-04    4000  2024    34,181   8.285e-05    6.295e-04        4       4.5        6     53.1
+   17 [128, 128, 128]         10.0   1.0e-04    8000   137    34,181   8.635e-05    6.542e-04        4       4.2        5    106.1
+   18 [64, 64, 64]            15.0   5.0e-04    8000  2024     8,901   1.081e-04    6.814e-04        4       4.2        5    107.5
+   19 [128, 128, 128]         15.0   1.0e-04    4000    42    34,181   3.065e-04    7.930e-04        4       4.4        6     53.3
+   20 [64, 64, 64]            15.0   5.0e-04    4000    42     8,901   1.766e-04    7.930e-04        4       4.2        5     53.7
+   21 [128, 128, 128]         10.0   1.0e-04    8000    42    34,181   9.080e-05    9.893e-04        4       4.1        5    106.6
+   22 [64, 64, 64]            10.0   5.0e-04    8000   137     8,901   8.908e-05    1.025e-03        4       4.0        4    107.1
+   23 [128, 128, 128]         10.0   5.0e-04    8000  2024    34,181   2.863e-05    1.096e-03        4       4.0        4    106.1
+   24 [128, 128, 128]         15.0   1.0e-04    4000   137    34,181   1.733e-04    1.098e-03        4       4.4        5     52.5
+   25 [64, 64, 64]            20.0   1.0e-04    8000   137     8,901   4.150e-04    1.100e-03        4       4.4        6    107.7
+   26 [64, 64, 64]            20.0   1.0e-04    4000  2024     8,901   1.234e-03    1.216e-03        4       4.1        5     53.7
+   27 [64, 64, 64]            20.0   5.0e-04    8000  2024     8,901   8.195e-05    5.907e-04        3       4.2        5    107.7
+   28 [128, 128, 128]         15.0   5.0e-04    8000    42    34,181   2.043e-05    6.002e-04        3       4.2        5    106.4
+   29 [128, 128, 128]         10.0   1.0e-04    8000  2024    34,181   1.160e-04    6.355e-04        3       4.5        6    107.1
+   30 [128, 128, 128]         20.0   5.0e-04    8000    42    34,181   1.806e-05    6.556e-04        3       4.4        5    105.7
+   31 [64, 64, 64]            10.0   5.0e-04    4000    42     8,901   2.406e-04    7.024e-04        3       4.0        5     53.2
+   32 [64, 64, 64]            20.0   1.0e-04    8000  2024     8,901   3.935e-04    7.485e-04        3       4.2        5    106.6
+   33 [128, 128, 128]         15.0   5.0e-04    8000   137    34,181   1.795e-05    7.613e-04        3       3.9        4    106.4
+   34 [64, 64, 64]            15.0   5.0e-04    8000   137     8,901   9.191e-05    7.978e-04        3       4.0        5    106.2
+   35 [128, 128, 128]         20.0   1.0e-04    8000    42    34,181   7.242e-05    8.060e-04        3       4.2        5    107.4
+   36 [64, 64, 64]            15.0   5.0e-04    8000    42     8,901   6.419e-05    8.224e-04        3       4.5        6    106.9
+   37 [128, 128, 128]         15.0   1.0e-04    8000    42    34,181   8.031e-05    8.545e-04        3       4.1        5    106.3
+   38 [128, 128, 128]         15.0   1.0e-04    8000   137    34,181   5.160e-05    8.700e-04        3       4.2        6    105.6
+   39 [64, 64, 64]            15.0   5.0e-04    4000   137     8,901   2.620e-04    9.559e-04        3       4.1        5     53.0
+   40 [128, 128, 128]         20.0   1.0e-04    4000    42    34,181   2.474e-04    1.025e-03        3       4.0        5     53.8
+   41 [64, 64, 64]            15.0   1.0e-04    8000   137     8,901   3.981e-04    1.027e-03        3       4.0        5    106.1
+   42 [64, 64, 64]            15.0   1.0e-04    8000    42     8,901   2.476e-04    1.062e-03        3       4.0        5    107.1
+   43 [128, 128, 128]         20.0   1.0e-04    4000   137    34,181   1.758e-04    1.120e-03        3       3.8        4     53.2
+   44 [64, 64, 64]            20.0   5.0e-04    4000   137     8,901   3.181e-04    1.140e-03        3       4.2        5     53.1
+   45 [128, 128, 128]         15.0   5.0e-04    8000  2024    34,181   1.231e-05    1.383e-03        3       3.9        5    105.6
+   46 [128, 128, 128]         10.0   1.0e-04    4000   137    34,181   2.929e-04    1.393e-03        3       4.0        5     53.5
+   47 [128, 128, 128]         15.0   5.0e-04    4000  2024    34,181   4.077e-05    1.397e-03        3       3.8        4     53.0
+   48 [128, 128, 128]         10.0   1.0e-04    4000    42    34,181   3.406e-04    1.408e-03        3       3.9        4     52.8
+   49 [64, 64, 64]            10.0   5.0e-04    4000   137     8,901   2.482e-04    1.594e-03        3       3.9        5     53.1
+   50 [128, 128, 128]         20.0   5.0e-04    4000   137    34,181   3.925e-05    1.868e-03        3       3.8        4     52.8
+   51 [64, 64, 64]            15.0   5.0e-04    4000  2024     8,901   2.719e-04    1.929e-03        3       3.8        4     53.2
+   52 [128, 128, 128]         10.0   1.0e-04    4000  2024    34,181   4.298e-04    1.991e-03        3       3.9        5     53.1
+   53 [64, 64, 64]            10.0   1.0e-04    8000    42     8,901   4.448e-04    2.082e-03        3       3.9        4    107.3
+   54 [64, 64, 64]            20.0   5.0e-04    8000    42     8,901   7.415e-05    2.135e-03        3       3.5        4    108.3
+   55 [64, 64, 64]            20.0   5.0e-04    4000  2024     8,901   2.055e-04    2.167e-03        3       3.9        5     53.7
+   56 [64, 64, 64]            15.0   1.0e-04    4000  2024     8,901   1.230e-03    2.234e-03        3       3.8        4     53.1
+   57 [64, 64, 64]            20.0   1.0e-04    4000    42     8,901   7.090e-04    2.298e-03        3       3.8        5     52.6
+   58 [128, 128, 128]         20.0   5.0e-04    4000    42    34,181   4.660e-05    2.377e-03        3       3.6        4     52.8
+   59 [64, 64, 64]            10.0   5.0e-04    4000  2024     8,901   2.742e-04    2.380e-03        3       3.6        4     53.7
+   60 [64, 64, 64]            20.0   5.0e-04    4000    42     8,901   1.664e-04    2.414e-03        3       3.6        5     52.4
+   61 [64, 64, 64]            10.0   1.0e-04    8000   137     8,901   4.221e-04    2.497e-03        3       3.9        6    107.0
+   62 [64, 64, 64]            10.0   1.0e-04    8000  2024     8,901   4.397e-04    2.567e-03        3       3.8        4    108.2
+   63 [64, 64, 64]            20.0   1.0e-04    4000   137     8,901   1.262e-03    2.603e-03        3       4.1        7     52.8
+   64 [64, 64, 64]            15.0   1.0e-04    4000    42     8,901   8.205e-04    2.615e-03        3       3.6        4     52.8
+   65 [128, 128, 128]         10.0   5.0e-04    4000    42    34,181   7.269e-05    2.650e-03        3       3.6        4     52.9
+   66 [128, 128, 128]         15.0   5.0e-04    4000    42    34,181   6.122e-05    2.769e-03        3       3.5        4     53.2
+   67 [128, 128, 128]         15.0   5.0e-04    4000   137    34,181   4.825e-05    3.054e-03        3       3.5        4     53.2
+   68 [64, 64, 64]            20.0   5.0e-04    8000   137     8,901   1.073e-04    3.811e-03        3       3.8        5    108.0
+   69 [64, 64, 64]            15.0   1.0e-04    4000   137     8,901   1.331e-03    6.186e-03        3       3.4        4     53.3
+   70 [64, 64, 64]            10.0   1.0e-04    4000  2024     8,901   1.464e-03    4.102e-03        2       3.5        4     53.7
+   71 [64, 64, 64]            10.0   1.0e-04    4000    42     8,901   1.394e-03    6.118e-03        2       3.4        4     55.1
+   72 [64, 64, 64]            10.0   1.0e-04    4000   137     8,901   1.446e-03    8.109e-03        2       3.1        4     54.2
+================================================================================================================================
+
+  BEST CONFIG:
+    hidden_sizes = [128, 128, 128]
+    omega_0      = 20.0
+    lr           = 0.0005
+    n_epochs     = 4000
+    seed         = 2024
+    -> min 4 digits, mean 4.8 digits, max 5 digits, mean rel. err 2.472e-04
+
+================================================================================================================================
+  PER-CONFIG SUMMARY (seed-averaged)
+================================================================================================================================
+  hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=8000
+      min_dig=4  mean_dig=4.4  max_dig=6  mean_relerr=6.028e-04  n_seeds=3
+  hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=8000
+      min_dig=4  mean_dig=4.4  max_dig=6  mean_relerr=6.417e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=4000
+      min_dig=4  mean_dig=4.5  max_dig=6  mean_relerr=8.046e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=8000
+      min_dig=3  mean_dig=4.5  max_dig=5  mean_relerr=5.676e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=4.4  max_dig=6  mean_relerr=5.894e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=15.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=4.3  max_dig=6  mean_relerr=7.196e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=4.3  max_dig=6  mean_relerr=7.597e-04  n_seeds=3
+  hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=8000
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=7.672e-04  n_seeds=3
+  hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=4.4  max_dig=6  mean_relerr=7.791e-04  n_seeds=3
+  hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=4.3  max_dig=6  mean_relerr=8.069e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=20.0 lr=0.0001 epochs=4000
+      min_dig=3  mean_dig=4.0  max_dig=5  mean_relerr=9.125e-04  n_seeds=3
+  hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=8000
+      min_dig=3  mean_dig=4.0  max_dig=5  mean_relerr=9.147e-04  n_seeds=3
+  hidden=[64, 64, 64] omega0=15.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=4.0  max_dig=5  mean_relerr=1.226e-03  n_seeds=3
+  hidden=[128, 128, 128] omega0=10.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=1.247e-03  n_seeds=3
+  hidden=[128, 128, 128] omega0=20.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=4.0  max_dig=5  mean_relerr=1.498e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=10.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=3.8  max_dig=5  mean_relerr=1.559e-03  n_seeds=3
+  hidden=[128, 128, 128] omega0=10.0 lr=0.0001 epochs=4000
+      min_dig=3  mean_dig=3.9  max_dig=5  mean_relerr=1.598e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=3.9  max_dig=5  mean_relerr=1.907e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=20.0 lr=0.0001 epochs=4000
+      min_dig=3  mean_dig=4.0  max_dig=7  mean_relerr=2.039e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=20.0 lr=0.0005 epochs=8000
+      min_dig=3  mean_dig=3.8  max_dig=5  mean_relerr=2.179e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=8000
+      min_dig=3  mean_dig=3.8  max_dig=6  mean_relerr=2.382e-03  n_seeds=3
+  hidden=[128, 128, 128] omega0=15.0 lr=0.0005 epochs=4000
+      min_dig=3  mean_dig=3.6  max_dig=4  mean_relerr=2.407e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=15.0 lr=0.0001 epochs=4000
+      min_dig=3  mean_dig=3.6  max_dig=4  mean_relerr=3.678e-03  n_seeds=3
+  hidden=[64, 64, 64] omega0=10.0 lr=0.0001 epochs=4000
+      min_dig=2  mean_dig=3.3  max_dig=4  mean_relerr=6.110e-03  n_seeds=3
+================================================================================================================================
+  Full results saved -> /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/8-sechiren-sweep-m1/../../results/grid/8-sechiren-sweep-m1/sweep_results_m1_2026-10-03_01-51.csv
+
