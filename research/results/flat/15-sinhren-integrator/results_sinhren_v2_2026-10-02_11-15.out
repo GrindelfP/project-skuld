@@ -1,0 +1,20 @@
+Run: 2026-10-02 11:15:53.683441
+Device: cuda
+Architecture: SINHREN v2 [128, 128, 128] (omega_0=1.0)
+Parameters: 34,178
+Output scale: 1.000e+00 (learnable)
+Epochs: 8000
+N per param: 1024
+LR: 0.0005
+Final loss: 9.8566e-02
+Min loss: 8.5267e-02
+
+Results:
+  (0,0,1,2):  NNI=1.188923e+00  ref=1.024334e+00  abs_err=1.646e-01  rel_err=1.607e-01  digits=1
+  (0,1,1,2):  NNI=4.486232e-01  ref=3.758095e-01  abs_err=7.281e-02  rel_err=1.938e-01  digits=2
+  (1,0,1,2):  NNI=4.731336e-01  ref=3.758095e-01  abs_err=9.732e-02  rel_err=2.590e-01  digits=2
+  (1,1,1,2):  NNI=1.461235e-01  ref=1.142569e-01  abs_err=3.187e-02  rel_err=2.789e-01  digits=2
+  (0,0,2,3):  NNI=1.024899e+00  ref=8.247579e-01  abs_err=2.001e-01  rel_err=2.427e-01  digits=1
+  (0,1,2,3):  NNI=3.675598e-01  ref=3.074143e-01  abs_err=6.015e-02  rel_err=1.956e-01  digits=2
+  (1,0,2,3):  NNI=4.004940e-01  ref=3.074143e-01  abs_err=9.308e-02  rel_err=3.028e-01  digits=2
+  (1,1,2,3):  NNI=1.255721e-01  ref=9.614571e-02  abs_err=2.943e-02  rel_err=3.061e-01  digits=2

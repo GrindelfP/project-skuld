@@ -1,0 +1,15 @@
+SKULD is using device: cuda
+
+════════════════════════════════════════════════════════════════════════
+  SINHREN v2 OMEGA_0 SWEEP  —  5 omegas × 3 seeds = 15 runs, device=cuda:0
+  omega_0 grid: [0.1, 0.5, 1.0, 2.0, 5.0]
+  seeds: [42, 43, 44]
+  fixed: hidden=[128, 128, 128], lr=0.0005, epochs=8000, N=1024
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+  Results CSV (online): /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/grid/8-sinhren-omega-sweep/../../results/grid/8-sinhren-omega-sweep/sweep_results_2026-10-02_10-28.csv
+
+[1/15] omega_0=0.1 seed=42 ...

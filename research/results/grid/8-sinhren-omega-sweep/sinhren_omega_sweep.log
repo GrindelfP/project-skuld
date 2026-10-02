@@ -1,0 +1,94 @@
+SKULD is using device: cuda
+
+════════════════════════════════════════════════════════════════════════
+  SINHREN v2 OMEGA_0 SWEEP  —  5 omegas × 3 seeds = 15 runs, device=cuda:0
+  omega_0 grid: [0.1, 0.5, 1.0, 2.0, 5.0]
+  seeds: [42, 43, 44]
+  fixed: hidden=[128, 128, 128], lr=0.0005, epochs=8000, N=1024
+════════════════════════════════════════════════════════════════════════
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+  Results CSV (online): /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/grid/8-sinhren-omega-sweep/../../results/grid/8-sinhren-omega-sweep/sweep_results_2026-10-02_10-28.csv
+
+[1/15] omega_0=0.1 seed=42 ...
+  Epoch     1/8000  loss=3.7510e-01  lr=5.00e-04  (0.2s)
+    -> min_loss=1.941e-01  mean_rel_err=4.578e-02  min_digits=2  mean_digits=2.4  (79.6s)
+[2/15] omega_0=0.1 seed=43 ...
+  Epoch     1/8000  loss=3.7990e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.443e-01  mean_rel_err=3.574e-02  min_digits=2  mean_digits=2.4  (71.8s)
+[3/15] omega_0=0.1 seed=44 ...
+  Epoch     1/8000  loss=3.6015e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=2.013e-01  mean_rel_err=5.652e-02  min_digits=2  mean_digits=2.6  (71.0s)
+[4/15] omega_0=0.5 seed=42 ...
+  Epoch     1/8000  loss=3.7495e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.044e-01  mean_rel_err=2.689e-02  min_digits=2  mean_digits=3.0  (72.0s)
+[5/15] omega_0=0.5 seed=43 ...
+  Epoch     1/8000  loss=3.7866e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.083e-01  mean_rel_err=3.641e-02  min_digits=2  mean_digits=2.6  (72.2s)
+[6/15] omega_0=0.5 seed=44 ...
+  Epoch     1/8000  loss=3.5862e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=1.064e-01  mean_rel_err=4.234e-02  min_digits=2  mean_digits=2.5  (72.1s)
+[7/15] omega_0=1.0 seed=42 ...
+  Epoch     1/8000  loss=3.6398e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=8.527e-02  mean_rel_err=2.424e-01  min_digits=1  mean_digits=1.8  (70.4s)
+[8/15] omega_0=1.0 seed=43 ...
+  Epoch     1/8000  loss=3.7033e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=7.512e-02  mean_rel_err=8.247e-02  min_digits=2  mean_digits=2.0  (69.7s)
+[9/15] omega_0=1.0 seed=44 ...
+  Epoch     1/8000  loss=3.4939e-01  lr=5.00e-04  (0.0s)
+    -> min_loss=6.242e-02  mean_rel_err=3.413e-02  min_digits=2  mean_digits=2.5  (69.4s)
+[10/15] omega_0=2.0 seed=42 ...
+  Epoch     1/8000  loss=3.3141e+07  lr=5.00e-04  (0.0s)
+    -> min_loss=1.016e-02  mean_rel_err=3.008e-02  min_digits=2  mean_digits=2.5  (69.4s)
+[11/15] omega_0=2.0 seed=43 ...
+  Epoch     1/8000  loss=4.3740e+05  lr=5.00e-04  (0.0s)
+    -> min_loss=1.338e-02  mean_rel_err=1.478e-02  min_digits=2  mean_digits=2.9  (69.3s)
+[12/15] omega_0=2.0 seed=44 ...
+  Epoch     1/8000  loss=1.1048e+07  lr=5.00e-04  (0.0s)
+    -> min_loss=1.941e-02  mean_rel_err=2.048e-02  min_digits=2  mean_digits=2.5  (69.1s)
+[13/15] omega_0=5.0 seed=42 ...
+  Epoch     1/8000  loss=nan  lr=5.00e-04  (0.0s)
+    -> FAILED: cannot convert float NaN to integer
+[14/15] omega_0=5.0 seed=43 ...
+  Epoch     1/8000  loss=nan  lr=5.00e-04  (0.0s)
+    -> FAILED: cannot convert float NaN to integer
+[15/15] omega_0=5.0 seed=44 ...
+  Epoch     1/8000  loss=nan  lr=5.00e-04  (0.0s)
+    -> FAILED: cannot convert float NaN to integer
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  RANKED RESULTS (best first)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+    #  omega_0  seed    min_loss  mean_relerr  min_dig  mean_dig  time(s)
+----------------------------------------------------------------------------------------------------
+    1      2.0    43   1.338e-02    1.478e-02        2       2.9     69.3
+    2      2.0    44   1.941e-02    2.048e-02        2       2.5     69.1
+    3      0.5    42   1.044e-01    2.689e-02        2       3.0     72.0
+    4      2.0    42   1.016e-02    3.008e-02        2       2.5     69.4
+    5      1.0    44   6.242e-02    3.413e-02        2       2.5     69.4
+    6      0.1    43   1.443e-01    3.574e-02        2       2.4     71.8
+    7      0.5    43   1.083e-01    3.641e-02        2       2.6     72.2
+    8      0.5    44   1.064e-01    4.234e-02        2       2.5     72.1
+    9      0.1    42   1.941e-01    4.578e-02        2       2.4     79.6
+   10      0.1    44   2.013e-01    5.652e-02        2       2.6     71.0
+   11      1.0    43   7.512e-02    8.247e-02        2       2.0     69.7
+   12      1.0    42   8.527e-02    2.424e-01        1       1.8     70.4
+════════════════════════════════════════════════════════════════════════════════════════════════════
+
+  BEST CONFIG:
+    omega_0 = 2.0
+    seed    = 43
+    -> min 2 correct digits, mean 2.9 digits, mean rel. err 1.478e-02
+
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  PER-OMEGA_0 SUMMARY (across seeds)
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  omega_0= 0.1  min_dig=[2, 2, 2]  mean_dig=2.5  mean_rel_err=4.601e-02  n=3
+  omega_0= 0.5  min_dig=[2, 2, 2]  mean_dig=2.7  mean_rel_err=3.521e-02  n=3
+  omega_0= 1.0  min_dig=[2, 2, 1]  mean_dig=2.1  mean_rel_err=1.197e-01  n=3
+  omega_0= 2.0  min_dig=[2, 2, 2]  mean_dig=2.6  mean_rel_err=2.178e-02  n=3
+════════════════════════════════════════════════════════════════════════════════════════════════════
+  Full results saved -> /zfs/store1.hydra.local/user/g/gshipunv/integral/project-skuld/research/experiments/grid/8-sinhren-omega-sweep/../../results/grid/8-sinhren-omega-sweep/sweep_results_2026-10-02_10-28.csv
+
