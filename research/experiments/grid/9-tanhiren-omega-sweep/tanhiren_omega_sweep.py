@@ -106,6 +106,7 @@ def run_one(omega_0: float, seed: int, device: torch.device,
         "max_rel_err": max(rel_errs),
         "min_correct_digits": min(digits),
         "mean_correct_digits": sum(digits) / len(digits),
+        "max_correct_digits": max(digits),
         "elapsed_s": elapsed,
     }
 
@@ -156,7 +157,7 @@ def main():
     out_path = args.out or os.path.join(results_dir, f"sweep_results_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     fieldnames = ["omega_0", "seed", "n_params_total", "final_loss", "min_loss",
                   "mean_rel_err", "max_rel_err", "min_correct_digits",
-                  "mean_correct_digits", "elapsed_s"]
+                  "mean_correct_digits", "max_correct_digits", "elapsed_s"]
     file_exists = os.path.exists(out_path)
     csv_fh = open(out_path, "a", newline="", encoding="utf-8")
     writer = csv.DictWriter(csv_fh, fieldnames=fieldnames)
@@ -197,13 +198,14 @@ def main():
     print(f"  RANKED RESULTS (best first)")
     print(SEP)
     header = (f"  {'#':>3} {'omega_0':>8} {'seed':>5} {'min_loss':>11} "
-              f"{'mean_relerr':>12} {'min_dig':>8} {'mean_dig':>9} {'time(s)':>8}")
+              f"{'mean_relerr':>12} {'min_dig':>8} {'mean_dig':>9} {'max_dig':>8} {'time(s)':>8}")
     print(header)
     print("-" * 100)
     for i, r in enumerate(results, 1):
         print(f"  {i:>3} {r['omega_0']:>8.1f} {r['seed']:>5} "
               f"{r['min_loss']:>11.3e} {r['mean_rel_err']:>12.3e} "
               f"{r['min_correct_digits']:>8} {r['mean_correct_digits']:>9.1f} "
+              f"{r['max_correct_digits']:>8} "
               f"{r['elapsed_s']:>8.1f}")
     print(SEP)
     best = results[0]
@@ -225,10 +227,12 @@ def main():
         rs = by_omega[omega_0]
         min_digits = [r["min_correct_digits"] for r in rs]
         mean_digits = [r["mean_correct_digits"] for r in rs]
+        max_digits = [r["max_correct_digits"] for r in rs]
         mean_rel_errs = [r["mean_rel_err"] for r in rs]
         print(f"  omega_0={omega_0:>5.1f}  "
               f"min_dig={min_digits}  "
               f"mean_dig={sum(mean_digits)/len(mean_digits):.1f}  "
+              f"max_dig={max_digits}  "
               f"mean_rel_err={sum(mean_rel_errs)/len(mean_rel_errs):.3e}  "
               f"n={len(rs)}")
     print(SEP)

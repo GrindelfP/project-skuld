@@ -87,6 +87,7 @@ def main():
           f"{'|delta|':^11}  {'|delta|/ref':^9}  {'Digits':^6}")
     print(SEP)
 
+    all_digits = []
     for (a, b, m, n) in PARAM_SETS:
         nni_val = integrator.integrate((a, b, m, n),
                                         norm_cache=norm_cache, device=device)
@@ -94,6 +95,7 @@ def main():
         abs_err = abs(nni_val - ref_val)
         rel_err = abs_err / (abs(ref_val) + 1e-30)
         correct_digits = max(0, -math.floor(math.log10(abs_err + 1e-30)))
+        all_digits.append(correct_digits)
 
         print(f"   ({int(a)},{int(b)},{int(m)},{int(n)})     "
               f"{nni_val:>14.6e}  {ref_val:>14.6e}  "
@@ -101,7 +103,8 @@ def main():
               f"{int(correct_digits):^6}")
 
     print(SEP)
-    print(f"\n  Final loss   : {history[-1]:.4e}")
+    print(f"\n  Digits: min={min(all_digits)}  mean={sum(all_digits)/len(all_digits):.1f}  max={max(all_digits)}")
+    print(f"  Final loss   : {history[-1]:.4e}")
     print(f"  Minimum loss : {min(history):.4e}")
     print(f"  Loss @ epoch 1: {history[0]:.4e}")
     print(f"\n  Run finished : {datetime.now().strftime('%Y-%m-%d %H:%M')}")
