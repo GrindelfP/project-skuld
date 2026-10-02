@@ -5,6 +5,10 @@ import datetime
 import time
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+
+from utils.paths import get_mirror_path
+
 import numpy as np
 import torch
 from scipy import integrate
@@ -17,7 +21,7 @@ from skuld.model import set_global_device
 # Output path
 # ─────────────────────────────────────────────────────────────────────
 def _unique_csv(stem: str) -> Path:
-    base = Path(__file__).parent.absolute()
+    base = get_mirror_path(__file__, "results")
     today = datetime.date.today().strftime("%Y-%m-%d")
     i = 1
     while True:

@@ -21,11 +21,14 @@ import os
 import sys
 import time
 from datetime import datetime
+from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
 _here = os.path.dirname(os.path.abspath(__file__))
 _research = os.path.abspath(os.path.join(_here, '../../..'))
 sys.path.insert(0, _research)
+
+from utils.paths import get_mirror_path
 
 import torch
 
@@ -174,8 +177,7 @@ def main():
     print("Done.\n")
 
     # ── ONLINE CSV: open in append mode, write header if new ───────────────
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/7-siren-wire-kan-sweep-m3')
-    os.makedirs(results_dir, exist_ok=True)
+    results_dir = get_mirror_path(__file__, "results")
     out_path = args.out or os.path.join(results_dir, f"sweep_results_m3_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     fieldnames = ["hidden_sizes", "omega_0", "lr", "n_per_param", "n_epochs",
                   "n_params_total", "final_loss", "min_loss", "mean_rel_err",

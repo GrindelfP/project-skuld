@@ -21,7 +21,12 @@ from datetime import datetime
 
 import sys
 import os
+from pathlib import Path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+
+from utils.paths import get_mirror_path
 
 import torch
 
@@ -230,8 +235,7 @@ def main():
     print(SEP)
 
     # ── save CSV to mirroring results directory ──────────────────────────
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/6-siren-wire-kan-sweep-m2')
-    os.makedirs(results_dir, exist_ok=True)
+    results_dir = get_mirror_path(__file__, "results")
     out_path = args.out or os.path.join(results_dir, f"sweep_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     with open(out_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(results[0].keys()))

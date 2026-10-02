@@ -24,11 +24,14 @@ import os
 import sys
 import time
 from datetime import datetime
+from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
 _here = os.path.dirname(os.path.abspath(__file__))
 _research = os.path.abspath(os.path.join(_here, '../../..'))
 sys.path.insert(0, _research)
+
+from utils.paths import get_mirror_path
 
 import torch
 
@@ -152,8 +155,7 @@ def main():
     print("Done.\n")
 
     # ── ONLINE CSV: open in append mode, write header if new ───────────────
-    results_dir = os.path.join(os.path.dirname(__file__), '../../results/grid/10-tanhiren-omega-sweep-low')
-    os.makedirs(results_dir, exist_ok=True)
+    results_dir = get_mirror_path(__file__, "results")
     out_path = args.out or os.path.join(results_dir, f"sweep_results_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     fieldnames = ["omega_0", "seed", "n_params_total", "final_loss", "min_loss",
                   "mean_rel_err", "max_rel_err", "min_correct_digits",

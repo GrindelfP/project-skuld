@@ -25,6 +25,13 @@ import itertools
 import math
 import time
 from datetime import datetime
+import sys
+import os
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
+
+from utils.paths import get_mirror_path
 
 import torch
 
@@ -219,7 +226,8 @@ def main():
     print(f"    -> min {best['min_correct_digits']} correct digits, "
           f"mean rel. err {best['mean_rel_err']:.3e}\n")
 
-    out_path = args.out or f"sweep_wire_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv"
+    results_dir = get_mirror_path(__file__, "results")
+    out_path = args.out or os.path.join(results_dir, f"sweep_wire_results_m2_{datetime.now().strftime('%Y-%m-%d_%H-%M')}.csv")
     with open(out_path, "w", newline="", encoding="utf-8") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(results[0].keys()))
         writer.writeheader()
