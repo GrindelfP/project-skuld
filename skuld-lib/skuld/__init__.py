@@ -104,6 +104,10 @@ from .broknet import (
         mixed_partial_3_expert,
 )
 
+from .sechiren_is import (
+        SechirenISIntegrator,
+)
+
 __all__ = [
         "MLP",
         "NeuralNumericalIntegration",
@@ -153,4 +157,5 @@ __all__ = [
         "BrokNet",
         "BrokNetIntegrator",
         "mixed_partial_3_expert",
+        "SechirenISIntegrator",
 ]
