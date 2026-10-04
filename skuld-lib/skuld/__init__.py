@@ -107,6 +107,10 @@ from .broknet import (
 from .sechiren_is import (
         SechirenISIntegrator,
 )
+from .conv import (
+        ConvIntegrator,
+        ConvAntiderivativeNet,
+)
 
 __all__ = [
         "MLP",
@@ -158,4 +162,6 @@ __all__ = [
         "BrokNetIntegrator",
         "mixed_partial_3_expert",
         "SechirenISIntegrator",
+        "ConvIntegrator",
+        "ConvAntiderivativeNet",
 ]
