@@ -1,22 +1,13 @@
 """
-conv_nni.py — single flat test of the ConvIntegrator (pure-CNN antiderivative).
+conv_mock_test.py — quick proof-of-concept test of the ConvIntegrator.
 
-CONV: no fully-connected layers anywhere. Input is a 1x7 image
-[a,b,m,n,u1,u2,u3]; 4 residual ConvBlock(32->64->128->256) with k=3, same
-padding and GELU; global average pool; 1x1 conv head -> scalar N(u, theta).
-
-Trained so that the third mixed partial d3N/du1 du2 du3 matches f, which is
-what makes the corner sum telescope to the integral (Maitre et al. 2022).
-
-Hypothesis under test: does a purely convolutional parameterisation of the
-antiderivative break the ~4-digit ceiling that every MLP-based architecture
-hits? Compare against the SECHIREN sweep-m2 baseline (mean 4.875 digits) on
-the identical 8 parameter sets.
+Small network, few epochs, all 8 parameter sets. Verifies the code runs
+and produces reasonable output before committing to a full flat test.
 
 Usage:
-    python conv_nni.py
-    python conv_nni.py --epochs 8000 --seed 42 --hidden 32,64,128,256
-    python conv_nni.py --device cuda --n-per-param 512
+    python conv_mock_test.py
+    python conv_mock_test.py --epochs 500 --device cpu
+    python conv_mock_test.py --epochs 1000 --device cuda
 """
 import argparse
 import math
@@ -42,12 +33,11 @@ def digits_of(abs_err: float) -> int:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="ConvIntegrator single test")
-    parser.add_argument("--epochs", type=int, default=8000)
-    parser.add_argument("--n-per-param", type=int, default=512)
+    parser = argparse.ArgumentParser(description="ConvIntegrator mock test")
+    parser.add_argument("--epochs", type=int, default=500)
+    parser.add_argument("--n-per-param", type=int, default=128)
     parser.add_argument("--lr", type=float, default=1e-3)
-    parser.add_argument("--hidden", type=str, default="32,64,128,256",
-                        help="comma-separated channel widths, one per conv block")
+    parser.add_argument("--hidden", type=str, default="16,32,64,128")
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--device", type=str, default=None,
                         choices=["cpu", "cuda"],
@@ -68,7 +58,7 @@ def main():
         )
 
     print(f"{'=' * 78}")
-    print("  CONV INTEGRATOR — single test")
+    print("  CONV INTEGRATOR — MOCK TEST")
     print(f"  device={device}  seed={args.seed}")
     print(f"  hidden={hidden}  epochs={args.epochs}  npp={args.n_per_param}  lr={args.lr}")
     print(f"{'=' * 78}\n")
@@ -132,7 +122,7 @@ def main():
     print(f"{'=' * 78}\n")
 
     results_dir = get_mirror_path(__file__, "results")
-    results_file = os.path.join(results_dir, "conv_nni.csv")
+    results_file = os.path.join(results_dir, "conv_mock_test.csv")
     header = "I,nni_val,ref_val,abs_err,rel_err,digits"
     with open(results_file, "w", encoding="utf-8") as fh:
         fh.write(header + "\n")
@@ -140,12 +130,12 @@ def main():
             fh.write(f"I{i},{nni_val:.10e},{ref_val:.10e},"
                      f"{abs_err:.6e},{rel_err:.6e},{d}\n")
 
-    summary_file = os.path.join(results_dir, "conv_nni_summary.csv")
+    summary_file = os.path.join(results_dir, "conv_mock_test_summary.csv")
     with open(summary_file, "w", encoding="utf-8") as fh:
         fh.write("architecture,hidden,epochs,n_per_param,lr,seed,device,"
                  "n_weights,final_loss,min_loss,elapsed_s,"
                  "min_digits,mean_digits,max_digits,mean_rel_err,max_rel_err\n")
-        fh.write(f"CONV,'{args.hidden}',{args.epochs},{args.n_per_param},"
+        fh.write(f"CONV_MOCK,'{args.hidden}',{args.epochs},{args.n_per_param},"
                  f"{args.lr},{args.seed},{device},{integrator.n_weights},"
                  f"{history[-1]:.6e},{min(history):.6e},{elapsed:.2f},"
                  f"{min(digits)},{sum(digits) / len(digits):.2f},{max(digits)},"

@@ -1,0 +1,54 @@
+SKULD is using device: mps
+==============================================================================
+  CONV INTEGRATOR — MOCK TEST
+  device=cpu  seed=42
+  hidden=[16, 32, 64, 128]  epochs=500  npp=128  lr=0.001
+==============================================================================
+
+  Architecture : pure CNN  [16, 32, 64, 128]  (no fully-connected layers)
+  Parameters   : 108,289
+
+Computing scipy reference integrals ...
+Done.
+
+  Epoch     1/500  loss=4.2392e-01  lr=1.00e-03  (1.7s)
+  Epoch    50/500  loss=1.5592e-01  lr=9.78e-04  (82.0s)
+  Epoch   100/500  loss=8.2597e-02  lr=9.14e-04  (160.8s)
+  Epoch   150/500  loss=7.0961e-02  lr=8.15e-04  (239.9s)
+  Epoch   200/500  loss=5.9224e-02  lr=6.89e-04  (317.6s)
+  Epoch   250/500  loss=7.8094e-02  lr=5.50e-04  (396.5s)
+  Epoch   300/500  loss=7.7612e-02  lr=4.11e-04  (474.9s)
+  Epoch   350/500  loss=6.5491e-02  lr=2.85e-04  (554.6s)
+  Epoch   400/500  loss=6.3496e-02  lr=1.86e-04  (634.0s)
+  Epoch   450/500  loss=7.6736e-02  lr=1.22e-04  (713.2s)
+  Epoch   500/500  loss=5.0279e-02  lr=1.00e-04  (792.6s)
+
+  Training done in 793.1s (1586.2 ms/epoch)
+  Final loss: 5.0279e-02
+  Min loss:   4.6069e-02
+
+==============================================================================
+  RESULTS
+==============================================================================
+    I   (a,b,m,n)                   NNI                ref      abs_err      rel_err  digits
+------------------------------------------------------------------------------
+  I1    (0, 0, 1, 2)    1.0090255057e+00   1.0243339058e+00   1.5308e-02   1.4945e-02       2
+  I2    (0, 1, 1, 2)    2.5499720467e-01   3.7580954928e-01   1.2081e-01   3.2147e-01       1
+  I3    (1, 0, 1, 2)    5.0429338629e-01   3.7580954928e-01   1.2848e-01   3.4189e-01       1
+  I4    (1, 1, 1, 2)    1.2748036320e-01   1.1425693859e-01   1.3223e-02   1.1573e-01       2
+  I5    (0, 0, 2, 3)    8.3166356319e-01   8.2475785136e-01   6.9057e-03   8.3730e-03       3
+  I6    (0, 1, 2, 3)    2.1020200423e-01   3.0741427521e-01   9.7212e-02   3.1623e-01       2
+  I7    (1, 0, 2, 3)    4.1546232598e-01   3.0741427521e-01   1.0805e-01   3.5147e-01       1
+  I8    (1, 1, 2, 3)    1.0505141504e-01   9.6145710726e-02   8.9057e-03   9.2627e-02       3
+------------------------------------------------------------------------------
+  min_digits  = 1
+  mean_digits = 1.9
+  max_digits  = 3
+  mean_rel_err = 1.9534e-01
+  max_rel_err  = 3.5147e-01
+  (SECHIREN baseline for reference: mean 4.9 digits)
+==============================================================================
+
+  Results saved -> /Users/grindelf/Programming/1-INTEGRALS/project-skuld/research/results/flat/18-conv-integrator/conv_mock_test.csv
+  Summary saved -> /Users/grindelf/Programming/1-INTEGRALS/project-skuld/research/results/flat/18-conv-integrator/conv_mock_test_summary.csv
+

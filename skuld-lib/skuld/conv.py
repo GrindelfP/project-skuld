@@ -2,13 +2,19 @@
 #  Conv-based Neural Numerical Integration
 #
 #  Pure convolutional architecture (no fully-connected layers) for the
-#  Maître et al. (2022) antiderivative approximation method.
+#  Maitre et al. (2022) antiderivative approximation method.
+#
 #  Input: 1×7 image [a, b, m, n, u1, u2, u3]  (params first, matching the
 #  rest of the library).
-#  4 Conv2D layers (32→64→128→256, k=3, same, GELU, residual),
-#  1×1 conv output head → scalar N(u, θ).
+#
+#  4 Conv2D layers (k=3, same padding, GELU, residual), global average
+#  pooling, 1×1 conv output head → scalar N(u, θ).
+#
 #  Trained so that the third mixed partial ∂³N/∂u₁∂u₂∂u₃ matches f, which
-#  is what makes the corner sum telescope to the integral (see mixed_partial_3).
+#  is what makes the corner sum telescope to the integral.
+#
+#  Evaluation: network is transferred to CPU and converted to float64 for
+#  the corner-sum evaluation, since CUDA/MPS are limited to float32.
 ##############################################################################
 
 import itertools
@@ -22,9 +28,8 @@ import torch.nn as nn
 
 
 ##############################################################################
-#  ConvAntiderivativeNet: pure CNN, no fully-connected layers
+#  ConvBlock: Conv2d → GELU → residual skip
 ##############################################################################
-
 
 class ConvBlock(nn.Module):
     """Conv2d → GELU → residual skip.
@@ -33,35 +38,34 @@ class ConvBlock(nn.Module):
     connection dimensions match.
     """
 
-    def __init__(self, in_ch: int, out_ch: int, k: int = 3, pad: str = "same"):
+    def __init__(self, in_ch: int, out_ch: int, k: int = 3):
         super().__init__()
-        if pad == "same":
-            p = k // 2
-        else:
-            p = 0
-        self.conv = nn.Conv2d(in_ch, out_ch, kernel_size=k, padding=p, stride=1)
+        self.conv = nn.Conv2d(in_ch, out_ch, kernel_size=k, padding=k // 2)
         self.act = nn.GELU()
-        # Projection shortcut when dimensions change
         self.use_proj = in_ch != out_ch
         if self.use_proj:
-            self.proj = nn.Conv2d(in_ch, out_ch, kernel_size=1, stride=1, padding=0)
+            self.proj = nn.Conv2d(in_ch, out_ch, kernel_size=1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        out = self.conv(x)
-        out = self.act(out)
-        # Residual: match dimensions if needed
+        out = self.act(self.conv(x))
         if self.use_proj:
             x = self.proj(x)
         return x + out
 
 
+##############################################################################
+#  ConvAntiderivativeNet: pure CNN, no fully-connected layers
+##############################################################################
+
 class ConvAntiderivativeNet(nn.Module):
     """
     Pure CNN antiderivative network N(u, θ) ≈ F(u) integrated over u ∈ [0,1]^3.
 
-    Input: 1×7 image  [a, b, m, n, u1, u2, u3]  (last dim = 7 features)
-    Architecture: 4 ConvBlock(32→64→128→256), then Conv2d(256→1, k=1).
-    No fully-connected layers anywhere.
+    Input: tensor of shape (batch, 7) — [a, b, m, n, u1, u2, u3].
+    Output: tensor of shape (batch,) — scalar antiderivative value per sample.
+
+    Architecture: 4 ConvBlock(32→64→128→256), global average pool,
+    1×1 conv head → scalar. No fully-connected layers anywhere.
     """
 
     def __init__(
@@ -99,35 +103,44 @@ class ConvAntiderivativeNet(nn.Module):
             if self.head.bias is not None:
                 self.head.bias.fill_(0.0)
 
+    def _process_input(self, x: torch.Tensor) -> torch.Tensor:
+        """Reshape (batch, 7) → (batch, 1, 1, 7) for conv processing.
+
+        This method is separate so that a future version can change the
+        input representation (e.g., separate flows for params and
+        integration variables) without touching the conv blocks.
+        """
+        return x.unsqueeze(1).unsqueeze(2)  # (B, 1, 1, 7)
+
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """
         Forward pass.
 
         Args:
-            x: tensor of shape (batch, 7) — the 7 features [a,b,m,n,u1,u2,u3].
+            x: tensor of shape (batch, 7) — [a, b, m, n, u1, u2, u3].
 
         Returns:
-            tensor of shape (batch,) — scalar antiderivative value N(u,θ) per sample.
+            tensor of shape (batch,) — scalar antiderivative value N(u,θ).
         """
-        # Reshape (batch, 7) → (batch, 1, 1, 7)  [1×7 image, batch dim first]
-        x = x.unsqueeze(1).unsqueeze(2)  # (B, 1, 1, 7)
+        # Reshape to 1×7 image
+        x = self._process_input(x)  # (B, 1, 1, 7)
 
         # Pass through conv blocks — each preserves 1×7 spatial size
         for block in self.blocks:
-            x = block(x)  # (B, 256, 1, 7)
+            x = block(x)  # (B, C, 1, 7)
 
-        # Global average pooling over the 1×7 spatial grid → (B, 256, 1, 1)
+        # Global average pooling over the 1×7 spatial grid → (B, C, 1, 1)
         x = nn.functional.adaptive_avg_pool2d(x, (1, 1))
 
         # 1×1 conv output head → (B, 1, 1, 1)
         x = self.head(x)
 
-        # Flatten to (B,) — one scalar per sample, safe when B == 1
+        # Flatten to (B,) — one scalar per sample
         return x.reshape(x.shape[0])
 
 
 ##############################################################################
-#  Third Mixed Partial Derivative via Autograd
+#  Mixed Partial Derivative via Autograd
 ##############################################################################
 
 def mixed_partial_3(net: ConvAntiderivativeNet,
@@ -174,7 +187,6 @@ def mixed_partial_3(net: ConvAntiderivativeNet,
 #  ConvIntegrator: train + evaluate  (Maitre et al. approach)
 ##############################################################################
 
-
 class ConvIntegrator:
     """
     CNN for numerical integration (Maitre et al. approach).
@@ -182,6 +194,10 @@ class ConvIntegrator:
     Trains a ConvAntiderivativeNet to approximate the antiderivative, then
     evaluates the integral via an alternating-sign corner sum over the
     unit hypercube [0,1]^n_int_vars.
+
+    Training is done in float32 on CUDA (or CPU fallback). Evaluation is
+    done in float64 on CPU — the network is transferred from the training
+    device and converted to float64 for the corner-sum evaluation.
     """
 
     def __init__(
@@ -210,7 +226,12 @@ class ConvIntegrator:
         device: torch.device,
         norm_cache: dict = None,
     ) -> tuple:
-        """Generate a training batch: uniform in [0,1]^3 × discrete params."""
+        """Generate a training batch: uniform in [0,1]^3 × discrete params.
+
+        Each optimizer step consumes one full batch of
+        len(param_sets) × n_per_param rows (n_per_param is the "batch size"
+        knob the experiment scripts expose).
+        """
 
         if norm_cache is None:
             norm_cache = {}
@@ -253,13 +274,18 @@ class ConvIntegrator:
         integrand_fn: Callable,
         param_sets: list,
         n_epochs: int = 5000,
-        n_per_param: int = 100_000,
+        n_per_param: int = 512,
         lr: float = 1e-3,
         device: torch.device = None,
         verbose_every: int = 500,
         weight_decay: float = 0.0,
     ) -> tuple:
-        """Train the CNN to approximate the antiderivative."""
+        """Train the CNN to approximate the antiderivative.
+
+        Training is done in float32 on the specified device (CUDA preferred,
+        CPU fallback). The network remains on the training device after
+        training; use integrate() for float64 evaluation on CPU.
+        """
 
         if device is None:
             device = torch.device("cpu")
@@ -283,7 +309,6 @@ class ConvIntegrator:
             )
 
             # Third mixed partial ∂³N/∂u₁∂u₂∂u₃ ≈ f, via autograd end-to-end.
-            # batch_xu shape: (total, 7) → first n_params cols are params, rest are u
             dN = mixed_partial_3(self.net, batch_xu)
             loss = ((dN - f_tilde) ** 2).mean()
 
@@ -306,27 +331,42 @@ class ConvIntegrator:
         return history, norm_cache
 
     def integrate(self, params: tuple, norm_cache: dict = None, device: torch.device = None) -> float:
-        """Evaluate the integral via corner sum over [0,1]^3 for fixed params."""
+        """Evaluate the integral via corner sum over [0,1]^3 for fixed params.
 
-        if device is None:
-            device = torch.device("cpu")
+        The network is transferred to CPU and converted to float64 for this
+        evaluation, since CUDA/MPS are limited to float32 and the corner-sum
+        is where precision matters most. This is a single forward pass per
+        corner (8 corners for 3D), so the CPU transfer is cheap.
+
+        `device` is accepted for API parity with the other integrators but
+        deliberately ignored: evaluation always runs on CPU in float64.
+        After evaluation the network is left on CPU in float32; train()
+        moves it back to the training device.
+        """
+
+        # Always evaluate on CPU in float64 for maximum precision
+        cpu_device = torch.device("cpu")
 
         self.net.eval()
-        self.net.to(device)
+        self.net.to(cpu_device)
+        self.net.double()  # convert to float64
 
         if norm_cache and tuple(params) in norm_cache:
             fc = norm_cache[tuple(params)]
         else:
             fc = 1.0
 
-        s_row = torch.tensor([params], dtype=torch.float32).to(device)
+        s_row = torch.tensor([params], dtype=torch.float64).to(cpu_device)
         I_tilde = 0.0
 
         with torch.no_grad():
             for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
                 sign = (-1) ** (self.n_int_vars - sum(corner))
-                u_t = torch.tensor([corner], dtype=torch.float32).to(device)
+                u_t = torch.tensor([corner], dtype=torch.float64).to(cpu_device)
                 inp = torch.cat([s_row, u_t], dim=1)  # (1, 7)
                 I_tilde += sign * self.net(inp).item()
+
+        # Convert back to float32 for consistency with the rest of the library
+        self.net.float()
 
         return float(I_tilde * fc)
