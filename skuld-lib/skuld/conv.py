@@ -3,9 +3,12 @@
 #
 #  Pure convolutional architecture (no fully-connected layers) for the
 #  Maître et al. (2022) antiderivative approximation method.
-#  Input: 1×7 image [u1, u2, u3, a, b, m, n].
+#  Input: 1×7 image [a, b, m, n, u1, u2, u3]  (params first, matching the
+#  rest of the library).
 #  4 Conv2D layers (32→64→128→256, k=3, same, GELU, residual),
 #  1×1 conv output head → scalar N(u, θ).
+#  Trained so that the third mixed partial ∂³N/∂u₁∂u₂∂u₃ matches f, which
+#  is what makes the corner sum telescope to the integral (see mixed_partial_3).
 ##############################################################################
 
 import itertools
@@ -56,7 +59,7 @@ class ConvAntiderivativeNet(nn.Module):
     """
     Pure CNN antiderivative network N(u, θ) ≈ F(u) integrated over u ∈ [0,1]^3.
 
-    Input: 1×7 image  [u1, u2, u3, a, b, m, n]  (last dim = 7 features)
+    Input: 1×7 image  [a, b, m, n, u1, u2, u3]  (last dim = 7 features)
     Architecture: 4 ConvBlock(32→64→128→256), then Conv2d(256→1, k=1).
     No fully-connected layers anywhere.
     """
@@ -72,10 +75,7 @@ class ConvAntiderivativeNet(nn.Module):
         self.n_int_vars = n_int_vars
 
         if hidden_sizes is None:
-            hidden_sizes = [32, 64, 128, 256]  # fixed by design
-
-        # Stem: reshape 7 features into 1×7 image
-        # We do NOT use a learnable stem; the raw features are the image.
+            hidden_sizes = [32, 64, 128, 256]
 
         # Conv blocks — channels double each layer
         blocks = []
@@ -85,17 +85,15 @@ class ConvAntiderivativeNet(nn.Module):
             in_ch = h
         self.blocks = nn.ModuleList(blocks)
 
-        # Output head: 1×1 conv, 1 channel → scalar per input point
-        self.head = nn.Conv2d(256, 1, kernel_size=1)
+        # Output head: 1×1 conv, last block's channels → scalar per input point
+        self.head = nn.Conv2d(hidden_sizes[-1], 1, kernel_size=1)
 
-        # Initialise head weight via apply() so it works on all devices
-        self._initialize_head()
+        # Initialise head weights after construction so init is device-agnostic
+        self._initialize_head(hidden_sizes[-1])
 
-    def _initialize_head(self):
+    def _initialize_head(self, fan_in: int):
         """Init head weights (called after module construction)."""
-        # Use functional init to avoid MPS in-place issues
         with torch.no_grad():
-            fan_in = 256  # input channels to head
             bound = math.sqrt(6.0 / fan_in)
             self.head.weight.uniform_(-bound, bound)
             if self.head.bias is not None:
@@ -106,7 +104,7 @@ class ConvAntiderivativeNet(nn.Module):
         Forward pass.
 
         Args:
-            x: tensor of shape (batch, 7) — the 7 features [u1,u2,u3,a,b,m,n].
+            x: tensor of shape (batch, 7) — the 7 features [a,b,m,n,u1,u2,u3].
 
         Returns:
             tensor of shape (batch,) — scalar antiderivative value N(u,θ) per sample.
@@ -124,8 +122,52 @@ class ConvAntiderivativeNet(nn.Module):
         # 1×1 conv output head → (B, 1, 1, 1)
         x = self.head(x)
 
-        # Squeeze → (B,) — scalar per sample
-        return x.squeeze()  # removes all size-1 dims
+        # Flatten to (B,) — one scalar per sample, safe when B == 1
+        return x.reshape(x.shape[0])
+
+
+##############################################################################
+#  Third Mixed Partial Derivative via Autograd
+##############################################################################
+
+def mixed_partial_3(net: ConvAntiderivativeNet,
+                    batch: torch.Tensor) -> torch.Tensor:
+    """∂³N/∂u₁∂u₂∂u₃ computed by sequential autograd.
+
+    This is the quantity that must match the integrand f. A corner sum of N
+    over the unit hypercube telescopes to the integral of this mixed partial,
+    which is why the loss is defined on it rather than on the first-order
+    partials ∂N/∂uᵢ — those three conditions are mutually inconsistent for a
+    generic integrand and have no solution.
+    """
+    k = net.n_params
+    s = batch[:, :k]
+    u = batch[:, k:].detach().requires_grad_(True)
+
+    inp = torch.cat([s, u], dim=1)
+    N_out = net(inp)
+
+    ones_N = torch.ones_like(N_out)
+
+    g1 = torch.autograd.grad(
+        N_out, u,
+        grad_outputs=ones_N,
+        create_graph=True, retain_graph=True,
+    )[0][:, 0]
+
+    g12 = torch.autograd.grad(
+        g1, u,
+        grad_outputs=torch.ones_like(g1),
+        create_graph=True, retain_graph=True,
+    )[0][:, 1]
+
+    g123 = torch.autograd.grad(
+        g12, u,
+        grad_outputs=torch.ones_like(g12),
+        create_graph=True, retain_graph=True,
+    )[0][:, 2]
+
+    return g123
 
 
 ##############################################################################
@@ -240,22 +282,12 @@ class ConvIntegrator:
                 integrand_fn, param_sets, n_per_param, device, norm_cache,
             )
 
-            # Derivative: ∂N/∂u via autograd end-to-end
-            # batch_xu shape: (total, 7) → last 3 cols are u, first 4 are params
-            s = batch_xu[:, : self.n_params]
-            u = batch_xu[:, self.n_params :].detach().requires_grad_(True)
-            inp = torch.cat([s, u], dim=1)
-            N_out = self.net(inp).squeeze(-1)
+            # Third mixed partial ∂³N/∂u₁∂u₂∂u₃ ≈ f, via autograd end-to-end.
+            # batch_xu shape: (total, 7) → first n_params cols are params, rest are u
+            dN = mixed_partial_3(self.net, batch_xu)
+            loss = ((dN - f_tilde) ** 2).mean()
 
-            ones_N = torch.ones_like(N_out)
-            dN = torch.autograd.grad(
-                N_out, u,
-                grad_outputs=ones_N,
-                create_graph=True, retain_graph=True,
-            )[0]  # (total, 3) — ∂N/∂u for the 3 integration vars
-
-            # MSE between each gradient component and f_tilde, averaged over all elements
-            loss = ((dN - f_tilde.unsqueeze(-1)) ** 2).mean()
+            optimizer.zero_grad()
             loss.backward()
             torch.nn.utils.clip_grad_norm_(self.net.parameters(), max_norm=5.0)
             optimizer.step()
