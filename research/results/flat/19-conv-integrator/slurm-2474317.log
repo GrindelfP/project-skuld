@@ -1,0 +1,62 @@
+==================================================================
+Job ID:     2474317
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/flat/19-conv-integrator/conv_nni.py
+Arguments:  
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/flat/19-conv-integrator/slurm-2474317.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/flat/19-conv-integrator:
+==================================================================
+SKULD is using device: cuda
+==============================================================================
+  CONV INTEGRATOR — single test
+  device=cuda  seed=42
+  hidden=[32, 64, 128, 256]  epochs=8000  npp=512  lr=0.001
+==============================================================================
+
+  Architecture : pure CNN  [32, 64, 128, 256]  (no fully-connected layers)
+  Parameters   : 431,617
+
+Computing scipy reference integrals ...
+Done.
+
+  Epoch     1/8000  loss=3.6440e-01  lr=1.00e-03  (2.1s)
+  Epoch   800/8000  loss=2.0200e-03  lr=9.78e-04  (39.9s)
+  Epoch  1600/8000  loss=7.7476e-04  lr=9.14e-04  (77.8s)
+  Epoch  2400/8000  loss=4.8935e-04  lr=8.15e-04  (115.7s)
+  Epoch  3200/8000  loss=3.1722e-04  lr=6.89e-04  (153.6s)
+  Epoch  4000/8000  loss=2.8225e-04  lr=5.50e-04  (191.4s)
+  Epoch  4800/8000  loss=3.2478e-04  lr=4.11e-04  (229.3s)
+  Epoch  5600/8000  loss=1.9071e-04  lr=2.85e-04  (267.2s)
+  Epoch  6400/8000  loss=1.3293e-04  lr=1.86e-04  (305.0s)
+  Epoch  7200/8000  loss=1.2775e-04  lr=1.22e-04  (342.9s)
+  Epoch  8000/8000  loss=9.3135e-05  lr=1.00e-04  (380.9s)
+
+  Training done in 391.8s (49.0 ms/epoch)
+  Final loss: 9.3135e-05
+  Min loss:   7.8974e-05
+
+==============================================================================
+  RESULTS
+==============================================================================
+    I   (a,b,m,n)                   NNI                ref      abs_err      rel_err  digits
+------------------------------------------------------------------------------
+  I1    (0, 0, 1, 2)    1.0276417009e+00   1.0243339058e+00   3.3078e-03   3.2292e-03       3
+  I2    (0, 1, 1, 2)    3.7808846633e-01   3.7580954928e-01   2.2789e-03   6.0640e-03       3
+  I3    (1, 0, 1, 2)    3.7623707750e-01   3.7580954928e-01   4.2753e-04   1.1376e-03       4
+  I4    (1, 1, 1, 2)    1.1502055298e-01   1.1425693859e-01   7.6361e-04   6.6833e-03       4
+  I5    (0, 0, 2, 3)    8.2530902587e-01   8.2475785136e-01   5.5117e-04   6.6829e-04       4
+  I6    (0, 1, 2, 3)    3.0891665684e-01   3.0741427521e-01   1.5024e-03   4.8872e-03       3
+  I7    (1, 0, 2, 3)    3.0722786796e-01   3.0741427521e-01   1.8641e-04   6.0637e-04       4
+  I8    (1, 1, 2, 3)    9.6514616194e-02   9.6145710726e-02   3.6891e-04   3.8369e-03       4
+------------------------------------------------------------------------------
+  min_digits  = 3
+  mean_digits = 3.6
+  max_digits  = 4
+  mean_rel_err = 3.3891e-03
+  max_rel_err  = 6.6833e-03
+  (SECHIREN baseline for reference: mean 4.9 digits)
+==============================================================================
+
+  Results saved -> /lustre/projects/g/gshipunv/project-skuld/research/results/flat/19-conv-integrator/conv_nni.csv
+  Summary saved -> /lustre/projects/g/gshipunv/project-skuld/research/results/flat/19-conv-integrator/conv_nni_summary.csv
+

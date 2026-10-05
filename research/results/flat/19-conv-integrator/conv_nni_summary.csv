@@ -1,0 +1,2 @@
+architecture,hidden,epochs,n_per_param,lr,seed,device,n_weights,final_loss,min_loss,elapsed_s,min_digits,mean_digits,max_digits,mean_rel_err,max_rel_err
+CONV,'32,64,128,256',8000,512,0.001,42,cuda,431617,9.313464e-05,7.897402e-05,391.76,3,3.62,4,3.389115e-03,6.683309e-03
