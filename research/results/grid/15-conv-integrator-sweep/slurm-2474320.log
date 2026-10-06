@@ -1,0 +1,13 @@
+==================================================================
+Job ID:     2474320
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/15-conv-integrator-sweep/conv_sweep.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/grid/15-conv-integrator-sweep/slurm-2474320.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/15-conv-integrator-sweep:
+==================================================================
+SKULD is using device: cuda
+Traceback (most recent call last):
+  File "/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/15-conv-integrator-sweep/conv_sweep.py", line 39, in <module>
+    from skuld.conv import ConvIntegrator
+ModuleNotFoundError: No module named 'skuld.conv'
