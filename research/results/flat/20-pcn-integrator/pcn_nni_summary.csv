@@ -1,2 +1,2 @@
 architecture,degree,n_basis,epochs,n_per_param,lr,seed,device,n_weights,final_loss,min_loss,elapsed_s,min_digits,mean_digits,max_digits,mean_rel_err,max_rel_err
-PCN,6,343,500,256,0.001,42,cpu,1715,1.622861e+00,2.578699e-01,4.86,0,0.75,1,2.111900e+00,2.671762e+00
+PCN,6,343,8000,512,0.001,42,cpu,1715,1.334473e-01,8.964164e-02,76.90,0,0.88,2,1.824393e+00,2.273905e+00
