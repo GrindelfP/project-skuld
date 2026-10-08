@@ -1,0 +1,2 @@
+architecture,pieces,epochs,lr,seed,device,n_weights,final_loss,min_loss,elapsed_s,min_digits,mean_digits,max_digits,mean_rel_err,max_rel_err
+TROP,8,8000,0.001,42,cpu,160,6.297521e-03,6.297509e-03,36.48,1,2.38,6,2.723277e-01,1.267834e+00
