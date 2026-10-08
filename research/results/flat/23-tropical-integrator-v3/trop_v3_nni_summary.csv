@@ -1,0 +1,2 @@
+architecture,pieces,epochs,lr,tau_start,tau_end,seed,device,n_weights,final_loss,min_loss,elapsed_s,min_digits,mean_digits,max_digits,mean_rel_err,max_rel_err
+TROPv3,32,32000,0.001,1.0,0.01,42,cpu,640,3.062707e-08,2.723516e-13,200.53,4,5.00,6,1.922359e-04,6.108625e-04

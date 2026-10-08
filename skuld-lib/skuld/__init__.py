@@ -113,11 +113,6 @@ from .conv import (
         ConvAntiderivativeNet,
 )
 
-from .pcn import (
-        PolynomialChaosNet,
-        PCNIntegrator,
-)
-
 __all__ = [
         "MLP",
         "NeuralNumericalIntegration",
@@ -170,7 +165,5 @@ __all__ = [
         "SechirenISIntegrator",
         "ConvIntegrator",
         "ConvAntiderivativeNet",
-        "PolynomialChaosNet",
-        "PCNIntegrator",
 
 ]
