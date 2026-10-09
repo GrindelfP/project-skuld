@@ -13,8 +13,12 @@ Total: 4 * 2 = 8 configs x 5 seeds = 40 runs.
 Multi-GPU: each GPU processes a subset of configs. Resumable via CSV
 checkpointing — if a config already has results for a seed, it is skipped.
 
+GPU index is auto-detected from SLURM_ARRAY_TASK_ID (SLURM job arrays) or
+LOCAL_RANK (torchrun/srun). No manual --gpu flag needed in those cases.
+
 Usage (on CUDA):
-    python trop_sweep.py --gpu 0 --num-gpus 4
+    python trop_sweep.py --num-gpus 4              # auto-detect from SLURM
+    python trop_sweep.py --gpu 0 --num-gpus 4      # manual override
     python trop_sweep.py --gpu 1 --num-gpus 4
     ...
 """
@@ -149,10 +153,25 @@ def digits_of(abs_err: float) -> int:
     return max(0, -math.floor(math.log10(abs_err + 1e-30)))
 
 
+def _detect_gpu_index() -> int:
+    """Auto-detect GPU index from SLURM or torchrun environment."""
+    # SLURM job array: each task gets a unique ID
+    if "SLURM_ARRAY_TASK_ID" in os.environ:
+        return int(os.environ["SLURM_ARRAY_TASK_ID"])
+    # torchrun / srun: LOCAL_RANK is set per process
+    if "LOCAL_RANK" in os.environ:
+        return int(os.environ["LOCAL_RANK"])
+    # SLURM without array (single job, multiple GPUs via SLURM_NTASKS)
+    if "SLURM_NODEID" in os.environ and "SLURM_NTASKS" in os.environ:
+        # Fallback: use 0 if we can't determine rank
+        return 0
+    return 0
+
+
 def main():
     parser = argparse.ArgumentParser(description="TROP v2 grid sweep")
-    parser.add_argument("--gpu", type=int, default=0,
-                        help="GPU index (0-based)")
+    parser.add_argument("--gpu", type=int, default=None,
+                        help="GPU index (0-based). Auto-detected from SLURM if omitted.")
     parser.add_argument("--num-gpus", type=int, default=1,
                         help="total number of GPUs")
     parser.add_argument("--epochs", type=int, default=16000)
@@ -160,7 +179,13 @@ def main():
                         help="comma-separated list of seeds")
     args = parser.parse_args()
 
-    device = torch.device("cuda")
+    # Auto-detect GPU index if not provided
+    if args.gpu is None:
+        args.gpu = _detect_gpu_index()
+
+    # Set the specific GPU device
+    torch.cuda.set_device(args.gpu)
+    device = torch.device(f"cuda:{args.gpu}")
     seeds = [int(s) for s in args.seeds.split(",")]
 
     # Grid definition — tuned around champion v5 (12 pieces, lr=1e-3)
