@@ -1,0 +1,41 @@
+==================================================================
+Job ID:     2668967
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep/trop_sweep.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/grid/17-tropical-integrator-sweep/slurm-2668967.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep:
+==================================================================
+==============================================================================
+  TROP v2 GRID SWEEP — GPU 1/4
+  device=cuda:0  epochs=16000  seeds=[42, 137, 2024, 999, 7]
+  total configs: 12  my configs: 3
+==============================================================================
+
+Computing scipy reference integrals ...
+Done.
+
+  Found 11 existing results, will skip.
+
+    Epoch    800/16000  tau=0.7946  loss = 2.912697e-05
+    Epoch   1600/16000  tau=0.6311  loss = 1.097025e-07
+    Epoch   2400/16000  tau=0.5013  loss = 8.871681e-09
+    Epoch   3200/16000  tau=0.3982  loss = 2.977687e-04
+    Epoch   4000/16000  tau=0.3163  loss = 3.161855e-09
+    Epoch   4800/16000  tau=0.2513  loss = 2.176433e-07
+    Epoch   5600/16000  tau=0.1996  loss = 1.886523e-09
+    Epoch   6400/16000  tau=0.1585  loss = 2.443009e-08
+    Epoch   7200/16000  tau=0.1259  loss = 4.015721e-05
+    Epoch   8000/16000  tau=0.1000  loss = 1.412032e-10
+    Epoch   8800/16000  tau=0.0795  loss = 1.037712e-07
+    Epoch   9600/16000  tau=0.0631  loss = 2.015407e-10
+    Epoch  10400/16000  tau=0.0501  loss = 2.514410e-05
+    Epoch  11200/16000  tau=0.0398  loss = 6.592945e-10
+    Epoch  12000/16000  tau=0.0316  loss = 6.650286e-07
+    Epoch  12800/16000  tau=0.0251  loss = 3.334368e-11
+    Epoch  13600/16000  tau=0.0200  loss = 4.372153e-07
+    Epoch  14400/16000  tau=0.0159  loss = 1.671029e-08
+    Epoch  15200/16000  tau=0.0126  loss = 1.777702e-09
+    Epoch  16000/16000  tau=0.0100  loss = 3.980741e-10
+  [12/15] pieces=16 lr=0.0005 seed=137  mean_dig=5.50  max_dig=6  loss=3.98e-10  (729.5s)
+    Epoch    800/16000  tau=0.7946  loss = 1.153532e-06
