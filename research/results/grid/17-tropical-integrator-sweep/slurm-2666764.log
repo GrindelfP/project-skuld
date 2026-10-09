@@ -1,0 +1,17 @@
+==================================================================
+Job ID:     2666764
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep/trop_sweep.py
+Arguments:  
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/grid/17-tropical-integrator-sweep/slurm-2666764.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep:
+==================================================================
+==============================================================================
+  TROP v2 GRID SWEEP — GPU 0/1
+  device=cuda  epochs=16000  seeds=[42, 137, 2024, 999, 7]
+  total configs: 8  my configs: 8
+==============================================================================
+
+Computing scipy reference integrals ...
+Done.
+
