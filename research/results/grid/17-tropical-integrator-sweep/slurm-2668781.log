@@ -1,0 +1,116 @@
+==================================================================
+Job ID:     2668781
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep/trop_debug.py
+Arguments:  
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/grid/17-tropical-integrator-sweep/slurm-2668781.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/17-tropical-integrator-sweep:
+==================================================================
+==============================================================================
+  TROP DIAGNOSTIC
+==============================================================================
+  device: cuda:0
+  torch: 2.5.1+cu121
+  CUDA available: True
+  CUDA version: 12.1
+  GPU 0: NVIDIA A100-SXM4-80GB, 79.2 GB, cc 8.0
+  config: n_pieces=8 lr=0.001 epochs=100 seed=42
+  tau: 1.0 -> 0.01
+  param_sets: 8
+  corners: 8 = 8
+  forward passes per epoch: 64
+  total forward passes: 6400
+==============================================================================
+
+[SEED] seed=42
+
+[STEP 1] Computing scipy reference integrals ...
+  Done in 2.20s
+  Reference values:
+    (0, 0, 1, 2) -> 1.0243339058e+00
+    (0, 1, 1, 2) -> 3.7580954928e-01
+    (1, 0, 1, 2) -> 3.7580954928e-01
+    (1, 1, 1, 2) -> 1.1425693859e-01
+    (0, 0, 2, 3) -> 8.2475785136e-01
+    (0, 1, 2, 3) -> 3.0741427521e-01
+    (1, 0, 2, 3) -> 3.0741427521e-01
+    (1, 1, 2, 3) -> 9.6145710726e-02
+
+[STEP 2] Building model ...
+  n_weights: 160
+  Built in 0.0062s
+  gpu_alloc=0.0MB  gpu_reserved=0.0MB  rss=450.2MB
+
+[STEP 3] Training (100 epochs, verbose_every=5) ...
+     Epoch       Tau          Loss   GPU alloc  GPU reserved     GPU max         RSS
+                                          (MB)          (MB)        (MB)        (MB)
+    Epoch      5/100  tau=0.831764  loss = 2.410852e-01  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=920.3MB
+    Epoch     10/100  tau=0.660693  loss = 1.301215e-01  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=920.3MB
+    Epoch     15/100  tau=0.524807  loss = 8.621979e-02  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     20/100  tau=0.416869  loss = 5.517741e-02  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     25/100  tau=0.331131  loss = 2.517473e-02  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     30/100  tau=0.263027  loss = 8.215912e-03  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     35/100  tau=0.208930  loss = 4.736011e-03  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     40/100  tau=0.165959  loss = 2.853717e-03  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     45/100  tau=0.131826  loss = 1.465741e-03  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     50/100  tau=0.104713  loss = 6.780502e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     55/100  tau=0.083176  loss = 2.234856e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     60/100  tau=0.066069  loss = 7.130080e-05  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     65/100  tau=0.052481  loss = 6.564785e-05  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     70/100  tau=0.041687  loss = 9.563264e-05  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     75/100  tau=0.033113  loss = 1.228629e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     80/100  tau=0.026303  loss = 1.432486e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     85/100  tau=0.020893  loss = 1.615127e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     90/100  tau=0.016596  loss = 1.809958e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch     95/100  tau=0.013183  loss = 2.020772e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+    Epoch    100/100  tau=0.010471  loss = 2.227260e-04  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+
+  Training done in 6.08s (0.0608s/epoch)
+  Final loss: 2.227260e-04
+  Min loss: 5.944766e-05
+  gpu_alloc=16.3MB  gpu_reserved=22.0MB  gpu_max=17.3MB  rss=922.3MB
+
+[STEP 4] Evaluating ...
+  I_1: nni=1.0502204895e+00  ref=1.0243339058e+00  abs_err=2.59e-02  rel_err=2.53e-02  digits=2
+  I_2: nni=3.7359702587e-01  ref=3.7580954928e-01  abs_err=2.21e-03  rel_err=5.89e-03  digits=3
+  I_3: nni=3.5126316547e-01  ref=3.7580954928e-01  abs_err=2.45e-02  rel_err=6.53e-02  digits=2
+  I_4: nni=9.9685311317e-02  ref=1.1425693859e-01  abs_err=1.46e-02  rel_err=1.28e-01  digits=2
+  I_5: nni=8.1195354462e-01  ref=8.2475785136e-01  abs_err=1.28e-02  rel_err=1.55e-02  digits=2
+  I_6: nni=3.0523145199e-01  ref=3.0741427521e-01  abs_err=2.18e-03  rel_err=7.10e-03  digits=3
+  I_7: nni=3.1857728958e-01  ref=3.0741427521e-01  abs_err=1.12e-02  rel_err=3.63e-02  digits=2
+  I_8: nni=1.0101413727e-01  ref=9.6145710726e-02  abs_err=4.87e-03  rel_err=5.06e-02  digits=3
+
+  min_dig=2  mean_dig=2.38  max_dig=3
+  mean_rel_err=4.169786e-02  max_rel_err=1.275339e-01
+  Eval done in 0.02s
+
+==============================================================================
+  SUMMARY
+==============================================================================
+  Total time: 8.31s
+    Reference:  2.20s
+    Model init: 0.0062s
+    Training:   6.08s (0.0608s/epoch)
+    Evaluation: 0.02s
+  Epochs: 100
+  n_pieces: 8
+  lr: 0.001
+  seed: 42
+  n_weights: 160
+  Final loss: 2.227260e-04
+  Min loss: 5.944766e-05
+  Min/mean/max digits: 2/2.38/3
+  GPU peak allocated: 17.3MB
+  GPU final allocated: 16.3MB
+  GPU final reserved: 22.0MB
+  RSS: 922.3MB
+
+  Extrapolated time for 16000 epochs: 974s (16.2 min)
+  Extrapolated time for full GPU sweep (10 runs): 9736s (2.7 hours)
+
+  Peak GPU memory: 17.3MB
+  Final GPU memory: 16.3MB
+  Memory leak check: OK
+
+  DIAGNOSTIC COMPLETE
+
