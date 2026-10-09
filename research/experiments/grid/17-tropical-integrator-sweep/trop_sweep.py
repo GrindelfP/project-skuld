@@ -183,9 +183,12 @@ def main():
     if args.gpu is None:
         args.gpu = _detect_gpu_index()
 
-    # Set the specific GPU device
-    torch.cuda.set_device(args.gpu)
-    device = torch.device(f"cuda:{args.gpu}")
+    # When using SLURM job arrays with --gres=gpu:1, each job sees only 1 GPU.
+    # CUDA_VISIBLE_DEVICES remaps it to cuda:0, so always use device 0.
+    # The array task ID (args.gpu) is used only for config distribution.
+    if torch.cuda.is_available():
+        torch.cuda.set_device(0)
+    device = torch.device("cuda:0")
     seeds = [int(s) for s in args.seeds.split(",")]
 
     # Grid definition — tuned around champion v5 (12 pieces, lr=1e-3)
