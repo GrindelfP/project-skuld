@@ -273,7 +273,7 @@ def main():
     print(f"  Final loss: {history[-1]:.6e}")
     print(f"  Min loss: {min(history):.6e}")
     print(f"  gpu_alloc={gpu_mem_allocated_mb():.1f}MB  "
-          f"gpu_reserved={gpu_reserved_mb():.1f}MB  "
+          f"gpu_reserved={gpu_mem_reserved_mb():.1f}MB  "
           f"gpu_max={gpu_mem_max_allocated_mb():.1f}MB  "
           f"rss={rss_mb():.1f}MB\n")
 
