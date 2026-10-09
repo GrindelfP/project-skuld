@@ -218,6 +218,10 @@ def main():
 
     # Resumability check
     results_dir = get_mirror_path(__file__, "results")
+    run_tag = os.environ.get("SKULD_RUN_TAG") or os.environ.get("SLURM_JOB_PARTITION")
+    if run_tag:
+        run_tag = "".join(c if (c.isalnum() or c in "-_.") else "_" for c in run_tag)
+        results_dir = os.path.join(results_dir, run_tag)
     results_dir = os.path.join(results_dir, "mock")
     csv_path = os.path.join(results_dir, "results_mock.csv")
     completed = set()
