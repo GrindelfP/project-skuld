@@ -1,8 +1,12 @@
+import sys
+from pathlib import Path
 import torch
 import torch.nn as nn
 import numpy as np
 from scipy import integrate
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 from skuld import (generate_data, scale_data, descale_result,
                    split_data, init_model, NeuralNumericalIntegration)
 from skuld.model import set_global_device

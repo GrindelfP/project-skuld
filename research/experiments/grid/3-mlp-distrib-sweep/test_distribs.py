@@ -13,6 +13,7 @@ import numpy as np
 import torch
 from scipy import integrate
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 from skuld import (generate_data, scale_data, descale_result,
                    split_data, init_model, NeuralNumericalIntegration)
 from skuld.model import set_global_device

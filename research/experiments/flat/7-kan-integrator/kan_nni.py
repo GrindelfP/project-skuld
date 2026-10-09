@@ -7,13 +7,14 @@ Usage:
 import math
 import os
 import sys
+from pathlib import Path
 from datetime import datetime
 
 import numpy as np
 import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 
 from skuld.kan import KANIntegrator
 from physics import integrand_transformed, reference_scipy, PARAM_SETS, FLOATING_POINT_PRECISION

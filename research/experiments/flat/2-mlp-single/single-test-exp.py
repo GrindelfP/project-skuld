@@ -1,7 +1,11 @@
 from scipy import integrate
 from torch import Tensor
+import sys
+from pathlib import Path
 import torch
 import numpy as np
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 from skuld import (generate_data, scale_data, descale_result,
                    split_data, init_model, NeuralNumericalIntegration, set_global_device)
 

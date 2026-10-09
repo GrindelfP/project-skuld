@@ -23,7 +23,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../../../skuld-lib'))
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 _here = os.path.dirname(os.path.abspath(__file__))
 _research = os.path.abspath(os.path.join(_here, '../../..'))
 sys.path.insert(0, _research)

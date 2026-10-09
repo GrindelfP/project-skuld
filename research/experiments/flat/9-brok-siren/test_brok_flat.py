@@ -6,12 +6,13 @@ Usage:
 """
 import os
 import sys
+from pathlib import Path
 import time
 
 import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../../..')))
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 
 from skuld.broknet import BrokNetIntegrator
 from physics import integrand_transformed, reference_scipy, PARAM_SETS
