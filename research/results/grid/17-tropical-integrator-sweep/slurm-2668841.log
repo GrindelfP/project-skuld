@@ -205,3 +205,50 @@ Done.
     Epoch  16000/16000  tau=0.0100  loss = 8.515823e-11
   [9/15] pieces=12 lr=0.001 seed=999  mean_dig=6.00  max_dig=7  loss=8.52e-11  (752.3s)
     Epoch    800/16000  tau=0.7946  loss = 1.552550e-06
+    Epoch   1600/16000  tau=0.6311  loss = 1.616163e-07
+    Epoch   2400/16000  tau=0.5013  loss = 1.076765e-08
+    Epoch   3200/16000  tau=0.3982  loss = 4.429889e-09
+    Epoch   4000/16000  tau=0.3163  loss = 1.579845e-06
+    Epoch   4800/16000  tau=0.2513  loss = 8.317313e-06
+    Epoch   5600/16000  tau=0.1996  loss = 4.365172e-06
+    Epoch   6400/16000  tau=0.1585  loss = 2.351268e-05
+    Epoch   7200/16000  tau=0.1259  loss = 4.978650e-05
+    Epoch   8000/16000  tau=0.1000  loss = 9.628679e-09
+    Epoch   8800/16000  tau=0.0795  loss = 4.601116e-10
+    Epoch   9600/16000  tau=0.0631  loss = 3.593787e-06
+    Epoch  10400/16000  tau=0.0501  loss = 4.470359e-10
+    Epoch  11200/16000  tau=0.0398  loss = 1.164231e-08
+    Epoch  12000/16000  tau=0.0316  loss = 6.792162e-07
+    Epoch  12800/16000  tau=0.0251  loss = 1.940916e-08
+    Epoch  13600/16000  tau=0.0200  loss = 1.971036e-08
+    Epoch  14400/16000  tau=0.0159  loss = 2.683344e-10
+    Epoch  15200/16000  tau=0.0126  loss = 2.540462e-10
+    Epoch  16000/16000  tau=0.0100  loss = 7.613611e-11
+  [10/15] pieces=12 lr=0.001 seed=7  mean_dig=6.00  max_dig=6  loss=7.61e-11  (751.3s)
+    Epoch    800/16000  tau=0.7946  loss = 5.837832e-08
+    Epoch   1600/16000  tau=0.6311  loss = 7.893663e-09
+    Epoch   2400/16000  tau=0.5013  loss = 1.321489e-09
+    Epoch   3200/16000  tau=0.3982  loss = 5.049433e-10
+    Epoch   4000/16000  tau=0.3163  loss = 1.301431e-06
+    Epoch   4800/16000  tau=0.2513  loss = 1.394778e-04
+    Epoch   5600/16000  tau=0.1996  loss = 1.408788e-04
+    Epoch   6400/16000  tau=0.1585  loss = 3.087120e-09
+    Epoch   7200/16000  tau=0.1259  loss = 6.647006e-06
+    Epoch   8000/16000  tau=0.1000  loss = 2.429968e-05
+    Epoch   8800/16000  tau=0.0795  loss = 1.662182e-06
+    Epoch   9600/16000  tau=0.0631  loss = 2.546876e-06
+    Epoch  10400/16000  tau=0.0501  loss = 4.550278e-09
+    Epoch  11200/16000  tau=0.0398  loss = 5.716196e-11
+    Epoch  12000/16000  tau=0.0316  loss = 3.451163e-11
+    Epoch  12800/16000  tau=0.0251  loss = 6.160255e-08
+    Epoch  13600/16000  tau=0.0200  loss = 9.379733e-12
+    Epoch  14400/16000  tau=0.0159  loss = 4.054319e-06
+    Epoch  15200/16000  tau=0.0126  loss = 8.867009e-11
+    Epoch  16000/16000  tau=0.0100  loss = 1.132108e-12
+  [11/15] pieces=14 lr=0.002 seed=42  mean_dig=6.62  max_dig=8  loss=1.13e-12  (749.6s)
+    Epoch    800/16000  tau=0.7946  loss = 5.696004e-07
+    Epoch   1600/16000  tau=0.6311  loss = 9.324379e-08
+    Epoch   2400/16000  tau=0.5013  loss = 6.261012e-06
+    Epoch   3200/16000  tau=0.3982  loss = 7.889256e-06
+    Epoch   4000/16000  tau=0.3163  loss = 1.494876e-05
+    Epoch   4800/16000  tau=0.2513  loss = 2.684607e-08
