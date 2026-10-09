@@ -244,6 +244,11 @@ class SechirenIntegrator:
 
         If n_corner_per_corner > 0, adds corner-focused training points
         near the corners of the unit hypercube.
+
+        Returns:
+            tuple: (history, norm_cache, epoch_data) where epoch_data is a list
+                of per-epoch dicts with keys: epoch, loss, clean_time,
+                data_gen_time, total_time, cumulative_time.
         """
         if device is None:
             device = torch.device("cpu")
@@ -257,15 +262,24 @@ class SechirenIntegrator:
         self.net.train()
 
         history = []
+        epoch_data = []
         norm_cache = {}
         t0 = time.time()
 
         for epoch in range(1, n_epochs + 1):
+            # ── data generation ───────────────────────────────────────────
+            t_data_start = time.time()
             batch_xu, f_tilde, norm_cache = self.make_batch(
                 integrand_fn, param_sets, n_per_param, device, norm_cache,
                 n_corner_per_corner=n_corner_per_corner,
                 corner_fraction=corner_fraction,
             )
+            data_gen_time = time.time() - t_data_start
+
+            # ── forward-backward pass (clean) ────────────────────────────
+            if device.type == 'cuda':
+                torch.cuda.synchronize()
+            t_train_start = time.time()
 
             dN = mixed_partial_3(self.net, batch_xu)
             loss = loss_fn(dN, f_tilde)
@@ -276,8 +290,21 @@ class SechirenIntegrator:
             optimizer.step()
             scheduler.step()
 
+            if device.type == 'cuda':
+                torch.cuda.synchronize()
+            clean_time = time.time() - t_train_start
+
+            total_time = data_gen_time + clean_time
             lv = loss.item()
             history.append(lv)
+            epoch_data.append({
+                'epoch': epoch,
+                'loss': lv,
+                'clean_time': clean_time,
+                'data_gen_time': data_gen_time,
+                'total_time': total_time,
+                'cumulative_time': time.time() - t0,
+            })
 
             if verbose_every > 0 and (epoch % verbose_every == 0 or epoch == 1):
                 lr_now = scheduler.get_last_lr()[0]
@@ -286,7 +313,7 @@ class SechirenIntegrator:
                       f"loss={lv:.4e}  lr={lr_now:.2e}  "
                       f"({elapsed:.1f}s)")
 
-        return history, norm_cache
+        return history, norm_cache, epoch_data
 
     def integrate(self,
                   params: tuple,

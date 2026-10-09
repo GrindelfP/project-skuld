@@ -62,7 +62,7 @@ def main():
     print(f"  Epochs       : {n_epochs}")
 
     # Train
-    history, norm_cache = integrator.train(
+    history, norm_cache, _ = integrator.train(
         integrand_fn=integrand_transformed,
         param_sets=PARAM_SETS,
         n_epochs=n_epochs,
