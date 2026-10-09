@@ -39,3 +39,68 @@ Done.
     Epoch  16000/16000  tau=0.0100  loss = 3.980741e-10
   [12/15] pieces=16 lr=0.0005 seed=137  mean_dig=5.50  max_dig=6  loss=3.98e-10  (729.5s)
     Epoch    800/16000  tau=0.7946  loss = 1.153532e-06
+    Epoch   1600/16000  tau=0.6311  loss = 5.238500e-08
+    Epoch   2400/16000  tau=0.5013  loss = 2.754492e-09
+    Epoch   3200/16000  tau=0.3982  loss = 2.884829e-09
+    Epoch   4000/16000  tau=0.3163  loss = 6.804563e-09
+    Epoch   4800/16000  tau=0.2513  loss = 5.659478e-09
+    Epoch   5600/16000  tau=0.1996  loss = 9.692749e-09
+    Epoch   6400/16000  tau=0.1585  loss = 8.114405e-09
+    Epoch   7200/16000  tau=0.1259  loss = 1.190525e-08
+    Epoch   8000/16000  tau=0.1000  loss = 4.959659e-09
+    Epoch   8800/16000  tau=0.0795  loss = 4.119987e-07
+    Epoch   9600/16000  tau=0.0631  loss = 1.491931e-08
+    Epoch  10400/16000  tau=0.0501  loss = 2.826130e-08
+    Epoch  11200/16000  tau=0.0398  loss = 7.524978e-09
+    Epoch  12000/16000  tau=0.0316  loss = 3.431988e-07
+    Epoch  12800/16000  tau=0.0251  loss = 2.960660e-10
+    Epoch  13600/16000  tau=0.0200  loss = 1.331238e-09
+    Epoch  14400/16000  tau=0.0159  loss = 5.757569e-10
+    Epoch  15200/16000  tau=0.0126  loss = 7.190743e-10
+    Epoch  16000/16000  tau=0.0100  loss = 1.498434e-10
+  [13/15] pieces=16 lr=0.0005 seed=2024  mean_dig=5.88  max_dig=6  loss=1.50e-10  (730.5s)
+    Epoch    800/16000  tau=0.7946  loss = 4.992597e-07
+    Epoch   1600/16000  tau=0.6311  loss = 1.399012e-08
+    Epoch   2400/16000  tau=0.5013  loss = 4.130353e-09
+    Epoch   3200/16000  tau=0.3982  loss = 9.572162e-10
+    Epoch   4000/16000  tau=0.3163  loss = 1.211035e-09
+    Epoch   4800/16000  tau=0.2513  loss = 1.246223e-09
+    Epoch   5600/16000  tau=0.1996  loss = 8.014199e-10
+    Epoch   6400/16000  tau=0.1585  loss = 2.742934e-07
+    Epoch   7200/16000  tau=0.1259  loss = 2.349131e-10
+    Epoch   8000/16000  tau=0.1000  loss = 1.517797e-09
+    Epoch   8800/16000  tau=0.0795  loss = 4.931730e-09
+    Epoch   9600/16000  tau=0.0631  loss = 2.230854e-08
+    Epoch  10400/16000  tau=0.0501  loss = 1.167367e-07
+    Epoch  11200/16000  tau=0.0398  loss = 2.023543e-10
+    Epoch  12000/16000  tau=0.0316  loss = 8.709766e-07
+    Epoch  12800/16000  tau=0.0251  loss = 9.619315e-10
+    Epoch  13600/16000  tau=0.0200  loss = 5.308788e-11
+    Epoch  14400/16000  tau=0.0159  loss = 7.345463e-09
+    Epoch  15200/16000  tau=0.0126  loss = 1.046391e-08
+    Epoch  16000/16000  tau=0.0100  loss = 1.894373e-09
+  [14/15] pieces=16 lr=0.0005 seed=999  mean_dig=5.38  max_dig=6  loss=1.89e-09  (729.8s)
+    Epoch    800/16000  tau=0.7946  loss = 4.164967e-05
+    Epoch   1600/16000  tau=0.6311  loss = 1.132745e-08
+    Epoch   2400/16000  tau=0.5013  loss = 5.894285e-08
+    Epoch   3200/16000  tau=0.3982  loss = 7.168545e-07
+    Epoch   4000/16000  tau=0.3163  loss = 6.477295e-09
+    Epoch   4800/16000  tau=0.2513  loss = 6.409418e-07
+    Epoch   5600/16000  tau=0.1996  loss = 5.352756e-06
+    Epoch   6400/16000  tau=0.1585  loss = 2.808635e-05
+    Epoch   7200/16000  tau=0.1259  loss = 6.972228e-06
+    Epoch   8000/16000  tau=0.1000  loss = 6.103750e-06
+    Epoch   8800/16000  tau=0.0795  loss = 8.962590e-09
+    Epoch   9600/16000  tau=0.0631  loss = 1.287993e-05
+    Epoch  10400/16000  tau=0.0501  loss = 3.873680e-10
+    Epoch  11200/16000  tau=0.0398  loss = 6.720527e-12
+    Epoch  12000/16000  tau=0.0316  loss = 2.907643e-08
+    Epoch  12800/16000  tau=0.0251  loss = 4.302017e-12
+    Epoch  13600/16000  tau=0.0200  loss = 5.459105e-13
+    Epoch  14400/16000  tau=0.0159  loss = 3.914202e-08
+    Epoch  15200/16000  tau=0.0126  loss = 3.769225e-09
+    Epoch  16000/16000  tau=0.0100  loss = 6.889941e-09
+  [15/15] pieces=16 lr=0.0005 seed=7  mean_dig=4.88  max_dig=6  loss=6.89e-09  (727.6s)
+
+  GPU 1 done. Results -> /lustre/projects/g/gshipunv/project-skuld/research/results/grid/17-tropical-integrator-sweep/results_gpu1.csv
+
