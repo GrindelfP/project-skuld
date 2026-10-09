@@ -163,10 +163,10 @@ def main():
     device = torch.device("cuda")
     seeds = [int(s) for s in args.seeds.split(",")]
 
-    # Grid definition
+    # Grid definition — tuned around champion v5 (12 pieces, lr=1e-3)
     grid = {
-        "n_pieces": [8, 16, 32, 64],
-        "lr": [1e-3, 1e-2],
+        "n_pieces": [10, 12, 14, 16],
+        "lr": [5e-4, 1e-3, 2e-3],
         "tau_start": [1.0],
         "tau_end": [0.01],
     }
@@ -240,7 +240,8 @@ def main():
 
             history = trop.train(
                 param_sets=PARAM_SETS, targets=targets,
-                n_epochs=args.epochs, lr=lr, device=device)
+                n_epochs=args.epochs, lr=lr, device=device,
+                verbose_every=max(1, args.epochs // 20))
 
             # Evaluate
             digits_list = []
