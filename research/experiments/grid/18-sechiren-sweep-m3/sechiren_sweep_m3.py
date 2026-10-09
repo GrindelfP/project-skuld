@@ -33,6 +33,14 @@ Usage:
     python sechiren_sweep_m3.py --num-gpus 4       # 4 GPUs (SLURM array)
     python sechiren_sweep_m3.py --quick            # tiny grid for testing
     python sechiren_sweep_m3.py --seeds 42         # single seed
+    python sechiren_sweep_m3.py --run-tag ampere  # results under results/<run-tag>/
+
+Concurrent runs on different GPU partitions:
+    When the same sweep is launched simultaneously on several partitions
+    (e.g. sbatch -p ampere / -p turing / -p ...), each run namespaces its
+    output under a subdirectory so the per-GPU and history CSVs do not
+    overwrite each other. The tag defaults to $SKULD_RUN_TAG, then
+    $SLURM_JOB_PARTITION, and can be forced with --run-tag.
 """
 import argparse
 import csv
@@ -332,11 +340,24 @@ def main():
                         help=f"seeds to run (default: {SEEDS})")
     parser.add_argument("--verbose-every", type=int, default=0,
                         help="print training progress every N epochs (0 = silent)")
+    parser.add_argument("--run-tag", default=None,
+                        help="subdirectory under results/ for this run, so concurrent runs "
+                             "on different partitions do not overwrite each other "
+                             "(default: $SKULD_RUN_TAG, then $SLURM_JOB_PARTITION)")
     args = parser.parse_args()
 
     # ── determine GPU ID ──────────────────────────────────────────────────
     gpu_id = args.gpu_id if args.gpu_id is not None else int(os.environ.get("SLURM_ARRAY_TASK_ID", "0"))
     num_gpus = args.num_gpus
+
+    # ── results namespace: one subdir per GPU partition/architecture ───────
+    # Running the same sweep on several partitions concurrently would otherwise
+    # write identical results_gpu*.csv / history files into the same place.
+    run_tag = (args.run_tag
+               or os.environ.get("SKULD_RUN_TAG")
+               or os.environ.get("SLURM_JOB_PARTITION"))
+    if run_tag:
+        run_tag = "".join(c if (c.isalnum() or c in "-_.") else "_" for c in run_tag)
 
     device = torch.device(
         "mps" if torch.backends.mps.is_available() else
@@ -359,6 +380,8 @@ def main():
           f"= {len(all_runs)} total runs")
     print(f"  GPU {gpu_id}/{num_gpus}  —  processing runs [{start_idx}:{end_idx}] "
           f"= {len(my_runs)} runs, device={device}")
+    if run_tag:
+        print(f"  Run tag: {run_tag}  (results -> results/.../{run_tag}/)")
     print(f"{'=' * 72}\n")
 
     if not my_runs:
@@ -375,6 +398,9 @@ def main():
 
     # ── resumability: load completed runs ─────────────────────────────────
     results_dir = get_mirror_path(__file__, "results")
+    if run_tag:
+        results_dir = results_dir / run_tag
+        os.makedirs(results_dir, exist_ok=True)
     csv_path = os.path.join(results_dir, f"results_gpu{gpu_id}.csv")
     completed = load_completed_runs(csv_path)
     if completed:
