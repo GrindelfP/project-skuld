@@ -5,3 +5,6 @@ __pycache__/
 .DS_Store
 integral_*
 *_cache.npz
+research/results/grid/18-sechiren-sweep-m3/volta/
+research/results/grid/18-sechiren-sweep-m3/ampere/
+
