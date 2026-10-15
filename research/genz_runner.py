@@ -49,6 +49,58 @@ from genz import GENZ_FUNCTIONS, correct_digits  # noqa: E402
 N_INT_VARS = 3
 
 
+def quadrature_reference(n: int = N_INT_VARS, rtol: float = 1e-12) -> list[dict]:
+    """
+    Reference row: what a tuned classical method achieves on the same functions.
+
+    Uses scipy.integrate.cubature (adaptive Genz-Malik). This is NOT the ground
+    truth and does not define correctness — the closed forms in `genz.py` do.
+    It is a calibration yardstick, so a low digit count from a network can be
+    read as "weak method" vs "brutally hard function".
+
+    Reports the *achieved* relative error rather than a digit count: cubature
+    converges to ~1e-15 here, where "digits" stops being a meaningful number
+    before it stops being interesting. The parity bar for this benchmark is a
+    neural antiderivative matching ~1e-10..1e-13.
+    """
+    try:
+        from scipy.integrate import cubature
+    except ImportError:
+        return []
+
+    import numpy as np
+
+    rows = []
+    for gfn in GENZ_FUNCTIONS:
+        exact = gfn.exact(n)
+        res = cubature(
+            lambda Z: gfn.numpy_fn(Z, *gfn.params),
+            np.zeros(n),
+            np.ones(n),
+            rtol=rtol,
+        )
+        estimate = float(res.estimate)
+        rel = abs(estimate - exact) / abs(exact)
+        rows.append({
+            "function": gfn.name,
+            "exact": f"{exact:.17g}",
+            "estimate": f"{estimate:.17g}",
+            "rel_err": f"{rel:.3e}",
+            "digits": f"{correct_digits(estimate, exact):.2f}",
+            "status": res.status,
+        })
+    return rows
+
+
+def print_quadrature_reference() -> None:
+    rows = quadrature_reference()
+    if not rows:
+        return
+    print("  reference (scipy cubature, adaptive Genz-Malik) — calibration, not truth:")
+    for r in rows:
+        print(f"    {r['function']:<15} rel_err={r['rel_err']}  {r['status']}")
+
+
 # ---------------------------------------------------------------------------
 # architecture registry
 # ---------------------------------------------------------------------------
@@ -288,6 +340,7 @@ def run_architecture(
     digits = [float(r["digits"]) for r in rows]
     print(f"\n  across functions: min={min(digits):.2f} "
           f"mean={sum(digits) / len(digits):.2f} max={max(digits):.2f}")
+    print_quadrature_reference()
 
     results_dir.mkdir(parents=True, exist_ok=True)
     # A smoke run must never be mistakable for a real one: an identical filename

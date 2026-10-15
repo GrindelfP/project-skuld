@@ -1,0 +1,58 @@
+SKULD is using device: mps
+==============================================================================
+COSIREN-PS on Genz functions — n_int_vars=3, device=mps
+  config: {'n_epochs': 8000, 'n_per_param': 1024, 'lr': 0.0005}   [flat run at fixed settings]
+==============================================================================
+  Epoch     1/8000  loss=2.3375e+01  lr=5.00e-04  (1.7s)
+  Epoch  1000/8000  loss=2.4512e-02  lr=4.83e-04  (31.7s)
+  Epoch  2000/8000  loss=7.7639e-02  lr=4.34e-04  (62.3s)
+  Epoch  3000/8000  loss=7.5673e-03  lr=3.61e-04  (93.1s)
+  Epoch  4000/8000  loss=3.3829e-03  lr=2.75e-04  (123.9s)
+  Epoch  5000/8000  loss=5.3562e-04  lr=1.89e-04  (154.5s)
+  Epoch  6000/8000  loss=4.8883e-06  lr=1.16e-04  (182.0s)
+  Epoch  7000/8000  loss=2.4993e-06  lr=6.71e-05  (209.5s)
+  Epoch  8000/8000  loss=5.6070e-05  lr=5.00e-05  (236.8s)
+  oscillatory     exact=-4.75537321e-03  nni=-4.64255110e-03  rel= 2.37e-02  digits=  1.62  loss=5.607e-05   237.5s
+  Epoch     1/8000  loss=2.1426e+01  lr=5.00e-04  (0.0s)
+  Epoch  1000/8000  loss=1.2149e-02  lr=4.83e-04  (27.5s)
+  Epoch  2000/8000  loss=4.6834e-05  lr=4.34e-04  (56.6s)
+  Epoch  3000/8000  loss=1.6031e-04  lr=3.61e-04  (87.4s)
+  Epoch  4000/8000  loss=2.3113e-04  lr=2.75e-04  (118.3s)
+  Epoch  5000/8000  loss=4.0018e-06  lr=1.89e-04  (149.0s)
+  Epoch  6000/8000  loss=1.7964e-06  lr=1.16e-04  (179.8s)
+  Epoch  7000/8000  loss=6.2692e-07  lr=6.71e-05  (210.4s)
+  Epoch  8000/8000  loss=2.7064e-05  lr=5.00e-05  (241.0s)
+  product_peak    exact=9.90092476e-01  nni=9.94748667e-01  rel= 4.70e-03  digits=  2.33  loss=2.706e-05   241.0s
+  Epoch     1/8000  loss=2.5615e+01  lr=5.00e-04  (0.0s)
+  Epoch  1000/8000  loss=8.8396e-02  lr=4.83e-04  (30.3s)
+  Epoch  2000/8000  loss=3.4890e-02  lr=4.34e-04  (60.9s)
+  Epoch  3000/8000  loss=2.0967e-02  lr=3.61e-04  (91.5s)
+  Epoch  4000/8000  loss=8.5587e-03  lr=2.75e-04  (122.1s)
+  Epoch  5000/8000  loss=2.4327e-03  lr=1.89e-04  (152.9s)
+  Epoch  6000/8000  loss=1.4922e-03  lr=1.16e-04  (183.4s)
+  Epoch  7000/8000  loss=2.5523e-05  lr=6.71e-05  (212.7s)
+  Epoch  8000/8000  loss=1.0840e-05  lr=5.00e-05  (240.0s)
+  corner_peak     exact=4.16666667e-02  nni=4.16451906e-02  rel= 5.15e-04  digits=  3.29  loss=1.084e-05   240.0s
+  Epoch     1/8000  loss=1.9198e+01  lr=5.00e-04  (0.0s)
+  Epoch  1000/8000  loss=7.7983e-05  lr=4.83e-04  (27.5s)
+  Epoch  2000/8000  loss=1.3867e-06  lr=4.34e-04  (54.9s)
+  Epoch  3000/8000  loss=3.6997e-05  lr=3.61e-04  (85.4s)
+  Epoch  4000/8000  loss=3.2847e-06  lr=2.75e-04  (116.2s)
+  Epoch  5000/8000  loss=5.3035e-07  lr=1.89e-04  (146.6s)
+  Epoch  6000/8000  loss=3.7176e-07  lr=1.16e-04  (177.0s)
+  Epoch  7000/8000  loss=1.9414e-07  lr=6.71e-05  (207.5s)
+  Epoch  8000/8000  loss=9.9547e-07  lr=5.00e-05  (238.0s)
+  gaussian        exact=4.44922611e-02  nni=4.45258543e-02  rel= 7.55e-04  digits=  3.12  loss=9.955e-07   238.0s
+  Epoch     1/8000  loss=2.4506e+01  lr=5.00e-04  (0.0s)
+  Epoch  1000/8000  loss=3.1019e-05  lr=4.83e-04  (30.6s)
+  Epoch  2000/8000  loss=9.6697e-05  lr=4.34e-04  (61.0s)
+  Epoch  3000/8000  loss=3.2398e-05  lr=3.61e-04  (91.6s)
+  Epoch  4000/8000  loss=4.1073e-05  lr=2.75e-04  (122.3s)
+  Epoch  5000/8000  loss=1.0811e-05  lr=1.89e-04  (153.0s)
+  Epoch  6000/8000  loss=9.1861e-06  lr=1.16e-04  (428.1s)
+  Epoch  7000/8000  loss=4.0269e-06  lr=6.71e-05  (5356.6s)
+  Epoch  8000/8000  loss=4.6092e-06  lr=5.00e-05  (7448.3s)
+  c0_continuous   exact=4.94979687e-02  nni=5.00054955e-02  rel= 1.03e-02  digits=  1.99  loss=4.609e-06  7448.3s
+
+  across functions: min=1.62 mean=2.47 max=3.29
+  -> /Users/grindelf/Programming/1-INTEGRALS/project-skuld/research/results/flat/31-cosiren-ps-genz/cosiren_ps_genz.csv
