@@ -216,7 +216,7 @@ def c0_continuous_exact(n: int, a: float = 5.0, u: float = 0.5) -> float:
 
 @dataclass(frozen=True)
 class GenzFunction:
-    """One Genz family: torch integrand, numpy integrand, exact value, canonical params."""
+    """One Genz family: torch integrand, numpy integrand, exact value, params."""
 
     name: str
     torch_fn: Callable
@@ -225,6 +225,11 @@ class GenzFunction:
     params: tuple
     separable: bool
     note: str
+    # Parameters scaled down to roughly the difficulty of the meson Feynman
+    # integrand. The canonical Genz1984 set (a = 5) is deliberately severe: the
+    # shape parameter a controls both frequency and peak sharpness, and a = 5
+    # pushes every architecture to ~3 digits. See research/genz_difficulty.md.
+    tuned_params: tuple | None = None
 
     def integrand(self, u: torch.Tensor, *params) -> torch.Tensor:
         """Adapter for the antiderivative integrators: `(u, *params) -> [N]`."""
@@ -233,12 +238,25 @@ class GenzFunction:
     def exact(self, n: int, params: tuple | None = None) -> float:
         return self.exact_fn(n, *(params if params is not None else self.params))
 
+    def params_for(self, difficulty: str = "canonical") -> tuple:
+        """Parameters for a named difficulty tier."""
+        if difficulty == "canonical":
+            return self.params
+        if difficulty == "tuned":
+            if self.tuned_params is None:
+                return self.params
+            return self.tuned_params
+        raise ValueError(
+            f"unknown difficulty tier {difficulty!r}; use 'canonical' or 'tuned'"
+        )
+
     @property
     def n_params(self) -> int:
         return len(self.params)
 
 
 CANONICAL = (5.0, 0.5)
+CANONICAL_TUNED = (2.0, 0.5)
 
 GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
     GenzFunction(
@@ -247,6 +265,7 @@ GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
         numpy_fn=oscillatory_np,
         exact_fn=oscillatory_exact,
         params=(5.0, 0.5),
+        tuned_params=(2.0, 0.5),
         separable=False,
         note="cosine of a sum; integral factorises but the function does not",
     ),
@@ -256,6 +275,7 @@ GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
         numpy_fn=product_peak_np,
         exact_fn=product_peak_exact,
         params=CANONICAL,
+        tuned_params=CANONICAL_TUNED,
         separable=True,
         note="Lorentzian peak, normalized to peak height 1; exact ~0.99 at n=3",
     ),
@@ -265,6 +285,7 @@ GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
         numpy_fn=corner_peak_np,
         exact_fn=corner_peak_exact,
         params=(1.0, 1.0),
+        tuned_params=(0.5, 0.5),
         separable=False,
         note="exact value 1/(n!(n+1)); a relative-accuracy trap, never report absolute",
     ),
@@ -274,6 +295,7 @@ GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
         numpy_fn=gaussian_np,
         exact_fn=gaussian_exact,
         params=CANONICAL,
+        tuned_params=CANONICAL_TUNED,
         separable=True,
         note="smoothest family in the set; serves as the sanity floor",
     ),
@@ -283,6 +305,7 @@ GENZ_FUNCTIONS: tuple[GenzFunction, ...] = (
         numpy_fn=c0_continuous_np,
         exact_fn=c0_continuous_exact,
         params=CANONICAL,
+        tuned_params=CANONICAL_TUNED,
         separable=True,
         note="C^0 not C^1: kinked on every hyperplane x_i = u_i; the only non-smooth family",
     ),

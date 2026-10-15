@@ -37,10 +37,21 @@ def main() -> None:
         action="store_true",
         help="50 epochs per function; validates plumbing, not accuracy",
     )
+    parser.add_argument(
+        "--n", type=int, default=3,
+        help="number of integration variables (3 or 6)",
+    )
+    parser.add_argument(
+        "--difficulty", choices=("canonical", "tuned"), default="canonical",
+        help="canonical: Genz1984 a=5 (hard). tuned: softer, meson-comparable",
+    )
     args = parser.parse_args()
 
     results_dir = get_mirror_path(__file__, "results")
-    run_architecture("gaussian", results_dir, smoke=args.smoke)
+    run_architecture(
+        "gaussian", results_dir,
+        smoke=args.smoke, n=args.n, difficulty=args.difficulty,
+    )
 
 
 if __name__ == "__main__":
