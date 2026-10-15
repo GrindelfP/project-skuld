@@ -130,29 +130,40 @@ class BrokNet(nn.Module):
 #  Mixed Third Partial Derivative via Autograd
 ##############################################################################
 
-def mixed_partial_3_expert(expert: SindriNet,
-                            u: torch.Tensor) -> torch.Tensor:
-    """Compute d^3 S_i / du1 du2 du3 for a single SindriNet expert."""
+def mixed_partial_n_expert(expert: SindriNet,
+                           u: torch.Tensor) -> torch.Tensor:
+    """
+    Compute d^n S_i / du_1 ... du_n for a single SindriNet expert, where n is
+    the number of integration variables.
+
+    Replaces the former `mixed_partial_3_expert`, which hardcoded three autograd
+    passes over columns 0, 1, 2 and so was silently wrong for any other n.
+    """
     u_d = u.detach().requires_grad_(True)
-    G_out = expert(u_d).squeeze(-1)
-    ones = torch.ones_like(G_out)
+    dim = u_d.shape[1]
+    declared = getattr(expert, "n_int_vars", dim)
+    if dim != declared:
+        raise ValueError(
+            f"batch has {dim} integration variables but expert declares {declared}"
+        )
 
-    g1 = torch.autograd.grad(
-        G_out, u_d, grad_outputs=ones,
-        create_graph=True, retain_graph=True,
-    )[0][:, 0]
+    g = expert(u_d).squeeze(-1)
 
-    g12 = torch.autograd.grad(
-        g1, u_d, grad_outputs=torch.ones_like(g1),
-        create_graph=True, retain_graph=True,
-    )[0][:, 1]
+    for i in range(dim):
+        # retain_graph must stay True: an omitted retain_graph defaults to
+        # create_graph, and the loss backward pass needs this graph intact.
+        g = torch.autograd.grad(
+            g, u_d,
+            grad_outputs=torch.ones_like(g),
+            create_graph=True,
+            retain_graph=True,
+        )[0][:, i]
 
-    g123 = torch.autograd.grad(
-        g12, u_d, grad_outputs=torch.ones_like(g12),
-        create_graph=True,
-    )[0][:, 2]
+    return g
 
-    return g123
+
+# Backwards-compatible alias: the name predates n-dimensional support.
+mixed_partial_3_expert = mixed_partial_n_expert
 
 
 ##############################################################################
@@ -243,7 +254,7 @@ class BrokNetIntegrator:
                 u, f_tilde = self._make_expert_batch(
                     integrand_fn, a, b, m, n, n_per_expert, device, norm_cache
                 )
-                dG = mixed_partial_3_expert(self.net.experts[i], u)
+                dG = mixed_partial_n_expert(self.net.experts[i], u)
                 loss_i = loss_fn(dG, f_tilde)
                 expert_losses_tensors.append(loss_i)
 

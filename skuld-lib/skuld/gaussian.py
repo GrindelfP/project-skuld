@@ -97,37 +97,57 @@ class GaussianPrimitiveNet(nn.Module):
 #  Mixed Partial Derivative via Autograd
 ##############################################################################
 
-def mixed_partial_3(net: GaussianPrimitiveNet,
+def mixed_partial_n(net: GaussianPrimitiveNet,
                     batch: torch.Tensor) -> torch.Tensor:
-    """d3N/du1du2du3 computed by sequential autograd."""
+    """
+    d^n N / du_1 ... du_n, computed by sequential autograd, where n is the
+    number of integration variables.
+
+    This replaces a former `mixed_partial_3`, which took exactly three
+    successive autograd passes over columns 0, 1, 2 regardless of the actual
+    dimension. That was silently wrong for any n != 3: the network was trained
+    to match a third-order partial derivative and then evaluated with an
+    n-dimensional corner sum. No exception was raised, the loss decreased
+    happily, and the result was confidently wrong.
+
+    The loop below is the same computation for arbitrary n; at n = 3 it is
+    identical to the previous implementation.
+    """
     k = net.n_params
     s = batch[:, :k]
     u = batch[:, k:].detach().requires_grad_(True)
 
-    inp = torch.cat([s, u], dim=1)
-    N_out = net(inp).squeeze(-1)
+    dim = u.shape[1]
+    declared = getattr(net, "n_int_vars", dim)
+    if dim != declared:
+        raise ValueError(
+            f"batch has {dim} integration variables but net declares {declared}"
+        )
+    if dim < 1:
+        raise ValueError(f"need at least 1 integration variable, got {dim}")
 
-    ones_N = torch.ones_like(N_out)
+    g = net(torch.cat([s, u], dim=1)).squeeze(-1)
 
-    g1 = torch.autograd.grad(
-        N_out, u,
-        grad_outputs=ones_N,
-        create_graph=True, retain_graph=True,
-    )[0][:, 0]
+    for i in range(dim):
+        # retain_graph MUST stay True even on the final pass. In
+        # torch.autograd.grad an omitted retain_graph defaults to the value of
+        # create_graph, so the previous three-call implementation — which
+        # omitted it on the last call — was in fact retaining the graph, and
+        # loss.backward() depends on that. Passing False here frees a graph the
+        # backward pass still needs and raises "backward through the graph a
+        # second time".
+        g = torch.autograd.grad(
+            g, u,
+            grad_outputs=torch.ones_like(g),
+            create_graph=True,
+            retain_graph=True,
+        )[0][:, i]
 
-    g12 = torch.autograd.grad(
-        g1, u,
-        grad_outputs=torch.ones_like(g1),
-        create_graph=True, retain_graph=True,
-    )[0][:, 1]
+    return g
 
-    g123 = torch.autograd.grad(
-        g12, u,
-        grad_outputs=torch.ones_like(g12),
-        create_graph=True,
-    )[0][:, 2]
 
-    return g123
+# Backwards-compatible alias: the name predates n-dimensional support.
+mixed_partial_3 = mixed_partial_n
 
 
 ##############################################################################
