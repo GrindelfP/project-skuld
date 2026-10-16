@@ -131,6 +131,23 @@ them raise.
   measures a mixed partial at random points; the corner sum reads values at
   vertices. Low training loss does not imply a correct integral.
 
+## Versioning
+
+Versions are `MAJOR.MINOR.PATCH`, with one addition: a trailing `+N` marks a
+**fix-only revision** of the release that precedes it, rather than a new
+release. So `0.4.0+R` is the same `0.4.0` rebuilt with packaging fixes — the
+API is unchanged and nothing new is added. It sorts after plain `0.4.0`, so
+`pip install -U` picks it up.
+
+Use `+N` only when a release needs republishing without changing behaviour.
+Any change to the API or to results gets a real version bump.
+
+Install a specific revision with:
+
+```bash
+pip install skuld-lib==0.4.0+R
+```
+
 ## License
 
 Non-commercial use with attribution. Commercial use requires explicit written
