@@ -133,20 +133,23 @@ them raise.
 
 ## Versioning
 
-Versions are `MAJOR.MINOR.PATCH`, with one addition: a trailing `+N` marks a
-**fix-only revision** of the release that precedes it, rather than a new
-release. So `0.4.0+R` is the same `0.4.0` rebuilt with packaging fixes — the
-API is unchanged and nothing new is added. It sorts after plain `0.4.0`, so
-`pip install -U` picks it up.
+Versions are `MAJOR.MINOR.PATCH`, with one addition: a `.postN` suffix marks a
+**fix-only revision** of the release before it, rather than a new release. So
+`0.4.0.post1` is the same `0.4.0` repackaged — the API is unchanged and nothing
+new is added. It sorts after the plain release, so `pip install -U` picks it up.
 
-Use `+N` only when a release needs republishing without changing behaviour.
+Use `.postN` only when a release needs republishing without changing behaviour.
 Any change to the API or to results gets a real version bump.
 
 Install a specific revision with:
 
 ```bash
-pip install skuld-lib==0.4.0+R
+pip install skuld-lib==0.4.0.post1
 ```
+
+Note that PEP 440 local versions (`0.4.0+build1`) would express the same idea
+more neatly, but **PyPI rejects local versions outright**, so `.postN` is the
+only option available here.
 
 ## License
 

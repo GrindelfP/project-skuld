@@ -4,10 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "skuld-lib"
-# 0.4.0+R is a PEP 440 local version: the same 0.4.0 release, rebuilt
-# with packaging fixes. A trailing "+N" marks a fix-only revision of the
-# preceding release; a behaviour change gets a real minor bump instead.
-version = "0.4.0+R"
+# A ".postN" suffix marks a fix-only revision of the release before it:
+# same code, repackaged, no API change. It sorts after the plain release
+# so `pip install -U` picks it up. Local "+N" versions are not an option —
+# PEP 440 allows them but PyPI rejects them outright, so ".postN" is the
+# only way to express "rebuilt, not new" here.
+version = "0.4.0.post1"
 description = "A neural network based numerical integration library"
 authors = [{name = "GrindelfP", email = "grindelf.perlomutrovij@gmail.com"}]
 # Non-commercial with attribution, plus a prohibition on military and
