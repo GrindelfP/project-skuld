@@ -13,6 +13,26 @@ authors = [{name = "GrindelfP", email = "grindelf.perlomutrovij@gmail.com"}]
 # byte-identical copy of the repository root licence.
 license = "LicenseRef-Proprietary"
 license-files = ["LICENSE"]
+readme = "README.md"
+keywords = [
+    "neural-network",
+    "numerical-integration",
+    "quadrature",
+    "antiderivative",
+    "physics",
+    "torch",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Physics",
+]
 dependencies = [
     "torch",     
     "numpy",
@@ -21,6 +41,11 @@ dependencies = [
     "typing"
 ]
 requires-python = ">=3.11"
+
+[project.urls]
+Homepage = "https://github.com/GrindelfP/project-skuld"
+Repository = "https://github.com/GrindelfP/project-skuld"
+Issues = "https://github.com/GrindelfP/project-skuld/issues"
 
 [tool.setuptools.packages.find]
 include = ["skuld*"]
