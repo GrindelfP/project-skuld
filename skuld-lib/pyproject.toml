@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools>=77.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,6 +7,12 @@ name = "skuld-lib"
 version = "0.4.0"
 description = "A neural network based numerical integration library"
 authors = [{name = "GrindelfP", email = "grindelf.perlomutrovij@gmail.com"}]
+# Non-commercial with attribution, plus a prohibition on military and
+# weapons use. Not an OSI-approved licence, so it has no SPDX identifier
+# and is declared as a LicenseRef under PEP 639. LICENSE is a
+# byte-identical copy of the repository root licence.
+license = "LicenseRef-Proprietary"
+license-files = ["LICENSE"]
 dependencies = [
     "torch",     
     "numpy",
