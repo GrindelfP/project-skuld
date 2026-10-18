@@ -1,0 +1,12 @@
+==================================================================
+Job ID:     2669033
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/18-sechiren-sweep-m3/sechiren_sweep_m3.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/18-sechiren-sweep-m3/slurm-2669033.log
+Python:     /cvmfs/hlit.jinr.ru/alma9/miniconda/envs/Py3.12.13/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/18-sechiren-sweep-m3:
+==================================================================
+Traceback (most recent call last):
+  File "/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/18-sechiren-sweep-m3/sechiren_sweep_m3.py", line 63, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
