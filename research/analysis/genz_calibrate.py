@@ -27,10 +27,10 @@ from pathlib import Path
 
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "skuld-lib"))
-sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "skuld-lib"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from genz import GENZ_FUNCTIONS, correct_digits  # noqa: E402
+from benchmarks.genz import GENZ_FUNCTIONS, correct_digits  # noqa: E402
 from skuld.sechiren import SechirenIntegrator  # noqa: E402
 
 A_VALUES = (5.0, 3.0, 2.0, 1.0)

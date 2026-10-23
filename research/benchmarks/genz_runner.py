@@ -44,7 +44,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from genz import GENZ_FUNCTIONS, correct_digits  # noqa: E402
+from .genz import GENZ_FUNCTIONS, correct_digits  # noqa: E402
 
 N_INT_VARS = 3
 

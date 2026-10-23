@@ -31,7 +31,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from genz import GENZ_FUNCTIONS, correct_digits, separable_reference_1d  # noqa: E402
+from .genz import GENZ_FUNCTIONS, correct_digits, separable_reference_1d  # noqa: E402
 
 try:
     from scipy.integrate import cubature

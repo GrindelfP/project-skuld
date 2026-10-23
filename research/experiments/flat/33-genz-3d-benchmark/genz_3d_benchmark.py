@@ -32,7 +32,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))   # research/
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 
-from genz_runner import BUILDERS, quadrature_reference, run_architecture  # noqa: E402
+from benchmarks.genz_runner import BUILDERS, quadrature_reference, run_architecture  # noqa: E402
 from utils.paths import get_mirror_path  # noqa: E402
 
 ARCH_ORDER = ("wire", "siren", "sechiren", "tanhiren", "mixiren",
