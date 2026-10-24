@@ -1,0 +1,1438 @@
+==================================================================
+Job ID:     2736248
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/19-siren-sweep-m1/siren_sweep_m1.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/19-siren-sweep-m1/slurm-2736248.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/19-siren-sweep-m1:
+==================================================================
+SKULD is using device: cuda
+
+========================================================================
+  SIREN SWEEP m1  —  243 configs × 5 seeds = 1215 total runs
+  GPU 3/4  —  processing runs [912:1215] = 303 runs, device=cuda
+  Run tag: hopper  (results -> results/.../hopper/)
+========================================================================
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+[1/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6067e-01  lr=1.00e-04  (0.4s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.5 max=5 (97.4s, 102.7 ep/s, step=9.7ms, gpu=0%)
+[2/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7174e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=6 I3=6 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=5.0 max=6 (93.0s, 107.5 ep/s, step=9.3ms, gpu=0%)
+[3/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6714e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.8 max=5 (93.0s, 107.5 ep/s, step=9.3ms, gpu=0%)
+[4/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1021e-01  lr=5.00e-04  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=2.9 max=3 (58.2s, 171.8 ep/s, step=5.8ms, gpu=0%)
+[5/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=2 mean=3.1 max=4 (58.2s, 171.8 ep/s, step=5.8ms, gpu=0%)
+[6/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6525e-01  lr=5.00e-04  (0.0s)
+    -> I1=5 I2=4 I3=4 I4=5 I5=5 I6=4 I7=4 I8=4 min=4 mean=4.4 max=5 (58.2s, 171.9 ep/s, step=5.8ms, gpu=0%)
+[7/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7531e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=3 I7=4 I8=5 min=3 mean=3.6 max=5 (58.2s, 171.8 ep/s, step=5.8ms, gpu=0%)
+[8/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3582e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.9 max=5 (58.2s, 171.8 ep/s, step=5.8ms, gpu=0%)
+[9/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0639e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (64.4s, 155.3 ep/s, step=6.4ms, gpu=0%)
+[10/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6642e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.5 max=4 (64.2s, 155.7 ep/s, step=6.4ms, gpu=0%)
+[11/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5797e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (64.1s, 155.9 ep/s, step=6.4ms, gpu=0%)
+[12/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4101e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=6 I4=4 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.1 max=6 (64.2s, 155.8 ep/s, step=6.4ms, gpu=0%)
+[13/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=6 min=4 mean=4.4 max=6 (64.1s, 155.9 ep/s, step=6.4ms, gpu=0%)
+[14/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4237e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=4 I5=4 I6=5 I7=5 I8=4 min=4 mean=4.4 max=5 (92.8s, 107.8 ep/s, step=9.3ms, gpu=0%)
+[15/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=7 min=4 mean=4.5 max=7 (92.7s, 107.8 ep/s, step=9.3ms, gpu=0%)
+[16/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6067e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.5 max=4 (92.6s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[17/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7174e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=4 I5=3 I6=5 I7=4 I8=4 min=3 mean=4.1 max=5 (92.6s, 107.9 ep/s, step=9.3ms, gpu=0%)
+[18/303] hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6714e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=5 I3=5 I4=5 I5=3 I6=5 I7=5 I8=5 min=3 mean=4.5 max=5 (92.6s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[19/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1021e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.4 max=4 (57.3s, 174.7 ep/s, step=5.7ms, gpu=0%)
+[20/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=4 I3=3 I4=4 I5=4 I6=4 I7=3 I8=4 min=3 mean=3.8 max=4 (57.2s, 174.7 ep/s, step=5.7ms, gpu=0%)
+[21/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6525e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.5 max=4 (57.2s, 174.8 ep/s, step=5.7ms, gpu=0%)
+[22/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7531e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=3 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.4 max=4 (57.3s, 174.6 ep/s, step=5.7ms, gpu=0%)
+[23/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3582e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.0 max=3 (57.2s, 174.8 ep/s, step=5.7ms, gpu=0%)
+[24/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0639e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=3 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (63.7s, 156.9 ep/s, step=6.4ms, gpu=0%)
+[25/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6642e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (63.7s, 157.1 ep/s, step=6.4ms, gpu=0%)
+[26/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5797e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=3 I7=4 I8=5 min=3 mean=3.6 max=5 (63.8s, 156.8 ep/s, step=6.4ms, gpu=0%)
+[27/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4101e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (63.7s, 157.0 ep/s, step=6.4ms, gpu=0%)
+[28/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (63.7s, 156.9 ep/s, step=6.4ms, gpu=0%)
+[29/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4237e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=4 I6=5 I7=3 I8=4 min=3 mean=3.8 max=5 (92.5s, 108.1 ep/s, step=9.3ms, gpu=0%)
+[30/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=2 I6=3 I7=3 I8=4 min=2 mean=3.2 max=4 (92.6s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[31/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6067e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.9 max=4 (92.6s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[32/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7174e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.8 max=3 (92.5s, 108.1 ep/s, step=9.3ms, gpu=0%)
+[33/303] hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6714e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=5 min=3 mean=3.4 max=5 (92.6s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[34/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=5 (34.3s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[35/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=4 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (34.3s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[36/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[37/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=4 I3=4 I4=5 I5=4 I6=4 I7=7 I8=5 min=4 mean=4.8 max=7 (34.3s, 174.8 ep/s, step=5.7ms, gpu=0%)
+[38/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (34.2s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[39/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0639e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=6 I8=5 min=4 mean=4.5 max=6 (38.1s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[40/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=5 I7=5 I8=6 min=4 mean=4.5 max=6 (38.3s, 156.9 ep/s, step=6.4ms, gpu=0%)
+[41/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5799e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.5 max=5 (38.2s, 157.1 ep/s, step=6.4ms, gpu=0%)
+[42/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.1 max=5 (38.2s, 157.1 ep/s, step=6.4ms, gpu=0%)
+[43/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=4 I4=5 I5=5 I6=4 I7=4 I8=5 min=4 mean=4.6 max=5 (38.2s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[44/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=5 I6=6 I7=5 I8=5 min=4 mean=4.8 max=6 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[45/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.8 max=5 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[46/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (55.7s, 107.7 ep/s, step=9.3ms, gpu=0%)
+[47/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=5 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.9 max=5 (55.5s, 108.0 ep/s, step=9.3ms, gpu=0%)
+[48/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=6 I3=5 I4=5 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.8 max=6 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[49/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[50/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (34.3s, 174.9 ep/s, step=5.7ms, gpu=0%)
+[51/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=4 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.5 max=5 (34.4s, 174.6 ep/s, step=5.7ms, gpu=0%)
+[52/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=4 min=4 mean=4.2 max=5 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[53/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=5 I5=3 I6=5 I7=4 I8=4 min=3 mean=3.9 max=5 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[54/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0639e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=4 min=3 mean=4.0 max=5 (38.2s, 157.0 ep/s, step=6.4ms, gpu=0%)
+[55/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=4 I7=5 I8=4 min=4 mean=4.5 max=5 (38.2s, 157.0 ep/s, step=6.4ms, gpu=0%)
+[56/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5799e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=5 I3=5 I4=5 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.4 max=5 (38.2s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[57/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=4 I8=4 min=4 mean=4.4 max=5 (38.1s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[58/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=6 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=6 (38.1s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[59/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=4 I4=5 I5=4 I6=5 I7=4 I8=4 min=4 mean=4.5 max=5 (55.5s, 108.1 ep/s, step=9.2ms, gpu=0%)
+[60/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (55.5s, 108.1 ep/s, step=9.3ms, gpu=0%)
+[61/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=6 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.8 max=6 (55.5s, 108.1 ep/s, step=9.2ms, gpu=0%)
+[62/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=6 I4=6 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.8 max=6 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[63/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=6 I2=5 I3=4 I4=5 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.8 max=6 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[64/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.5 max=4 (34.3s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[65/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=4 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.9 max=4 (34.2s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[66/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=4 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=3.0 max=4 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[67/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=4 I8=3 min=3 mean=3.4 max=4 (34.3s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[68/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=3 I7=4 I8=3 min=2 mean=3.0 max=4 (34.2s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[69/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0639e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (38.2s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[70/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=5 I6=4 I7=3 I8=4 min=3 mean=3.9 max=5 (38.1s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[71/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5799e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.5 max=5 (38.1s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[72/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (38.1s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[73/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (38.1s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[74/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=4 I3=3 I4=4 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.8 max=4 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[75/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=2 I4=3 I5=2 I6=3 I7=3 I8=4 min=2 mean=2.9 max=4 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[76/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=4 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.6 max=4 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[77/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[78/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[79/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=5 (45.7s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[80/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (45.7s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[81/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=7 I6=4 I7=4 I8=5 min=3 mean=4.5 max=7 (45.7s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[82/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=5 (45.7s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[83/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (45.7s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[84/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0639e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[85/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (50.9s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[86/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5799e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (50.9s, 157.1 ep/s, step=6.4ms, gpu=0%)
+[87/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (50.9s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[88/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=6 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=6 (50.9s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[89/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=5 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[90/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=4 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.8 max=5 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[91/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.6 max=5 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[92/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=6 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.9 max=6 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[93/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=6 I4=5 I5=4 I6=5 I7=6 I8=5 min=4 mean=5.0 max=6 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[94/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.4 max=4 (45.7s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[95/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.1 max=5 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[96/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=4 min=4 mean=4.2 max=5 (45.7s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[97/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[98/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.5 max=4 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[99/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0639e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=6 I7=4 I8=4 min=4 mean=4.4 max=6 (50.9s, 157.1 ep/s, step=6.4ms, gpu=0%)
+[100/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=4.0 max=5 (50.9s, 157.2 ep/s, step=6.4ms, gpu=0%)
+[101/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5799e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (50.8s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[102/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.1 max=4 (50.7s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[103/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=2.9 max=3 (50.8s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[104/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=5 I8=5 min=3 mean=4.1 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[105/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[106/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.9 max=5 (73.8s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[107/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=5 I6=4 I7=4 I8=5 min=3 mean=4.2 max=5 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[108/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.0 max=5 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[109/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=4 I3=3 I4=3 I5=2 I6=4 I7=2 I8=3 min=2 mean=2.9 max=4 (45.6s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[110/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=2 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=2.9 max=3 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[111/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=3 I7=3 I8=4 min=2 mean=2.9 max=4 (45.6s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[112/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=2 I6=3 I7=3 I8=4 min=2 mean=3.2 max=4 (45.6s, 175.6 ep/s, step=5.7ms, gpu=0%)
+[113/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=4 I4=4 I5=2 I6=5 I7=3 I8=5 min=2 mean=3.5 max=5 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[114/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0639e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=3 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.5 max=4 (50.8s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[115/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=3 I5=4 I6=3 I7=3 I8=3 min=3 mean=3.2 max=4 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[116/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5799e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.5 max=4 (50.7s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[117/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=2 I6=3 I7=4 I8=4 min=2 mean=3.1 max=4 (50.7s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[118/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=4 I7=3 I8=3 min=3 mean=3.4 max=4 (50.7s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[119/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.9 max=3 (73.8s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[120/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.8 max=3 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[121/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=5 I6=4 I7=3 I8=3 min=3 mean=3.5 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[122/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=3 I8=3 min=3 mean=3.2 max=4 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[123/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=5 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.6 max=5 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[124/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (57.1s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[125/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (57.0s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[126/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=6 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=6 (57.1s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[127/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=6 I5=3 I6=5 I7=4 I8=5 min=3 mean=4.4 max=6 (57.0s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[128/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.5 max=5 (57.2s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[129/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0639e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (63.5s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[130/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[131/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5799e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[132/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.8 max=5 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[133/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (63.3s, 157.9 ep/s, step=6.3ms, gpu=0%)
+[134/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=6 I5=4 I6=5 I7=5 I8=6 min=4 mean=4.9 max=6 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[135/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[136/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=5 I6=4 I7=5 I8=5 min=4 mean=4.5 max=5 (92.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[137/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[138/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[139/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.9 max=5 (57.1s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[140/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=3 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (57.1s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[141/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.6 max=4 (57.1s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[142/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=5 I7=3 I8=4 min=3 mean=3.8 max=5 (57.1s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[143/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (57.0s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[144/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0639e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=6 I3=3 I4=4 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.2 max=6 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[145/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=6 I6=5 I7=4 I8=4 min=4 mean=4.4 max=6 (63.4s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[146/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5799e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=5 I7=4 I8=5 min=3 mean=4.0 max=5 (63.4s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[147/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.0 max=4 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[148/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=3 I3=4 I4=4 I5=3 I6=3 I7=4 I8=5 min=3 mean=3.8 max=5 (63.4s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[149/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=5 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[150/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=3 I6=4 I7=5 I8=5 min=3 mean=4.1 max=5 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[151/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[152/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[153/303] hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[154/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=3 I6=3 I7=2 I8=3 min=2 mean=2.9 max=3 (57.1s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[155/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=3 I7=4 I8=4 min=2 mean=3.1 max=4 (57.0s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[156/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=4 I6=3 I7=3 I8=3 min=2 mean=3.0 max=4 (57.0s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[157/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=3 I6=3 I7=2 I8=3 min=2 mean=2.9 max=4 (57.1s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[158/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=2 I4=4 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.6 max=4 (57.1s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[159/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0639e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=2 mean=3.1 max=4 (63.5s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[160/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=3 I5=5 I6=3 I7=3 I8=3 min=3 mean=3.4 max=5 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[161/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5799e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=4 I3=3 I4=4 I5=2 I6=4 I7=3 I8=3 min=2 mean=3.1 max=4 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[162/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=4 I3=3 I4=5 I5=3 I6=3 I7=3 I8=4 min=2 mean=3.4 max=5 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[163/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.8 max=3 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[164/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.6 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[165/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (92.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[166/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.8 max=5 (92.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[167/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.4 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[168/303] hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=5 I5=4 I6=4 I7=3 I8=5 min=3 mean=3.9 max=5 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[169/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=5 I6=4 I7=4 I8=6 min=4 mean=4.5 max=6 (34.2s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[170/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (34.2s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[171/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (34.2s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[172/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.5 max=5 (34.2s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[173/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[174/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0638e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (38.2s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[175/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (38.1s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[176/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5798e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.6 max=5 (38.0s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[177/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.0 max=5 (38.1s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[178/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=6 I7=5 I8=6 min=4 mean=4.9 max=6 (38.0s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[179/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=6 min=4 mean=4.4 max=6 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[180/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[181/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=6 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.5 max=6 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[182/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (55.4s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[183/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.4 max=5 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[184/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.4 max=4 (34.2s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[185/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=6 I3=4 I4=5 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.4 max=6 (34.2s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[186/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=5 (34.2s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[187/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.0 max=5 (34.2s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[188/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.6 max=4 (34.2s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[189/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0638e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=4 min=3 mean=4.0 max=5 (38.2s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[190/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=6 min=3 mean=4.0 max=6 (38.0s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[191/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5798e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=5 I8=6 min=3 mean=4.4 max=6 (38.0s, 157.9 ep/s, step=6.3ms, gpu=0%)
+[192/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.4 max=5 (38.0s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[193/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=6 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.5 max=6 (38.0s, 157.9 ep/s, step=6.3ms, gpu=0%)
+[194/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.8 max=5 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[195/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=5 I2=4 I3=5 I4=5 I5=5 I6=5 I7=4 I8=5 min=4 mean=4.8 max=5 (55.5s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[196/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=5 I8=7 min=4 mean=4.8 max=7 (55.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[197/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.5 max=5 (55.5s, 108.1 ep/s, step=9.2ms, gpu=0%)
+[198/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=5 I6=4 I7=4 I8=5 min=4 mean=4.5 max=5 (55.4s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[199/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512 seed=42 ...
+  Epoch     1/6000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=5 I5=2 I6=2 I7=2 I8=2 min=2 mean=2.6 max=5 (34.2s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[200/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512 seed=137 ...
+  Epoch     1/6000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=3 I5=2 I6=2 I7=4 I8=4 min=2 mean=3.1 max=4 (34.3s, 174.9 ep/s, step=5.7ms, gpu=0%)
+[201/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512 seed=2024 ...
+  Epoch     1/6000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.6 max=3 (34.3s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[202/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512 seed=7 ...
+  Epoch     1/6000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=2 I7=2 I8=3 min=2 mean=2.5 max=3 (34.3s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[203/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512 seed=999 ...
+  Epoch     1/6000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=2 I4=4 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.6 max=4 (34.3s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[204/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024 seed=42 ...
+  Epoch     1/6000  loss=3.0638e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=5 I6=3 I7=2 I8=3 min=2 mean=2.9 max=5 (38.1s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[205/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024 seed=137 ...
+  Epoch     1/6000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=3 I5=3 I6=2 I7=2 I8=3 min=2 mean=2.6 max=3 (38.1s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[206/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.5798e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=3 I7=3 I8=4 min=2 mean=2.9 max=4 (38.1s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[207/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024 seed=7 ...
+  Epoch     1/6000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=2 I6=3 I7=3 I8=3 min=2 mean=3.0 max=4 (38.1s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[208/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024 seed=999 ...
+  Epoch     1/6000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=5 I5=2 I6=3 I7=2 I8=3 min=2 mean=2.9 max=5 (38.1s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[209/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048 seed=42 ...
+  Epoch     1/6000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.8 max=3 (55.4s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[210/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048 seed=137 ...
+  Epoch     1/6000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=2 min=2 mean=3.0 max=4 (55.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[211/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048 seed=2024 ...
+  Epoch     1/6000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=3 I6=3 I7=3 I8=4 min=2 mean=2.9 max=4 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[212/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048 seed=7 ...
+  Epoch     1/6000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=4 I5=3 I6=3 I7=3 I8=3 min=2 mean=3.0 max=4 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[213/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048 seed=999 ...
+  Epoch     1/6000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=4 I8=3 min=3 mean=3.2 max=4 (55.4s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[214/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=4 I5=5 I6=4 I7=4 I8=6 min=4 mean=4.5 max=6 (45.7s, 175.0 ep/s, step=5.7ms, gpu=0%)
+[215/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.6 max=5 (45.7s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[216/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.0 max=5 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[217/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=5 I4=4 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[218/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=3 mean=3.9 max=4 (45.6s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[219/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0638e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=5 I8=6 min=4 mean=4.5 max=6 (50.8s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[220/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.4 max=5 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[221/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5798e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[222/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.5 max=4 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[223/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.6 max=4 (50.9s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[224/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[225/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=4 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.4 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[226/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=6 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=6 (73.8s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[227/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.4 max=5 (74.0s, 108.1 ep/s, step=9.2ms, gpu=0%)
+[228/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=5 I4=5 I5=5 I6=5 I7=4 I8=6 min=4 mean=5.0 max=6 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[229/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.6 max=4 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[230/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.6 max=4 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[231/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.4 max=4 (45.6s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[232/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=4 I7=3 I8=4 min=2 mean=3.0 max=4 (45.7s, 175.2 ep/s, step=5.7ms, gpu=0%)
+[233/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=4 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (45.6s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[234/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0638e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[235/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=5 min=3 mean=3.9 max=5 (50.8s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[236/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5798e-01  lr=5.00e-04  (0.0s)
+    -> I1=5 I2=4 I3=4 I4=6 I5=4 I6=3 I7=4 I8=4 min=3 mean=4.2 max=6 (50.8s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[237/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.5 max=4 (50.8s, 157.5 ep/s, step=6.4ms, gpu=0%)
+[238/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=5 I8=4 min=4 mean=4.1 max=5 (50.8s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[239/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=5 I6=4 I7=5 I8=5 min=4 mean=4.5 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[240/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=5 I3=4 I4=4 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[241/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=5 I7=4 I8=4 min=3 mean=3.9 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[242/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=5 I8=5 min=3 mean=4.1 max=5 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[243/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=4 I8=4 min=4 mean=4.2 max=5 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[244/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512 seed=42 ...
+  Epoch     1/8000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=2 I6=3 I7=2 I8=3 min=2 mean=2.8 max=4 (45.6s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[245/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512 seed=137 ...
+  Epoch     1/8000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=2 I7=2 I8=3 min=2 mean=2.6 max=3 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[246/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512 seed=2024 ...
+  Epoch     1/8000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=3 I5=3 I6=3 I7=3 I8=3 min=3 mean=3.1 max=4 (45.6s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[247/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512 seed=7 ...
+  Epoch     1/8000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=2 I4=3 I5=2 I6=3 I7=2 I8=3 min=2 mean=2.5 max=3 (45.6s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[248/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512 seed=999 ...
+  Epoch     1/8000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=3 I7=2 I8=3 min=2 mean=2.6 max=3 (45.6s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[249/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024 seed=42 ...
+  Epoch     1/8000  loss=3.0638e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=2 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.6 max=3 (50.9s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[250/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024 seed=137 ...
+  Epoch     1/8000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=2 I6=3 I7=2 I8=3 min=2 mean=2.5 max=3 (50.9s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[251/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024 seed=2024 ...
+  Epoch     1/8000  loss=3.5798e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=4 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.8 max=4 (50.7s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[252/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024 seed=7 ...
+  Epoch     1/8000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=4 I2=3 I3=2 I4=4 I5=3 I6=3 I7=2 I8=3 min=2 mean=3.0 max=4 (50.8s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[253/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024 seed=999 ...
+  Epoch     1/8000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=3 I5=3 I6=3 I7=3 I8=5 min=2 mean=3.1 max=5 (50.7s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[254/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048 seed=42 ...
+  Epoch     1/8000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=4 I6=2 I7=3 I8=3 min=2 mean=2.9 max=4 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[255/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048 seed=137 ...
+  Epoch     1/8000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=2 I7=2 I8=3 min=2 mean=2.6 max=3 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[256/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048 seed=2024 ...
+  Epoch     1/8000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=3 I5=2 I6=3 I7=4 I8=3 min=2 mean=3.0 max=4 (73.8s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[257/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=2.9 max=3 (73.9s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[258/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=2 I4=3 I5=2 I6=3 I7=4 I8=3 min=2 mean=2.8 max=4 (73.9s, 108.2 ep/s, step=9.2ms, gpu=0%)
+[259/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=4 I6=5 I7=5 I8=5 min=4 mean=4.6 max=5 (57.0s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[260/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (57.0s, 175.5 ep/s, step=5.7ms, gpu=0%)
+[261/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (57.0s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[262/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (56.9s, 175.6 ep/s, step=5.7ms, gpu=0%)
+[263/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=4 min=3 mean=4.0 max=5 (56.9s, 175.7 ep/s, step=5.7ms, gpu=0%)
+[264/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0638e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (63.5s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[265/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (63.5s, 157.5 ep/s, step=6.4ms, gpu=0%)
+[266/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5798e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=5 I3=4 I4=7 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.9 max=7 (63.4s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[267/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.4 max=5 (63.4s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[268/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=1.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (63.4s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[269/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[270/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=5 I3=4 I4=6 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=6 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[271/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.2 max=5 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[272/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=1.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.1 max=5 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[273/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=1.00e-04  (0.0s)
+    -> I1=5 I2=6 I3=5 I4=5 I5=4 I6=4 I7=5 I8=5 min=4 mean=4.9 max=6 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[274/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=5.00e-04  (0.0s)
+    -> I1=5 I2=3 I3=4 I4=5 I5=4 I6=3 I7=3 I8=4 min=3 mean=3.9 max=5 (57.0s, 175.6 ep/s, step=5.7ms, gpu=0%)
+[275/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=4 I6=3 I7=3 I8=4 min=3 mean=3.5 max=4 (57.0s, 175.6 ep/s, step=5.7ms, gpu=0%)
+[276/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.4 max=4 (56.9s, 175.6 ep/s, step=5.7ms, gpu=0%)
+[277/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=3 I8=4 min=3 mean=3.2 max=4 (56.9s, 175.7 ep/s, step=5.7ms, gpu=0%)
+[278/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.5 max=4 (56.9s, 175.7 ep/s, step=5.7ms, gpu=0%)
+[279/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0638e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=5 I7=3 I8=4 min=3 mean=3.6 max=5 (63.4s, 157.7 ep/s, step=6.3ms, gpu=0%)
+[280/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=5 I4=4 I5=3 I6=4 I7=3 I8=4 min=3 mean=3.8 max=5 (63.4s, 157.6 ep/s, step=6.3ms, gpu=0%)
+[281/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5798e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=5 min=4 mean=4.1 max=5 (63.5s, 157.4 ep/s, step=6.4ms, gpu=0%)
+[282/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.5 max=4 (63.5s, 157.5 ep/s, step=6.3ms, gpu=0%)
+[283/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=4 I3=4 I4=5 I5=3 I6=4 I7=4 I8=5 min=3 mean=4.1 max=5 (63.4s, 157.8 ep/s, step=6.3ms, gpu=0%)
+[284/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=4 I6=4 I7=4 I8=6 min=3 mean=4.1 max=6 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[285/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=3 I4=4 I5=4 I6=3 I7=4 I8=4 min=3 mean=3.6 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[286/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=3 I7=4 I8=4 min=3 mean=3.4 max=4 (92.2s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[287/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=5.00e-04  (0.0s)
+    -> I1=4 I2=3 I3=3 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.6 max=4 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[288/303] hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=5.00e-04  (0.0s)
+    -> I1=3 I2=4 I3=4 I4=4 I5=3 I6=4 I7=4 I8=4 min=3 mean=3.8 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[289/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512 seed=42 ...
+  Epoch     1/10000  loss=3.1020e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=3 I5=3 I6=3 I7=2 I8=3 min=2 mean=2.8 max=3 (57.0s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[290/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512 seed=137 ...
+  Epoch     1/10000  loss=4.1236e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=3 I5=3 I6=2 I7=2 I8=3 min=2 mean=2.6 max=3 (57.1s, 175.1 ep/s, step=5.7ms, gpu=0%)
+[291/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512 seed=2024 ...
+  Epoch     1/10000  loss=3.6526e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=3 I4=4 I5=4 I6=3 I7=3 I8=3 min=2 mean=3.1 max=4 (57.0s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[292/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512 seed=7 ...
+  Epoch     1/10000  loss=3.7532e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=3 I4=3 I5=2 I6=4 I7=2 I8=3 min=2 mean=2.8 max=4 (57.1s, 175.3 ep/s, step=5.7ms, gpu=0%)
+[293/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512 seed=999 ...
+  Epoch     1/10000  loss=3.3581e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.5 max=3 (57.0s, 175.4 ep/s, step=5.7ms, gpu=0%)
+[294/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024 seed=42 ...
+  Epoch     1/10000  loss=3.0638e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=3 I5=2 I6=2 I7=3 I8=3 min=2 mean=2.9 max=4 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[295/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024 seed=137 ...
+  Epoch     1/10000  loss=3.6643e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=4 I3=3 I4=3 I5=3 I6=3 I7=3 I8=4 min=2 mean=3.1 max=4 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[296/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024 seed=2024 ...
+  Epoch     1/10000  loss=3.5798e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=2 I3=4 I4=3 I5=3 I6=3 I7=4 I8=4 min=2 mean=3.2 max=4 (63.5s, 157.5 ep/s, step=6.4ms, gpu=0%)
+[297/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024 seed=7 ...
+  Epoch     1/10000  loss=3.4102e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=4 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.9 max=4 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[298/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024 seed=999 ...
+  Epoch     1/10000  loss=3.9455e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=3 I4=4 I5=3 I6=2 I7=3 I8=5 min=2 mean=3.2 max=5 (63.6s, 157.3 ep/s, step=6.4ms, gpu=0%)
+[299/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048 seed=42 ...
+  Epoch     1/10000  loss=3.4236e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=4 I4=3 I5=3 I6=2 I7=3 I8=4 min=2 mean=2.9 max=4 (92.4s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[300/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048 seed=137 ...
+  Epoch     1/10000  loss=3.9961e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=3 I6=3 I7=3 I8=3 min=2 mean=2.8 max=3 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+[301/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048 seed=2024 ...
+  Epoch     1/10000  loss=3.6069e-01  lr=1.00e-03  (0.0s)
+    -> I1=3 I2=3 I3=4 I4=4 I5=4 I6=3 I7=3 I8=3 min=3 mean=3.4 max=4 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[302/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048 seed=7 ...
+  Epoch     1/10000  loss=3.7175e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=3 I3=2 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.6 max=3 (92.3s, 108.3 ep/s, step=9.2ms, gpu=0%)
+[303/303] hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048 seed=999 ...
+  Epoch     1/10000  loss=3.6713e-01  lr=1.00e-03  (0.0s)
+    -> I1=2 I2=2 I3=3 I4=3 I5=2 I6=3 I7=3 I8=3 min=2 mean=2.6 max=3 (92.3s, 108.4 ep/s, step=9.2ms, gpu=0%)
+
+============================================================================================================================================
+  RANKED RESULTS (best first) — GPU 3
+============================================================================================================================================
+    # hidden           omega0       lr epochs   npp  seed   min_loss mean_relerr  I1  I2  I3  I4  I5  I6  I7  I8  min  mean  max   wall   ep/s   step  gpu%
+--------------------------------------------------------------------------------------------------------------------------------------------
+    1 [160, 160, 160]    40.0  1.0e-04   8000  2048   999  5.791e-06   1.228e-04   5   5   5   5   5   5   4   6    4   5.0    6   73.9  108.3    9.2     0
+    2 [160, 160, 160]    30.0  1.0e-04   8000  2048   999  5.374e-06   1.627e-04   4   5   6   5   4   5   6   5    4   5.0    6   73.9  108.2    9.2     0
+    3 [160, 160, 160]    20.0  1.0e-04  10000  2048     7  5.773e-06   1.660e-04   4   6   6   5   4   5   5   5    4   5.0    6   93.0  107.5    9.3     0
+    4 [160, 160, 160]    40.0  1.0e-04  10000  2048   999  4.540e-06   1.748e-04   5   6   5   5   4   4   5   5    4   4.9    6   92.3  108.3    9.2     0
+    5 [160, 160, 160]    30.0  1.0e-04   6000  2048   999  7.247e-06   1.865e-04   4   6   5   5   4   4   5   5    4   4.8    6   55.5  108.2    9.2     0
+    6 [160, 160, 160]    30.0  5.0e-04   6000  2048  2024  2.740e-06   2.141e-04   4   5   4   6   5   5   4   5    4   4.8    6   55.5  108.1    9.2     0
+    7 [160, 160, 160]    40.0  5.0e-04   6000  2048  2024  2.602e-06   2.183e-04   4   4   5   5   4   4   5   7    4   4.8    7   55.4  108.3    9.2     0
+    8 [160, 160, 160]    30.0  1.0e-04   8000  2048     7  5.039e-06   2.200e-04   4   5   5   6   4   5   5   5    4   4.9    6   73.9  108.2    9.2     0
+    9 [160, 160, 160]    40.0  5.0e-04   6000  2048   137  3.017e-06   2.218e-04   5   4   5   5   5   5   4   5    4   4.8    5   55.5  108.2    9.2     0
+   10 [160, 160, 160]    40.0  1.0e-04   6000  1024   999  1.016e-05   2.291e-04   4   5   4   5   4   6   5   6    4   4.9    6   38.0  157.7    6.3     0
+   11 [160, 160, 160]    40.0  1.0e-04  10000   512    42  8.297e-06   2.325e-04   4   5   4   5   4   5   5   5    4   4.6    5   57.0  175.5    5.7     0
+   12 [160, 160, 160]    30.0  1.0e-04   6000  2048   137  6.951e-06   2.381e-04   4   5   5   5   4   5   5   5    4   4.8    5   55.5  108.2    9.2     0
+   13 [160, 160, 160]    40.0  5.0e-04   6000  2048    42  3.187e-06   2.424e-04   4   5   5   5   5   5   4   5    4   4.8    5   55.4  108.2    9.2     0
+   14 [160, 160, 160]    40.0  1.0e-04  10000  1024  2024  5.488e-06   2.526e-04   5   5   4   7   4   5   4   5    4   4.9    7   63.4  157.7    6.3     0
+   15 [160, 160, 160]    40.0  5.0e-04   6000  2048   999  2.815e-06   2.585e-04   4   5   4   5   5   4   4   5    4   4.5    5   55.4  108.4    9.2     0
+   16 [160, 160, 160]    40.0  1.0e-04   6000  2048  2024  6.677e-06   2.668e-04   4   4   4   6   4   5   4   5    4   4.5    6   55.4  108.3    9.2     0
+   17 [160, 160, 160]    40.0  1.0e-04   6000  2048   137  8.221e-06   2.670e-04   4   5   4   5   5   5   4   5    4   4.6    5   55.4  108.3    9.2     0
+   18 [160, 160, 160]    40.0  1.0e-04   8000   512   137  1.075e-05   2.756e-04   4   5   4   5   4   5   5   5    4   4.6    5   45.7  175.1    5.7     0
+   19 [160, 160, 160]    40.0  1.0e-04   8000  2048  2024  4.591e-06   2.873e-04   6   4   4   5   4   5   4   5    4   4.6    6   73.8  108.3    9.2     0
+   20 [160, 160, 160]    30.0  1.0e-04  10000  2048  2024  3.973e-06   2.918e-04   4   4   4   5   5   4   5   5    4   4.5    5   92.4  108.2    9.2     0
+   21 [160, 160, 160]    40.0  1.0e-04   8000  2048    42  4.926e-06   2.937e-04   4   5   5   5   4   5   4   5    4   4.6    5   73.9  108.3    9.2     0
+   22 [160, 160, 160]    30.0  1.0e-04   6000  2048     7  6.879e-06   3.099e-04   5   5   5   5   4   5   5   5    4   4.9    5   55.5  108.0    9.3     0
+   23 [160, 160, 160]    30.0  5.0e-04   6000  2048   999  2.962e-06   3.101e-04   6   5   4   5   4   4   5   5    4   4.8    6   55.5  108.2    9.2     0
+   24 [160, 160, 160]    40.0  1.0e-04   6000  2048   999  7.962e-06   3.272e-04   4   4   4   5   4   5   4   5    4   4.4    5   55.4  108.2    9.2     0
+   25 [160, 160, 160]    30.0  5.0e-04   6000  2048   137  2.791e-06   3.276e-04   4   5   5   5   4   5   4   5    4   4.6    5   55.5  108.1    9.3     0
+   26 [160, 160, 160]    30.0  1.0e-04   8000  1024    42  6.668e-06   3.319e-04   4   5   5   5   4   5   4   5    4   4.6    5   50.8  157.4    6.4     0
+   27 [160, 160, 160]    30.0  1.0e-04  10000  1024  2024  5.560e-06   3.348e-04   4   5   5   5   4   5   4   5    4   4.6    5   63.4  157.8    6.3     0
+   28 [160, 160, 160]    30.0  1.0e-04   6000  1024  2024  9.410e-06   3.360e-04   4   5   4   5   4   5   4   5    4   4.5    5   38.2  157.1    6.4     0
+   29 [160, 160, 160]    30.0  1.0e-04  10000  2048    42  3.827e-06   3.391e-04   4   5   4   6   4   5   5   6    4   4.9    6   92.3  108.3    9.2     0
+   30 [160, 160, 160]    30.0  1.0e-04   8000  2048  2024  5.034e-06   3.400e-04   4   5   4   5   4   5   5   5    4   4.6    5   73.9  108.2    9.2     0
+   31 [160, 160, 160]    30.0  1.0e-04  10000  1024     7  5.625e-06   3.415e-04   5   5   4   5   4   5   5   5    4   4.8    5   63.4  157.8    6.3     0
+   32 [160, 160, 160]    20.0  1.0e-04  10000  2048  2024  5.297e-06   3.456e-04   4   5   4   5   4   4   5   5    4   4.5    5   97.4  102.7    9.7     0
+   33 [160, 160, 160]    40.0  1.0e-04   6000  2048    42  6.915e-06   3.584e-04   4   4   4   5   4   4   4   6    4   4.4    6   55.4  108.3    9.2     0
+   34 [160, 160, 160]    30.0  1.0e-04   6000  2048    42  6.984e-06   3.650e-04   4   4   4   5   5   6   5   5    4   4.8    6   55.4  108.3    9.2     0
+   35 [160, 160, 160]    30.0  1.0e-04   8000  1024  2024  6.844e-06   3.694e-04   4   4   4   5   4   4   4   5    4   4.2    5   50.9  157.1    6.4     0
+   36 [160, 160, 160]    30.0  1.0e-04   6000  1024   999  1.037e-05   3.707e-04   5   5   4   5   5   4   4   5    4   4.6    5   38.2  157.2    6.4     0
+   37 [160, 160, 160]    40.0  1.0e-04   8000  1024   137  7.173e-06   3.711e-04   4   4   4   5   4   5   4   5    4   4.4    5   50.8  157.4    6.4     0
+   38 [160, 160, 160]    40.0  1.0e-04   8000  1024    42  6.692e-06   3.812e-04   4   4   4   5   4   4   5   6    4   4.5    6   50.8  157.3    6.4     0
+   39 [160, 160, 160]    40.0  1.0e-04   8000  2048     7  5.374e-06   3.824e-04   4   4   4   5   4   5   4   5    4   4.4    5   74.0  108.1    9.2     0
+   40 [160, 160, 160]    30.0  1.0e-04   8000  2048   137  5.140e-06   3.877e-04   5   5   4   5   5   5   4   5    4   4.8    5   73.9  108.2    9.2     0
+   41 [160, 160, 160]    40.0  1.0e-04   6000  1024    42  9.191e-06   3.984e-04   4   5   4   5   5   5   4   5    4   4.6    5   38.2  157.3    6.4     0
+   42 [160, 160, 160]    40.0  1.0e-04   6000   512     7  1.318e-05   3.991e-04   4   4   4   5   4   5   5   5    4   4.5    5   34.2  175.2    5.7     0
+   43 [160, 160, 160]    30.0  5.0e-04   6000  2048    42  2.612e-06   4.099e-04   5   5   4   5   4   5   4   4    4   4.5    5   55.5  108.1    9.2     0
+   44 [160, 160, 160]    40.0  1.0e-04  10000  2048   137  4.500e-06   4.159e-04   4   5   4   6   4   5   4   5    4   4.6    6   92.3  108.4    9.2     0
+   45 [160, 160, 160]    40.0  1.0e-04   6000  1024   137  9.658e-06   4.209e-04   4   5   4   5   5   5   4   5    4   4.6    5   38.1  157.3    6.4     0
+   46 [160, 160, 160]    30.0  1.0e-04   8000   512    42  1.035e-05   4.212e-04   4   4   5   5   4   4   4   5    4   4.4    5   45.7  175.1    5.7     0
+   47 [160, 160, 160]    20.0  1.0e-04  10000  2048   999  5.563e-06   4.227e-04   4   5   5   5   4   5   5   5    4   4.8    5   93.0  107.5    9.3     0
+   48 [160, 160, 160]    30.0  1.0e-04   6000  1024   137  9.192e-06   4.299e-04   4   4   4   4   4   5   5   6    4   4.5    6   38.3  156.9    6.4     0
+   49 [160, 160, 160]    30.0  1.0e-04   8000  1024   999  7.836e-06   4.376e-04   4   6   4   5   4   5   4   5    4   4.6    6   50.9  157.2    6.4     0
+   50 [160, 160, 160]    40.0  1.0e-04   6000  1024  2024  8.833e-06   4.473e-04   4   5   4   5   4   5   5   5    4   4.6    5   38.0  157.7    6.3     0
+   51 [160, 160, 160]    40.0  1.0e-04  10000  1024     7  6.091e-06   4.484e-04   4   4   4   5   4   5   4   5    4   4.4    5   63.4  157.6    6.3     0
+   52 [160, 160, 160]    40.0  5.0e-04   8000  2048    42  2.974e-06   4.487e-04   4   4   4   5   5   4   5   5    4   4.5    5   73.9  108.3    9.2     0
+   53 [160, 160, 160]    20.0  5.0e-04  10000  2048   137  3.608e-06   4.489e-04   4   4   4   5   4   4   4   7    4   4.5    7   92.7  107.8    9.3     0
+   54 [160, 160, 160]    40.0  5.0e-04   6000  2048     7  3.330e-06   4.684e-04   4   5   4   5   4   5   4   5    4   4.5    5   55.5  108.1    9.2     0
+   55 [160, 160, 160]    30.0  1.0e-04   6000  2048  2024  6.848e-06   4.686e-04   4   4   4   5   4   4   4   5    4   4.2    5   55.7  107.7    9.3     0
+   56 [160, 160, 160]    30.0  5.0e-04   6000  2048     7  3.168e-06   4.698e-04   4   4   6   6   4   4   5   5    4   4.8    6   55.4  108.2    9.2     0
+   57 [160, 160, 160]    30.0  1.0e-04  10000   512   999  9.058e-06   4.827e-04   4   5   4   5   4   5   4   5    4   4.5    5   57.2  175.0    5.7     0
+   58 [160, 160, 160]    40.0  1.0e-04   8000  2048   137  5.823e-06   4.831e-04   4   4   5   4   4   4   5   5    4   4.4    5   73.9  108.3    9.2     0
+   59 [160, 160, 160]    30.0  1.0e-04  10000   512    42  7.694e-06   5.091e-04   4   4   4   5   4   4   4   5    4   4.2    5   57.1  175.2    5.7     0
+   60 [160, 160, 160]    30.0  5.0e-04   6000  1024   999  4.933e-06   5.222e-04   4   4   4   6   4   4   4   5    4   4.4    6   38.1  157.3    6.4     0
+   61 [160, 160, 160]    30.0  1.0e-04   6000   512     7  1.413e-05   5.249e-04   5   4   4   5   4   4   7   5    4   4.8    7   34.3  174.8    5.7     0
+   62 [160, 160, 160]    40.0  5.0e-04   6000  1024   999  5.569e-06   5.300e-04   4   4   4   6   4   4   5   5    4   4.5    6   38.0  157.9    6.3     0
+   63 [160, 160, 160]    30.0  5.0e-04   8000  1024    42  5.092e-06   5.330e-04   4   4   4   5   4   6   4   4    4   4.4    6   50.9  157.1    6.4     0
+   64 [160, 160, 160]    40.0  5.0e-04   6000  1024     7  5.670e-06   5.376e-04   4   5   4   5   4   4   4   5    4   4.4    5   38.0  157.7    6.3     0
+   65 [160, 160, 160]    30.0  1.0e-04   8000  2048    42  4.819e-06   5.494e-04   4   4   5   5   4   4   4   5    4   4.4    5   73.8  108.4    9.2     0
+   66 [160, 160, 160]    40.0  5.0e-04   6000   512  2024  1.550e-05   5.639e-04   4   4   5   5   4   4   4   5    4   4.4    5   34.2  175.3    5.7     0
+   67 [160, 160, 160]    30.0  5.0e-04   6000   512     7  9.574e-06   5.890e-04   4   4   4   5   4   5   4   4    4   4.2    5   34.3  175.1    5.7     0
+   68 [160, 160, 160]    30.0  5.0e-04   6000  1024     7  5.393e-06   5.928e-04   4   5   4   5   4   5   4   4    4   4.4    5   38.1  157.6    6.3     0
+   69 [160, 160, 160]    30.0  5.0e-04   6000  1024   137  4.401e-06   5.942e-04   4   5   5   5   4   4   5   4    4   4.5    5   38.2  157.0    6.4     0
+   70 [160, 160, 160]    30.0  1.0e-03   6000  1024  2024  8.441e-06   5.985e-04   4   4   4   5   4   5   5   5    4   4.5    5   38.1  157.4    6.4     0
+   71 [160, 160, 160]    30.0  5.0e-04   6000   512  2024  1.044e-05   6.016e-04   4   5   4   4   4   5   5   5    4   4.5    5   34.4  174.6    5.7     0
+   72 [160, 160, 160]    20.0  5.0e-04  10000   512  2024  1.043e-05   6.153e-04   5   4   4   5   5   4   4   4    4   4.4    5   58.2  171.9    5.8     0
+   73 [160, 160, 160]    30.0  5.0e-04   8000   512  2024  1.180e-05   6.269e-04   4   4   4   5   4   5   4   4    4   4.2    5   45.7  175.0    5.7     0
+   74 [160, 160, 160]    30.0  1.0e-04  10000  2048   137  3.981e-06   6.294e-04   4   4   4   5   4   4   4   5    4   4.2    5   92.4  108.3    9.2     0
+   75 [160, 160, 160]    30.0  1.0e-04   6000   512    42  1.542e-05   6.418e-04   4   5   4   5   4   4   4   5    4   4.4    5   34.3  175.0    5.7     0
+   76 [160, 160, 160]    40.0  1.0e-04  10000  1024    42  5.795e-06   6.637e-04   4   4   4   5   4   4   4   5    4   4.2    5   63.5  157.6    6.3     0
+   77 [160, 160, 160]    40.0  1.0e-04   6000  2048     7  7.668e-06   6.644e-04   4   4   4   5   4   4   4   5    4   4.2    5   55.4  108.4    9.2     0
+   78 [160, 160, 160]    20.0  5.0e-04  10000  2048    42  3.734e-06   6.992e-04   4   5   4   4   4   5   5   4    4   4.4    5   92.8  107.8    9.3     0
+   79 [160, 160, 160]    30.0  1.0e-04   6000  1024    42  9.914e-06   6.999e-04   4   4   4   5   4   4   6   5    4   4.5    6   38.1  157.4    6.4     0
+   80 [160, 160, 160]    40.0  5.0e-04   8000  2048   999  2.749e-06   7.227e-04   4   4   5   5   4   4   4   4    4   4.2    5   73.9  108.3    9.2     0
+   81 [160, 160, 160]    40.0  1.0e-04  10000  2048     7  4.474e-06   7.338e-04   4   4   4   4   4   4   4   5    4   4.1    5   92.3  108.4    9.2     0
+   82 [160, 160, 160]    40.0  1.0e-04   8000   512    42  1.035e-05   7.448e-04   4   5   4   4   5   4   4   6    4   4.5    6   45.7  175.0    5.7     0
+   83 [160, 160, 160]    20.0  5.0e-04  10000  1024   999  5.484e-06   7.924e-04   4   4   4   5   4   4   4   6    4   4.4    6   64.1  155.9    6.4     0
+   84 [160, 160, 160]    30.0  1.0e-04   6000  1024     7  9.865e-06   8.001e-04   4   4   4   5   4   4   4   4    4   4.1    5   38.2  157.1    6.4     0
+   85 [160, 160, 160]    40.0  1.0e-04  10000   512     7  8.600e-06   8.055e-04   4   4   4   5   4   4   4   5    4   4.2    5   56.9  175.6    5.7     0
+   86 [160, 160, 160]    40.0  1.0e-04  10000  2048    42  4.031e-06   8.091e-04   4   4   4   5   4   4   4   5    4   4.2    5   92.3  108.3    9.2     0
+   87 [160, 160, 160]    30.0  1.0e-04   6000   512   137  1.532e-05   8.222e-04   4   5   4   4   4   4   4   5    4   4.2    5   34.3  175.0    5.7     0
+   88 [160, 160, 160]    40.0  1.0e-04  10000  2048  2024  3.936e-06   8.284e-04   4   4   4   5   4   4   4   5    4   4.2    5   92.3  108.4    9.2     0
+   89 [160, 160, 160]    30.0  5.0e-04  10000  1024   137  5.467e-06   8.651e-04   4   4   4   4   6   5   4   4    4   4.4    6   63.4  157.7    6.3     0
+   90 [160, 160, 160]    40.0  1.0e-04   6000   512    42  1.340e-05   8.763e-04   4   4   4   5   5   4   4   6    4   4.5    6   34.2  175.4    5.7     0
+   91 [160, 160, 160]    30.0  1.0e-04  10000   512  2024  8.423e-06   9.001e-04   4   4   4   6   4   4   4   5    4   4.4    6   57.1  175.1    5.7     0
+   92 [160, 160, 160]    30.0  1.0e-04   8000  1024     7  7.133e-06   9.148e-04   4   4   4   4   4   4   4   4    4   4.0    4   50.9  157.2    6.4     0
+   93 [160, 160, 160]    40.0  5.0e-04  10000  1024  2024  8.515e-06   9.200e-04   4   4   4   4   4   4   4   5    4   4.1    5   63.5  157.4    6.4     0
+   94 [160, 160, 160]    30.0  5.0e-04   8000   512   137  1.155e-05   9.586e-04   4   4   4   5   4   4   4   4    4   4.1    5   45.6  175.3    5.7     0
+   95 [160, 160, 160]    30.0  5.0e-04   6000   512    42  9.512e-06   9.609e-04   4   4   4   5   4   4   4   5    4   4.2    5   34.3  175.1    5.7     0
+   96 [160, 160, 160]    30.0  1.0e-04  10000  2048   999  4.013e-06   9.734e-04   4   4   4   4   4   4   4   4    4   4.0    4   92.4  108.3    9.2     0
+   97 [160, 160, 160]    40.0  1.0e-04   6000   512   999  1.404e-05   9.831e-04   4   4   4   5   4   4   4   5    4   4.2    5   34.3  175.1    5.7     0
+   98 [160, 160, 160]    40.0  5.0e-04   6000   512   137  1.196e-05   1.261e-03   4   6   4   5   4   4   4   4    4   4.4    6   34.2  175.3    5.7     0
+   99 [160, 160, 160]    30.0  1.0e-04  10000  2048     7  3.953e-06   1.318e-03   4   4   4   4   4   4   4   4    4   4.0    4   92.3  108.3    9.2     0
+  100 [160, 160, 160]    20.0  5.0e-04  10000  1024    42  6.408e-06   1.319e-03   4   4   4   4   4   4   4   4    4   4.0    4   64.4  155.3    6.4     0
+  101 [160, 160, 160]    40.0  5.0e-04   8000  1024   999  6.528e-06   1.351e-03   4   4   4   4   4   4   5   4    4   4.1    5   50.8  157.5    6.3     0
+  102 [160, 160, 160]    30.0  5.0e-04  10000  1024     7  5.835e-06   1.569e-03   4   4   4   4   4   4   4   4    4   4.0    4   63.4  157.8    6.3     0
+  103 [160, 160, 160]    20.0  1.0e-03  10000  1024   999  1.197e-05   1.809e-03   4   4   4   4   4   4   4   4    4   4.0    4   63.7  156.9    6.4     0
+  104 [160, 160, 160]    30.0  5.0e-04   6000  1024  2024  4.399e-06   4.669e-04   3   5   5   5   4   4   4   5    3   4.4    5   38.2  157.3    6.4     0
+  105 [160, 160, 160]    30.0  5.0e-04   8000  2048     7  2.775e-06   5.037e-04   3   4   4   5   5   4   4   5    3   4.2    5   73.9  108.2    9.2     0
+  106 [160, 160, 160]    40.0  5.0e-04   6000  1024  2024  6.192e-06   5.630e-04   3   4   4   5   4   4   5   6    3   4.4    6   38.0  157.9    6.3     0
+  107 [160, 160, 160]    20.0  5.0e-04  10000  2048   999  3.671e-06   5.717e-04   3   5   5   5   3   5   5   5    3   4.5    5   92.6  108.0    9.3     0
+  108 [160, 160, 160]    30.0  1.0e-04   8000   512  2024  1.078e-05   6.784e-04   3   4   4   5   7   4   4   5    3   4.5    7   45.7  175.0    5.7     0
+  109 [160, 160, 160]    30.0  1.0e-04  10000   512     7  8.768e-06   7.323e-04   4   4   4   6   3   5   4   5    3   4.4    6   57.0  175.4    5.7     0
+  110 [160, 160, 160]    40.0  1.0e-04  10000  1024   137  5.827e-06   7.651e-04   4   4   4   5   3   4   4   5    3   4.1    5   63.5  157.5    6.4     0
+  111 [160, 160, 160]    30.0  1.0e-04   8000   512   137  1.081e-05   7.979e-04   3   4   4   5   4   4   4   5    3   4.1    5   45.7  175.2    5.7     0
+  112 [160, 160, 160]    40.0  1.0e-04   8000   512     7  1.012e-05   8.326e-04   3   4   5   4   4   4   4   5    3   4.1    5   45.6  175.3    5.7     0
+  113 [160, 160, 160]    20.0  5.0e-04  10000  1024     7  6.299e-06   8.684e-04   3   4   6   4   3   4   4   5    3   4.1    6   64.2  155.8    6.4     0
+  114 [160, 160, 160]    40.0  1.0e-04  10000  1024   999  6.380e-06   9.022e-04   3   4   4   5   4   4   4   5    3   4.1    5   63.4  157.7    6.3     0
+  115 [160, 160, 160]    20.0  5.0e-04  10000  2048     7  3.609e-06   9.219e-04   4   5   4   4   3   5   4   4    3   4.1    5   92.6  107.9    9.3     0
+  116 [160, 160, 160]    40.0  1.0e-04  10000   512   999  9.398e-06   9.511e-04   4   4   4   5   3   4   4   4    3   4.0    5   56.9  175.7    5.7     0
+  117 [160, 160, 160]    40.0  5.0e-04   6000   512     7  1.161e-05   9.808e-04   4   4   4   4   3   4   4   5    3   4.0    5   34.2  175.3    5.7     0
+  118 [160, 160, 160]    30.0  1.0e-04   6000   512  2024  1.467e-05   9.995e-04   3   4   4   4   3   4   4   4    3   3.8    4   34.3  175.1    5.7     0
+  119 [160, 160, 160]    40.0  5.0e-04   6000  1024    42  5.137e-06   1.014e-03   3   4   4   5   4   4   4   4    3   4.0    5   38.2  157.3    6.4     0
+  120 [160, 160, 160]    40.0  5.0e-04  10000  1024   999  7.879e-06   1.019e-03   4   4   4   5   3   4   4   5    3   4.1    5   63.4  157.8    6.3     0
+  121 [160, 160, 160]    30.0  5.0e-04  10000  1024    42  4.775e-06   1.030e-03   4   6   3   4   4   4   4   5    3   4.2    6   63.6  157.3    6.4     0
+  122 [160, 160, 160]    30.0  5.0e-04   8000  1024  2024  4.864e-06   1.043e-03   3   4   4   5   4   4   4   5    3   4.1    5   50.8  157.5    6.3     0
+  123 [160, 160, 160]    40.0  5.0e-04   8000  2048   137  3.208e-06   1.047e-03   3   5   4   4   4   4   4   5    3   4.1    5   73.9  108.3    9.2     0
+  124 [160, 160, 160]    40.0  5.0e-04   8000  2048  2024  2.546e-06   1.058e-03   3   4   4   4   3   5   4   4    3   3.9    5   73.9  108.3    9.2     0
+  125 [160, 160, 160]    30.0  5.0e-04   8000  2048    42  2.441e-06   1.067e-03   3   4   4   4   4   4   5   5    3   4.1    5   73.9  108.3    9.2     0
+  126 [160, 160, 160]    40.0  1.0e-04   8000   512   999  1.177e-05   1.087e-03   3   4   4   4   4   4   4   4    3   3.9    4   45.6  175.4    5.7     0
+  127 [160, 160, 160]    30.0  5.0e-04  10000  2048     7  3.799e-06   1.132e-03   3   4   4   4   4   4   4   4    3   3.9    4   92.3  108.4    9.2     0
+  128 [160, 160, 160]    40.0  1.0e-04   8000   512  2024  1.024e-05   1.144e-03   4   4   4   4   3   4   4   5    3   4.0    5   45.6  175.3    5.7     0
+  129 [160, 160, 160]    40.0  5.0e-04   8000  1024  2024  5.735e-06   1.153e-03   5   4   4   6   4   3   4   4    3   4.2    6   50.8  157.5    6.3     0
+  130 [160, 160, 160]    40.0  5.0e-04  10000  2048    42  3.193e-06   1.199e-03   3   4   4   4   4   4   4   6    3   4.1    6   92.3  108.3    9.2     0
+  131 [160, 160, 160]    30.0  1.0e-04  10000  1024   999  6.125e-06   1.202e-03   3   4   4   4   3   4   4   4    3   3.8    4   63.3  157.9    6.3     0
+  132 [160, 160, 160]    40.0  1.0e-04   6000  1024     7  9.900e-06   1.210e-03   3   4   4   4   4   4   4   5    3   4.0    5   38.1  157.6    6.3     0
+  133 [160, 160, 160]    30.0  5.0e-04  10000  2048   137  2.946e-06   1.224e-03   4   4   4   4   3   4   5   5    3   4.1    5   92.3  108.4    9.2     0
+  134 [160, 160, 160]    30.0  1.0e-04  10000   512   137  8.755e-06   1.267e-03   3   4   4   4   4   4   4   4    3   3.9    4   57.0  175.4    5.7     0
+  135 [160, 160, 160]    30.0  5.0e-04   8000  2048   999  2.834e-06   1.269e-03   3   4   4   5   3   4   4   5    3   4.0    5   73.8  108.4    9.2     0
+  136 [160, 160, 160]    20.0  5.0e-04  10000  1024  2024  5.323e-06   1.269e-03   4   4   4   4   3   4   4   4    3   3.9    4   64.1  155.9    6.4     0
+  137 [160, 160, 160]    30.0  1.0e-03   6000  2048   999  3.945e-06   1.271e-03   3   4   4   4   3   4   4   4    3   3.8    4   55.4  108.3    9.2     0
+  138 [160, 160, 160]    40.0  5.0e-04   8000  2048     7  2.914e-06   1.342e-03   3   4   4   4   4   4   5   5    3   4.1    5   73.8  108.4    9.2     0
+  139 [160, 160, 160]    30.0  5.0e-04   6000  1024    42  4.519e-06   1.343e-03   3   4   4   5   4   4   4   4    3   4.0    5   38.2  157.0    6.4     0
+  140 [160, 160, 160]    30.0  5.0e-04   8000  1024   137  5.096e-06   1.401e-03   4   4   4   5   3   4   4   4    3   4.0    5   50.9  157.2    6.4     0
+  141 [160, 160, 160]    30.0  1.0e-03   6000  1024   137  7.927e-06   1.403e-03   3   4   4   4   5   4   3   4    3   3.9    5   38.1  157.6    6.3     0
+  142 [160, 160, 160]    30.0  1.0e-04  10000  1024   137  5.779e-06   1.414e-03   3   4   4   4   4   4   4   4    3   3.9    4   63.6  157.3    6.4     0
+  143 [160, 160, 160]    30.0  5.0e-04   8000  2048  2024  2.974e-06   1.421e-03   3   4   4   5   3   4   4   4    3   3.9    5   73.8  108.3    9.2     0
+  144 [160, 160, 160]    30.0  5.0e-04  10000  1024  2024  6.323e-06   1.440e-03   3   4   4   4   3   5   4   5    3   4.0    5   63.4  157.7    6.3     0
+  145 [160, 160, 160]    40.0  5.0e-04   8000  1024    42  5.826e-06   1.453e-03   3   4   4   4   3   4   4   4    3   3.8    4   50.8  157.4    6.4     0
+  146 [160, 160, 160]    40.0  1.0e-04   6000   512   137  1.506e-05   1.496e-03   3   4   4   4   3   4   4   4    3   3.8    4   34.2  175.2    5.7     0
+  147 [160, 160, 160]    40.0  5.0e-04   8000  1024   137  6.107e-06   1.553e-03   3   4   4   4   3   4   4   5    3   3.9    5   50.8  157.4    6.4     0
+  148 [160, 160, 160]    30.0  5.0e-04   6000   512   137  9.956e-06   1.584e-03   4   4   4   4   3   4   4   4    3   3.9    4   34.3  174.9    5.7     0
+  149 [160, 160, 160]    40.0  5.0e-04   6000  1024   137  5.975e-06   1.603e-03   3   4   4   4   3   4   4   6    3   4.0    6   38.0  157.8    6.3     0
+  150 [160, 160, 160]    40.0  5.0e-04   8000   512   999  1.757e-05   1.632e-03   3   3   4   4   4   4   4   4    3   3.8    4   45.6  175.4    5.7     0
+  151 [160, 160, 160]    30.0  1.0e-04  10000  1024    42  6.082e-06   1.634e-03   3   4   4   4   3   4   4   4    3   3.8    4   63.5  157.4    6.4     0
+  152 [160, 160, 160]    30.0  1.0e-04   8000   512     7  1.020e-05   1.646e-03   3   3   4   5   3   4   4   4    3   3.8    5   45.7  175.2    5.7     0
+  153 [160, 160, 160]    30.0  1.0e-04   8000   512   999  1.183e-05   1.657e-03   3   4   4   4   3   4   4   4    3   3.8    4   45.7  175.0    5.7     0
+  154 [160, 160, 160]    40.0  1.0e-04   8000  1024  2024  6.671e-06   1.681e-03   3   4   4   4   3   4   4   4    3   3.8    4   50.8  157.4    6.4     0
+  155 [160, 160, 160]    40.0  1.0e-04  10000   512  2024  7.826e-06   1.729e-03   3   4   4   4   3   4   4   4    3   3.8    4   57.0  175.3    5.7     0
+  156 [160, 160, 160]    30.0  1.0e-04   6000   512   999  1.489e-05   1.752e-03   3   4   4   4   3   4   4   4    3   3.8    4   34.2  175.4    5.7     0
+  157 [160, 160, 160]    30.0  1.0e-04   8000  1024   137  7.521e-06   1.758e-03   3   4   4   4   3   4   4   4    3   3.8    4   50.9  157.2    6.4     0
+  158 [160, 160, 160]    40.0  1.0e-04   6000   512  2024  1.254e-05   1.840e-03   3   4   4   4   3   4   4   4    3   3.8    4   34.2  175.5    5.7     0
+  159 [160, 160, 160]    20.0  5.0e-04  10000   512   999  1.082e-05   1.889e-03   3   4   4   5   3   4   4   4    3   3.9    5   58.2  171.8    5.8     0
+  160 [160, 160, 160]    30.0  1.0e-03  10000  2048   999  1.664e-04   1.915e-03   3   3   4   5   4   4   3   5    3   3.9    5   92.3  108.3    9.2     0
+  161 [160, 160, 160]    40.0  1.0e-04  10000   512   137  8.897e-06   1.938e-03   3   4   4   4   3   4   4   4    3   3.8    4   57.0  175.5    5.7     0
+  162 [160, 160, 160]    30.0  5.0e-04   8000  2048   137  2.659e-06   1.974e-03   3   4   4   4   3   4   4   4    3   3.8    4   73.9  108.3    9.2     0
+  163 [160, 160, 160]    30.0  5.0e-04  10000  2048   999  3.831e-06   1.980e-03   3   4   4   4   3   4   4   4    3   3.8    4   92.3  108.3    9.2     0
+  164 [160, 160, 160]    40.0  5.0e-04  10000  2048   999  4.235e-06   2.007e-03   3   4   4   4   3   4   4   4    3   3.8    4   92.4  108.3    9.2     0
+  165 [160, 160, 160]    30.0  1.0e-03   6000  1024     7  7.413e-06   2.018e-03   4   3   4   4   3   4   4   4    3   3.8    4   38.1  157.5    6.3     0
+  166 [160, 160, 160]    30.0  5.0e-04   6000   512   999  1.047e-05   2.029e-03   3   3   4   5   3   5   4   4    3   3.9    5   34.3  175.1    5.7     0
+  167 [160, 160, 160]    30.0  5.0e-04  10000   512    42  1.410e-05   2.140e-03   3   4   4   5   4   3   4   4    3   3.9    5   57.1  175.0    5.7     0
+  168 [160, 160, 160]    30.0  5.0e-04  10000  1024   999  6.457e-06   2.155e-03   4   3   4   4   3   3   4   5    3   3.8    5   63.4  157.6    6.3     0
+  169 [160, 160, 160]    40.0  5.0e-04  10000   512    42  1.551e-05   2.278e-03   5   3   4   5   4   3   3   4    3   3.9    5   57.0  175.6    5.7     0
+  170 [160, 160, 160]    30.0  5.0e-04  10000   512  2024  1.269e-05   2.318e-03   3   3   4   4   3   4   4   4    3   3.6    4   57.1  175.2    5.7     0
+  171 [160, 160, 160]    40.0  5.0e-04  10000  1024   137  6.952e-06   2.400e-03   3   4   5   4   3   4   3   4    3   3.8    5   63.4  157.6    6.3     0
+  172 [160, 160, 160]    20.0  5.0e-04  10000  2048  2024  3.986e-06   2.428e-03   3   3   4   4   3   3   4   4    3   3.5    4   92.6  108.0    9.3     0
+  173 [160, 160, 160]    40.0  5.0e-04   8000   512   137  1.291e-05   2.523e-03   3   4   4   4   3   3   4   4    3   3.6    4   45.6  175.3    5.7     0
+  174 [160, 160, 160]    20.0  5.0e-04  10000   512     7  1.528e-05   2.576e-03   3   3   4   4   3   3   4   5    3   3.6    5   58.2  171.8    5.8     0
+  175 [160, 160, 160]    30.0  5.0e-04  10000  2048    42  2.733e-06   2.652e-03   3   3   4   5   3   4   4   4    3   3.8    5   92.3  108.4    9.2     0
+  176 [160, 160, 160]    40.0  5.0e-04  10000   512   999  2.098e-05   2.663e-03   3   4   3   4   3   4   3   4    3   3.5    4   56.9  175.7    5.7     0
+  177 [160, 160, 160]    20.0  1.0e-03  10000  1024  2024  3.199e-05   2.722e-03   3   3   4   4   3   3   4   5    3   3.6    5   63.8  156.8    6.4     0
+  178 [160, 160, 160]    40.0  1.0e-04   8000  1024     7  7.395e-06   2.826e-03   3   4   3   4   3   4   3   4    3   3.5    4   50.8  157.4    6.4     0
+  179 [160, 160, 160]    30.0  5.0e-04  10000   512     7  1.503e-05   2.898e-03   3   4   4   4   3   5   3   4    3   3.8    5   57.1  175.2    5.7     0
+  180 [160, 160, 160]    40.0  5.0e-04  10000  1024    42  8.073e-06   2.902e-03   3   4   3   4   3   5   3   4    3   3.6    5   63.4  157.7    6.3     0
+  181 [160, 160, 160]    40.0  5.0e-04  10000  2048     7  3.976e-06   2.995e-03   4   3   3   4   3   4   4   4    3   3.6    4   92.3  108.3    9.2     0
+  182 [160, 160, 160]    40.0  5.0e-04  10000  2048  2024  3.765e-06   3.042e-03   3   3   3   4   3   3   4   4    3   3.4    4   92.2  108.4    9.2     0
+  183 [160, 160, 160]    40.0  1.0e-04   8000  1024   999  8.018e-06   3.045e-03   3   3   4   4   3   4   4   4    3   3.6    4   50.9  157.3    6.4     0
+  184 [160, 160, 160]    30.0  1.0e-03   6000  2048    42  8.270e-05   3.078e-03   4   4   3   4   4   3   4   4    3   3.8    4   55.4  108.3    9.2     0
+  185 [160, 160, 160]    40.0  5.0e-04   8000   512    42  1.547e-05   3.202e-03   3   3   4   4   4   3   4   4    3   3.6    4   45.6  175.3    5.7     0
+  186 [160, 160, 160]    20.0  1.0e-03  10000  2048   999  4.935e-06   3.210e-03   3   3   3   4   3   3   3   5    3   3.4    5   92.6  108.0    9.3     0
+  187 [160, 160, 160]    40.0  5.0e-04   6000   512   999  1.345e-05   3.259e-03   3   4   4   4   3   4   3   4    3   3.6    4   34.2  175.4    5.7     0
+  188 [160, 160, 160]    40.0  5.0e-04  10000   512   137  2.273e-05   3.312e-03   3   3   4   4   4   3   3   4    3   3.5    4   57.0  175.6    5.7     0
+  189 [160, 160, 160]    40.0  5.0e-04  10000  2048   137  3.412e-06   3.351e-03   3   4   3   4   4   3   4   4    3   3.6    4   92.4  108.3    9.2     0
+  190 [160, 160, 160]    40.0  5.0e-04   6000   512    42  1.386e-05   3.383e-03   3   3   3   4   3   4   3   4    3   3.4    4   34.2  175.4    5.7     0
+  191 [160, 160, 160]    30.0  5.0e-04   8000   512   999  1.094e-05   3.386e-03   3   4   3   4   3   4   3   4    3   3.5    4   45.6  175.3    5.7     0
+  192 [160, 160, 160]    30.0  1.0e-03  10000  2048    42  6.076e-05   3.443e-03   3   4   4   4   3   3   4   4    3   3.6    4   92.4  108.3    9.2     0
+  193 [160, 160, 160]    30.0  1.0e-03   6000  2048  2024  1.265e-04   3.478e-03   4   3   4   4   3   3   4   4    3   3.6    4   55.5  108.2    9.2     0
+  194 [160, 160, 160]    40.0  5.0e-04   8000  1024     7  7.004e-06   3.574e-03   3   3   3   4   3   4   4   4    3   3.5    4   50.8  157.5    6.4     0
+  195 [160, 160, 160]    20.0  1.0e-03  10000   512  2024  2.748e-05   3.657e-03   3   3   4   4   3   4   3   4    3   3.5    4   57.2  174.8    5.7     0
+  196 [160, 160, 160]    30.0  1.0e-03   8000  1024  2024  1.234e-04   3.757e-03   4   3   3   4   3   4   3   4    3   3.5    4   50.7  157.7    6.3     0
+  197 [160, 160, 160]    40.0  5.0e-04  10000  1024     7  8.090e-06   3.767e-03   3   4   3   4   3   3   4   4    3   3.5    4   63.5  157.5    6.3     0
+  198 [160, 160, 160]    30.0  1.0e-03   8000  1024    42  1.029e-04   3.916e-03   3   4   3   3   4   3   4   4    3   3.5    4   50.8  157.5    6.3     0
+  199 [160, 160, 160]    30.0  1.0e-03   6000   512    42  2.802e-04   3.940e-03   3   3   3   4   4   3   4   4    3   3.5    4   34.3  175.2    5.7     0
+  200 [160, 160, 160]    20.0  1.0e-03  10000   512   137  1.186e-04   4.080e-03   4   4   3   4   4   4   3   4    3   3.8    4   57.2  174.7    5.7     0
+  201 [160, 160, 160]    30.0  1.0e-03   8000  2048   999  7.347e-05   4.087e-03   3   4   3   5   3   3   4   4    3   3.6    5   73.9  108.2    9.2     0
+  202 [160, 160, 160]    30.0  5.0e-04   8000   512    42  1.114e-05   4.394e-03   3   3   4   4   3   3   3   4    3   3.4    4   45.7  175.2    5.7     0
+  203 [160, 160, 160]    30.0  1.0e-03   8000  2048  2024  6.198e-05   4.535e-03   3   3   3   4   5   4   3   3    3   3.5    5   73.9  108.3    9.2     0
+  204 [160, 160, 160]    40.0  5.0e-04   8000   512  2024  1.907e-05   4.667e-03   3   3   3   4   3   4   3   4    3   3.4    4   45.6  175.5    5.7     0
+  205 [160, 160, 160]    20.0  1.0e-03  10000   512     7  5.270e-05   4.906e-03   4   3   3   3   3   4   3   4    3   3.4    4   57.3  174.6    5.7     0
+  206 [160, 160, 160]    30.0  5.0e-04  10000  2048  2024  3.148e-06   4.928e-03   3   3   3   4   3   3   3   4    3   3.2    4   92.4  108.3    9.2     0
+  207 [160, 160, 160]    30.0  1.0e-03  10000  2048  2024  1.637e-04   4.934e-03   4   4   5   4   3   3   3   4    3   3.8    5   92.4  108.2    9.2     0
+  208 [160, 160, 160]    40.0  5.0e-04  10000   512     7  2.034e-05   5.017e-03   3   3   3   4   3   3   3   4    3   3.2    4   56.9  175.7    5.7     0
+  209 [160, 160, 160]    30.0  1.0e-03  10000  2048     7  1.340e-04   5.092e-03   3   4   3   4   3   3   3   4    3   3.4    4   92.4  108.3    9.2     0
+  210 [160, 160, 160]    40.0  5.0e-04  10000   512  2024  2.152e-05   5.102e-03   3   3   4   4   3   3   3   4    3   3.4    4   56.9  175.6    5.7     0
+  211 [160, 160, 160]    20.0  1.0e-03  10000   512    42  1.446e-04   5.110e-03   3   3   3   4   3   4   3   4    3   3.4    4   57.3  174.7    5.7     0
+  212 [160, 160, 160]    30.0  1.0e-03   6000  1024   999  1.426e-04   5.124e-03   3   3   3   4   3   3   3   4    3   3.2    4   38.1  157.5    6.3     0
+  213 [160, 160, 160]    30.0  1.0e-03   8000  2048     7  8.030e-05   5.366e-03   3   3   3   4   3   4   3   3    3   3.2    4   73.8  108.4    9.2     0
+  214 [160, 160, 160]    20.0  5.0e-04  10000  1024   137  6.097e-06   5.522e-03   3   3   3   4   3   4   4   4    3   3.5    4   64.2  155.7    6.4     0
+  215 [160, 160, 160]    20.0  1.0e-03  10000  2048    42  2.896e-04   5.535e-03   3   3   4   4   4   5   3   4    3   3.8    5   92.5  108.1    9.3     0
+  216 [160, 160, 160]    30.0  1.0e-03   6000  1024    42  9.041e-05   5.842e-03   3   3   3   4   3   3   3   3    3   3.1    4   38.2  157.2    6.4     0
+  217 [160, 160, 160]    30.0  5.0e-04  10000   512   999  1.519e-05   6.032e-03   3   3   3   4   3   3   3   4    3   3.2    4   57.0  175.3    5.7     0
+  218 [160, 160, 160]    20.0  1.0e-03  10000  1024     7  1.167e-04   6.309e-03   3   3   3   4   3   3   3   4    3   3.2    4   63.7  157.0    6.4     0
+  219 [160, 160, 160]    30.0  1.0e-03   8000  1024   137  2.288e-04   6.321e-03   3   3   4   3   4   3   3   3    3   3.2    4   50.8  157.4    6.4     0
+  220 [160, 160, 160]    40.0  1.0e-03   6000  2048   999  3.454e-04   6.372e-03   3   3   3   4   3   3   4   3    3   3.2    4   55.4  108.2    9.2     0
+  221 [160, 160, 160]    30.0  5.0e-04  10000   512   137  1.659e-05   6.745e-03   3   3   4   3   3   3   3   4    3   3.2    4   57.1  175.0    5.7     0
+  222 [160, 160, 160]    30.0  5.0e-04   8000  1024     7  5.190e-06   6.903e-03   3   3   3   3   3   3   3   4    3   3.1    4   50.7  157.7    6.3     0
+  223 [160, 160, 160]    20.0  1.0e-03  10000  1024    42  7.151e-05   6.999e-03   3   3   4   3   3   3   3   3    3   3.1    4   63.7  156.9    6.4     0
+  224 [160, 160, 160]    20.0  1.0e-03  10000  1024   137  9.894e-05   7.054e-03   3   3   3   4   3   3   3   4    3   3.2    4   63.7  157.1    6.4     0
+  225 [160, 160, 160]    30.0  1.0e-03   6000   512     7  3.963e-04   7.635e-03   3   3   3   4   3   4   4   3    3   3.4    4   34.3  175.0    5.7     0
+  226 [160, 160, 160]    30.0  5.0e-04   8000   512     7  1.154e-05   7.725e-03   3   3   3   4   3   3   3   3    3   3.1    4   45.6  175.3    5.7     0
+  227 [160, 160, 160]    40.0  1.0e-03  10000  2048  2024  4.355e-04   7.787e-03   3   3   4   4   4   3   3   3    3   3.4    4   92.3  108.3    9.2     0
+  228 [160, 160, 160]    30.0  1.0e-03  10000  1024   137  2.830e-04   9.096e-03   4   3   3   3   5   3   3   3    3   3.4    5   63.6  157.3    6.4     0
+  229 [160, 160, 160]    30.0  1.0e-03   8000  1024   999  1.708e-04   9.262e-03   3   4   3   4   3   4   3   3    3   3.4    4   50.7  157.7    6.3     0
+  230 [160, 160, 160]    20.0  1.0e-03  10000   512   999  3.466e-05   1.018e-02   3   3   3   3   3   3   3   3    3   3.0    3   57.2  174.8    5.7     0
+  231 [160, 160, 160]    30.0  1.0e-03  10000  2048   137  3.686e-04   1.020e-02   3   3   3   4   3   3   3   3    3   3.1    4   92.4  108.2    9.2     0
+  232 [160, 160, 160]    30.0  1.0e-03   6000  2048     7  9.851e-04   1.234e-02   4   3   3   3   3   3   3   3    3   3.1    4   55.5  108.2    9.2     0
+  233 [160, 160, 160]    40.0  1.0e-03   8000   512  2024  1.077e-02   2.208e-02   3   3   4   3   3   3   3   3    3   3.1    4   45.6  175.3    5.7     0
+  234 [160, 160, 160]    30.0  1.0e-03   8000   512   999  8.778e-04   5.916e-03   2   3   4   4   2   5   3   5    2   3.5    5   45.6  175.3    5.7     0
+  235 [160, 160, 160]    30.0  1.0e-03   8000   512     7  2.224e-03   6.243e-03   3   4   3   4   2   3   3   4    2   3.2    4   45.6  175.6    5.7     0
+  236 [160, 160, 160]    30.0  1.0e-03  10000  1024     7  6.376e-04   6.286e-03   2   4   3   5   3   3   3   4    2   3.4    5   63.4  157.8    6.3     0
+  237 [160, 160, 160]    30.0  1.0e-03  10000  1024    42  2.404e-04   8.837e-03   2   3   3   4   3   3   3   4    2   3.1    4   63.5  157.4    6.4     0
+  238 [160, 160, 160]    20.0  5.0e-04  10000   512   137  1.306e-05   9.186e-03   2   3   3   4   3   3   3   4    2   3.1    4   58.2  171.8    5.8     0
+  239 [160, 160, 160]    40.0  1.0e-03   8000  2048  2024  7.609e-04   9.284e-03   3   3   3   3   2   3   4   3    2   3.0    4   73.8  108.4    9.2     0
+  240 [160, 160, 160]    30.0  1.0e-03   6000   512  2024  1.040e-03   9.633e-03   2   3   4   3   3   3   3   3    2   3.0    4   34.3  175.1    5.7     0
+  241 [160, 160, 160]    40.0  5.0e-04   8000   512     7  1.800e-05   1.025e-02   2   3   3   3   2   4   3   4    2   3.0    4   45.7  175.2    5.7     0
+  242 [160, 160, 160]    40.0  1.0e-03   6000  2048     7  3.336e-04   1.069e-02   3   2   3   4   3   3   3   3    2   3.0    4   55.4  108.2    9.2     0
+  243 [160, 160, 160]    30.0  1.0e-03  10000  1024  2024  3.960e-04   1.077e-02   2   4   3   4   2   4   3   3    2   3.1    4   63.4  157.8    6.3     0
+  244 [160, 160, 160]    20.0  1.0e-03  10000  2048   137  5.068e-04   1.095e-02   3   4   3   4   2   3   3   4    2   3.2    4   92.6  108.0    9.3     0
+  245 [160, 160, 160]    40.0  1.0e-03  10000  1024   137  6.617e-03   1.127e-02   2   4   3   3   3   3   3   4    2   3.1    4   63.6  157.3    6.4     0
+  246 [160, 160, 160]    30.0  5.0e-04   8000  1024   999  5.171e-06   1.167e-02   2   3   3   3   3   3   3   3    2   2.9    3   50.8  157.6    6.3     0
+  247 [160, 160, 160]    40.0  1.0e-03  10000  1024  2024  1.709e-03   1.175e-02   3   2   4   3   3   3   4   4    2   3.2    4   63.5  157.5    6.4     0
+  248 [160, 160, 160]    30.0  1.0e-03   8000  1024     7  1.994e-04   1.185e-02   3   3   3   3   2   3   4   4    2   3.1    4   50.7  157.6    6.3     0
+  249 [160, 160, 160]    40.0  1.0e-03   6000  1024     7  6.080e-03   1.206e-02   3   3   3   4   2   3   3   3    2   3.0    4   38.1  157.5    6.3     0
+  250 [160, 160, 160]    20.0  5.0e-04  10000   512    42  1.165e-05   1.260e-02   2   3   3   3   3   3   3   3    2   2.9    3   58.2  171.8    5.8     0
+  251 [160, 160, 160]    40.0  1.0e-03   8000  1024   999  1.876e-03   1.260e-02   3   2   3   3   3   3   3   5    2   3.1    5   50.7  157.7    6.3     0
+  252 [160, 160, 160]    40.0  1.0e-03   6000  1024  2024  1.399e-03   1.278e-02   2   3   3   3   2   3   3   4    2   2.9    4   38.1  157.7    6.3     0
+  253 [160, 160, 160]    30.0  1.0e-03   8000   512  2024  1.647e-03   1.347e-02   2   3   3   3   2   3   3   4    2   2.9    4   45.6  175.5    5.7     0
+  254 [160, 160, 160]    30.0  1.0e-03  10000   512    42  6.304e-04   1.347e-02   3   3   3   3   3   3   2   3    2   2.9    3   57.1  175.2    5.7     0
+  255 [160, 160, 160]    40.0  1.0e-03  10000  1024   999  1.272e-03   1.353e-02   3   3   3   4   3   2   3   5    2   3.2    5   63.6  157.3    6.4     0
+  256 [160, 160, 160]    30.0  1.0e-03   6000   512   999  1.319e-03   1.381e-02   2   3   3   3   3   3   4   3    2   3.0    4   34.2  175.2    5.7     0
+  257 [160, 160, 160]    20.0  1.0e-03  10000  2048  2024  4.671e-04   1.474e-02   2   3   3   4   2   3   3   3    2   2.9    4   92.6  108.0    9.3     0
+  258 [160, 160, 160]    30.0  1.0e-03   6000  2048   137  1.648e-03   1.482e-02   3   3   2   3   2   3   3   4    2   2.9    4   55.4  108.2    9.2     0
+  259 [160, 160, 160]    30.0  1.0e-03  10000   512   137  1.356e-03   1.528e-02   2   3   3   3   3   3   4   4    2   3.1    4   57.0  175.5    5.7     0
+  260 [160, 160, 160]    30.0  1.0e-03   8000  2048   137  1.335e-03   1.540e-02   2   3   3   3   2   3   3   3    2   2.8    3   73.8  108.4    9.2     0
+  261 [160, 160, 160]    30.0  1.0e-03  10000   512     7  1.682e-03   1.552e-02   2   3   3   4   3   3   2   3    2   2.9    4   57.1  175.3    5.7     0
+  262 [160, 160, 160]    40.0  1.0e-03   6000  2048  2024  5.926e-04   1.598e-02   2   2   3   3   3   3   3   4    2   2.9    4   55.4  108.2    9.2     0
+  263 [160, 160, 160]    40.0  1.0e-03   6000  1024   999  2.025e-03   1.621e-02   2   3   3   5   2   3   2   3    2   2.9    5   38.1  157.6    6.3     0
+  264 [160, 160, 160]    40.0  1.0e-03  10000  1024     7  7.995e-03   1.674e-02   2   4   3   3   2   3   3   3    2   2.9    4   63.6  157.3    6.4     0
+  265 [160, 160, 160]    20.0  1.0e-03  10000  2048     7  6.777e-04   1.689e-02   3   3   3   3   2   2   3   3    2   2.8    3   92.5  108.1    9.3     0
+  266 [160, 160, 160]    30.0  1.0e-03  10000   512  2024  1.738e-03   1.718e-02   2   3   3   3   4   3   3   3    2   3.0    4   57.0  175.3    5.7     0
+  267 [160, 160, 160]    30.0  1.0e-03   8000   512   137  1.072e-03   1.721e-02   3   3   2   3   3   3   3   3    2   2.9    3   45.6  175.3    5.7     0
+  268 [160, 160, 160]    40.0  1.0e-03   8000  2048    42  5.258e-03   1.762e-02   2   3   3   3   4   2   3   3    2   2.9    4   73.9  108.3    9.2     0
+  269 [160, 160, 160]    40.0  1.0e-03   8000  1024  2024  1.878e-03   1.803e-02   2   3   3   4   2   2   3   3    2   2.8    4   50.7  157.7    6.3     0
+  270 [160, 160, 160]    40.0  1.0e-03   6000   512   137  8.531e-03   1.833e-02   4   3   3   3   2   2   4   4    2   3.1    4   34.3  174.9    5.7     0
+  271 [160, 160, 160]    40.0  1.0e-03   8000  2048     7  8.413e-04   1.885e-02   2   3   3   3   3   3   3   3    2   2.9    3   73.9  108.3    9.2     0
+  272 [160, 160, 160]    30.0  1.0e-03   8000   512    42  7.465e-04   1.966e-02   2   4   3   3   2   4   2   3    2   2.9    4   45.6  175.4    5.7     0
+  273 [160, 160, 160]    40.0  1.0e-03  10000   512  2024  9.734e-03   2.040e-02   3   2   3   4   4   3   3   3    2   3.1    4   57.0  175.4    5.7     0
+  274 [160, 160, 160]    40.0  1.0e-03   8000  1024     7  6.770e-03   2.048e-02   4   3   2   4   3   3   2   3    2   3.0    4   50.8  157.6    6.3     0
+  275 [160, 160, 160]    40.0  1.0e-03   6000  2048    42  5.905e-03   2.114e-02   3   3   3   3   2   2   3   3    2   2.8    3   55.4  108.4    9.2     0
+  276 [160, 160, 160]    40.0  1.0e-03   8000  2048   137  4.613e-03   2.155e-02   2   3   3   3   3   2   2   3    2   2.6    3   73.9  108.2    9.2     0
+  277 [160, 160, 160]    40.0  1.0e-03   6000   512  2024  3.329e-03   2.173e-02   2   2   3   3   2   3   3   3    2   2.6    3   34.3  175.2    5.7     0
+  278 [160, 160, 160]    40.0  1.0e-03   6000  1024    42  7.532e-03   2.296e-02   2   2   3   3   5   3   2   3    2   2.9    5   38.1  157.3    6.4     0
+  279 [160, 160, 160]    40.0  1.0e-03  10000  2048   999  7.345e-04   2.321e-02   2   2   3   3   2   3   3   3    2   2.6    3   92.3  108.4    9.2     0
+  280 [160, 160, 160]    40.0  1.0e-03  10000  2048     7  2.694e-04   2.357e-02   2   3   2   3   2   3   3   3    2   2.6    3   92.3  108.3    9.2     0
+  281 [160, 160, 160]    40.0  1.0e-03  10000  2048    42  4.212e-03   2.366e-02   2   2   4   3   3   2   3   4    2   2.9    4   92.4  108.3    9.2     0
+  282 [160, 160, 160]    30.0  1.0e-03   6000   512   137  1.553e-03   2.405e-02   3   2   4   3   2   3   3   3    2   2.9    4   34.2  175.4    5.7     0
+  283 [160, 160, 160]    40.0  1.0e-03   8000  1024    42  6.102e-03   2.446e-02   2   3   2   3   2   3   3   3    2   2.6    3   50.9  157.3    6.4     0
+  284 [160, 160, 160]    30.0  1.0e-03  10000   512   999  1.642e-03   2.459e-02   2   3   2   4   2   2   3   3    2   2.6    4   57.1  175.3    5.7     0
+  285 [160, 160, 160]    30.0  1.0e-03  10000  1024   999  2.044e-04   2.492e-02   2   3   3   3   2   3   3   3    2   2.8    3   63.4  157.8    6.3     0
+  286 [160, 160, 160]    40.0  1.0e-03  10000  2048   137  4.282e-03   2.523e-02   2   2   3   3   3   3   3   3    2   2.8    3   92.3  108.4    9.2     0
+  287 [160, 160, 160]    40.0  1.0e-03   6000  2048   137  5.334e-03   2.541e-02   3   3   3   4   3   3   3   2    2   3.0    4   55.3  108.4    9.2     0
+  288 [160, 160, 160]    40.0  1.0e-03   8000  2048   999  4.747e-04   2.640e-02   2   3   2   3   2   3   4   3    2   2.8    4   73.9  108.2    9.2     0
+  289 [160, 160, 160]    40.0  1.0e-03  10000  1024    42  6.135e-03   2.691e-02   3   3   4   3   2   2   3   3    2   2.9    4   63.6  157.3    6.4     0
+  290 [160, 160, 160]    30.0  1.0e-03   8000  2048    42  8.803e-04   2.809e-02   3   3   3   3   2   3   3   3    2   2.9    3   73.8  108.3    9.2     0
+  291 [160, 160, 160]    40.0  1.0e-03   6000   512   999  3.828e-03   2.966e-02   2   2   2   4   2   3   3   3    2   2.6    4   34.3  175.2    5.7     0
+  292 [160, 160, 160]    40.0  1.0e-03   8000  1024   137  6.322e-03   3.099e-02   2   2   3   3   2   3   2   3    2   2.5    3   50.9  157.3    6.4     0
+  293 [160, 160, 160]    40.0  1.0e-03   8000   512   999  2.929e-03   3.327e-02   2   3   3   3   2   3   2   3    2   2.6    3   45.6  175.4    5.7     0
+  294 [160, 160, 160]    40.0  1.0e-03  10000   512     7  1.292e-02   3.433e-02   2   3   3   3   2   4   2   3    2   2.8    4   57.1  175.3    5.7     0
+  295 [160, 160, 160]    40.0  1.0e-03   8000   512     7  9.184e-03   3.471e-02   3   2   2   3   2   3   2   3    2   2.5    3   45.6  175.5    5.7     0
+  296 [160, 160, 160]    40.0  1.0e-03  10000   512   137  9.180e-03   3.526e-02   3   2   3   3   3   2   2   3    2   2.6    3   57.1  175.1    5.7     0
+  297 [160, 160, 160]    40.0  1.0e-03   6000  1024   137  6.764e-03   3.576e-02   3   2   3   3   3   2   2   3    2   2.6    3   38.1  157.5    6.3     0
+  298 [160, 160, 160]    40.0  1.0e-03  10000   512   999  3.427e-03   3.787e-02   2   2   3   3   2   2   3   3    2   2.5    3   57.0  175.4    5.7     0
+  299 [160, 160, 160]    40.0  1.0e-03   8000   512    42  9.465e-03   3.849e-02   2   3   3   4   2   3   2   3    2   2.8    4   45.6  175.4    5.7     0
+  300 [160, 160, 160]    40.0  1.0e-03   6000   512     7  1.233e-02   3.987e-02   2   3   3   3   2   2   2   3    2   2.5    3   34.3  175.1    5.7     0
+  301 [160, 160, 160]    40.0  1.0e-03  10000   512    42  1.104e-02   4.267e-02   3   2   3   3   3   3   2   3    2   2.8    3   57.0  175.3    5.7     0
+  302 [160, 160, 160]    40.0  1.0e-03   8000   512   137  9.991e-03   4.771e-02   2   3   3   3   3   2   2   3    2   2.6    3   45.6  175.3    5.7     0
+  303 [160, 160, 160]    40.0  1.0e-03   6000   512    42  1.053e-02   4.826e-02   2   3   3   5   2   2   2   2    2   2.6    5   34.2  175.3    5.7     0
+============================================================================================================================================
+
+  BEST CONFIG (GPU 3):
+    hidden_sizes = [160, 160, 160]
+    omega_0      = 40.0
+    lr           = 0.0001
+    n_epochs     = 8000
+    n_per_param  = 2048
+    seed         = 999
+    -> min 4 digits, mean 5.0 digits, max 6 digits, mean rel. err 1.228e-04
+    -> 108.3 ep/s, step 9.2ms, gpu 0%, wall 73.9s
+
+============================================================================================================================================
+  PER-CONFIG SUMMARY (seed-averaged) — GPU 3
+============================================================================================================================================
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=2048
+      min_dig=4  mean_dig=4.7  max_dig=7  mean_relerr=2.819e-04  n_seeds=5
+      ep/s=108.2  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.0001 epochs=10000 npp=2048
+      min_dig=4  mean_dig=4.8  max_dig=6  mean_relerr=3.114e-04  n_seeds=3
+      ep/s=105.9  step=9.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=2048
+      min_dig=4  mean_dig=4.7  max_dig=6  mean_relerr=3.136e-04  n_seeds=5
+      ep/s=108.1  step=9.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=2048
+      min_dig=4  mean_dig=4.6  max_dig=6  mean_relerr=3.138e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=2048
+      min_dig=4  mean_dig=4.7  max_dig=6  mean_relerr=3.320e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=2048
+      min_dig=4  mean_dig=4.7  max_dig=6  mean_relerr=3.463e-04  n_seeds=5
+      ep/s=108.2  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=2048
+      min_dig=4  mean_dig=4.4  max_dig=6  mean_relerr=3.767e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=1024
+      min_dig=4  mean_dig=4.5  max_dig=6  mean_relerr=5.273e-04  n_seeds=5
+      ep/s=157.1  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=2048
+      min_dig=4  mean_dig=4.4  max_dig=6  mean_relerr=5.924e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=2048
+      min_dig=4  mean_dig=4.3  max_dig=6  mean_relerr=7.104e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=1024
+      min_dig=3  mean_dig=4.5  max_dig=6  mean_relerr=5.411e-04  n_seeds=5
+      ep/s=157.5  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=1024
+      min_dig=3  mean_dig=4.3  max_dig=7  mean_relerr=6.064e-04  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=1024
+      min_dig=3  mean_dig=4.3  max_dig=6  mean_relerr=7.037e-04  n_seeds=5
+      ep/s=157.2  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=1024
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=7.623e-04  n_seeds=5
+      ep/s=157.2  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=512
+      min_dig=3  mean_dig=4.3  max_dig=6  mean_relerr=7.782e-04  n_seeds=5
+      ep/s=175.2  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=512
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=8.168e-04  n_seeds=5
+      ep/s=175.2  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=1024
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=8.496e-04  n_seeds=5
+      ep/s=157.7  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=2048
+      min_dig=3  mean_dig=4.2  max_dig=5  mean_relerr=9.235e-04  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=6000 npp=512
+      min_dig=3  mean_dig=4.2  max_dig=7  mean_relerr=9.482e-04  n_seeds=5
+      ep/s=175.1  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=10000 npp=1024
+      min_dig=3  mean_dig=4.2  max_dig=5  mean_relerr=9.851e-04  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=2048
+      min_dig=3  mean_dig=4.2  max_dig=7  mean_relerr=1.014e-03  n_seeds=5
+      ep/s=107.9  step=9.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0001 epochs=8000 npp=512
+      min_dig=3  mean_dig=4.1  max_dig=7  mean_relerr=1.040e-03  n_seeds=5
+      ep/s=175.1  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=6000 npp=512
+      min_dig=3  mean_dig=4.2  max_dig=6  mean_relerr=1.119e-03  n_seeds=5
+      ep/s=175.3  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=10000 npp=512
+      min_dig=3  mean_dig=4.1  max_dig=5  mean_relerr=1.131e-03  n_seeds=5
+      ep/s=175.5  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=6000 npp=512
+      min_dig=3  mean_dig=4.2  max_dig=5  mean_relerr=1.153e-03  n_seeds=5
+      ep/s=175.0  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=2048
+      min_dig=3  mean_dig=4.0  max_dig=5  mean_relerr=1.247e-03  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=1024
+      min_dig=3  mean_dig=4.1  max_dig=6  mean_relerr=1.412e-03  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0001 epochs=8000 npp=1024
+      min_dig=3  mean_dig=4.0  max_dig=6  mean_relerr=1.661e-03  n_seeds=5
+      ep/s=157.4  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=1024
+      min_dig=3  mean_dig=3.9  max_dig=6  mean_relerr=1.817e-03  n_seeds=5
+      ep/s=157.4  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=6000 npp=512
+      min_dig=3  mean_dig=4.0  max_dig=6  mean_relerr=1.889e-03  n_seeds=5
+      ep/s=175.3  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=1024
+      min_dig=3  mean_dig=4.0  max_dig=6  mean_relerr=1.954e-03  n_seeds=5
+      ep/s=155.7  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=1024
+      min_dig=3  mean_dig=3.8  max_dig=5  mean_relerr=2.202e-03  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=2048
+      min_dig=3  mean_dig=3.8  max_dig=5  mean_relerr=2.383e-03  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=2048
+      min_dig=3  mean_dig=3.7  max_dig=6  mean_relerr=2.519e-03  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=1024
+      min_dig=3  mean_dig=3.7  max_dig=5  mean_relerr=2.997e-03  n_seeds=5
+      ep/s=157.4  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=512
+      min_dig=3  mean_dig=3.7  max_dig=5  mean_relerr=3.418e-03  n_seeds=5
+      ep/s=175.2  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=10000 npp=512
+      min_dig=3  mean_dig=3.5  max_dig=5  mean_relerr=3.674e-03  n_seeds=5
+      ep/s=175.6  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=10000 npp=512
+      min_dig=3  mean_dig=3.5  max_dig=5  mean_relerr=4.026e-03  n_seeds=5
+      ep/s=175.1  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=1024
+      min_dig=3  mean_dig=3.5  max_dig=5  mean_relerr=4.979e-03  n_seeds=5
+      ep/s=156.9  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=2048
+      min_dig=3  mean_dig=3.5  max_dig=5  mean_relerr=5.116e-03  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=512
+      min_dig=3  mean_dig=3.4  max_dig=4  mean_relerr=5.588e-03  n_seeds=5
+      ep/s=174.7  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.0005 epochs=8000 npp=1024
+      min_dig=2  mean_dig=3.7  max_dig=6  mean_relerr=4.310e-03  n_seeds=5
+      ep/s=157.4  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.0005 epochs=8000 npp=512
+      min_dig=2  mean_dig=3.5  max_dig=4  mean_relerr=4.454e-03  n_seeds=5
+      ep/s=175.4  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.0005 epochs=10000 npp=512
+      min_dig=2  mean_dig=3.6  max_dig=5  mean_relerr=5.372e-03  n_seeds=5
+      ep/s=171.8  step=5.8ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=2048
+      min_dig=2  mean_dig=3.4  max_dig=4  mean_relerr=6.999e-03  n_seeds=5
+      ep/s=108.2  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=1024
+      min_dig=2  mean_dig=3.4  max_dig=4  mean_relerr=7.021e-03  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=20.0 lr=0.001 epochs=10000 npp=2048
+      min_dig=2  mean_dig=3.2  max_dig=5  mean_relerr=1.027e-02  n_seeds=5
+      ep/s=108.0  step=9.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=2048
+      min_dig=2  mean_dig=3.2  max_dig=5  mean_relerr=1.150e-02  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=6000 npp=512
+      min_dig=2  mean_dig=3.1  max_dig=4  mean_relerr=1.181e-02  n_seeds=5
+      ep/s=175.2  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=1024
+      min_dig=2  mean_dig=3.1  max_dig=5  mean_relerr=1.198e-02  n_seeds=5
+      ep/s=157.6  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=8000 npp=512
+      min_dig=2  mean_dig=3.1  max_dig=5  mean_relerr=1.250e-02  n_seeds=5
+      ep/s=175.4  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=2048
+      min_dig=2  mean_dig=3.0  max_dig=4  mean_relerr=1.592e-02  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=1024
+      min_dig=2  mean_dig=3.1  max_dig=5  mean_relerr=1.604e-02  n_seeds=5
+      ep/s=157.3  step=6.4ms  gpu=0%
+  hidden=[160, 160, 160] omega0=30.0 lr=0.001 epochs=10000 npp=512
+      min_dig=2  mean_dig=2.9  max_dig=4  mean_relerr=1.721e-02  n_seeds=5
+      ep/s=175.3  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=2048
+      min_dig=2  mean_dig=2.8  max_dig=4  mean_relerr=1.874e-02  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=1024
+      min_dig=2  mean_dig=2.9  max_dig=5  mean_relerr=1.995e-02  n_seeds=5
+      ep/s=157.5  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=2048
+      min_dig=2  mean_dig=2.9  max_dig=4  mean_relerr=2.069e-02  n_seeds=5
+      ep/s=108.3  step=9.2ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=1024
+      min_dig=2  mean_dig=2.8  max_dig=5  mean_relerr=2.131e-02  n_seeds=5
+      ep/s=157.5  step=6.3ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=6000 npp=512
+      min_dig=2  mean_dig=2.7  max_dig=5  mean_relerr=3.157e-02  n_seeds=5
+      ep/s=175.1  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=10000 npp=512
+      min_dig=2  mean_dig=2.8  max_dig=4  mean_relerr=3.411e-02  n_seeds=5
+      ep/s=175.3  step=5.7ms  gpu=0%
+  hidden=[160, 160, 160] omega0=40.0 lr=0.001 epochs=8000 npp=512
+      min_dig=2  mean_dig=2.7  max_dig=4  mean_relerr=3.525e-02  n_seeds=5
+      ep/s=175.4  step=5.7ms  gpu=0%
+============================================================================================================================================
+  Results saved -> /lustre/hopper/gshipunv/project-skuld/research/results/grid/19-siren-sweep-m1/hopper/results_gpu3.csv
+
