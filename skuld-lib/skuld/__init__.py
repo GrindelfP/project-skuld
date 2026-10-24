@@ -1,12 +1,12 @@
 ##########################################################################
 ########################### SKULD NNI LIBRARY ############################
 ##########################################################################
-                  ###         version 0.4.0.post1   ###
+                  ###         version 0.5.0   ###
                   ###    a neural network based     ###
                   ### numerical integration library ###
 ##########################################################################
 
-__version__ = "0.4.0.post1"
+__version__ = "0.5.0"
 
 from .model import (
         MLP,
@@ -113,6 +113,11 @@ from .conv import (
         ConvAntiderivativeNet,
 )
 
+from .aentrop import (
+        AenTropPrimitiveNet,
+        AenTropIntegrator,
+)
+
 __all__ = [
         "MLP",
         "NeuralNumericalIntegration",
@@ -165,5 +170,7 @@ __all__ = [
         "SechirenISIntegrator",
         "ConvIntegrator",
         "ConvAntiderivativeNet",
+        "AenTropPrimitiveNet",
+        "AenTropIntegrator",
 
 ]
