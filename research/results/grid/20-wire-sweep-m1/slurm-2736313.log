@@ -336,3 +336,9 @@ Done.
     -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=4 I7=5 I8=6 min=4 mean=4.8 max=6 (1175.9s, 6.8 ep/s, step=147.0ms, gpu=0%)
 [106/303] entry_width=96 omega0=10.0 lr=0.0005 epochs=8000 npp=2048 seed=2024 ...
   Epoch     1/8000  loss=3.6959e-01  lr=5.00e-04  (0.2s)
+    -> I1=4 I2=5 I3=4 I4=5 I5=5 I6=5 I7=5 I8=5 min=4 mean=4.8 max=5 (1175.8s, 6.8 ep/s, step=147.0ms, gpu=0%)
+[107/303] entry_width=96 omega0=10.0 lr=0.0005 epochs=8000 npp=2048 seed=7 ...
+  Epoch     1/8000  loss=3.6780e-01  lr=5.00e-04  (0.2s)
+    -> I1=5 I2=5 I3=5 I4=5 I5=5 I6=5 I7=5 I8=5 min=5 mean=5.0 max=5 (1175.7s, 6.8 ep/s, step=147.0ms, gpu=0%)
+[108/303] entry_width=96 omega0=10.0 lr=0.0005 epochs=8000 npp=2048 seed=999 ...
+  Epoch     1/8000  loss=3.8508e-01  lr=5.00e-04  (0.2s)
