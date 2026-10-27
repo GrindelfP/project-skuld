@@ -39,11 +39,10 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
 ]
 dependencies = [
-    "torch",     
+    "torch",
     "numpy",
     "mpmath",
     "scikit-learn",
-    "typing"
 ]
 requires-python = ">=3.11"
 
