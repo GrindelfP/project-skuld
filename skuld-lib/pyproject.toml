@@ -39,10 +39,12 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Physics",
 ]
 dependencies = [
-    "torch",
-    "numpy",
-    "mpmath",
-    "scikit-learn",
+    # Floors are versions known to provide everything the library uses;
+    # caps stop an untested major release from being pulled in silently.
+    "torch>=2.1,<3",
+    "numpy>=1.24,<3",
+    "mpmath>=1.3,<2",
+    "scikit-learn>=1.3,<2",
 ]
 requires-python = ">=3.11"
 
