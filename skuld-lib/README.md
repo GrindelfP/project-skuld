@@ -96,8 +96,10 @@ from skuld import (
 ```python
 from skuld import generate_data, scale_data, split_data, set_global_device
 
-# Sample a function on a box. Grid strategies ("grd", "log", "mix") produce
-# n_samples ** n_dim rows; stochastic ones ("std", "exp") produce n_samples.
+# Sample a function on a box. With one strategy string, n_samples is the
+# total row count (grid strategies round it up to a perfect n_dim-th power).
+# With a per-dimension list, stochastic dims share n_samples rows and every
+# grid dim adds n_samples points, crossed: here 200 x 200 = 40,000 rows.
 X, y = generate_data(
     dis_type=["std", "std", "exp", "grd"],
     func=integrand,
@@ -116,14 +118,9 @@ set_global_device("cpu")   # or "cuda" or "mps"
 
 ## Caveats
 
-Three behaviours of the current implementation are easy to trip over, and none of
-them raise.
+Two behaviours of the current implementation are easy to trip over, and neither
+of them raises.
 
-- **`n_int_vars` above 3 gives wrong answers, silently.** Every integrator trains
-  against a mixed partial hardcoded to integration variables 0, 1 and 2, while
-  `integrate()` honours `n_int_vars` correctly. At six variables the loss decreases
-  happily and the corner sum is then read off a network trained on the wrong
-  derivative.
 - **`SechirenIntegrator.train()` returns three values** —
   `(history, norm_cache, epoch_data)`, where `epoch_data` holds per-epoch timing.
   Every other integrator returns two.
