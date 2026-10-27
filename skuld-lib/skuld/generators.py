@@ -492,17 +492,21 @@ def generate_data(
     For a single-string ``dis_type`` the ``n_samples`` interpretation is:
 
     * ``"std"`` / ``"exp"`` — total number of random rows.
-    * ``"grd"`` / ``"log"`` / ``"mix"`` — points *per axis*; total rows
-      = ``n_samples ** n_dim``.
+    * ``"grd"`` / ``"log"`` / ``"mix"`` — approximate total rows: each axis
+      gets ``ceil(n_samples ** (1 / n_dim))`` points, so the grid has that
+      number ``** n_dim`` rows (exactly ``n_samples`` when it is a perfect
+      ``n_dim``-th power).
 
-    When a list is supplied the same per-dim rule applies inside
-    :func:`generate_data_mixed_dims`.
+    When a list is supplied, :func:`generate_data_mixed_dims` uses
+    ``n_samples`` per axis instead: stochastic dims share ``n_samples`` rows
+    and each grid dim contributes ``n_samples`` points, all crossed together.
 
     :param dis_type:      strategy tag (str) or list of per-dim tags.
     :param func:          function / integrand to evaluate.
     :param lower:         lower bounds (length n_dim).
     :param upper:         upper bounds (length n_dim).
-    :param n_samples:     points per axis (or total rows for stochastic types).
+    :param n_samples:     total rows for a single strategy string; points per
+                          axis for a per-dimension list (see above).
     :param n_dim:         number of input dimensions.
     :param decay_rate:    ``exp`` sampler parameter.
     :param split_ratio:   ``mix`` sampler parameter.

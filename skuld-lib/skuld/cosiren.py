@@ -196,7 +196,8 @@ class CosirenIntegrator:
         """
         Generate a training batch.
 
-        integrand_fn: callable(u1, u2, u3, *params) -> torch.Tensor
+        integrand_fn: callable(u, *params) -> torch.Tensor of shape [N],
+            where u has shape [N, n_int_vars].
             The integrand in the unit cube (already Jacobian-adjusted).
         param_sets: list of tuples [(a, b, m, n), ...]
         n_per_param: number of random samples per parameter set
@@ -306,7 +307,8 @@ class CosirenIntegrator:
         norm_cache: dict with normalization constants from training
         device: torch device
 
-        Returns: the integral value (normalized, needs descaling)
+        Returns: the integral estimate, already multiplied back by the
+            normalisation constant stored in norm_cache
         """
         if device is None:
             device = torch.device("cpu")
