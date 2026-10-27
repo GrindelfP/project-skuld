@@ -17,16 +17,13 @@
 #  the corner-sum evaluation, since CUDA/MPS are limited to float32.
 ##############################################################################
 
-import itertools
 import math
-import time
 from typing import Callable
 
-import numpy as np
 import torch
 import torch.nn as nn
 
-from ._maitre import mixed_partial_n, mixed_partial_3
+from ._maitre import MaitreIntegrator, mixed_partial_n, mixed_partial_3
 
 
 ##############################################################################
@@ -145,7 +142,7 @@ class ConvAntiderivativeNet(nn.Module):
 #  ConvIntegrator: train + evaluate  (Maitre et al. approach)
 ##############################################################################
 
-class ConvIntegrator:
+class ConvIntegrator(MaitreIntegrator):
     """
     CNN for numerical integration (Maitre et al. approach).
 
@@ -172,60 +169,8 @@ class ConvIntegrator:
             hidden_sizes=hidden_sizes,
         )
 
-    @property
-    def n_weights(self) -> int:
-        return sum(p.numel() for p in self.net.parameters())
-
-    def make_batch(
-        self,
-        integrand_fn: Callable,
-        param_sets: list,
-        n_per_param: int,
-        device: torch.device,
-        norm_cache: dict = None,
-    ) -> tuple:
-        """Generate a training batch: uniform in [0,1]^3 × discrete params.
-
-        Each optimizer step consumes one full batch of
-        len(param_sets) × n_per_param rows (n_per_param is the "batch size"
-        knob the experiment scripts expose).
-        """
-
-        if norm_cache is None:
-            norm_cache = {}
-
-        all_xu, all_f = [], []
-
-        for params in param_sets:
-            params_key = tuple(params)
-            if params_key not in norm_cache:
-                norm_cache[params_key] = self._center_value(
-                    integrand_fn, self.n_int_vars, *params
-                )
-            fc = norm_cache[params_key]
-
-            # Uniform random points in [0,1]^3
-            u_uniform = torch.rand(n_per_param, self.n_int_vars)
-            f_uniform = integrand_fn(u_uniform, *params) / fc
-
-            s = torch.tensor(params, dtype=u_uniform.dtype).expand(
-                u_uniform.shape[0], -1
-            )
-            xu = torch.cat([s, u_uniform], dim=1)  # (n_per_param, 7)
-
-            all_xu.append(xu)
-            all_f.append(f_uniform)
-
-        batch_xu = torch.cat(all_xu, dim=0).to(device)
-        f_tilde = torch.cat(all_f, dim=0).to(device)
-        return batch_xu, f_tilde, norm_cache
-
-    @staticmethod
-    def _center_value(integrand_fn, n_int_vars: int, *params) -> float:
-        """Value of integrand at u=(0.5, ..., 0.5)."""
-        uc = torch.full((1, n_int_vars), 0.5)
-        fc = integrand_fn(uc, *params).item()
-        return fc if abs(fc) > 1e-30 else 1.0
+    def _make_loss(self):
+        return lambda dN, f_tilde: ((dN - f_tilde) ** 2).mean()
 
     def train(
         self,
@@ -244,49 +189,8 @@ class ConvIntegrator:
         CPU fallback). The network remains on the training device after
         training; use integrate() for float64 evaluation on CPU.
         """
-
-        if device is None:
-            device = torch.device("cpu")
-
-        optimizer = torch.optim.Adam(
-            self.net.parameters(), lr=lr, weight_decay=weight_decay
-        )
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-            optimizer, T_max=n_epochs, eta_min=lr / 10
-        )
-        self.net.to(device)
-        self.net.train()
-
-        history = []
-        norm_cache = {}
-        t0 = time.time()
-
-        for epoch in range(1, n_epochs + 1):
-            batch_xu, f_tilde, norm_cache = self.make_batch(
-                integrand_fn, param_sets, n_per_param, device, norm_cache,
-            )
-
-            # Third mixed partial ∂³N/∂u₁∂u₂∂u₃ ≈ f, via autograd end-to-end.
-            dN = mixed_partial_3(self.net, batch_xu)
-            loss = ((dN - f_tilde) ** 2).mean()
-
-            optimizer.zero_grad()
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.net.parameters(), max_norm=5.0)
-            optimizer.step()
-            scheduler.step()
-
-            lv = loss.item()
-            history.append(lv)
-
-            if verbose_every > 0 and (epoch % verbose_every == 0 or epoch == 1):
-                lr_now = scheduler.get_last_lr()[0]
-                elapsed = time.time() - t0
-                print(f"  Epoch {epoch:5d}/{n_epochs}  "
-                      f"loss={lv:.4e}  lr={lr_now:.2e}  "
-                      f"({elapsed:.1f}s)")
-
-        return history, norm_cache
+        return self._fit(integrand_fn, param_sets, n_epochs, n_per_param,
+                         lr, device, verbose_every, weight_decay=weight_decay)
 
     def integrate(self, params: tuple, norm_cache: dict = None, device: torch.device = None) -> float:
         """Evaluate the integral via corner sum over [0,1]^3 for fixed params.
@@ -309,20 +213,9 @@ class ConvIntegrator:
         self.net.to(cpu_device)
         self.net.double()  # convert to float64
 
-        if norm_cache and tuple(params) in norm_cache:
-            fc = norm_cache[tuple(params)]
-        else:
-            fc = 1.0
+        fc = self._norm_constant(params, norm_cache)
 
-        s_row = torch.tensor([params], dtype=torch.float64).to(cpu_device)
-        I_tilde = 0.0
-
-        with torch.no_grad():
-            for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
-                sign = (-1) ** (self.n_int_vars - sum(corner))
-                u_t = torch.tensor([corner], dtype=torch.float64).to(cpu_device)
-                inp = torch.cat([s_row, u_t], dim=1)  # (1, 7)
-                I_tilde += sign * self.net(inp).item()
+        I_tilde = self._corner_sum(params, cpu_device, torch.float64)
 
         # Convert back to float32 for consistency with the rest of the library
         self.net.float()

@@ -14,11 +14,10 @@ import math
 import time
 from typing import Callable
 
-import numpy as np
 import torch
 import torch.nn as nn
 
-from ._maitre import mixed_partial_n, mixed_partial_3
+from ._maitre import MaitreIntegrator, mixed_partial_n, mixed_partial_3
 
 
 ##############################################################################
@@ -98,7 +97,7 @@ class SechirenPrimitiveNet(nn.Module):
 #  SechirenIntegrator: train + evaluate
 ##############################################################################
 
-class SechirenIntegrator:
+class SechirenIntegrator(MaitreIntegrator):
     """
     SECHIREN for numerical integration (Maitre et al. approach).
 
@@ -122,10 +121,6 @@ class SechirenIntegrator:
             omega_0=omega_0,
             output_scale=output_scale,
         )
-
-    @property
-    def n_weights(self) -> int:
-        return sum(p.numel() for p in self.net.parameters())
 
     def make_batch(self,
                    integrand_fn: Callable,
@@ -187,13 +182,6 @@ class SechirenIntegrator:
         f_tilde = torch.cat(all_f, dim=0).to(device)
         return batch_xu, f_tilde, norm_cache
 
-    @staticmethod
-    def _center_value(integrand_fn, n_int_vars: int, *params) -> float:
-        """Value of integrand at u=(0.5, ..., 0.5)."""
-        uc = torch.full((1, n_int_vars), 0.5)
-        fc = integrand_fn(uc, *params).item()
-        return fc if abs(fc) > 1e-30 else 1.0
-
     def train(self,
               integrand_fn: Callable,
               param_sets: list,
@@ -218,11 +206,9 @@ class SechirenIntegrator:
         if device is None:
             device = torch.device("cpu")
 
-        optimizer = torch.optim.Adam(self.net.parameters(), lr=lr, weight_decay=weight_decay)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-            optimizer, T_max=n_epochs, eta_min=lr / 10
-        )
-        loss_fn = nn.MSELoss()
+        optimizer = self._make_optimizer(lr, weight_decay)
+        scheduler = self._make_scheduler(optimizer, n_epochs, lr)
+        loss_fn = self._make_loss()
         self.net.to(device)
         self.net.train()
 
@@ -251,9 +237,10 @@ class SechirenIntegrator:
 
             optimizer.zero_grad()
             loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.net.parameters(), max_norm=5.0)
+            torch.nn.utils.clip_grad_norm_(self.net.parameters(),
+                                           max_norm=self._clip_norm)
             optimizer.step()
-            scheduler.step()
+            self._scheduler_step(scheduler, epoch)
 
             if device.type == 'cuda':
                 torch.cuda.synchronize()
@@ -279,31 +266,3 @@ class SechirenIntegrator:
                       f"({elapsed:.1f}s)")
 
         return history, norm_cache, epoch_data
-
-    def integrate(self,
-                  params: tuple,
-                  norm_cache: dict = None,
-                  device: torch.device = None) -> float:
-        """Evaluate the integral via corner sum."""
-        if device is None:
-            device = torch.device("cpu")
-
-        self.net.eval()
-        self.net.to(device)
-
-        if norm_cache and tuple(params) in norm_cache:
-            fc = norm_cache[tuple(params)]
-        else:
-            fc = 1.0
-
-        s_row = torch.tensor([params], dtype=torch.float32).to(device)
-        I_tilde = 0.0
-
-        with torch.no_grad():
-            for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
-                sign = (-1) ** (self.n_int_vars - sum(corner))
-                u_t = torch.tensor([corner], dtype=torch.float32).to(device)
-                inp = torch.cat([s_row, u_t], dim=1)
-                I_tilde += sign * self.net(inp).item()
-
-        return float(I_tilde * fc)

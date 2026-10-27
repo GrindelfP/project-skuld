@@ -205,6 +205,32 @@ class MaitreIntegrator:
         return self._fit(integrand_fn, param_sets, n_epochs, n_per_param,
                          lr, device, verbose_every)
 
+    @staticmethod
+    def _norm_constant(params: tuple, norm_cache: dict = None) -> float:
+        """Normalisation constant for params from norm_cache (1.0 if absent)."""
+        if norm_cache and tuple(params) in norm_cache:
+            fc = norm_cache[tuple(params)]
+        else:
+            # This shouldn't happen if you trained first, but handle it
+            fc = 1.0
+        return fc
+
+    def _corner_sum(self, params: tuple, device: torch.device,
+                    dtype: torch.dtype) -> float:
+        """Alternating-sign corner sum of the net (without the fc factor)."""
+        s_row = torch.tensor([params], dtype=dtype).to(device)
+        I_tilde = 0.0
+
+        with torch.no_grad():
+            for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
+                # Alternating sign: (-1)^(n_zeros)
+                sign = (-1) ** (self.n_int_vars - sum(corner))
+                u_t = torch.tensor([corner], dtype=dtype).to(device)
+                inp = torch.cat([s_row, u_t], dim=1)
+                I_tilde += sign * self.net(inp).item()
+
+        return I_tilde
+
     def integrate(self,
                   params: tuple,
                   norm_cache: dict = None,
@@ -225,21 +251,8 @@ class MaitreIntegrator:
         self.net.eval()
         self.net.to(device)
 
-        if norm_cache and tuple(params) in norm_cache:
-            fc = norm_cache[tuple(params)]
-        else:
-            # This shouldn't happen if you trained first, but handle it
-            fc = 1.0
+        fc = self._norm_constant(params, norm_cache)
 
-        s_row = torch.tensor([params], dtype=torch.float32).to(device)
-        I_tilde = 0.0
-
-        with torch.no_grad():
-            for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
-                # Alternating sign: (-1)^(n_zeros)
-                sign = (-1) ** (self.n_int_vars - sum(corner))
-                u_t = torch.tensor([corner], dtype=torch.float32).to(device)
-                inp = torch.cat([s_row, u_t], dim=1)
-                I_tilde += sign * self.net(inp).item()
+        I_tilde = self._corner_sum(params, device, torch.float32)
 
         return float(I_tilde * fc)
