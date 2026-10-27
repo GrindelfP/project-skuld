@@ -5,16 +5,12 @@
 #      cos(omega_0 * linear(x) + phi)
 #  phi is initialized at 0 (pure COSIREN) and learned during training.
 ##############################################################################
-import itertools
 import math
-import time
-from typing import Callable
 
-import numpy as np
 import torch
 import torch.nn as nn
 
-from ._maitre import mixed_partial_n, mixed_partial_3
+from ._maitre import MaitreIntegrator, mixed_partial_n, mixed_partial_3
 
 
 ##############################################################################
@@ -95,7 +91,7 @@ class CosirenPSPrimitiveNet(nn.Module):
 #  CosirenPSIntegrator: train + evaluate
 ##############################################################################
 
-class CosirenPSIntegrator:
+class CosirenPSIntegrator(MaitreIntegrator):
     """
     COSIREN with learnable phase shift for numerical integration.
     """
@@ -115,123 +111,3 @@ class CosirenPSIntegrator:
             omega_0=omega_0,
             output_scale=output_scale,
         )
-
-    @property
-    def n_weights(self) -> int:
-        return sum(p.numel() for p in self.net.parameters())
-
-    def make_batch(self,
-                   integrand_fn: Callable,
-                   param_sets: list,
-                   n_per_param: int,
-                   device: torch.device,
-                   norm_cache: dict = None) -> tuple:
-        """Generate a training batch."""
-        if norm_cache is None:
-            norm_cache = {}
-
-        all_xu, all_f = [], []
-
-        for params in param_sets:
-            params_key = tuple(params)
-            if params_key not in norm_cache:
-                norm_cache[params_key] = self._center_value(integrand_fn, self.n_int_vars, *params)
-            fc = norm_cache[params_key]
-
-            u = torch.rand(n_per_param, self.n_int_vars)
-            f = integrand_fn(u, *params) / fc
-
-            s = torch.tensor(params, dtype=u.dtype).expand(n_per_param, -1)
-            xu = torch.cat([s, u], dim=1)
-
-            all_xu.append(xu)
-            all_f.append(f)
-
-        batch_xu = torch.cat(all_xu, dim=0).to(device)
-        f_tilde = torch.cat(all_f, dim=0).to(device)
-        return batch_xu, f_tilde, norm_cache
-
-    @staticmethod
-    def _center_value(integrand_fn, n_int_vars: int, *params) -> float:
-        """Value of integrand at u=(0.5, ..., 0.5)."""
-        uc = torch.full((1, n_int_vars), 0.5)
-        fc = integrand_fn(uc, *params).item()
-        return fc if abs(fc) > 1e-30 else 1.0
-
-    def train(self,
-              integrand_fn: Callable,
-              param_sets: list,
-              n_epochs: int = 5000,
-              n_per_param: int = 512,
-              lr: float = 1e-3,
-              device: torch.device = None,
-              verbose_every: int = 500) -> tuple:
-        """Train the COSIREN-PS to approximate the antiderivative."""
-        if device is None:
-            device = torch.device("cpu")
-
-        optimizer = torch.optim.Adam(self.net.parameters(), lr=lr)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
-            optimizer, T_max=n_epochs, eta_min=lr / 10
-        )
-        loss_fn = nn.MSELoss()
-        self.net.to(device)
-        self.net.train()
-
-        history = []
-        norm_cache = {}
-        t0 = time.time()
-
-        for epoch in range(1, n_epochs + 1):
-            batch_xu, f_tilde, norm_cache = self.make_batch(
-                integrand_fn, param_sets, n_per_param, device, norm_cache
-            )
-
-            dN = mixed_partial_3(self.net, batch_xu)
-            loss = loss_fn(dN, f_tilde)
-
-            optimizer.zero_grad()
-            loss.backward()
-            torch.nn.utils.clip_grad_norm_(self.net.parameters(), max_norm=5.0)
-            optimizer.step()
-            scheduler.step()
-
-            lv = loss.item()
-            history.append(lv)
-
-            if verbose_every > 0 and (epoch % verbose_every == 0 or epoch == 1):
-                lr_now = scheduler.get_last_lr()[0]
-                elapsed = time.time() - t0
-                print(f"  Epoch {epoch:5d}/{n_epochs}  "
-                      f"loss={lv:.4e}  lr={lr_now:.2e}  "
-                      f"({elapsed:.1f}s)")
-
-        return history, norm_cache
-
-    def integrate(self,
-                  params: tuple,
-                  norm_cache: dict = None,
-                  device: torch.device = None) -> float:
-        """Evaluate the integral via corner sum."""
-        if device is None:
-            device = torch.device("cpu")
-
-        self.net.eval()
-        self.net.to(device)
-
-        if norm_cache and tuple(params) in norm_cache:
-            fc = norm_cache[tuple(params)]
-        else:
-            fc = 1.0
-
-        s_row = torch.tensor([params], dtype=torch.float32).to(device)
-        I_tilde = 0.0
-
-        with torch.no_grad():
-            for corner in itertools.product([0.0, 1.0], repeat=self.n_int_vars):
-                sign = (-1) ** (self.n_int_vars - sum(corner))
-                u_t = torch.tensor([corner], dtype=torch.float32).to(device)
-                inp = torch.cat([s_row, u_t], dim=1)
-                I_tilde += sign * self.net(inp).item()
-
-        return float(I_tilde * fc)
