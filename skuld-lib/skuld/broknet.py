@@ -16,6 +16,7 @@ import numpy as np
 import torch
 import torch.nn as nn
 
+from ._maitre import _nth_mixed_partial
 from .siren import SirenLayer
 
 
@@ -149,17 +150,7 @@ def mixed_partial_n_expert(expert: SindriNet,
 
     g = expert(u_d).squeeze(-1)
 
-    for i in range(dim):
-        # retain_graph must stay True: an omitted retain_graph defaults to
-        # create_graph, and the loss backward pass needs this graph intact.
-        g = torch.autograd.grad(
-            g, u_d,
-            grad_outputs=torch.ones_like(g),
-            create_graph=True,
-            retain_graph=True,
-        )[0][:, i]
-
-    return g
+    return _nth_mixed_partial(g, u_d)
 
 
 # Backwards-compatible alias: the name predates n-dimensional support.

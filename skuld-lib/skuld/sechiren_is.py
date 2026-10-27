@@ -23,7 +23,8 @@ import numpy as np
 import torch
 import torch.nn as nn
 
-from skuld.sechiren import SechirenPrimitiveNet, mixed_partial_3
+from .sechiren import SechirenPrimitiveNet
+from ._maitre import mixed_partial_3
 
 
 class SechirenISIntegrator:
