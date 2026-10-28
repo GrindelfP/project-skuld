@@ -32,7 +32,22 @@ Outputs (under results/grid/<this dir>/[<run-tag>/]):
   history/history_<arch>_s<seed>.csv
                                per epoch: epoch, loss, clean_time,
                                data_gen_time, total_time, cumulative_time
-  --smoke writes results_smoke_gpu<k>.csv and history_smoke/ instead.
+  intermediate/intermediate_<arch>_s<seed>.csv
+                               10 rows per run, at epochs k*n_epochs/10 (k=1..10):
+                               epoch, I_1..I_8 values, I_1..I_8 digits,
+                               min/mean/max digits, rel. errors, eval_time_s.
+                               Written once per finished run (overwritten if the
+                               run restarts); the results row is written last.
+  --smoke writes results_smoke_gpu<k>.csv, history_smoke/ and
+  intermediate_smoke/ instead.
+
+Checkpoints: the integrators have no callback, but each calls
+self._scheduler_step(scheduler, epoch) once per epoch after optimizer.step().
+A mixin overrides it (calling super() first, WIRE overrides it) and, at a
+checkpoint epoch, evaluates all integrals with the same score_integrals() used
+for the final row, then restores net.train(). The time spent in these
+evaluations (eval_time_s) is excluded from every timing column of the history
+and results CSVs. The last checkpoint is checked against the final evaluation.
 
 Timing note: SechirenIntegrator.train() returns real per-epoch timings. The
 SIREN and WIRE integrators return only the loss list, so their history timing
@@ -149,25 +164,90 @@ class GPUMonitor:
 # ─────────────────────────────────────────────────────────────────────────
 # 3. ONE TRAIN + EVAL RUN
 # ─────────────────────────────────────────────────────────────────────────
+def _with_checkpoints(cls):
+    return type("Checkpointed" + cls.__name__, (CheckpointMixin, cls), {})
+
+
 def build_integrator(arch: str, cfg: dict):
     output_scale = 1.0 / (cfg["omega_0"] ** 3)
     if arch == "sechiren":
         from skuld.sechiren import SechirenIntegrator
-        return SechirenIntegrator(n_params=4, n_int_vars=3,
+        return _with_checkpoints(SechirenIntegrator)(n_params=4, n_int_vars=3,
                                   hidden_sizes=cfg["hidden_sizes"],
                                   omega_0=cfg["omega_0"], output_scale=output_scale)
     if arch == "siren":
         from skuld.siren import SirenIntegrator
-        return SirenIntegrator(n_params=4, n_int_vars=3,
+        return _with_checkpoints(SirenIntegrator)(n_params=4, n_int_vars=3,
                                hidden_sizes=cfg["hidden_sizes"],
                                omega_0=cfg["omega_0"], output_scale=output_scale)
     if arch == "wire":
         from skuld.wire import WireIntegrator
-        return WireIntegrator(n_params=4, n_int_vars=3,
+        return _with_checkpoints(WireIntegrator)(n_params=4, n_int_vars=3,
                               entry_width=cfg["entry_width"], n_blocks=cfg["n_blocks"],
                               omega_0=cfg["omega_0"], sigma_0=cfg["sigma_0"],
                               output_scale=output_scale)
     raise ValueError(arch)
+
+
+def score_integrals(integrator, norm_cache, device, refs) -> dict:
+    """Evaluate every integral and score it against the scipy reference."""
+    vals, rel_errs, digits = [], [], []
+    for (a, b, m, n) in PARAM_SETS:
+        nni_val = integrator.integrate((a, b, m, n), norm_cache=norm_cache, device=device)
+        ref_val, _ = refs[(a, b, m, n)]
+        abs_err = abs(nni_val - ref_val)
+        vals.append(nni_val)
+        rel_errs.append(abs_err / (abs(ref_val) + 1e-30))
+        digits.append(max(0, -math.floor(math.log10(abs_err + 1e-30))))
+    return {"vals": vals, "rel_errs": rel_errs, "digits": digits}
+
+
+class CheckpointMixin:
+    """Records score_integrals() at chosen epochs via the per-epoch scheduler hook."""
+
+    def setup_checkpoints(self, epochs, device, refs):
+        self._ckpt_epochs = set(epochs)
+        self._ckpt_device = device
+        self._ckpt_refs = refs
+        self._ckpt_rows = []
+        self._ckpt_norm_cache = None
+
+    def make_batch(self, *args, **kwargs):
+        out = super().make_batch(*args, **kwargs)
+        self._ckpt_norm_cache = out[2]
+        return out
+
+    def _scheduler_step(self, scheduler, epoch):
+        super()._scheduler_step(scheduler, epoch)
+        if epoch not in self._ckpt_epochs:
+            return
+        dev = self._ckpt_device
+        try:
+            if dev.type == "cuda":
+                torch.cuda.synchronize(dev)
+            t = time.time()
+            sc = score_integrals(self, self._ckpt_norm_cache, dev, self._ckpt_refs)
+            if dev.type == "cuda":
+                torch.cuda.synchronize(dev)
+            sc["eval_time_s"] = time.time() - t
+            sc["epoch"] = epoch
+            self._ckpt_rows.append(sc)
+        finally:
+            self.net.train()
+
+
+def checkpoint_epochs(n_epochs: int) -> list:
+    return [k * n_epochs // 10 for k in range(1, 11)]
+
+
+def result_fields(sc: dict) -> dict:
+    d = sc["digits"]
+    out = {"mean_rel_err": sum(sc["rel_errs"]) / len(d), "max_rel_err": max(sc["rel_errs"]),
+           "min_dig": min(d), "mean_dig": sum(d) / len(d), "max_dig": max(d)}
+    for k, (v, dg) in enumerate(zip(sc["vals"], d), 1):
+        out[f"I_{k}_val"] = v
+        out[f"I_{k}_dig"] = dg
+    return out
 
 
 def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -> tuple:
@@ -176,6 +256,7 @@ def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -
 
     integrator = build_integrator(arch, cfg)
     n_params_total = integrator.n_weights
+    integrator.setup_checkpoints(checkpoint_epochs(cfg["n_epochs"]), device, refs)
 
     gpu_monitor = GPUMonitor(device_id=device.index if device.index is not None else 0)
     gpu_monitor.start()
@@ -190,7 +271,10 @@ def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -
         device=device,
         verbose_every=cfg["n_epochs"] + 1,
     )
-    elapsed = time.time() - t0
+    elapsed_raw = time.time() - t0
+    ckpts = integrator._ckpt_rows
+    eval_total = sum(c["eval_time_s"] for c in ckpts)
+    elapsed = elapsed_raw - eval_total   # training time, checkpoint evals excluded
     gpu_monitor.stop()
     mean_gpu_util = gpu_monitor.mean_utilization()
 
@@ -203,6 +287,15 @@ def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -
 
     n_epochs = cfg["n_epochs"]
     if epoch_data is not None:
+        # SECHIREN times _scheduler_step inside clean_time: remove the evals.
+        ev = {c["epoch"]: c["eval_time_s"] for c in ckpts}
+        shift = 0.0
+        for e in epoch_data:
+            x = ev.get(e["epoch"], 0.0)
+            e["clean_time"] -= x
+            e["total_time"] -= x
+            shift += x
+            e["cumulative_time"] -= shift
         total_clean = sum(e["clean_time"] for e in epoch_data)
         total_step = sum(e["total_time"] for e in epoch_data)
         epochs_per_sec = n_epochs / total_clean if total_clean > 0 else 0.0
@@ -216,14 +309,22 @@ def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -
             "cumulative_time": i * step_latency,
         } for i, loss in enumerate(history, 1)]
 
-    abs_errs, rel_errs, digits = [], [], []
-    for (a, b, m, n) in PARAM_SETS:
-        nni_val = integrator.integrate((a, b, m, n), norm_cache=norm_cache, device=device)
-        ref_val, _ = refs[(a, b, m, n)]
-        abs_err = abs(nni_val - ref_val)
-        rel_errs.append(abs_err / (abs(ref_val) + 1e-30))
-        abs_errs.append(abs_err)
-        digits.append(max(0, -math.floor(math.log10(abs_err + 1e-30))))
+    final = score_integrals(integrator, norm_cache, device, refs)
+    digits, rel_errs = final["digits"], final["rel_errs"]
+
+    # Sanity: the last checkpoint is the same net as the final evaluation.
+    last = ckpts[-1]
+    assert last["epoch"] == n_epochs
+    dv = max(abs(a - b) / (abs(b) + 1e-30) for a, b in zip(last["vals"], final["vals"]))
+    print(f"    check {arch} s{seed}: last checkpoint vs final, max rel diff = {dv:.2e}"
+          f", digits equal = {last['digits'] == digits}", flush=True)
+    assert dv < 1e-5 and last["digits"] == digits, "last checkpoint != final evaluation"
+
+    inter_rows = []
+    for c in ckpts:
+        row = {"arch": arch, "seed": seed, "epoch": c["epoch"], **result_fields(c),
+               "eval_time_s": c["eval_time_s"]}
+        inter_rows.append(row)
 
     result = {
         "arch": arch,
@@ -252,7 +353,25 @@ def run_one(arch: str, cfg: dict, seed: int, device: torch.device, refs: dict) -
     }
     for k, d in enumerate(digits, 1):
         result[f"I_{k}_dig"] = d
-    return result, epoch_data
+    return result, epoch_data, inter_rows
+
+
+INTER_FIELDS = (["arch", "seed", "epoch"]
+                + [f"I_{k}_val" for k in range(1, 9)]
+                + [f"I_{k}_dig" for k in range(1, 9)]
+                + ["min_dig", "mean_dig", "max_dig", "mean_rel_err", "max_rel_err",
+                   "eval_time_s"])
+
+
+def save_intermediate_csv(inter_dir: Path, arch: str, seed: int, rows: list):
+    """Written once per finished run, overwriting any earlier partial file."""
+    inter_dir.mkdir(parents=True, exist_ok=True)
+    with open(inter_dir / f"intermediate_{arch}_s{seed}.csv", "w", newline="",
+              encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=INTER_FIELDS)
+        w.writeheader()
+        for r in rows:
+            w.writerow(r)
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -292,7 +411,7 @@ def save_history_csv(history_dir: Path, arch: str, seed: int, epoch_data: list):
 # 5. WORKER / MAIN
 # ─────────────────────────────────────────────────────────────────────────
 def worker(worker_id: int, device_str: str, queue, results_dir: str,
-           prefix: str, history_name: str, smoke: bool):
+           prefix: str, history_name: str, inter_name: str, smoke: bool):
     device = torch.device(device_str)
     if device.type == "cuda":
         torch.cuda.set_device(device)
@@ -315,9 +434,10 @@ def worker(worker_id: int, device_str: str, queue, results_dir: str,
         print(f"[worker {worker_id} {device_str}] {arch} seed={seed} "
               f"epochs={cfg['n_epochs']} npp={cfg['n_per_param']} ...", flush=True)
         try:
-            res, epoch_data = run_one(arch, cfg, seed, device, refs)
-            append_result(csv_path, res)
+            res, epoch_data, inter_rows = run_one(arch, cfg, seed, device, refs)
             save_history_csv(results_dir / history_name, arch, seed, epoch_data)
+            save_intermediate_csv(results_dir / inter_name, arch, seed, inter_rows)
+            append_result(csv_path, res)   # last: this row is the resume marker
             print(f"    [worker {worker_id}] {arch} s{seed} -> "
                   + " ".join(f"I{k}={res[f'I_{k}_dig']}" for k in range(1, 9))
                   + f" min={res['min_dig']} mean={res['mean_dig']:.1f} max={res['max_dig']} "
@@ -352,6 +472,7 @@ def main():
 
     prefix = "results_smoke" if args.smoke else "results"
     history_name = "history_smoke" if args.smoke else "history"
+    inter_name = "intermediate_smoke" if args.smoke else "intermediate"
 
     results_dir = get_mirror_path(__file__, "results")
     if run_tag:
@@ -383,7 +504,7 @@ def main():
 
     procs = [ctx.Process(target=worker,
                          args=(i, devices[i], queue, str(results_dir), prefix,
-                               history_name, args.smoke))
+                               history_name, inter_name, args.smoke))
              for i in range(n_workers)]
     for p in procs:
         p.start()
