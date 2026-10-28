@@ -1,0 +1,12 @@
+==================================================================
+Job ID:     2746374
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves/best_learning_curves.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/21-best-learning-curves/slurm-2746374.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves:
+==================================================================
+usage: best_learning_curves.py [-h] [--smoke]
+                               [--arch {sechiren,siren,wire} [{sechiren,siren,wire} ...]]
+                               [--seeds SEEDS [SEEDS ...]] [--run-tag RUN_TAG]
+best_learning_curves.py: error: unrecognized arguments: --num-gpus 4

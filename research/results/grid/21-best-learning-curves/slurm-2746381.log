@@ -1,0 +1,105 @@
+==================================================================
+Job ID:     2746381
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves/best_learning_curves.py
+Arguments:  
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/21-best-learning-curves/slurm-2746381.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves:
+==================================================================
+
+========================================================================
+  BEST-CONFIG LEARNING CURVES
+  3 architectures x 5 seeds; 0 done, 15 to run; workers=['cuda:0']
+  sechiren  {'hidden_sizes': [80, 80, 80], 'omega_0': 15.0, 'lr': 0.0002, 'n_epochs': 8000, 'n_per_param': 2048}
+  siren     {'hidden_sizes': [128, 128, 128], 'omega_0': 40.0, 'lr': 0.0001, 'n_epochs': 6000, 'n_per_param': 2048}
+  wire      {'entry_width': 96, 'n_blocks': 3, 'sigma_0': 10.0, 'omega_0': 20.0, 'lr': 0.0001, 'n_epochs': 10000, 'n_per_param': 2048}
+========================================================================
+
+[worker 0 cuda:0] sechiren seed=42 epochs=8000 npp=2048 ...
+SKULD is using device: cuda
+  Epoch     1/8000  loss=3.5266e-01  lr=2.00e-04  (0.2s)
+    check sechiren s42: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] sechiren s42 -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.6 max=5 (85.1s, 117.7 ep/s, gpu=0%)
+[worker 0 cuda:0] siren seed=42 epochs=6000 npp=2048 ...
+  Epoch     1/6000  loss=3.5241e-01  lr=1.00e-04  (0.0s)
+    check siren s42: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] siren s42 -> I1=7 I2=5 I3=4 I4=5 I5=5 I6=5 I7=5 I8=5 min=4 mean=5.1 max=7 (45.7s, 131.3 ep/s, gpu=0%)
+[worker 0 cuda:0] wire seed=42 epochs=10000 npp=2048 ...
+  Epoch     1/10000  loss=3.6519e-01  lr=1.00e-04  (0.1s)
+    check wire s42: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] wire s42 -> I1=5 I2=5 I3=5 I4=5 I5=4 I6=6 I7=6 I8=5 min=4 mean=5.1 max=6 (591.7s, 16.9 ep/s, gpu=0%)
+[worker 0 cuda:0] sechiren seed=137 epochs=8000 npp=2048 ...
+  Epoch     1/8000  loss=3.7975e-01  lr=2.00e-04  (0.0s)
+    check sechiren s137: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] sechiren s137 -> I1=4 I2=4 I3=4 I4=7 I5=4 I6=5 I7=4 I8=4 min=4 mean=4.5 max=7 (83.8s, 118.1 ep/s, gpu=0%)
+[worker 0 cuda:0] siren seed=137 epochs=6000 npp=2048 ...
+  Epoch     1/6000  loss=3.8529e-01  lr=1.00e-04  (0.0s)
+    check siren s137: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] siren s137 -> I1=4 I2=6 I3=4 I4=6 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.8 max=6 (45.3s, 132.4 ep/s, gpu=0%)
+[worker 0 cuda:0] wire seed=137 epochs=10000 npp=2048 ...
+  Epoch     1/10000  loss=3.5508e-01  lr=1.00e-04  (0.1s)
+    check wire s137: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] wire s137 -> I1=5 I2=5 I3=5 I4=5 I5=5 I6=6 I7=7 I8=6 min=5 mean=5.5 max=7 (592.0s, 16.9 ep/s, gpu=0%)
+[worker 0 cuda:0] sechiren seed=2024 epochs=8000 npp=2048 ...
+  Epoch     1/8000  loss=3.5373e-01  lr=2.00e-04  (0.0s)
+    check sechiren s2024: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] sechiren s2024 -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=7 I8=5 min=4 mean=4.8 max=7 (83.7s, 118.3 ep/s, gpu=0%)
+[worker 0 cuda:0] siren seed=2024 epochs=6000 npp=2048 ...
+  Epoch     1/6000  loss=3.6294e-01  lr=1.00e-04  (0.0s)
+    check siren s2024: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] siren s2024 -> I1=5 I2=5 I3=4 I4=6 I5=5 I6=5 I7=6 I8=6 min=4 mean=5.2 max=6 (45.3s, 132.4 ep/s, gpu=0%)
+[worker 0 cuda:0] wire seed=2024 epochs=10000 npp=2048 ...
+  Epoch     1/10000  loss=3.7207e-01  lr=1.00e-04  (0.1s)
+    check wire s2024: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] wire s2024 -> I1=5 I2=5 I3=5 I4=6 I5=6 I6=5 I7=5 I8=5 min=5 mean=5.2 max=6 (592.1s, 16.9 ep/s, gpu=0%)
+[worker 0 cuda:0] sechiren seed=7 epochs=8000 npp=2048 ...
+  Epoch     1/8000  loss=3.9413e-01  lr=2.00e-04  (0.0s)
+    check sechiren s7: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] sechiren s7 -> I1=4 I2=4 I3=4 I4=5 I5=4 I6=5 I7=4 I8=5 min=4 mean=4.4 max=5 (83.7s, 118.4 ep/s, gpu=0%)
+[worker 0 cuda:0] siren seed=7 epochs=6000 npp=2048 ...
+  Epoch     1/6000  loss=3.6381e-01  lr=1.00e-04  (0.0s)
+    check siren s7: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] siren s7 -> I1=4 I2=6 I3=4 I4=5 I5=5 I6=4 I7=4 I8=5 min=4 mean=4.6 max=6 (45.3s, 132.3 ep/s, gpu=0%)
+[worker 0 cuda:0] wire seed=7 epochs=10000 npp=2048 ...
+  Epoch     1/10000  loss=3.6808e-01  lr=1.00e-04  (0.1s)
+    check wire s7: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] wire s7 -> I1=5 I2=5 I3=6 I4=6 I5=5 I6=5 I7=7 I8=6 min=5 mean=5.6 max=7 (592.0s, 16.9 ep/s, gpu=0%)
+[worker 0 cuda:0] sechiren seed=999 epochs=8000 npp=2048 ...
+  Epoch     1/8000  loss=3.6798e-01  lr=2.00e-04  (0.0s)
+    check sechiren s999: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] sechiren s999 -> I1=4 I2=4 I3=5 I4=5 I5=4 I6=4 I7=5 I8=4 min=4 mean=4.4 max=5 (83.9s, 118.2 ep/s, gpu=0%)
+[worker 0 cuda:0] siren seed=999 epochs=6000 npp=2048 ...
+  Epoch     1/6000  loss=3.8553e-01  lr=1.00e-04  (0.0s)
+    check siren s999: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] siren s999 -> I1=4 I2=5 I3=5 I4=5 I5=4 I6=5 I7=4 I8=7 min=4 mean=4.9 max=7 (45.4s, 132.2 ep/s, gpu=0%)
+[worker 0 cuda:0] wire seed=999 epochs=10000 npp=2048 ...
+  Epoch     1/10000  loss=3.8936e-01  lr=1.00e-04  (0.1s)
+    check wire s999: last checkpoint vs final, max rel diff = 0.00e+00, digits equal = True
+    [worker 0] wire s999 -> I1=5 I2=5 I3=5 I4=5 I5=5 I6=5 I7=6 I8=6 min=5 mean=5.2 max=6 (592.3s, 16.9 ep/s, gpu=0%)
+
+========================================================================
+  SUMMARY (15 runs on disk)
+========================================================================
+  sechiren  seed=    7 min=4 mean=4.38 max=5 final_loss=8.976e-05
+  sechiren  seed=   42 min=4 mean=4.62 max=5 final_loss=9.611e-05
+  sechiren  seed=  137 min=4 mean=4.50 max=7 final_loss=9.761e-05
+  sechiren  seed=  999 min=4 mean=4.38 max=5 final_loss=9.818e-05
+  sechiren  seed= 2024 min=4 mean=4.75 max=7 final_loss=9.093e-05
+  sechiren  MEAN over 5 seeds: mean_dig=4.53
+
+  siren     seed=    7 min=4 mean=4.62 max=6 final_loss=1.558e-05
+  siren     seed=   42 min=4 mean=5.12 max=7 final_loss=1.200e-05
+  siren     seed=  137 min=4 mean=4.75 max=6 final_loss=1.359e-05
+  siren     seed=  999 min=4 mean=4.88 max=7 final_loss=1.625e-05
+  siren     seed= 2024 min=4 mean=5.25 max=6 final_loss=1.385e-05
+  siren     MEAN over 5 seeds: mean_dig=4.92
+
+  wire      seed=    7 min=5 mean=5.62 max=7 final_loss=3.377e-06
+  wire      seed=   42 min=4 mean=5.12 max=6 final_loss=5.170e-06
+  wire      seed=  137 min=5 mean=5.50 max=7 final_loss=4.517e-06
+  wire      seed=  999 min=5 mean=5.25 max=6 final_loss=4.151e-06
+  wire      seed= 2024 min=5 mean=5.25 max=6 final_loss=4.055e-06
+  wire      MEAN over 5 seeds: mean_dig=5.35
+
+  Results -> /lustre/hopper/gshipunv/project-skuld/research/results/grid/21-best-learning-curves/hopper
+

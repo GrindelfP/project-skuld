@@ -1,0 +1,18 @@
+==================================================================
+Job ID:     2746378
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves/best_learning_curves.py
+Arguments:  
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/21-best-learning-curves/slurm-2746378.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/21-best-learning-curves:
+==================================================================
+
+========================================================================
+  BEST-CONFIG LEARNING CURVES
+  3 architectures x 5 seeds; 0 done, 15 to run; workers=['cuda:0']
+  sechiren  {'hidden_sizes': [80, 80, 80], 'omega_0': 15.0, 'lr': 0.0002, 'n_epochs': 8000, 'n_per_param': 2048}
+  siren     {'hidden_sizes': [128, 128, 128], 'omega_0': 40.0, 'lr': 0.0001, 'n_epochs': 6000, 'n_per_param': 2048}
+  wire      {'entry_width': 96, 'n_blocks': 3, 'sigma_0': 10.0, 'omega_0': 20.0, 'lr': 0.0001, 'n_epochs': 10000, 'n_per_param': 2048}
+========================================================================
+
+[worker 0 cuda:0] sechiren seed=42 epochs=8000 npp=2048 ...
