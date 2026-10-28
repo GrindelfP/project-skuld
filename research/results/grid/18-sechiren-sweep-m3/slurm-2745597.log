@@ -1,0 +1,23 @@
+==================================================================
+Job ID:     2745597
+Script:     /lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/18-sechiren-sweep-m3/sechiren_sweep_m3.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/projects/g/gshipunv/project-skuld/research/results/grid/18-sechiren-sweep-m3/slurm-2745597.log
+Python:     /zfs/store1.hydra.local/user/g/gshipunv/.conda/envs/jasher-lustre/bin/python
+PYTHONPATH: /lustre/projects/g/gshipunv/project-skuld/research:/lustre/projects/g/gshipunv/project-skuld:/lustre/projects/g/gshipunv/project-skuld/research/experiments/grid/18-sechiren-sweep-m3:
+==================================================================
+SKULD is using device: cuda
+
+========================================================================
+  SECHIREN SWEEP m3  —  243 configs × 5 seeds = 1215 total runs
+  GPU 1/4  —  processing runs [304:608] = 304 runs, device=cuda
+  Run tag: volta  (results -> results/.../volta/)
+========================================================================
+
+Computing scipy reference integrals (shared across all configs)...
+Done.
+
+  Resuming: 3 runs already completed, skipping them.
+
+[4/304] hidden=[48, 48, 48] omega0=17.5 lr=0.0002 epochs=6000 npp=1024 seed=2024 ...
+  Epoch     1/6000  loss=3.7526e-01  lr=2.00e-04  (0.2s)
