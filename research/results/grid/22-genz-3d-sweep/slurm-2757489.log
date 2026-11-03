@@ -1,0 +1,1196 @@
+==================================================================
+Job ID:     2757489
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/22-genz-3d-sweep/genz_3d_sweep.py
+Arguments:  --num-gpus 4
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/22-genz-3d-sweep/slurm-2757489.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/22-genz-3d-sweep:
+==================================================================
+SKULD is using device: cuda
+Canonical 3-D Genz sweep: 1575 training runs; GPU 0/4; local block=394; device=cuda:0
+Run tag: hopper
+[1/394] cosiren_ps oscillatory lr=2.5e-04 epochs=6000 seed=42
+/lustre/hopper/gshipunv/.env/jasher-hopper/lib/python3.11/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at ../aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  Epoch     1/6000  loss=2.3375e+01  lr=2.50e-04  (0.3s)
+  abs_err=9.891e-06 loss=1.361e-06 wall=33.2s
+[2/394] cosiren_ps oscillatory lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1088e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.513e-05 loss=1.455e-06 wall=28.6s
+[3/394] cosiren_ps oscillatory lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.6022e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.865e-05 loss=1.243e-06 wall=28.6s
+[4/394] cosiren_ps oscillatory lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.9276e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.545e-06 loss=1.438e-06 wall=28.8s
+[5/394] cosiren_ps oscillatory lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.8782e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.488e-05 loss=1.766e-06 wall=28.7s
+[6/394] cosiren_ps oscillatory lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.3375e+01  lr=2.50e-04  (0.0s)
+  abs_err=5.442e-05 loss=1.153e-05 wall=38.2s
+[7/394] cosiren_ps oscillatory lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1088e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.187e-04 loss=4.610e-05 wall=38.2s
+[8/394] cosiren_ps oscillatory lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.6022e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.227e-05 loss=1.956e-05 wall=38.2s
+[9/394] cosiren_ps oscillatory lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.9276e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.085e-04 loss=9.833e-05 wall=38.1s
+[10/394] cosiren_ps oscillatory lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.8782e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.512e-05 loss=5.038e-06 wall=38.1s
+[11/394] cosiren_ps oscillatory lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.3375e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.299e-05 loss=4.214e-06 wall=47.7s
+[12/394] cosiren_ps oscillatory lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1088e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.010e-05 loss=3.165e-05 wall=47.8s
+[13/394] cosiren_ps oscillatory lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.6022e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.142e-05 loss=1.891e-05 wall=47.7s
+[14/394] cosiren_ps oscillatory lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.9276e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.201e-06 loss=2.105e-05 wall=47.7s
+[15/394] cosiren_ps oscillatory lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.8782e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.103e-04 loss=2.791e-05 wall=47.8s
+[16/394] cosiren_ps oscillatory lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.3375e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.826e-05 loss=2.035e-06 wall=28.6s
+[17/394] cosiren_ps oscillatory lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1088e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.634e-05 loss=1.763e-06 wall=28.7s
+[18/394] cosiren_ps oscillatory lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.6022e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.478e-05 loss=1.097e-06 wall=28.7s
+[19/394] cosiren_ps oscillatory lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.9276e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.453e-05 loss=1.288e-06 wall=28.6s
+[20/394] cosiren_ps oscillatory lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.8782e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.823e-05 loss=1.317e-06 wall=28.6s
+[21/394] cosiren_ps oscillatory lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.3375e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.917e-05 loss=1.157e-05 wall=38.1s
+[22/394] cosiren_ps oscillatory lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1088e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.133e-05 loss=1.411e-05 wall=38.1s
+[23/394] cosiren_ps oscillatory lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.6022e+01  lr=5.00e-04  (0.0s)
+  abs_err=8.461e-05 loss=6.452e-07 wall=38.1s
+[24/394] cosiren_ps oscillatory lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.9276e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.418e-04 loss=2.200e-05 wall=38.1s
+[25/394] cosiren_ps oscillatory lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.8782e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.793e-05 loss=1.513e-06 wall=38.1s
+[26/394] cosiren_ps oscillatory lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.3375e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.509e-04 loss=9.322e-06 wall=47.6s
+[27/394] cosiren_ps oscillatory lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1088e+01  lr=5.00e-04  (0.0s)
+  abs_err=7.784e-05 loss=1.311e-05 wall=47.7s
+[28/394] cosiren_ps oscillatory lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.6022e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.474e-06 loss=5.849e-07 wall=47.6s
+[29/394] cosiren_ps oscillatory lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.9276e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.249e-05 loss=1.562e-06 wall=47.6s
+[30/394] cosiren_ps oscillatory lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.8782e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.975e-06 loss=5.725e-05 wall=47.6s
+[31/394] cosiren_ps oscillatory lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.3375e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.088e-02 loss=2.236e-01 wall=28.6s
+[32/394] cosiren_ps oscillatory lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1088e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.616e-03 loss=7.632e-03 wall=28.6s
+[33/394] cosiren_ps oscillatory lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.6022e+01  lr=1.00e-03  (0.0s)
+  abs_err=7.031e-04 loss=2.431e-03 wall=28.6s
+[34/394] cosiren_ps oscillatory lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.9276e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.099e-03 loss=3.640e-03 wall=28.5s
+[35/394] cosiren_ps oscillatory lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.8782e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.099e-02 loss=4.719e-02 wall=28.5s
+[36/394] cosiren_ps oscillatory lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.3375e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.147e-03 loss=1.401e-02 wall=38.1s
+[37/394] cosiren_ps oscillatory lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1088e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.352e-03 loss=1.388e-01 wall=37.9s
+[38/394] cosiren_ps oscillatory lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.6022e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.438e-03 loss=1.857e-01 wall=37.9s
+[39/394] cosiren_ps oscillatory lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.9276e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.266e-02 loss=2.238e+00 wall=37.8s
+[40/394] cosiren_ps oscillatory lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.8782e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.341e-04 loss=1.335e-02 wall=37.7s
+[41/394] cosiren_ps oscillatory lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.3375e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.864e-02 loss=2.304e+00 wall=46.9s
+[42/394] cosiren_ps oscillatory lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1088e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.874e-03 loss=7.933e-02 wall=46.9s
+[43/394] cosiren_ps oscillatory lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.6022e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.102e-03 loss=3.456e-01 wall=46.9s
+[44/394] cosiren_ps oscillatory lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.9276e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.395e-03 loss=2.061e+00 wall=46.8s
+[45/394] cosiren_ps oscillatory lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.8782e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.372e-03 loss=1.120e-01 wall=46.8s
+[46/394] cosiren_ps product_peak lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.0579e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.990e-05 loss=1.433e-06 wall=28.3s
+[47/394] cosiren_ps product_peak lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.8073e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.052e-04 loss=2.083e-06 wall=28.3s
+[48/394] cosiren_ps product_peak lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.1699e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.122e-04 loss=2.094e-06 wall=28.4s
+[49/394] cosiren_ps product_peak lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.6228e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.110e-04 loss=3.291e-06 wall=28.3s
+[50/394] cosiren_ps product_peak lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5780e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.437e-04 loss=2.345e-06 wall=28.2s
+[51/394] cosiren_ps product_peak lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.0579e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.520e-03 loss=9.060e-06 wall=37.7s
+[52/394] cosiren_ps product_peak lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.8073e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.208e-04 loss=7.350e-06 wall=37.7s
+[53/394] cosiren_ps product_peak lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.1699e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.110e-03 loss=9.054e-06 wall=37.8s
+[54/394] cosiren_ps product_peak lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.6228e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.451e-03 loss=8.168e-06 wall=37.8s
+[55/394] cosiren_ps product_peak lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5780e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.650e-04 loss=1.171e-05 wall=37.7s
+[56/394] cosiren_ps product_peak lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.0579e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.247e-04 loss=1.986e-05 wall=47.1s
+[57/394] cosiren_ps product_peak lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.8073e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.547e-03 loss=7.104e-05 wall=47.1s
+[58/394] cosiren_ps product_peak lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.1699e+01  lr=2.50e-04  (0.0s)
+  abs_err=9.904e-05 loss=1.058e-05 wall=47.1s
+[59/394] cosiren_ps product_peak lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.6228e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.136e-03 loss=1.065e-05 wall=47.1s
+[60/394] cosiren_ps product_peak lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5780e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.828e-04 loss=1.294e-05 wall=47.2s
+[61/394] cosiren_ps product_peak lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.0579e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.103e-04 loss=4.096e-07 wall=28.3s
+[62/394] cosiren_ps product_peak lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.8073e+01  lr=5.00e-04  (0.0s)
+  abs_err=9.336e-05 loss=6.445e-07 wall=28.3s
+[63/394] cosiren_ps product_peak lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.1699e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.316e-04 loss=5.354e-07 wall=28.3s
+[64/394] cosiren_ps product_peak lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.6228e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.194e-04 loss=1.368e-06 wall=28.3s
+[65/394] cosiren_ps product_peak lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5780e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.513e-05 loss=8.751e-07 wall=28.3s
+[66/394] cosiren_ps product_peak lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.0579e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.158e-03 loss=3.629e-06 wall=37.7s
+[67/394] cosiren_ps product_peak lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.8073e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.296e-03 loss=1.833e-05 wall=37.8s
+[68/394] cosiren_ps product_peak lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.1699e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.852e-04 loss=3.798e-06 wall=37.8s
+[69/394] cosiren_ps product_peak lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.6228e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.293e-04 loss=7.857e-06 wall=37.7s
+[70/394] cosiren_ps product_peak lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5780e+01  lr=5.00e-04  (0.0s)
+  abs_err=6.490e-04 loss=6.872e-06 wall=37.8s
+[71/394] cosiren_ps product_peak lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.0579e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.414e-03 loss=8.071e-06 wall=47.2s
+[72/394] cosiren_ps product_peak lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.8073e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.527e-03 loss=7.031e-06 wall=47.3s
+[73/394] cosiren_ps product_peak lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.1699e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.967e-04 loss=1.880e-06 wall=47.3s
+[74/394] cosiren_ps product_peak lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.6228e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.674e-03 loss=2.887e-05 wall=47.2s
+[75/394] cosiren_ps product_peak lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5780e+01  lr=5.00e-04  (0.0s)
+  abs_err=8.169e-04 loss=3.966e-06 wall=47.2s
+[76/394] cosiren_ps product_peak lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.0579e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.048e-04 loss=8.177e-06 wall=28.3s
+[77/394] cosiren_ps product_peak lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.8073e+01  lr=1.00e-03  (0.0s)
+  abs_err=6.117e-04 loss=4.477e-06 wall=28.4s
+[78/394] cosiren_ps product_peak lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.1699e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.038e-04 loss=6.423e-06 wall=28.3s
+[79/394] cosiren_ps product_peak lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.6228e+01  lr=1.00e-03  (0.0s)
+  abs_err=9.639e-04 loss=2.817e-06 wall=28.3s
+[80/394] cosiren_ps product_peak lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5780e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.060e-04 loss=2.279e-06 wall=28.3s
+[81/394] cosiren_ps product_peak lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.0579e+01  lr=1.00e-03  (0.0s)
+  abs_err=8.038e-04 loss=8.111e-06 wall=37.8s
+[82/394] cosiren_ps product_peak lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.8073e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.533e-03 loss=2.139e-06 wall=37.7s
+[83/394] cosiren_ps product_peak lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.1699e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.601e-03 loss=3.604e-06 wall=37.6s
+[84/394] cosiren_ps product_peak lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.6228e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.266e-03 loss=2.595e-05 wall=37.7s
+[85/394] cosiren_ps product_peak lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5780e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.968e-03 loss=1.922e-05 wall=37.7s
+[86/394] cosiren_ps product_peak lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.0579e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.406e-03 loss=7.413e-06 wall=47.3s
+[87/394] cosiren_ps product_peak lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.8073e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.912e-04 loss=1.051e-05 wall=47.1s
+[88/394] cosiren_ps product_peak lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.1699e+01  lr=1.00e-03  (0.0s)
+  abs_err=6.340e-04 loss=4.208e-06 wall=47.2s
+[89/394] cosiren_ps product_peak lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.6228e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.881e-03 loss=1.390e-04 wall=47.1s
+[90/394] cosiren_ps product_peak lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5780e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.120e-04 loss=3.694e-06 wall=47.2s
+[91/394] cosiren_ps corner_peak lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.2571e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.964e-05 loss=5.672e-05 wall=28.0s
+[92/394] cosiren_ps corner_peak lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1547e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.501e-05 loss=2.353e-04 wall=28.1s
+[93/394] cosiren_ps corner_peak lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=3.0678e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.635e-05 loss=1.606e-05 wall=27.9s
+[94/394] cosiren_ps corner_peak lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.7882e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.629e-05 loss=7.298e-05 wall=28.1s
+[95/394] cosiren_ps corner_peak lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=3.0862e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.373e-06 loss=5.445e-05 wall=28.0s
+[96/394] cosiren_ps corner_peak lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.2571e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.653e-06 loss=2.642e-04 wall=37.4s
+[97/394] cosiren_ps corner_peak lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1547e+01  lr=2.50e-04  (0.0s)
+  abs_err=6.812e-06 loss=4.629e-05 wall=37.4s
+[98/394] cosiren_ps corner_peak lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=3.0678e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.731e-04 loss=8.096e-04 wall=37.4s
+[99/394] cosiren_ps corner_peak lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.7882e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.314e-05 loss=1.494e-03 wall=37.4s
+[100/394] cosiren_ps corner_peak lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=3.0862e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.715e-05 loss=6.949e-05 wall=37.3s
+[101/394] cosiren_ps corner_peak lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.2571e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.982e-04 loss=1.267e-03 wall=46.7s
+[102/394] cosiren_ps corner_peak lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1547e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.755e-06 loss=4.221e-05 wall=46.7s
+[103/394] cosiren_ps corner_peak lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=3.0678e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.867e-05 loss=2.482e-05 wall=46.8s
+[104/394] cosiren_ps corner_peak lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.7882e+01  lr=2.50e-04  (0.0s)
+  abs_err=6.840e-05 loss=5.858e-05 wall=46.7s
+[105/394] cosiren_ps corner_peak lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=3.0862e+01  lr=2.50e-04  (0.0s)
+  abs_err=8.525e-05 loss=6.734e-05 wall=46.8s
+[106/394] cosiren_ps corner_peak lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.2571e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.869e-05 loss=2.797e-05 wall=28.0s
+[107/394] cosiren_ps corner_peak lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1547e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.642e-05 loss=7.970e-05 wall=28.1s
+[108/394] cosiren_ps corner_peak lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=3.0678e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.133e-04 loss=3.814e-04 wall=28.1s
+[109/394] cosiren_ps corner_peak lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.7882e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.218e-05 loss=1.827e-04 wall=28.0s
+[110/394] cosiren_ps corner_peak lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=3.0862e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.159e-05 loss=4.590e-05 wall=28.0s
+[111/394] cosiren_ps corner_peak lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.2571e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.532e-04 loss=1.105e-04 wall=37.4s
+[112/394] cosiren_ps corner_peak lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1547e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.463e-05 loss=1.451e-05 wall=37.4s
+[113/394] cosiren_ps corner_peak lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=3.0678e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.250e-04 loss=9.328e-04 wall=37.4s
+[114/394] cosiren_ps corner_peak lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.7882e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.137e-05 loss=5.071e-05 wall=37.4s
+[115/394] cosiren_ps corner_peak lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=3.0862e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.284e-05 loss=2.861e-05 wall=37.4s
+[116/394] cosiren_ps corner_peak lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.2571e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.624e-04 loss=7.389e-04 wall=46.8s
+[117/394] cosiren_ps corner_peak lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1547e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.308e-05 loss=9.037e-06 wall=46.8s
+[118/394] cosiren_ps corner_peak lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=3.0678e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.935e-05 loss=2.386e-05 wall=46.8s
+[119/394] cosiren_ps corner_peak lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.7882e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.646e-05 loss=1.411e-04 wall=46.8s
+[120/394] cosiren_ps corner_peak lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=3.0862e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.481e-05 loss=1.476e-05 wall=46.8s
+[121/394] cosiren_ps corner_peak lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=2.2571e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.758e-03 loss=2.099e-01 wall=28.1s
+[122/394] cosiren_ps corner_peak lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=3.1547e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.428e-03 loss=1.272e-01 wall=28.0s
+[123/394] cosiren_ps corner_peak lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=3.0678e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.630e-03 loss=1.775e-01 wall=28.1s
+[124/394] cosiren_ps corner_peak lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.7882e+01  lr=1.00e-03  (0.0s)
+  abs_err=9.196e-04 loss=2.960e-01 wall=28.1s
+[125/394] cosiren_ps corner_peak lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=3.0862e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.320e-03 loss=3.946e-01 wall=28.0s
+[126/394] cosiren_ps corner_peak lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=2.2571e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.121e-03 loss=5.719e-02 wall=37.5s
+[127/394] cosiren_ps corner_peak lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=3.1547e+01  lr=1.00e-03  (0.0s)
+  abs_err=9.681e-04 loss=8.780e-02 wall=37.4s
+[128/394] cosiren_ps corner_peak lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=3.0678e+01  lr=1.00e-03  (0.0s)
+  abs_err=8.851e-03 loss=9.290e-02 wall=37.4s
+[129/394] cosiren_ps corner_peak lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.7882e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.343e-03 loss=6.283e-02 wall=37.4s
+[130/394] cosiren_ps corner_peak lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=3.0862e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.720e-03 loss=9.145e-02 wall=37.4s
+[131/394] cosiren_ps corner_peak lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=2.2571e+01  lr=1.00e-03  (0.0s)
+  abs_err=7.258e-03 loss=3.053e-01 wall=46.8s
+[132/394] cosiren_ps corner_peak lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=3.1547e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.341e-03 loss=5.093e-01 wall=46.8s
+[133/394] cosiren_ps corner_peak lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=3.0678e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.664e-03 loss=1.591e+00 wall=46.8s
+[134/394] cosiren_ps corner_peak lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.7882e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.038e-02 loss=2.398e-01 wall=46.7s
+[135/394] cosiren_ps corner_peak lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=3.0862e+01  lr=1.00e-03  (0.0s)
+  abs_err=6.843e-03 loss=8.404e-01 wall=46.7s
+[136/394] cosiren_ps gaussian lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9776e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.884e-05 loss=2.261e-07 wall=28.4s
+[137/394] cosiren_ps gaussian lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7130e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.331e-05 loss=2.723e-07 wall=28.3s
+[138/394] cosiren_ps gaussian lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.009e-05 loss=2.004e-07 wall=28.2s
+[139/394] cosiren_ps gaussian lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5454e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.295e-05 loss=2.805e-07 wall=28.3s
+[140/394] cosiren_ps gaussian lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5606e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.726e-06 loss=2.654e-07 wall=28.3s
+[141/394] cosiren_ps gaussian lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9776e+01  lr=2.50e-04  (0.0s)
+  abs_err=6.866e-05 loss=2.489e-07 wall=37.7s
+[142/394] cosiren_ps gaussian lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7130e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.099e-05 loss=3.009e-07 wall=37.7s
+[143/394] cosiren_ps gaussian lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.209e-05 loss=6.751e-07 wall=37.7s
+[144/394] cosiren_ps gaussian lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5454e+01  lr=2.50e-04  (0.0s)
+  abs_err=5.160e-07 loss=2.338e-07 wall=37.7s
+[145/394] cosiren_ps gaussian lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5606e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.936e-06 loss=8.452e-07 wall=37.7s
+[146/394] cosiren_ps gaussian lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9776e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.719e-04 loss=7.023e-07 wall=47.1s
+[147/394] cosiren_ps gaussian lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7130e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.120e-06 loss=3.800e-07 wall=47.2s
+[148/394] cosiren_ps gaussian lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.372e-05 loss=7.200e-07 wall=47.2s
+[149/394] cosiren_ps gaussian lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5454e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.267e-05 loss=3.917e-07 wall=47.1s
+[150/394] cosiren_ps gaussian lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5606e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.356e-05 loss=2.510e-07 wall=47.2s
+[151/394] cosiren_ps gaussian lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9776e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.186e-05 loss=1.466e-07 wall=28.2s
+[152/394] cosiren_ps gaussian lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7130e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.818e-05 loss=2.288e-07 wall=28.3s
+[153/394] cosiren_ps gaussian lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.211e-05 loss=2.455e-07 wall=28.3s
+[154/394] cosiren_ps gaussian lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5454e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.600e-05 loss=1.818e-07 wall=28.3s
+[155/394] cosiren_ps gaussian lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5606e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.471e-05 loss=1.882e-07 wall=28.3s
+[156/394] cosiren_ps gaussian lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9776e+01  lr=5.00e-04  (0.0s)
+  abs_err=5.137e-04 loss=4.658e-06 wall=37.7s
+[157/394] cosiren_ps gaussian lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7130e+01  lr=5.00e-04  (0.0s)
+  abs_err=6.524e-05 loss=7.544e-07 wall=37.7s
+[158/394] cosiren_ps gaussian lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=8.084e-05 loss=3.735e-07 wall=37.7s
+[159/394] cosiren_ps gaussian lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5454e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.448e-05 loss=1.683e-07 wall=37.7s
+[160/394] cosiren_ps gaussian lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5606e+01  lr=5.00e-04  (0.0s)
+  abs_err=7.747e-06 loss=5.964e-07 wall=37.7s
+[161/394] cosiren_ps gaussian lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9776e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.208e-05 loss=1.452e-07 wall=47.2s
+[162/394] cosiren_ps gaussian lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7130e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.057e-04 loss=2.557e-06 wall=47.1s
+[163/394] cosiren_ps gaussian lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.743e-04 loss=8.969e-06 wall=47.2s
+[164/394] cosiren_ps gaussian lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5454e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.136e-04 loss=6.054e-07 wall=47.2s
+[165/394] cosiren_ps gaussian lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5606e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.188e-05 loss=2.824e-07 wall=47.2s
+[166/394] cosiren_ps gaussian lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9776e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.449e-03 loss=1.293e-03 wall=28.3s
+[167/394] cosiren_ps gaussian lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7130e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.073e-03 loss=1.833e-04 wall=28.3s
+[168/394] cosiren_ps gaussian lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.265e-03 loss=1.214e-03 wall=28.3s
+[169/394] cosiren_ps gaussian lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5454e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.217e-03 loss=5.123e-04 wall=28.2s
+[170/394] cosiren_ps gaussian lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5606e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.062e-03 loss=1.150e-03 wall=28.3s
+[171/394] cosiren_ps gaussian lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9776e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.719e-03 loss=2.070e-03 wall=37.8s
+[172/394] cosiren_ps gaussian lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7130e+01  lr=1.00e-03  (0.0s)
+  abs_err=5.031e-03 loss=2.565e-03 wall=37.8s
+[173/394] cosiren_ps gaussian lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.243e-04 loss=1.406e-03 wall=37.8s
+[174/394] cosiren_ps gaussian lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5454e+01  lr=1.00e-03  (0.0s)
+  abs_err=8.580e-04 loss=1.305e-03 wall=37.7s
+[175/394] cosiren_ps gaussian lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5606e+01  lr=1.00e-03  (0.0s)
+  abs_err=6.936e-04 loss=9.306e-04 wall=37.7s
+[176/394] cosiren_ps gaussian lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9776e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.696e-03 loss=1.421e-03 wall=47.1s
+[177/394] cosiren_ps gaussian lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7130e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.756e-03 loss=1.277e-03 wall=47.3s
+[178/394] cosiren_ps gaussian lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.484e-03 loss=2.210e-03 wall=47.1s
+[179/394] cosiren_ps gaussian lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5454e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.855e-03 loss=9.101e-04 wall=47.2s
+[180/394] cosiren_ps gaussian lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5606e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.850e-04 loss=8.499e-04 wall=47.2s
+[181/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9767e+01  lr=2.50e-04  (0.0s)
+  abs_err=9.773e-05 loss=6.375e-06 wall=28.4s
+[182/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7133e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.263e-04 loss=6.718e-06 wall=28.4s
+[183/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.699e-04 loss=5.069e-06 wall=28.3s
+[184/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5446e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.387e-04 loss=8.361e-06 wall=28.3s
+[185/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5621e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.000e-04 loss=9.275e-06 wall=28.3s
+[186/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9767e+01  lr=2.50e-04  (0.0s)
+  abs_err=8.474e-05 loss=6.046e-06 wall=37.8s
+[187/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7133e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.473e-04 loss=4.633e-06 wall=37.8s
+[188/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.707e-04 loss=3.632e-06 wall=37.8s
+[189/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5446e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.818e-04 loss=7.190e-06 wall=37.8s
+[190/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5621e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.852e-04 loss=7.245e-06 wall=37.8s
+[191/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9767e+01  lr=2.50e-04  (0.0s)
+  abs_err=2.205e-04 loss=4.016e-06 wall=47.2s
+[192/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7133e+01  lr=2.50e-04  (0.0s)
+  abs_err=5.912e-05 loss=3.555e-06 wall=47.1s
+[193/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.521e-04 loss=2.493e-06 wall=47.2s
+[194/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5446e+01  lr=2.50e-04  (0.0s)
+  abs_err=4.470e-04 loss=4.843e-06 wall=47.2s
+[195/394] cosiren_ps c0_continuous lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5621e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.176e-05 loss=3.846e-06 wall=47.3s
+[196/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9767e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.177e-04 loss=3.245e-06 wall=28.3s
+[197/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7133e+01  lr=5.00e-04  (0.0s)
+  abs_err=5.362e-05 loss=3.149e-06 wall=28.3s
+[198/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.409e-04 loss=2.079e-06 wall=28.3s
+[199/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5446e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.193e-04 loss=4.629e-06 wall=28.3s
+[200/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5621e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.740e-04 loss=4.676e-06 wall=28.3s
+[201/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9767e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.249e-04 loss=3.106e-06 wall=37.7s
+[202/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7133e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.690e-04 loss=2.932e-06 wall=37.8s
+[203/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=9.045e-05 loss=3.138e-06 wall=37.7s
+[204/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5446e+01  lr=5.00e-04  (0.0s)
+  abs_err=6.993e-04 loss=1.260e-05 wall=37.8s
+[205/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5621e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.854e-04 loss=3.947e-06 wall=37.8s
+[206/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9767e+01  lr=5.00e-04  (0.0s)
+  abs_err=4.028e-04 loss=4.852e-06 wall=47.2s
+[207/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7133e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.702e-05 loss=5.647e-06 wall=47.1s
+[208/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.278e-03 loss=4.214e-06 wall=47.1s
+[209/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5446e+01  lr=5.00e-04  (0.0s)
+  abs_err=9.579e-04 loss=4.979e-06 wall=47.1s
+[210/394] cosiren_ps c0_continuous lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5621e+01  lr=5.00e-04  (0.0s)
+  abs_err=5.626e-04 loss=4.990e-06 wall=47.2s
+[211/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.9767e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.599e-04 loss=2.888e-06 wall=28.3s
+[212/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.7133e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.105e-03 loss=1.749e-04 wall=28.3s
+[213/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.056e-04 loss=3.307e-04 wall=28.3s
+[214/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.5446e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.243e-03 loss=3.426e-04 wall=28.3s
+[215/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=2.5621e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.046e-04 loss=2.534e-06 wall=28.3s
+[216/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.9767e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.084e-04 loss=2.152e-04 wall=37.7s
+[217/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.7133e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.129e-03 loss=2.383e-04 wall=37.7s
+[218/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.074e-04 loss=5.611e-04 wall=37.7s
+[219/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.5446e+01  lr=1.00e-03  (0.0s)
+  abs_err=4.188e-04 loss=3.537e-04 wall=37.7s
+[220/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=2.5621e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.304e-03 loss=2.795e-04 wall=37.7s
+[221/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.9767e+01  lr=1.00e-03  (0.0s)
+  abs_err=8.595e-04 loss=2.977e-04 wall=47.2s
+[222/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.7133e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.840e-03 loss=4.060e-04 wall=47.1s
+[223/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=2.0356e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.053e-04 loss=2.481e-04 wall=47.2s
+[224/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.5446e+01  lr=1.00e-03  (0.0s)
+  abs_err=9.677e-04 loss=3.141e-04 wall=47.3s
+[225/394] cosiren_ps c0_continuous lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=2.5621e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.679e-05 loss=2.287e-04 wall=47.2s
+[226/394] gaussian oscillatory lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.5480e+00  lr=2.50e-04  (0.0s)
+  abs_err=7.471e-05 loss=5.514e-05 wall=37.0s
+[227/394] gaussian oscillatory lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=5.2651e+00  lr=2.50e-04  (0.0s)
+  abs_err=2.101e-05 loss=2.229e-05 wall=37.0s
+[228/394] gaussian oscillatory lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.8520e+00  lr=2.50e-04  (0.0s)
+  abs_err=4.386e-07 loss=2.609e-05 wall=36.9s
+[229/394] gaussian oscillatory lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=6.3908e+00  lr=2.50e-04  (0.0s)
+  abs_err=7.994e-06 loss=5.417e-05 wall=37.0s
+[230/394] gaussian oscillatory lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=4.5319e+00  lr=2.50e-04  (0.0s)
+  abs_err=4.655e-05 loss=2.298e-05 wall=36.9s
+[231/394] gaussian oscillatory lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=4.5480e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.287e-04 loss=9.028e-05 wall=49.4s
+[232/394] gaussian oscillatory lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=5.2651e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.261e-05 loss=1.106e-05 wall=49.3s
+[233/394] gaussian oscillatory lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=4.8520e+00  lr=2.50e-04  (0.0s)
+  abs_err=2.492e-05 loss=1.331e-05 wall=49.2s
+[234/394] gaussian oscillatory lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=6.3908e+00  lr=2.50e-04  (0.0s)
+  abs_err=4.486e-05 loss=4.395e-05 wall=49.2s
+[235/394] gaussian oscillatory lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=4.5319e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.396e-04 loss=7.387e-06 wall=49.3s
+[236/394] gaussian oscillatory lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=4.5480e+00  lr=2.50e-04  (0.0s)
+  abs_err=7.328e-05 loss=2.520e-05 wall=61.7s
+[237/394] gaussian oscillatory lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=5.2651e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.649e-05 loss=7.975e-06 wall=61.7s
+[238/394] gaussian oscillatory lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=4.8520e+00  lr=2.50e-04  (0.0s)
+  abs_err=6.447e-06 loss=8.287e-06 wall=61.7s
+[239/394] gaussian oscillatory lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=6.3908e+00  lr=2.50e-04  (0.0s)
+  abs_err=7.077e-06 loss=3.173e-05 wall=61.6s
+[240/394] gaussian oscillatory lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=4.5319e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.112e-04 loss=6.904e-06 wall=61.6s
+[241/394] gaussian oscillatory lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.5480e+00  lr=5.00e-04  (0.0s)
+  abs_err=5.426e-05 loss=5.516e-05 wall=36.9s
+[242/394] gaussian oscillatory lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=5.2651e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.564e-04 loss=2.653e-05 wall=37.0s
+[243/394] gaussian oscillatory lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.8520e+00  lr=5.00e-04  (0.0s)
+  abs_err=6.934e-05 loss=1.111e-05 wall=37.0s
+[244/394] gaussian oscillatory lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=6.3908e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.287e-04 loss=1.970e-04 wall=36.9s
+[245/394] gaussian oscillatory lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=4.5319e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.306e-05 loss=1.405e-05 wall=37.0s
+[246/394] gaussian oscillatory lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=4.5480e+00  lr=5.00e-04  (0.0s)
+  abs_err=3.756e-06 loss=2.415e-05 wall=49.3s
+[247/394] gaussian oscillatory lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=5.2651e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.008e-04 loss=1.432e-05 wall=49.3s
+[248/394] gaussian oscillatory lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=4.8520e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.441e-05 loss=6.664e-06 wall=49.4s
+[249/394] gaussian oscillatory lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=6.3908e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.593e-04 loss=3.547e-04 wall=49.3s
+[250/394] gaussian oscillatory lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=4.5319e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.344e-05 loss=4.021e-05 wall=49.2s
+[251/394] gaussian oscillatory lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=4.5480e+00  lr=5.00e-04  (0.0s)
+  abs_err=3.507e-05 loss=1.102e-05 wall=61.6s
+[252/394] gaussian oscillatory lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=5.2651e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.107e-04 loss=3.543e-05 wall=61.5s
+[253/394] gaussian oscillatory lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=4.8520e+00  lr=5.00e-04  (0.0s)
+  abs_err=7.990e-05 loss=1.002e-05 wall=61.5s
+[254/394] gaussian oscillatory lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=6.3908e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.767e-05 loss=3.089e-05 wall=61.6s
+[255/394] gaussian oscillatory lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=4.5319e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.458e-05 loss=4.684e-06 wall=61.6s
+[256/394] gaussian oscillatory lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.5480e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.014e-04 loss=8.313e-05 wall=36.9s
+[257/394] gaussian oscillatory lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=5.2651e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.608e-04 loss=5.646e-04 wall=37.0s
+[258/394] gaussian oscillatory lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.8520e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.697e-05 loss=1.096e-05 wall=37.0s
+[259/394] gaussian oscillatory lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=6.3908e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.755e-03 loss=4.139e+00 wall=37.0s
+[260/394] gaussian oscillatory lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=4.5319e+00  lr=1.00e-03  (0.0s)
+  abs_err=5.916e-06 loss=1.869e-04 wall=37.0s
+[261/394] gaussian oscillatory lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=4.5480e+00  lr=1.00e-03  (0.0s)
+  abs_err=5.247e-04 loss=5.337e-03 wall=49.3s
+[262/394] gaussian oscillatory lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=5.2651e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.934e-05 loss=2.398e-05 wall=49.3s
+[263/394] gaussian oscillatory lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=4.8520e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.434e-05 loss=6.722e-06 wall=49.4s
+[264/394] gaussian oscillatory lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=6.3908e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.755e-03 loss=4.215e+00 wall=49.2s
+[265/394] gaussian oscillatory lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=4.5319e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.001e-05 loss=8.472e-06 wall=49.4s
+[266/394] gaussian oscillatory lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=4.5480e+00  lr=1.00e-03  (0.0s)
+  abs_err=6.423e-05 loss=1.184e-05 wall=61.6s
+[267/394] gaussian oscillatory lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=5.2651e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.401e-05 loss=7.953e-05 wall=61.6s
+[268/394] gaussian oscillatory lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=4.8520e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.495e-05 loss=6.712e-05 wall=61.6s
+[269/394] gaussian oscillatory lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=6.3908e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.755e-03 loss=4.195e+00 wall=61.5s
+[270/394] gaussian oscillatory lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=4.5319e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.023e-04 loss=3.167e-05 wall=61.6s
+[271/394] gaussian product_peak lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.3050e+00  lr=2.50e-04  (0.0s)
+  abs_err=4.745e-04 loss=1.072e-05 wall=37.1s
+[272/394] gaussian product_peak lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.2998e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.027e-03 loss=1.487e-05 wall=37.2s
+[273/394] gaussian product_peak lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.4189e+00  lr=2.50e-04  (0.0s)
+  abs_err=4.264e-04 loss=9.323e-06 wall=37.1s
+[274/394] gaussian product_peak lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.0923e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.792e-03 loss=1.630e-05 wall=37.1s
+[275/394] gaussian product_peak lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=1.5075e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.962e-04 loss=1.598e-05 wall=37.1s
+[276/394] gaussian product_peak lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.3050e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.677e-04 loss=7.553e-06 wall=49.5s
+[277/394] gaussian product_peak lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.2998e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.895e-04 loss=7.530e-06 wall=49.5s
+[278/394] gaussian product_peak lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.4189e+00  lr=2.50e-04  (0.0s)
+  abs_err=9.945e-05 loss=6.757e-06 wall=49.5s
+[279/394] gaussian product_peak lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.0923e+00  lr=2.50e-04  (0.0s)
+  abs_err=2.488e-04 loss=9.823e-06 wall=49.5s
+[280/394] gaussian product_peak lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=1.5075e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.576e-04 loss=1.057e-05 wall=49.4s
+[281/394] gaussian product_peak lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.3050e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.380e-03 loss=1.557e-05 wall=61.9s
+[282/394] gaussian product_peak lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.2998e+00  lr=2.50e-04  (0.0s)
+  abs_err=6.109e-04 loss=6.990e-06 wall=61.9s
+[283/394] gaussian product_peak lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.4189e+00  lr=2.50e-04  (0.0s)
+  abs_err=6.891e-04 loss=7.475e-06 wall=61.7s
+[284/394] gaussian product_peak lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.0923e+00  lr=2.50e-04  (0.0s)
+  abs_err=2.598e-04 loss=9.935e-06 wall=61.9s
+[285/394] gaussian product_peak lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=1.5075e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.363e-03 loss=8.608e-06 wall=61.8s
+[286/394] gaussian product_peak lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.3050e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.901e-01 loss=9.801e-01 wall=37.1s
+[287/394] gaussian product_peak lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.2998e+00  lr=5.00e-04  (0.0s)
+  abs_err=5.298e-04 loss=9.641e-06 wall=37.1s
+[288/394] gaussian product_peak lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.4189e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.314e-05 loss=4.426e-06 wall=37.1s
+[289/394] gaussian product_peak lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.0923e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.896e-04 loss=2.414e-05 wall=37.1s
+[290/394] gaussian product_peak lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=1.5075e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.901e-01 loss=9.802e-01 wall=37.1s
+[291/394] gaussian product_peak lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.3050e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.391e-01 loss=2.300e-01 wall=49.4s
+[292/394] gaussian product_peak lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.2998e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.303e-04 loss=2.748e-06 wall=49.5s
+[293/394] gaussian product_peak lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.4189e+00  lr=5.00e-04  (0.0s)
+  abs_err=3.672e-04 loss=2.637e-06 wall=49.4s
+[294/394] gaussian product_peak lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.0923e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.013e-03 loss=9.660e-06 wall=49.4s
+[295/394] gaussian product_peak lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=1.5075e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.901e-01 loss=9.802e-01 wall=49.5s
+[296/394] gaussian product_peak lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.3050e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.901e-01 loss=9.804e-01 wall=61.8s
+[297/394] gaussian product_peak lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.2998e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.803e-05 loss=2.843e-06 wall=61.8s
+[298/394] gaussian product_peak lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.4189e+00  lr=5.00e-04  (0.0s)
+  abs_err=2.012e-03 loss=1.239e-05 wall=61.8s
+[299/394] gaussian product_peak lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.0923e+00  lr=5.00e-04  (0.0s)
+  abs_err=8.919e-05 loss=8.474e-06 wall=61.8s
+[300/394] gaussian product_peak lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=1.5075e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.901e-01 loss=9.803e-01 wall=61.8s
+[301/394] gaussian product_peak lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=1.3050e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.801e-01 wall=37.1s
+[302/394] gaussian product_peak lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=2.2998e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.799e-01 wall=37.1s
+[303/394] gaussian product_peak lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.4189e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.802e-01 wall=37.0s
+[304/394] gaussian product_peak lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=3.0923e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.808e-01 wall=37.1s
+[305/394] gaussian product_peak lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=1.5075e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.802e-01 wall=37.1s
+[306/394] gaussian product_peak lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=1.3050e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.803e-01 wall=49.5s
+[307/394] gaussian product_peak lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=2.2998e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.804e-01 wall=49.6s
+[308/394] gaussian product_peak lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.4189e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.801e-01 wall=49.5s
+[309/394] gaussian product_peak lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=3.0923e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.809e-01 wall=49.5s
+[310/394] gaussian product_peak lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=1.5075e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.802e-01 wall=49.6s
+[311/394] gaussian product_peak lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=1.3050e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.804e-01 wall=62.0s
+[312/394] gaussian product_peak lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=2.2998e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.801e-01 wall=61.8s
+[313/394] gaussian product_peak lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.4189e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.805e-01 wall=62.0s
+[314/394] gaussian product_peak lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=3.0923e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.801e-01 wall=61.8s
+[315/394] gaussian product_peak lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=1.5075e+00  lr=1.00e-03  (0.0s)
+  abs_err=9.901e-01 loss=9.803e-01 wall=61.9s
+[316/394] gaussian corner_peak lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=8.4129e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.440e-05 loss=4.262e-05 wall=36.9s
+[317/394] gaussian corner_peak lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.1896e+01  lr=2.50e-04  (0.0s)
+  abs_err=8.848e-05 loss=8.963e-05 wall=36.9s
+[318/394] gaussian corner_peak lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.1068e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.351e-05 loss=3.086e-05 wall=36.9s
+[319/394] gaussian corner_peak lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=1.0757e+01  lr=2.50e-04  (0.0s)
+  abs_err=3.205e-06 loss=4.100e-05 wall=36.9s
+[320/394] gaussian corner_peak lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=9.9257e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.210e-05 loss=5.860e-05 wall=36.9s
+[321/394] gaussian corner_peak lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=8.4129e+00  lr=2.50e-04  (0.0s)
+  abs_err=6.432e-05 loss=6.931e-05 wall=49.2s
+[322/394] gaussian corner_peak lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=1.1896e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.568e-05 loss=2.727e-05 wall=49.2s
+[323/394] gaussian corner_peak lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.1068e+01  lr=2.50e-04  (0.0s)
+  abs_err=1.004e-04 loss=2.304e-04 wall=49.2s
+[324/394] gaussian corner_peak lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=1.0757e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.544e-06 loss=6.240e-05 wall=49.2s
+[325/394] gaussian corner_peak lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=9.9257e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.547e-05 loss=1.269e-04 wall=49.1s
+[326/394] gaussian corner_peak lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=8.4129e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.712e-05 loss=1.049e-03 wall=61.3s
+[327/394] gaussian corner_peak lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=1.1896e+01  lr=2.50e-04  (0.0s)
+  abs_err=7.684e-05 loss=4.089e-05 wall=61.4s
+[328/394] gaussian corner_peak lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.1068e+01  lr=2.50e-04  (0.0s)
+  abs_err=6.932e-06 loss=1.895e-05 wall=61.4s
+[329/394] gaussian corner_peak lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=1.0757e+01  lr=2.50e-04  (0.0s)
+  abs_err=5.596e-05 loss=5.354e-05 wall=61.4s
+[330/394] gaussian corner_peak lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=9.9257e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.193e-05 loss=5.267e-05 wall=61.5s
+[331/394] gaussian corner_peak lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=8.4129e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.285e-06 loss=1.970e-05 wall=36.9s
+[332/394] gaussian corner_peak lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.1896e+01  lr=5.00e-04  (0.0s)
+  abs_err=3.828e-05 loss=1.264e-05 wall=36.9s
+[333/394] gaussian corner_peak lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.1068e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.285e-05 loss=1.826e-05 wall=36.9s
+[334/394] gaussian corner_peak lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=1.0757e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.904e-05 loss=1.379e-05 wall=36.8s
+[335/394] gaussian corner_peak lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=9.9257e+00  lr=5.00e-04  (0.0s)
+  abs_err=9.849e-06 loss=1.562e-05 wall=36.9s
+[336/394] gaussian corner_peak lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=8.4129e+00  lr=5.00e-04  (0.0s)
+  abs_err=2.815e-05 loss=3.401e-05 wall=49.0s
+[337/394] gaussian corner_peak lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=1.1896e+01  lr=5.00e-04  (0.0s)
+  abs_err=8.236e-06 loss=8.759e-06 wall=49.3s
+[338/394] gaussian corner_peak lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.1068e+01  lr=5.00e-04  (0.0s)
+  abs_err=6.121e-05 loss=1.767e-05 wall=49.1s
+[339/394] gaussian corner_peak lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=1.0757e+01  lr=5.00e-04  (0.0s)
+  abs_err=2.690e-05 loss=2.532e-05 wall=49.3s
+[340/394] gaussian corner_peak lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=9.9257e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.900e-05 loss=9.627e-06 wall=49.1s
+[341/394] gaussian corner_peak lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=8.4129e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.969e-05 loss=6.211e-05 wall=61.4s
+[342/394] gaussian corner_peak lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=1.1896e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.356e-04 loss=6.916e-05 wall=61.4s
+[343/394] gaussian corner_peak lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.1068e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.330e-05 loss=1.852e-05 wall=61.4s
+[344/394] gaussian corner_peak lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=1.0757e+01  lr=5.00e-04  (0.0s)
+  abs_err=1.811e-05 loss=2.358e-04 wall=61.4s
+[345/394] gaussian corner_peak lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=9.9257e+00  lr=5.00e-04  (0.0s)
+  abs_err=2.817e-05 loss=6.195e-06 wall=61.5s
+[346/394] gaussian corner_peak lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=8.4129e+00  lr=1.00e-03  (0.0s)
+  abs_err=3.143e-05 loss=6.291e-06 wall=36.8s
+[347/394] gaussian corner_peak lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.1896e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.983e-06 loss=6.538e-06 wall=36.9s
+[348/394] gaussian corner_peak lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=1.1068e+01  lr=1.00e-03  (0.0s)
+  abs_err=9.545e-06 loss=2.233e-05 wall=36.9s
+[349/394] gaussian corner_peak lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=1.0757e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.537e-05 loss=5.098e-06 wall=36.8s
+[350/394] gaussian corner_peak lr=1.0e-03 epochs=6000 seed=999
+  Epoch     1/6000  loss=9.9257e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.550e-05 loss=1.351e-05 wall=36.8s
+[351/394] gaussian corner_peak lr=1.0e-03 epochs=8000 seed=42
+  Epoch     1/8000  loss=8.4129e+00  lr=1.00e-03  (0.0s)
+  abs_err=6.326e-06 loss=5.087e-06 wall=49.1s
+[352/394] gaussian corner_peak lr=1.0e-03 epochs=8000 seed=137
+  Epoch     1/8000  loss=1.1896e+01  lr=1.00e-03  (0.0s)
+  abs_err=3.639e-05 loss=2.017e-05 wall=49.1s
+[353/394] gaussian corner_peak lr=1.0e-03 epochs=8000 seed=2024
+  Epoch     1/8000  loss=1.1068e+01  lr=1.00e-03  (0.0s)
+  abs_err=6.288e-05 loss=1.806e-05 wall=49.1s
+[354/394] gaussian corner_peak lr=1.0e-03 epochs=8000 seed=7
+  Epoch     1/8000  loss=1.0757e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.358e-05 loss=1.737e-05 wall=49.1s
+[355/394] gaussian corner_peak lr=1.0e-03 epochs=8000 seed=999
+  Epoch     1/8000  loss=9.9257e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.938e-06 loss=6.171e-06 wall=49.1s
+[356/394] gaussian corner_peak lr=1.0e-03 epochs=10000 seed=42
+  Epoch     1/10000  loss=8.4129e+00  lr=1.00e-03  (0.0s)
+  abs_err=1.384e-04 loss=1.718e-04 wall=61.3s
+[357/394] gaussian corner_peak lr=1.0e-03 epochs=10000 seed=137
+  Epoch     1/10000  loss=1.1896e+01  lr=1.00e-03  (0.0s)
+  abs_err=2.593e-05 loss=6.720e-06 wall=61.4s
+[358/394] gaussian corner_peak lr=1.0e-03 epochs=10000 seed=2024
+  Epoch     1/10000  loss=1.1068e+01  lr=1.00e-03  (0.0s)
+  abs_err=8.515e-05 loss=3.496e-05 wall=61.3s
+[359/394] gaussian corner_peak lr=1.0e-03 epochs=10000 seed=7
+  Epoch     1/10000  loss=1.0757e+01  lr=1.00e-03  (0.0s)
+  abs_err=1.266e-04 loss=2.793e-05 wall=61.4s
+[360/394] gaussian corner_peak lr=1.0e-03 epochs=10000 seed=999
+  Epoch     1/10000  loss=9.9257e+00  lr=1.00e-03  (0.0s)
+  abs_err=2.133e-05 loss=3.818e-06 wall=61.4s
+[361/394] gaussian gaussian lr=2.5e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.1068e-01  lr=2.50e-04  (0.0s)
+  abs_err=8.953e-05 loss=1.364e-06 wall=37.0s
+[362/394] gaussian gaussian lr=2.5e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.3032e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.021e-04 loss=2.515e-06 wall=37.0s
+[363/394] gaussian gaussian lr=2.5e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.2840e-01  lr=2.50e-04  (0.0s)
+  abs_err=1.432e-04 loss=3.631e-06 wall=37.0s
+[364/394] gaussian gaussian lr=2.5e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.0055e+00  lr=2.50e-04  (0.0s)
+  abs_err=6.064e-05 loss=3.847e-06 wall=37.1s
+[365/394] gaussian gaussian lr=2.5e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=5.5881e-01  lr=2.50e-04  (0.0s)
+  abs_err=2.438e-05 loss=5.961e-06 wall=37.0s
+[366/394] gaussian gaussian lr=2.5e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=4.1068e-01  lr=2.50e-04  (0.0s)
+  abs_err=1.933e-04 loss=1.542e-06 wall=49.3s
+[367/394] gaussian gaussian lr=2.5e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=1.3032e+00  lr=2.50e-04  (0.0s)
+  abs_err=5.813e-05 loss=1.664e-06 wall=49.4s
+[368/394] gaussian gaussian lr=2.5e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=4.2840e-01  lr=2.50e-04  (0.0s)
+  abs_err=4.293e-06 loss=2.402e-06 wall=49.4s
+[369/394] gaussian gaussian lr=2.5e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.0055e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.494e-04 loss=1.930e-06 wall=49.4s
+[370/394] gaussian gaussian lr=2.5e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=5.5881e-01  lr=2.50e-04  (0.0s)
+  abs_err=1.032e-04 loss=5.354e-06 wall=49.4s
+[371/394] gaussian gaussian lr=2.5e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=4.1068e-01  lr=2.50e-04  (0.0s)
+  abs_err=7.778e-05 loss=5.691e-07 wall=61.8s
+[372/394] gaussian gaussian lr=2.5e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=1.3032e+00  lr=2.50e-04  (0.0s)
+  abs_err=3.052e-04 loss=3.008e-06 wall=61.9s
+[373/394] gaussian gaussian lr=2.5e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=4.2840e-01  lr=2.50e-04  (0.0s)
+  abs_err=1.078e-05 loss=2.125e-06 wall=61.7s
+[374/394] gaussian gaussian lr=2.5e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.0055e+00  lr=2.50e-04  (0.0s)
+  abs_err=1.210e-04 loss=1.210e-06 wall=61.8s
+[375/394] gaussian gaussian lr=2.5e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=5.5881e-01  lr=2.50e-04  (0.0s)
+  abs_err=2.139e-05 loss=1.912e-06 wall=61.7s
+[376/394] gaussian gaussian lr=5.0e-04 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.1068e-01  lr=5.00e-04  (0.0s)
+  abs_err=8.143e-05 loss=2.255e-06 wall=37.1s
+[377/394] gaussian gaussian lr=5.0e-04 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.3032e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.931e-05 loss=2.184e-06 wall=37.1s
+[378/394] gaussian gaussian lr=5.0e-04 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.2840e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.687e-02 wall=37.1s
+[379/394] gaussian gaussian lr=5.0e-04 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.0055e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.570e-02 wall=37.0s
+[380/394] gaussian gaussian lr=5.0e-04 epochs=6000 seed=999
+  Epoch     1/6000  loss=5.5881e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.871e-02 wall=37.0s
+[381/394] gaussian gaussian lr=5.0e-04 epochs=8000 seed=42
+  Epoch     1/8000  loss=4.1068e-01  lr=5.00e-04  (0.0s)
+  abs_err=1.859e-04 loss=2.298e-06 wall=49.5s
+[382/394] gaussian gaussian lr=5.0e-04 epochs=8000 seed=137
+  Epoch     1/8000  loss=1.3032e+00  lr=5.00e-04  (0.0s)
+  abs_err=1.040e-04 loss=1.476e-06 wall=49.4s
+[383/394] gaussian gaussian lr=5.0e-04 epochs=8000 seed=2024
+  Epoch     1/8000  loss=4.2840e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.568e-02 wall=49.5s
+[384/394] gaussian gaussian lr=5.0e-04 epochs=8000 seed=7
+  Epoch     1/8000  loss=2.0055e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.814e-02 wall=49.4s
+[385/394] gaussian gaussian lr=5.0e-04 epochs=8000 seed=999
+  Epoch     1/8000  loss=5.5881e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.667e-02 wall=49.5s
+[386/394] gaussian gaussian lr=5.0e-04 epochs=10000 seed=42
+  Epoch     1/10000  loss=4.1068e-01  lr=5.00e-04  (0.0s)
+  abs_err=1.482e-04 loss=9.167e-07 wall=61.8s
+[387/394] gaussian gaussian lr=5.0e-04 epochs=10000 seed=137
+  Epoch     1/10000  loss=1.3032e+00  lr=5.00e-04  (0.0s)
+  abs_err=5.044e-05 loss=1.054e-06 wall=61.8s
+[388/394] gaussian gaussian lr=5.0e-04 epochs=10000 seed=2024
+  Epoch     1/10000  loss=4.2840e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.296e-02 wall=61.8s
+[389/394] gaussian gaussian lr=5.0e-04 epochs=10000 seed=7
+  Epoch     1/10000  loss=2.0055e+00  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.764e-02 wall=61.8s
+[390/394] gaussian gaussian lr=5.0e-04 epochs=10000 seed=999
+  Epoch     1/10000  loss=5.5881e-01  lr=5.00e-04  (0.0s)
+  abs_err=4.449e-02 loss=1.485e-02 wall=61.8s
+[391/394] gaussian gaussian lr=1.0e-03 epochs=6000 seed=42
+  Epoch     1/6000  loss=4.1068e-01  lr=1.00e-03  (0.0s)
+  abs_err=4.449e-02 loss=1.319e-02 wall=37.1s
+[392/394] gaussian gaussian lr=1.0e-03 epochs=6000 seed=137
+  Epoch     1/6000  loss=1.3032e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.449e-02 loss=1.228e-02 wall=37.1s
+[393/394] gaussian gaussian lr=1.0e-03 epochs=6000 seed=2024
+  Epoch     1/6000  loss=4.2840e-01  lr=1.00e-03  (0.0s)
+  abs_err=4.449e-02 loss=1.687e-02 wall=37.1s
+[394/394] gaussian gaussian lr=1.0e-03 epochs=6000 seed=7
+  Epoch     1/6000  loss=2.0055e+00  lr=1.00e-03  (0.0s)
+  abs_err=4.449e-02 loss=1.570e-02 wall=37.0s
+Results: /lustre/hopper/gshipunv/project-skuld/research/results/grid/22-genz-3d-sweep/hopper/results_gpu0.csv
