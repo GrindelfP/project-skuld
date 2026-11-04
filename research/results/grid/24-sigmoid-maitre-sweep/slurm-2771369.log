@@ -1,0 +1,14 @@
+==================================================================
+Job ID:     2771369
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/24-sigmoid-maitre-sweep/sigmoid_sweep.py
+Arguments:  --num-gpus 1 --run-tag hopper --smoke
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/24-sigmoid-maitre-sweep/slurm-2771369.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/24-sigmoid-maitre-sweep:
+==================================================================
+SKULD is using device: cuda
+1 runs total; shard 0/1: 1 pending
+run 0: {'width': 8, 'lr': 0.001, 'epochs': 2, 'n_per_param': 8, 'output_scale': 10000.0}, seed=42, device=cuda
+/lustre/hopper/gshipunv/.env/jasher-hopper/lib/python3.11/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at ../aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  digits min/mean/max: -1.328/-1.044/-0.190; 2.5s
