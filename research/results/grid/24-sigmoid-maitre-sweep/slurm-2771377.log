@@ -1,0 +1,620 @@
+==================================================================
+Job ID:     2771377
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/24-sigmoid-maitre-sweep/sigmoid_sweep.py
+Arguments:  --num-gpus 4 --run-tag hopper
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/24-sigmoid-maitre-sweep/slurm-2771377.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/24-sigmoid-maitre-sweep:
+==================================================================
+SKULD is using device: cuda
+1215 runs total; shard 1/4: 304 pending
+run 1: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+/lustre/hopper/gshipunv/.env/jasher-hopper/lib/python3.11/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at ../aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  digits min/mean/max: 1.279/1.664/2.152; 37.9s
+run 5: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.323/1.979/2.315; 34.1s
+run 9: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.209/1.540/2.079; 34.1s
+run 13: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.782/1.291/2.435; 34.1s
+run 17: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.638/1.874/2.234; 34.8s
+run 21: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.161/1.771/2.962; 34.8s
+run 25: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.983/1.502/2.498; 34.9s
+run 29: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.327/0.921/1.521; 34.8s
+run 33: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.105/1.889/3.348; 36.3s
+run 37: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.257/1.740/2.279; 36.3s
+run 41: {'width': 64, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.258/0.572/0.837; 36.3s
+run 45: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.314/1.720/2.224; 45.5s
+run 49: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.374/1.932/3.280; 45.5s
+run 53: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.284/1.943/2.868; 45.5s
+run 57: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.670/1.565/3.098; 45.5s
+run 61: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.993/2.089/3.883; 46.4s
+run 65: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.370/1.728/2.319; 46.4s
+run 69: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.406/1.832/2.607; 46.5s
+run 73: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.755/1.448/2.045; 46.5s
+run 77: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.416/1.842/2.700; 48.4s
+run 81: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.141/1.471/2.012; 48.4s
+run 85: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.991/1.703/2.190; 48.4s
+run 89: {'width': 64, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.683/1.062/1.380; 48.4s
+run 93: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.491/1.965/2.567; 56.8s
+run 97: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.532/1.938/2.843; 56.8s
+run 101: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.146/0.666/1.058; 56.8s
+run 105: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.658/2.035/2.559; 58.0s
+run 109: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.343/1.912/2.710; 58.2s
+run 113: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.500/2.161/2.639; 58.1s
+run 117: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.582/1.205/1.729; 57.9s
+run 121: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.494/1.612/1.806; 60.4s
+run 125: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.479/2.034/3.150; 60.3s
+run 129: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.337/2.049/3.621; 60.2s
+run 133: {'width': 64, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.991/1.670/3.098; 60.1s
+run 137: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.191/1.817/3.143; 33.7s
+run 141: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.059/1.753/3.098; 33.7s
+run 145: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.670/1.084/1.680; 33.7s
+run 149: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.699/1.288/2.340; 33.7s
+run 153: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.437/2.365/3.677; 34.4s
+run 157: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.169/1.369/1.768; 34.4s
+run 161: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.236/1.253/3.150; 34.4s
+run 165: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.306/1.741/2.669; 35.9s
+run 169: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.443/2.044/3.322; 35.9s
+run 173: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.422/2.117/3.883; 35.9s
+run 177: {'width': 64, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.650/1.565/3.150; 35.9s
+run 181: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.136/1.327/1.658; 44.8s
+run 185: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.567/2.199/3.450; 44.8s
+run 189: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.920/1.282/2.579; 44.9s
+run 193: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.676/0.937/1.485; 44.8s
+run 197: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.549/1.782/2.040; 45.8s
+run 201: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.809/1.571/2.089; 45.8s
+run 205: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.598/1.601/2.902; 45.8s
+run 209: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.515/0.972/1.831; 45.8s
+run 213: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.815/2.232/2.965; 47.8s
+run 217: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.264/1.662/2.079; 47.8s
+run 221: {'width': 64, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.192/0.870/2.007; 47.8s
+run 225: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.302/1.541/1.981; 56.0s
+run 229: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.316/2.006/2.639; 56.0s
+run 233: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.302/2.000/3.883; 56.1s
+run 237: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.607/1.123/1.610; 56.1s
+run 241: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.253/1.765/3.143; 57.2s
+run 245: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.542/2.117/2.820; 57.2s
+run 249: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.012/1.599/2.270; 57.3s
+run 253: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.746/1.354/3.883; 57.2s
+run 257: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.206/1.381/1.553; 59.7s
+run 261: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.130/2.018/3.883; 59.8s
+run 265: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.914/1.514/3.883; 59.7s
+run 269: {'width': 64, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.598/1.134/2.229; 59.8s
+run 273: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.367/1.738/2.718; 33.6s
+run 277: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.059/1.387/2.279; 33.6s
+run 281: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.734/1.430/2.471; 33.6s
+run 285: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.283/1.543/2.096; 34.4s
+run 289: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.731/2.144/2.538; 34.3s
+run 293: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.991/1.360/1.987; 34.4s
+run 297: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.651/1.139/1.538; 34.3s
+run 301: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.141/1.842/3.883; 35.8s
+run 305: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.743/1.981/2.286; 35.9s
+run 309: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.902/1.373/1.868; 35.9s
+run 313: {'width': 64, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.908/1.476/2.593; 35.8s
+run 317: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.460/2.096/2.871; 44.9s
+run 321: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.867/1.340/2.019; 44.9s
+run 325: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.910/1.360/2.327; 44.9s
+run 329: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.851/1.303/1.729; 44.8s
+run 333: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.023/1.240/1.423; 45.8s
+run 337: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.837/1.135/1.404; 45.7s
+run 341: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.327/0.669/1.313; 45.7s
+run 345: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.361/1.681/2.184; 47.8s
+run 349: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.396/1.832/2.420; 47.7s
+run 353: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.206/1.692/2.358; 47.9s
+run 357: {'width': 64, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.123/1.384/1.538; 47.8s
+run 361: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.114/1.478/1.784; 56.0s
+run 365: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.827/1.009/1.176; 56.1s
+run 369: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.528/2.053/3.549; 56.1s
+run 373: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.808/1.259/1.828; 56.0s
+run 377: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.147/1.229/1.418; 57.2s
+run 381: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.084/1.403/2.045; 57.3s
+run 385: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.002/1.279/1.970; 57.2s
+run 389: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.582/1.451/3.883; 57.3s
+run 393: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.176/1.394/1.611; 59.9s
+run 397: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.425/1.779/2.079; 59.9s
+run 401: {'width': 64, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.320/0.737/1.236; 59.9s
+run 405: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.332/1.763/2.280; 33.6s
+run 409: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.035/1.648/2.700; 33.6s
+run 413: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.108/1.455/1.863; 33.6s
+run 417: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.607/1.078/1.437; 33.6s
+run 421: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.994/1.569/2.003; 34.4s
+run 425: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.230/1.607/2.211; 34.4s
+run 429: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.289/1.734/2.780; 34.5s
+run 433: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.729/1.118/1.491; 34.4s
+run 437: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.381/1.758/2.326; 45.0s
+run 441: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.383/1.879/3.621; 45.0s
+run 445: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.828/1.127/1.641; 45.0s
+run 449: {'width': 128, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.663/1.126/1.833; 45.0s
+run 453: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.569/1.927/2.513; 44.9s
+run 457: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.442/1.959/2.639; 44.9s
+run 461: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.745/1.160/1.808; 44.9s
+run 465: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.646/2.007/2.902; 45.9s
+run 469: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.060/1.652/2.441; 46.0s
+run 473: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.386/1.727/2.078; 46.1s
+run 477: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.405/1.204/3.150; 46.0s
+run 481: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.558/2.112/3.115; 60.1s
+run 485: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.266/1.619/2.125; 60.1s
+run 489: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.943/2.373/2.924; 60.0s
+run 493: {'width': 128, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.709/1.476/2.962; 60.0s
+run 497: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.418/1.980/2.548; 56.1s
+run 501: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.403/1.766/2.159; 56.2s
+run 505: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.681/1.285/2.012; 56.2s
+run 509: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.664/1.268/2.455; 56.1s
+run 513: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.471/2.047/2.653; 57.5s
+run 517: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.404/1.953/2.639; 57.5s
+run 521: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.562/0.927/1.641; 57.5s
+run 525: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.219/1.500/1.823; 75.1s
+run 529: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.291/2.014/3.516; 75.0s
+run 533: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.353/1.903/2.965; 75.1s
+run 537: {'width': 128, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.386/1.224/3.098; 75.0s
+run 541: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.260/1.954/2.947; 33.6s
+run 545: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.253/1.635/2.195; 33.6s
+run 549: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.065/1.419/1.940; 33.7s
+run 553: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.603/1.351/3.883; 33.7s
+run 557: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.234/1.607/1.956; 34.5s
+run 561: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.155/1.624/2.619; 34.5s
+run 565: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.448/0.710/1.169; 34.5s
+run 569: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.477/1.009/2.078; 34.5s
+run 573: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.262/1.797/2.718; 45.0s
+run 577: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.236/1.840/3.883; 45.0s
+run 581: {'width': 128, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.794/1.275/2.186; 45.0s
+run 585: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.715/1.918/2.186; 44.9s
+run 589: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.010/1.320/1.751; 44.9s
+run 593: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.082/1.521/2.639; 44.9s
+run 597: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.600/0.949/1.275; 44.9s
+run 601: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.075/1.683/2.592; 46.0s
+run 605: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.404/1.827/2.315; 46.0s
+run 609: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.925/1.290/1.740; 46.1s
+run 613: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.586/1.141/1.534; 46.0s
+run 617: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.271/1.629/2.037; 60.1s
+run 621: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.956/1.356/2.337; 60.0s
+run 625: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.273/0.797/1.538; 60.0s
+run 629: {'width': 128, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.635/1.503/3.979; 60.0s
+run 633: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.257/1.836/3.223; 56.1s
+run 637: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.972/1.454/2.326; 56.1s
+run 641: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.757/1.541/3.098; 56.1s
+run 645: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.001/1.453/1.890; 57.5s
+run 649: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.376/1.767/2.397; 57.5s
+run 653: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.219/1.686/2.178; 57.6s
+run 657: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.447/0.755/1.051; 57.4s
+run 661: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.131/1.469/2.593; 75.0s
+run 665: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.142/1.655/3.028; 75.0s
+run 669: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.034/1.580/2.639; 75.0s
+run 673: {'width': 128, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.242/0.789/1.373; 74.9s
+run 677: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.769/1.187/1.965; 33.7s
+run 681: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.842/1.171/1.534; 33.6s
+run 685: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.494/0.953/1.351; 33.6s
+run 689: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.385/0.663/0.915; 33.6s
+run 693: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.306/1.483/1.956; 34.4s
+run 697: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.933/1.629/2.435; 34.5s
+run 701: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.276/0.856/1.873; 34.5s
+run 705: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.541/1.767/2.035; 45.0s
+run 709: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.209/1.434/1.637; 45.0s
+run 713: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.863/1.188/1.641; 44.9s
+run 717: {'width': 128, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.598/1.312/2.007; 45.0s
+run 721: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.535/1.851/2.256; 44.8s
+run 725: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.228/1.744/2.186; 44.8s
+run 729: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.663/1.024/1.175; 44.8s
+run 733: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.645/1.089/2.045; 44.9s
+run 737: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.342/1.780/2.592; 46.0s
+run 741: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.972/1.750/2.962; 46.0s
+run 745: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.499/0.928/1.313; 46.0s
+run 749: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.836/1.339/2.528; 46.0s
+run 753: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.697/2.059/2.947; 60.0s
+run 757: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.746/1.531/2.045; 60.0s
+run 761: {'width': 128, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.545/1.051/1.315; 60.0s
+run 765: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.092/1.193/1.393; 56.1s
+run 769: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.008/1.174/1.378; 56.1s
+run 773: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.852/1.012/1.259; 56.1s
+run 777: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.568/1.013/1.349; 56.1s
+run 781: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.429/1.810/2.112; 57.5s
+run 785: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.867/1.584/2.962; 57.5s
+run 789: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.123/1.480/2.290; 57.5s
+run 793: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.396/0.720/1.030; 57.4s
+run 797: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.023/1.620/2.382; 74.9s
+run 801: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.167/1.648/2.435; 74.9s
+run 805: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.368/1.212/3.150; 75.0s
+run 809: {'width': 128, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.736/1.158/2.758; 74.9s
+run 813: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.422/1.859/2.980; 33.7s
+run 817: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.462/1.908/3.098; 33.6s
+run 821: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.594/1.083/1.538; 33.7s
+run 825: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.204/1.597/2.415; 37.9s
+run 829: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.994/1.290/1.486; 38.0s
+run 833: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.161/1.454/1.911; 37.9s
+run 837: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.665/1.405/3.098; 37.9s
+run 841: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.359/1.845/2.669; 54.7s
+run 845: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.514/2.189/3.108; 54.8s
+run 849: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.549/1.778/2.340; 54.8s
+run 853: {'width': 160, 'lr': 0.0001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.110/1.495/1.848; 54.7s
+run 857: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.995/1.693/2.700; 44.8s
+run 861: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.688/1.866/2.089; 44.9s
+run 865: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.689/1.496/2.302; 44.8s
+run 869: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.616/1.174/3.098; 44.9s
+run 873: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.629/2.020/2.662; 50.5s
+run 877: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.473/1.879/2.518; 50.6s
+run 881: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.746/1.347/2.471; 50.5s
+run 885: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.644/2.006/2.591; 73.0s
+run 889: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.360/1.802/2.129; 73.0s
+run 893: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.411/1.789/2.760; 73.1s
+run 897: {'width': 160, 'lr': 0.0001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.671/1.399/3.098; 73.0s
+run 901: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.251/1.847/2.171; 56.1s
+run 905: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.545/2.095/2.937; 56.1s
+run 909: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.952/1.330/1.657; 56.2s
+run 913: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.917/1.316/1.709; 56.1s
+run 917: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.472/2.289/3.496; 63.3s
+run 921: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.201/1.567/1.890; 63.3s
+run 925: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.736/1.333/2.094; 63.3s
+run 929: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.497/0.829/1.425; 63.3s
+run 933: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.422/2.094/3.550; 91.4s
+run 937: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.283/1.941/2.611; 91.3s
+run 941: {'width': 160, 'lr': 0.0001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.427/1.672/3.883; 91.3s
+run 945: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.165/1.340/1.474; 33.7s
+run 949: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.635/2.133/3.883; 33.7s
+run 953: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.052/1.383/1.635; 33.7s
+run 957: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.734/0.952/1.277; 33.7s
+run 961: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.541/1.840/2.814; 38.0s
+run 965: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.096/1.491/1.985; 38.1s
+run 969: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.656/0.829/0.988; 37.9s
+run 973: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.498/0.851/1.613; 37.9s
+run 977: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.340/1.729/2.229; 54.8s
+run 981: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.078/1.464/2.272; 54.8s
+run 985: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.701/1.734/3.979; 54.8s
+run 989: {'width': 160, 'lr': 0.0005, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.272/1.116/3.098; 54.8s
+run 993: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.119/1.430/2.229; 44.8s
+run 997: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.259/1.644/2.518; 44.8s
+run 1001: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.494/1.234/3.150; 44.8s
+run 1005: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.140/1.359/1.576; 50.5s
+run 1009: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.037/1.422/1.764; 50.6s
+run 1013: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.202/1.527/2.005; 50.7s
+run 1017: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.446/0.832/1.141; 50.6s
+run 1021: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.296/1.912/2.937; 73.0s
+run 1025: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.993/1.312/1.922; 72.9s
+run 1029: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.059/1.492/1.983; 73.0s
+run 1033: {'width': 160, 'lr': 0.0005, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.757/1.174/2.094; 73.0s
+run 1037: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.321/1.547/2.007; 56.0s
+run 1041: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.934/1.552/2.597; 56.1s
+run 1045: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.570/1.412/2.146; 56.0s
+run 1049: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.241/0.588/0.898; 56.0s
+run 1053: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.819/1.058/1.396; 63.2s
+run 1057: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.304/1.983/2.528; 63.2s
+run 1061: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.459/0.972/2.012; 63.1s
+run 1065: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.370/2.167/3.057; 91.3s
+run 1069: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.123/1.292/1.511; 91.2s
+run 1073: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.273/1.853/2.597; 91.2s
+run 1077: {'width': 160, 'lr': 0.0005, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.445/0.773/1.056; 91.2s
+run 1081: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.029/1.679/2.461; 33.6s
+run 1085: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.014/1.625/2.435; 33.6s
+run 1089: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.774/1.125/1.715; 33.6s
+run 1093: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.658/1.184/2.089; 33.7s
+run 1097: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.355/1.605/1.939; 37.9s
+run 1101: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.219/1.965/2.639; 37.9s
+run 1105: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.671/1.296/1.899; 37.9s
+run 1109: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.192/1.018/3.098; 37.9s
+run 1113: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 1.342/1.926/2.592; 54.7s
+run 1117: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.783/1.089/1.516; 54.8s
+run 1121: {'width': 160, 'lr': 0.001, 'epochs': 6000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.672/1.142/2.279; 54.7s
+run 1125: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 1.060/1.550/2.089; 44.8s
+run 1129: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.798/1.016/1.313; 44.8s
+run 1133: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.639/0.738/0.866; 44.9s
+run 1137: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.379/0.972/1.808; 44.8s
+run 1141: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.283/1.983/2.667; 50.5s
+run 1145: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.771/0.968/1.286; 50.5s
+run 1149: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.991/1.528/2.045; 50.6s
+run 1153: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.532/0.872/1.252; 50.6s
+run 1157: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=2024, device=cuda
+  digits min/mean/max: 1.263/1.565/1.815; 73.1s
+run 1161: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.837/1.254/1.808; 73.0s
+run 1165: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.791/1.188/2.902; 73.1s
+run 1169: {'width': 160, 'lr': 0.001, 'epochs': 8000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=999, device=cuda
+  digits min/mean/max: 0.645/1.133/2.012; 73.1s
+run 1173: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 1000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.920/1.119/1.324; 56.2s
+run 1177: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 10000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.400/0.863/1.522; 56.1s
+run 1181: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 512, 'output_scale': 100000.0}, seed=137, device=cuda
+  digits min/mean/max: 0.557/0.839/1.198; 56.1s
+run 1185: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.849/1.059/1.427; 63.2s
+run 1189: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 1000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.414/1.815/2.639; 63.2s
+run 1193: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 10000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.620/0.715/0.863; 63.3s
+run 1197: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 1024, 'output_scale': 100000.0}, seed=2024, device=cuda
+  digits min/mean/max: 0.227/0.517/0.898; 63.2s
+run 1201: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 1000.0}, seed=137, device=cuda
+  digits min/mean/max: 1.191/1.430/1.602; 91.1s
+run 1205: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=42, device=cuda
+  digits min/mean/max: 0.708/1.196/1.425; 91.0s
+run 1209: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 10000.0}, seed=999, device=cuda
+  digits min/mean/max: 1.002/1.428/1.808; 91.0s
+run 1213: {'width': 160, 'lr': 0.001, 'epochs': 10000, 'n_per_param': 2048, 'output_scale': 100000.0}, seed=7, device=cuda
+  digits min/mean/max: 0.443/1.133/2.902; 91.0s

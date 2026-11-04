@@ -1,0 +1,82 @@
+==================================================================
+Job ID:     2771190
+Script:     /lustre/hopper/gshipunv/project-skuld/research/experiments/grid/23-genz-6d-sweep/genz_6d_sweep.py
+Arguments:  --num-gpus 4 --run-tag hopper
+Log file:   /lustre/hopper/gshipunv/project-skuld/research/results/grid/23-genz-6d-sweep/slurm-2771190.log
+Python:     /lustre/hopper/gshipunv/.env/jasher-hopper/bin/python
+PYTHONPATH: /lustre/hopper/gshipunv/project-skuld/research:/lustre/hopper/gshipunv/project-skuld:/lustre/hopper/gshipunv/project-skuld/research/experiments/grid/23-genz-6d-sweep:
+==================================================================
+SKULD is using device: cuda
+Canonical 6-D Genz sweep: 1575 training runs; GPU 3/4; local block=393; device=cuda:0
+Run tag: hopper
+Resuming: skipping 297 completed runs.
+[298/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=999
+/lustre/hopper/gshipunv/.env/jasher-hopper/lib/python3.11/site-packages/torch/autograd/graph.py:825: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at ../aten/src/ATen/cuda/CublasHandlePool.cpp:135.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+  Epoch     1/1500  loss=4.4453e+06  lr=8.00e-04  (1.3s)
+  abs_err=3.302e-06 loss=1.346e-02 wall=1240.9s
+[299/393] wire corner_peak lr=8.0e-04 epochs=1875 seed=42
+  Epoch     1/1875  loss=4.6882e+06  lr=8.00e-04  (0.8s)
+  abs_err=6.827e-06 loss=3.029e+00 wall=1547.4s
+[300/393] wire corner_peak lr=8.0e-04 epochs=1875 seed=137
+  Epoch     1/1875  loss=3.3195e+06  lr=8.00e-04  (0.8s)
+  abs_err=1.827e-05 loss=2.105e+01 wall=1547.8s
+[301/393] wire corner_peak lr=8.0e-04 epochs=1875 seed=2024
+  Epoch     1/1875  loss=1.7534e+06  lr=8.00e-04  (0.8s)
+  abs_err=1.327e-06 loss=9.594e-02 wall=1515.7s
+[302/393] wire corner_peak lr=8.0e-04 epochs=1875 seed=7
+  Epoch     1/1875  loss=7.1175e+06  lr=8.00e-04  (0.8s)
+  abs_err=5.831e-06 loss=5.149e-01 wall=1500.0s
+[303/393] wire corner_peak lr=8.0e-04 epochs=1875 seed=999
+  Epoch     1/1875  loss=4.4453e+06  lr=8.00e-04  (0.8s)
+  abs_err=5.333e-05 loss=1.688e+01 wall=1504.1s
+[304/393] wire gaussian lr=2.0e-04 epochs=1125 seed=42
+  Epoch     1/1125  loss=9.1912e+04  lr=2.00e-04  (0.8s)
+  abs_err=2.467e-03 loss=1.711e-04 wall=902.6s
+[305/393] wire gaussian lr=2.0e-04 epochs=1125 seed=137
+  Epoch     1/1125  loss=8.0984e+04  lr=2.00e-04  (0.8s)
+  abs_err=1.548e-03 loss=5.087e-05 wall=902.3s
+[306/393] wire gaussian lr=2.0e-04 epochs=1125 seed=2024
+  Epoch     1/1125  loss=2.0144e+04  lr=2.00e-04  (0.8s)
+  abs_err=1.111e-03 loss=5.777e-05 wall=903.2s
+[307/393] wire gaussian lr=2.0e-04 epochs=1125 seed=7
+  Epoch     1/1125  loss=5.6380e+05  lr=2.00e-04  (0.8s)
+  abs_err=8.212e-04 loss=1.053e-04 wall=903.7s
+[308/393] wire gaussian lr=2.0e-04 epochs=1125 seed=999
+  Epoch     1/1125  loss=1.4365e+05  lr=2.00e-04  (0.8s)
+  abs_err=3.817e-03 loss=5.183e-05 wall=902.6s
+[309/393] wire gaussian lr=2.0e-04 epochs=1500 seed=42
+  Epoch     1/1500  loss=9.1912e+04  lr=2.00e-04  (0.8s)
+  abs_err=5.998e-04 loss=1.347e-04 wall=1203.8s
+[310/393] wire gaussian lr=2.0e-04 epochs=1500 seed=137
+  Epoch     1/1500  loss=8.0984e+04  lr=2.00e-04  (0.8s)
+  abs_err=5.116e-04 loss=4.398e-04 wall=1203.9s
+[311/393] wire gaussian lr=2.0e-04 epochs=1500 seed=2024
+  Epoch     1/1500  loss=2.0144e+04  lr=2.00e-04  (0.8s)
+  abs_err=3.955e-06 loss=2.193e-04 wall=1203.6s
+[312/393] wire gaussian lr=2.0e-04 epochs=1500 seed=7
+  Epoch     1/1500  loss=5.6380e+05  lr=2.00e-04  (0.8s)
+  abs_err=1.074e-04 loss=4.912e-05 wall=1203.1s
+[313/393] wire gaussian lr=2.0e-04 epochs=1500 seed=999
+  Epoch     1/1500  loss=1.4365e+05  lr=2.00e-04  (0.8s)
+  abs_err=7.628e-06 loss=9.265e-05 wall=1204.2s
+[314/393] wire gaussian lr=2.0e-04 epochs=1875 seed=42
+  Epoch     1/1875  loss=9.1912e+04  lr=2.00e-04  (0.8s)
+  abs_err=1.076e-03 loss=7.955e-05 wall=1504.2s
+[315/393] wire gaussian lr=2.0e-04 epochs=1875 seed=137
+  Epoch     1/1875  loss=8.0984e+04  lr=2.00e-04  (0.8s)
+  abs_err=3.230e-04 loss=1.518e-04 wall=1504.8s
+[316/393] wire gaussian lr=2.0e-04 epochs=1875 seed=2024
+  Epoch     1/1875  loss=2.0144e+04  lr=2.00e-04  (0.8s)
+  abs_err=9.801e-04 loss=5.752e-05 wall=1501.6s
+[317/393] wire gaussian lr=2.0e-04 epochs=1875 seed=7
+  Epoch     1/1875  loss=5.6380e+05  lr=2.00e-04  (0.8s)
+  abs_err=2.914e-03 loss=7.035e-04 wall=1500.0s
+[318/393] wire gaussian lr=2.0e-04 epochs=1875 seed=999
+  Epoch     1/1875  loss=1.4365e+05  lr=2.00e-04  (0.8s)
+  abs_err=1.397e-03 loss=1.182e-04 wall=1499.2s
+[319/393] wire gaussian lr=4.0e-04 epochs=1125 seed=42
+  Epoch     1/1125  loss=9.1912e+04  lr=4.00e-04  (0.8s)
+  abs_err=2.348e-03 loss=1.647e-04 wall=900.0s
+[320/393] wire gaussian lr=4.0e-04 epochs=1125 seed=137
+  Epoch     1/1125  loss=8.0984e+04  lr=4.00e-04  (0.8s)
