@@ -790,3 +790,117 @@ Run tag: hopper
   abs_err=3.625e-05 loss=6.549e-02 wall=887.4s
 [260/393] wire corner_peak lr=2.0e-04 epochs=1125 seed=137
   Epoch     1/1125  loss=3.3195e+06  lr=2.00e-04  (0.8s)
+  abs_err=5.096e-06 loss=4.281e-02 wall=887.8s
+[261/393] wire corner_peak lr=2.0e-04 epochs=1125 seed=2024
+  Epoch     1/1125  loss=1.7534e+06  lr=2.00e-04  (0.8s)
+  abs_err=9.904e-06 loss=3.117e-02 wall=888.3s
+[262/393] wire corner_peak lr=2.0e-04 epochs=1125 seed=7
+  Epoch     1/1125  loss=7.1175e+06  lr=2.00e-04  (0.8s)
+  abs_err=9.496e-06 loss=1.725e-01 wall=887.8s
+[263/393] wire corner_peak lr=2.0e-04 epochs=1125 seed=999
+  Epoch     1/1125  loss=4.4453e+06  lr=2.00e-04  (0.8s)
+  abs_err=5.492e-05 loss=4.130e-02 wall=887.4s
+[264/393] wire corner_peak lr=2.0e-04 epochs=1500 seed=42
+  Epoch     1/1500  loss=4.6882e+06  lr=2.00e-04  (0.8s)
+  abs_err=7.082e-07 loss=4.076e-01 wall=1183.5s
+[265/393] wire corner_peak lr=2.0e-04 epochs=1500 seed=137
+  Epoch     1/1500  loss=3.3195e+06  lr=2.00e-04  (0.8s)
+  abs_err=2.662e-06 loss=1.334e-02 wall=1183.8s
+[266/393] wire corner_peak lr=2.0e-04 epochs=1500 seed=2024
+  Epoch     1/1500  loss=1.7534e+06  lr=2.00e-04  (0.8s)
+  abs_err=1.636e-06 loss=1.935e-02 wall=1183.2s
+[267/393] wire corner_peak lr=2.0e-04 epochs=1500 seed=7
+  Epoch     1/1500  loss=7.1175e+06  lr=2.00e-04  (0.8s)
+  abs_err=3.082e-06 loss=7.083e-02 wall=1183.7s
+[268/393] wire corner_peak lr=2.0e-04 epochs=1500 seed=999
+  Epoch     1/1500  loss=4.4453e+06  lr=2.00e-04  (0.8s)
+  abs_err=8.600e-07 loss=2.559e-02 wall=1183.1s
+[269/393] wire corner_peak lr=2.0e-04 epochs=1875 seed=42
+  Epoch     1/1875  loss=4.6882e+06  lr=2.00e-04  (0.8s)
+  abs_err=9.763e-06 loss=3.218e-01 wall=1479.8s
+[270/393] wire corner_peak lr=2.0e-04 epochs=1875 seed=137
+  Epoch     1/1875  loss=3.3195e+06  lr=2.00e-04  (0.8s)
+  abs_err=5.428e-05 loss=4.132e+00 wall=1479.1s
+[271/393] wire corner_peak lr=2.0e-04 epochs=1875 seed=2024
+  Epoch     1/1875  loss=1.7534e+06  lr=2.00e-04  (0.8s)
+  abs_err=8.867e-06 loss=1.825e-01 wall=1480.2s
+[272/393] wire corner_peak lr=2.0e-04 epochs=1875 seed=7
+  Epoch     1/1875  loss=7.1175e+06  lr=2.00e-04  (0.8s)
+  abs_err=4.945e-05 loss=3.993e+00 wall=1479.0s
+[273/393] wire corner_peak lr=2.0e-04 epochs=1875 seed=999
+  Epoch     1/1875  loss=4.4453e+06  lr=2.00e-04  (0.8s)
+  abs_err=2.649e-06 loss=3.939e-01 wall=1479.5s
+[274/393] wire corner_peak lr=4.0e-04 epochs=1125 seed=42
+  Epoch     1/1125  loss=4.6882e+06  lr=4.00e-04  (0.8s)
+  abs_err=7.442e-06 loss=2.380e-01 wall=887.2s
+[275/393] wire corner_peak lr=4.0e-04 epochs=1125 seed=137
+  Epoch     1/1125  loss=3.3195e+06  lr=4.00e-04  (0.8s)
+  abs_err=2.876e-05 loss=4.501e-02 wall=887.4s
+[276/393] wire corner_peak lr=4.0e-04 epochs=1125 seed=2024
+  Epoch     1/1125  loss=1.7534e+06  lr=4.00e-04  (0.8s)
+  abs_err=2.147e-06 loss=1.306e-02 wall=887.4s
+[277/393] wire corner_peak lr=4.0e-04 epochs=1125 seed=7
+  Epoch     1/1125  loss=7.1175e+06  lr=4.00e-04  (0.8s)
+  abs_err=1.987e-05 loss=5.921e-02 wall=887.5s
+[278/393] wire corner_peak lr=4.0e-04 epochs=1125 seed=999
+  Epoch     1/1125  loss=4.4453e+06  lr=4.00e-04  (0.8s)
+  abs_err=1.925e-06 loss=2.510e-02 wall=887.4s
+[279/393] wire corner_peak lr=4.0e-04 epochs=1500 seed=42
+  Epoch     1/1500  loss=4.6882e+06  lr=4.00e-04  (0.8s)
+  abs_err=1.025e-06 loss=7.468e-01 wall=1183.8s
+[280/393] wire corner_peak lr=4.0e-04 epochs=1500 seed=137
+  Epoch     1/1500  loss=3.3195e+06  lr=4.00e-04  (0.8s)
+  abs_err=2.819e-06 loss=2.020e-02 wall=1184.0s
+[281/393] wire corner_peak lr=4.0e-04 epochs=1500 seed=2024
+  Epoch     1/1500  loss=1.7534e+06  lr=4.00e-04  (0.8s)
+  abs_err=3.327e-06 loss=5.043e-02 wall=1184.0s
+[282/393] wire corner_peak lr=4.0e-04 epochs=1500 seed=7
+  Epoch     1/1500  loss=7.1175e+06  lr=4.00e-04  (0.8s)
+  abs_err=5.044e-06 loss=1.524e-01 wall=1183.5s
+[283/393] wire corner_peak lr=4.0e-04 epochs=1500 seed=999
+  Epoch     1/1500  loss=4.4453e+06  lr=4.00e-04  (0.8s)
+  abs_err=4.234e-06 loss=1.133e-02 wall=1183.2s
+[284/393] wire corner_peak lr=4.0e-04 epochs=1875 seed=42
+  Epoch     1/1875  loss=4.6882e+06  lr=4.00e-04  (0.8s)
+  abs_err=4.886e-05 loss=1.609e+00 wall=1479.2s
+[285/393] wire corner_peak lr=4.0e-04 epochs=1875 seed=137
+  Epoch     1/1875  loss=3.3195e+06  lr=4.00e-04  (0.8s)
+  abs_err=2.888e-05 loss=2.017e+01 wall=1479.6s
+[286/393] wire corner_peak lr=4.0e-04 epochs=1875 seed=2024
+  Epoch     1/1875  loss=1.7534e+06  lr=4.00e-04  (0.8s)
+  abs_err=3.508e-06 loss=2.079e-01 wall=1479.3s
+[287/393] wire corner_peak lr=4.0e-04 epochs=1875 seed=7
+  Epoch     1/1875  loss=7.1175e+06  lr=4.00e-04  (0.8s)
+  abs_err=1.462e-05 loss=1.832e-01 wall=1479.7s
+[288/393] wire corner_peak lr=4.0e-04 epochs=1875 seed=999
+  Epoch     1/1875  loss=4.4453e+06  lr=4.00e-04  (0.8s)
+  abs_err=6.539e-06 loss=2.134e+01 wall=1480.1s
+[289/393] wire corner_peak lr=8.0e-04 epochs=1125 seed=42
+  Epoch     1/1125  loss=4.6882e+06  lr=8.00e-04  (0.8s)
+  abs_err=2.132e-05 loss=2.744e-01 wall=887.0s
+[290/393] wire corner_peak lr=8.0e-04 epochs=1125 seed=137
+  Epoch     1/1125  loss=3.3195e+06  lr=8.00e-04  (0.8s)
+  abs_err=2.652e-05 loss=7.510e-02 wall=887.7s
+[291/393] wire corner_peak lr=8.0e-04 epochs=1125 seed=2024
+  Epoch     1/1125  loss=1.7534e+06  lr=8.00e-04  (0.8s)
+  abs_err=2.057e-05 loss=2.886e-02 wall=887.4s
+[292/393] wire corner_peak lr=8.0e-04 epochs=1125 seed=7
+  Epoch     1/1125  loss=7.1175e+06  lr=8.00e-04  (0.8s)
+  abs_err=3.233e-06 loss=2.471e-01 wall=887.6s
+[293/393] wire corner_peak lr=8.0e-04 epochs=1125 seed=999
+  Epoch     1/1125  loss=4.4453e+06  lr=8.00e-04  (0.8s)
+  abs_err=4.635e-05 loss=2.226e-02 wall=887.5s
+[294/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=42
+  Epoch     1/1500  loss=4.6882e+06  lr=8.00e-04  (0.8s)
+  abs_err=2.219e-06 loss=5.630e-01 wall=1182.9s
+[295/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=137
+  Epoch     1/1500  loss=3.3195e+06  lr=8.00e-04  (0.8s)
+  abs_err=3.639e-06 loss=2.122e-02 wall=1183.2s
+[296/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=2024
+  Epoch     1/1500  loss=1.7534e+06  lr=8.00e-04  (0.8s)
+  abs_err=5.873e-06 loss=3.870e-02 wall=1183.7s
+[297/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=7
+  Epoch     1/1500  loss=7.1175e+06  lr=8.00e-04  (0.8s)
+  abs_err=2.778e-06 loss=9.806e-02 wall=1184.1s
+[298/393] wire corner_peak lr=8.0e-04 epochs=1500 seed=999
+  Epoch     1/1500  loss=4.4453e+06  lr=8.00e-04  (0.8s)
