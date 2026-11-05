@@ -3,7 +3,5 @@ __pycache__/
 .idea/
 *.egg-info/
 .DS_Store
-integral_*
-!research/legacy/2026-11-05/integral_0/
 *_cache.npz
 *history/
