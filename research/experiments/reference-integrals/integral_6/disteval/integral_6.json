@@ -1,0 +1,56 @@
+{
+  "name": "integral_6",
+  "type": "integral",
+  "dimension": 3,
+  "regulators": [
+    "eps"
+  ],
+  "realp": [
+    "PP",
+    "P1P1",
+    "P2P2",
+    "M1sq",
+    "M2sq",
+    "M3sq",
+    "R2MID",
+    "LL"
+  ],
+  "complexp": [],
+  "deformp_count": 0,
+  "complex_result": false,
+  "requested_orders": [
+    0
+  ],
+  "prefactor": "+(1)",
+  "prefactor_lowest_orders": [
+    0
+  ],
+  "prefactor_highest_orders": [
+    0
+  ],
+  "expanded_prefactor": [
+    {
+      "regulator_powers": [
+        0
+      ],
+      "coefficient": "1"
+    }
+  ],
+  "lowest_orders": [
+    0
+  ],
+  "kernels": [
+    "sector_1_order_0"
+  ],
+  "orders": [
+    {
+      "regulator_powers": [
+        0
+      ],
+      "kernels": [
+        "sector_1_order_0"
+      ]
+    }
+  ],
+  "generated_by": "pySecDec 1.6.6 (d5762dda) [Python 3.13.12, NumPy 2.3.0, SymPy 1.14.0]"
+}
