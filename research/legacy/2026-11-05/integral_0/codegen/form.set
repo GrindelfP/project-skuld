@@ -1,0 +1,6 @@
+WorkSpace 50000000
+SmallSize 10000000
+LargeSize 50000000
+TermsInSmall 100000
+ScratchSize 50000000
+SortIOSize 100000
