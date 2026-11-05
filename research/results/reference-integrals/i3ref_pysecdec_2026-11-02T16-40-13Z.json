@@ -1,0 +1,69 @@
+{
+  "run_id": "i3ref_pysecdec_2026-11-02T16-40-13Z",
+  "started_utc": "2026-11-02T16:40:13.375728+00:00",
+  "pysecdec_version": "1.6.6",
+  "settings": {
+    "integrator": "Qmc",
+    "maxeval": 100000000,
+    "epsrel": 1e-05,
+    "epsabs": 1e-12,
+    "transform": "korobov3"
+  },
+  "parameter_sets": [
+    [
+      0,
+      0,
+      1,
+      2
+    ],
+    [
+      0,
+      1,
+      1,
+      2
+    ],
+    [
+      1,
+      0,
+      1,
+      2
+    ],
+    [
+      1,
+      1,
+      1,
+      2
+    ],
+    [
+      0,
+      0,
+      2,
+      3
+    ],
+    [
+      0,
+      1,
+      2,
+      3
+    ],
+    [
+      1,
+      0,
+      2,
+      3
+    ],
+    [
+      1,
+      1,
+      2,
+      3
+    ]
+  ],
+  "prior_csvs": [
+    "i3ref_2026-05-06_10-03.csv",
+    "i3ref_2026-05-06_10-06.csv",
+    "i3ref_2026-05-06_10-13.csv"
+  ],
+  "uncertainty_note": "PySecDec-estimated QMC uncertainty; not a rigorous error bound.",
+  "build_artifact_note": "Generated packages were built in a scoped temporary directory outside the repository."
+}
