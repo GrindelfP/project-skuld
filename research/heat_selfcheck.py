@@ -1,23 +1,23 @@
 """Analytic heat/AD checks. Run in jasher before trusting pilot results."""
 from pathlib import Path
 import math
-import sys
+import importlib.util
 
 import torch
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "skuld-lib"))
-from skuld.diffusion_integrator import DiffusionIntegrator
-from heat_runner import cosine_solution, synthetic
-
-
-class ExactHeat(DiffusionIntegrator):
-    def forward(self, t, x):
-        return cosine_solution(t, x)
-
-
 def main():
     torch.manual_seed(123)
-    for d in (1, 2, 3):
+    paths = sorted((Path(__file__).resolve().parent / "experiments" / "flat").glob("*-heat-*/heat_nni.py"))
+    assert len(paths) == 3
+    for d, path in enumerate(paths, start=1):
+        spec = importlib.util.spec_from_file_location(f"heat_pilot_{d}", path)
+        pilot = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(pilot)
+        synthetic = pilot.synthetic
+        class ExactHeat(pilot.DiffusionIntegrator):
+            def forward(self, t, x):
+                return pilot.cosine_solution(t, x)
+
         model = ExactHeat(d).double()
         x = torch.rand(64, d, dtype=torch.float64)
         t = torch.rand(64, 1, dtype=torch.float64)
@@ -38,7 +38,7 @@ def main():
         points = torch.stack([a.reshape(-1) for a in mesh], dim=1)
         reference = (2-4/math.e, 2-4/math.e+(4-10/math.e)/5, 12/5-5/math.e)[d-1]
         assert abs(synthetic(points).mean().item() - reference) < 1e-4
-        bad = DiffusionIntegrator(d)
+        bad = pilot.DiffusionIntegrator(d)
         try:
             bad.fit_initial(lambda points: torch.ones(len(points), 1), steps=1, batch_size=2)
         except ValueError as error:
