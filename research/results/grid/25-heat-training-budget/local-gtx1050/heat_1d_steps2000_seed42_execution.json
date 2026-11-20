@@ -1,0 +1,12 @@
+{
+  "source_revision": "32dc5839687875538acac1b5264fccca42460bd5",
+  "script": "heat_1d.py",
+  "steps": 2000,
+  "seed": 42,
+  "process_wall_seconds": 65.1550834,
+  "measurement": "PowerShell Stopwatch around python -u; includes startup, training, diagnostics and process shutdown",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "driver": "582.28",
+  "torch": "2.5.1+cu118",
+  "cuda_runtime": "11.8"
+}
