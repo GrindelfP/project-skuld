@@ -1,0 +1,17 @@
+{
+  "run_tag": "local-gtx1050",
+  "slurm_job_id": null,
+  "cuda_runtime": "11.8",
+  "dimension": 2,
+  "device": "cuda",
+  "torch_version": "2.5.1+cu118",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "seconds_per_step": [
+    0.026218256251013372,
+    0.026154049999604467,
+    0.021403881248261314
+  ],
+  "median_seconds_per_step": 0.026154049999604467,
+  "estimated_two_fits_seconds": 26.781747199594975,
+  "caveat": "Training-only extrapolation; startup, diagnostics, file I/O excluded. Adam restarts per block."
+}

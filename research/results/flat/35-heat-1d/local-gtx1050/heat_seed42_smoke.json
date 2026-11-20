@@ -1,0 +1,70 @@
+{
+  "run_tag": "local-gtx1050",
+  "slurm_job_id": null,
+  "cuda_runtime": "11.8",
+  "dimension": 1,
+  "steps": 8,
+  "batch_size": 32,
+  "initial_count": 256,
+  "seed": 42,
+  "device": "cuda",
+  "torch_version": "2.5.1+cu118",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "dtype": "float32",
+  "width": 32,
+  "hidden_layers": 2,
+  "horizon": 1.0,
+  "lr": 0.001,
+  "elapsed_seconds": 3.317413300042972,
+  "smoke": true,
+  "summary": {
+    "min_digits": 0.016232078337166136,
+    "mean_digits": 0.12958609440428917,
+    "max_digits": 0.24294011047141223
+  },
+  "histories": {
+    "cosine": {
+      "loss": [
+        {
+          "step": 1,
+          "initial_mse": 1.5876116752624512,
+          "pde_mse": 0.5229347944259644
+        },
+        {
+          "step": 8,
+          "initial_mse": 0.5701505541801453,
+          "pde_mse": 0.04260682687163353
+        }
+      ],
+      "sampled_masses": [
+        0.13034941256046295,
+        0.10550038516521454,
+        0.08129999041557312,
+        0.05981510505080223,
+        0.04245046153664589
+      ]
+    },
+    "synthetic": {
+      "loss": [
+        {
+          "step": 1,
+          "initial_mse": 0.21571731567382812,
+          "pde_mse": 0.07512402534484863
+        },
+        {
+          "step": 8,
+          "initial_mse": 0.1199394166469574,
+          "pde_mse": 0.02796126715838909
+        }
+      ],
+      "sampled_masses": [
+        0.2769544720649719,
+        0.264747679233551,
+        0.25274139642715454,
+        0.2407265603542328,
+        0.2284284383058548
+      ]
+    }
+  },
+  "caveat": "Finite-time biased readout; sampled residuals and drift are diagnostics, not certificates."
+}

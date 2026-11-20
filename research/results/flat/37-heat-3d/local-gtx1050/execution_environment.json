@@ -1,0 +1,23 @@
+{
+  "source_commit": "bc49e0e",
+  "python": "3.11.11",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "packages": {
+    "torch": "2.5.1+cu118",
+    "numpy": "1.26.4",
+    "sympy": "1.13.1",
+    "mpmath": "1.3.0",
+    "filelock": "4.2.12",
+    "typing-extensions": "4.16.0",
+    "networkx": "3.6.1",
+    "jinja2": "3.1.6",
+    "fsspec": "2026.9.0"
+  },
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "gpu_memory_mib": 2048,
+  "driver": "582.28",
+  "cuda_runtime": "11.8",
+  "full_process_wall_seconds": 33.549,
+  "wall_measurement": "PowerShell Stopwatch around python -u heat_nni.py --device cuda --run-tag local-gtx1050; sequential runs; includes interpreter startup, imports, training, diagnostics and process shutdown",
+  "verified_wheel_sha256": "7e09af36c3d0bf8e6554cacae794f9fcd348d096e21f8be1dd42ed3bc48b4e2f"
+}

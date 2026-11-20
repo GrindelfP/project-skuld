@@ -1,0 +1,140 @@
+{
+  "run_tag": "local-gtx1050",
+  "slurm_job_id": null,
+  "cuda_runtime": "11.8",
+  "dimension": 1,
+  "steps": 512,
+  "batch_size": 128,
+  "initial_count": 65536,
+  "seed": 42,
+  "device": "cuda",
+  "torch_version": "2.5.1+cu118",
+  "gpu": "NVIDIA GeForce GTX 1050",
+  "dtype": "float32",
+  "width": 32,
+  "hidden_layers": 2,
+  "horizon": 1.0,
+  "lr": 0.001,
+  "elapsed_seconds": 17.131998399971053,
+  "smoke": false,
+  "summary": {
+    "min_digits": 1.6579326253113729,
+    "mean_digits": 1.802199077988207,
+    "max_digits": 1.9464655306650414
+  },
+  "histories": {
+    "cosine": {
+      "loss": [
+        {
+          "step": 1,
+          "initial_mse": 1.1570920944213867,
+          "pde_mse": 0.5056065917015076
+        },
+        {
+          "step": 64,
+          "initial_mse": 0.5512639284133911,
+          "pde_mse": 0.014283102005720139
+        },
+        {
+          "step": 128,
+          "initial_mse": 0.5262416005134583,
+          "pde_mse": 0.015417411923408508
+        },
+        {
+          "step": 192,
+          "initial_mse": 0.46571195125579834,
+          "pde_mse": 0.020704898983240128
+        },
+        {
+          "step": 256,
+          "initial_mse": 0.44327688217163086,
+          "pde_mse": 0.022602442651987076
+        },
+        {
+          "step": 320,
+          "initial_mse": 0.5512610673904419,
+          "pde_mse": 0.020030513405799866
+        },
+        {
+          "step": 384,
+          "initial_mse": 0.5050215721130371,
+          "pde_mse": 0.027237674221396446
+        },
+        {
+          "step": 448,
+          "initial_mse": 0.4873393774032593,
+          "pde_mse": 0.03273756057024002
+        },
+        {
+          "step": 512,
+          "initial_mse": 0.46059924364089966,
+          "pde_mse": 0.027227699756622314
+        }
+      ],
+      "sampled_masses": [
+        0.6950079202651978,
+        0.7010380029678345,
+        0.6987519264221191,
+        0.6938263177871704,
+        0.6899373531341553
+      ]
+    },
+    "synthetic": {
+      "loss": [
+        {
+          "step": 1,
+          "initial_mse": 0.23137766122817993,
+          "pde_mse": 0.06979002058506012
+        },
+        {
+          "step": 64,
+          "initial_mse": 0.03965737298130989,
+          "pde_mse": 0.004738112911581993
+        },
+        {
+          "step": 128,
+          "initial_mse": 0.04086896777153015,
+          "pde_mse": 0.0032352199777960777
+        },
+        {
+          "step": 192,
+          "initial_mse": 0.04393655061721802,
+          "pde_mse": 0.0024527045898139477
+        },
+        {
+          "step": 256,
+          "initial_mse": 0.039256751537323,
+          "pde_mse": 0.0019447304075583816
+        },
+        {
+          "step": 320,
+          "initial_mse": 0.034734584391117096,
+          "pde_mse": 0.0012453512754291296
+        },
+        {
+          "step": 384,
+          "initial_mse": 0.04353281483054161,
+          "pde_mse": 0.0010159001685678959
+        },
+        {
+          "step": 448,
+          "initial_mse": 0.05141938477754593,
+          "pde_mse": 0.0011908345622941852
+        },
+        {
+          "step": 512,
+          "initial_mse": 0.04608381539583206,
+          "pde_mse": 0.0011970982886850834
+        }
+      ],
+      "sampled_masses": [
+        0.5208564400672913,
+        0.5221169590950012,
+        0.5211758017539978,
+        0.5188109278678894,
+        0.5158501863479614
+      ]
+    }
+  },
+  "caveat": "Finite-time biased readout; sampled residuals and drift are diagnostics, not certificates."
+}
