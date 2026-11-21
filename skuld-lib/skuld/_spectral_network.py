@@ -42,6 +42,7 @@ class SpectralNetwork(nn.Module):
         rank_tolerance: float,
         seed: int,
         dimensions: int = 3,
+        max_rank: int | None = None,
     ) -> "SpectralNetwork":
         """Fit to vector-valued point samples on fibers and a readout grid.
 
@@ -49,12 +50,15 @@ class SpectralNetwork(nn.Module):
         positions. Truncated SVD learns the dominant univariate features
         across fibers and output channels. On a separate jittered grid,
         one least-squares solve per axis fits the product layer jointly.
+        If supplied, max_rank also caps the width of each branch.
         """
         size = degree + 1
         if degree < 1 or fibers < 1 or readout_nodes < size or not 0 < rank_tolerance < 1:
             raise ValueError("Expected a positive degree and fiber count, enough grid nodes, and 0 < tolerance < 1")
         if not 1 <= dimensions <= 25:
             raise ValueError("Expected 1 to 25 dimensions")
+        if max_rank is not None and not 1 <= max_rank <= size:
+            raise ValueError("Expected max_rank between 1 and degree + 1")
 
         rng = np.random.default_rng(seed)
         angles = np.pi * (np.arange(size) + 0.5) / size
@@ -71,18 +75,29 @@ class SpectralNetwork(nn.Module):
             coefficients = to_coefficients @ values
             directions, singular_values, _ = np.linalg.svd(coefficients, full_matrices=False)
             width = max(1, np.count_nonzero(singular_values > rank_tolerance * singular_values[0]))
+            if max_rank is not None:
+                width = min(width, max_rank)
             branches.append(np.ascontiguousarray(directions[:, :width]))
 
         offsets = rng.uniform(0.25, 0.75, (dimensions, readout_nodes))
         angles = np.pi * (np.arange(readout_nodes) + offsets) / readout_nodes
         grid = (1 + np.cos(angles)) / 2
         values = function(*np.ix_(*grid))
+        return cls.fit_readout(branches, grid, values)
+
+    @classmethod
+    def fit_readout(
+        cls, branches: list[FloatArray], grid: FloatArray, values: FloatArray
+    ) -> "SpectralNetwork":
+        """Fit the output tensor on a sampled grid for the supplied bases."""
+        dimensions, readout_nodes = grid.shape
+        degree = branches[0].shape[0] - 1
         fit_maps = []
         for points, weights in zip(grid, branches, strict=True):
             features = chebvander(2 * points - 1, degree) @ weights
             inverse, _, rank, _ = np.linalg.lstsq(features, np.eye(readout_nodes), rcond=None)
             if rank != weights.shape[1]:
-                raise ValueError("Readout samples do not span the learned branch")
+                raise ValueError("Readout samples do not span the branch")
             fit_maps.append(inverse)
         nodes = ascii_letters[:dimensions]
         modes = ascii_letters[dimensions:2 * dimensions]
