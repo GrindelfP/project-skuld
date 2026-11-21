@@ -1,6 +1,7 @@
 """A separable polynomial network with an analytic integral readout."""
 
 from collections.abc import Callable
+from string import ascii_letters
 
 import numpy as np
 import torch
@@ -9,11 +10,11 @@ from numpy.typing import NDArray
 from torch import nn
 
 FloatArray = NDArray[np.float64]
-GridFunction = Callable[[FloatArray, FloatArray, FloatArray], FloatArray]
+GridFunction = Callable[..., FloatArray]
 
 
 class SpectralNetwork(nn.Module):
-    """Learn three banks of univariate features and mix their products.
+    """Learn a bank of univariate features per coordinate and mix their products.
 
     Each branch is a Chebyshev activation bank followed by a learned linear
     map. The output layer mixes tensor products of the three branch outputs.
@@ -40,17 +41,20 @@ class SpectralNetwork(nn.Module):
         readout_nodes: int,
         rank_tolerance: float,
         seed: int,
+        dimensions: int = 3,
     ) -> "SpectralNetwork":
         """Fit to vector-valued point samples on fibers and a readout grid.
 
         Each fiber varies one coordinate, fixing the other two at random
         positions. Truncated SVD learns the dominant univariate features
         across fibers and output channels. On a separate jittered grid,
-        three small least-squares solves fit the product layer jointly.
+        one least-squares solve per axis fits the product layer jointly.
         """
         size = degree + 1
         if degree < 1 or fibers < 1 or readout_nodes < size or not 0 < rank_tolerance < 1:
             raise ValueError("Expected a positive degree and fiber count, enough grid nodes, and 0 < tolerance < 1")
+        if not 1 <= dimensions <= 25:
+            raise ValueError("Expected 1 to 25 dimensions")
 
         rng = np.random.default_rng(seed)
         angles = np.pi * (np.arange(size) + 0.5) / size
@@ -59,8 +63,8 @@ class SpectralNetwork(nn.Module):
         to_coefficients = (2 / size) * np.cos(np.outer(np.arange(size), angles))
         to_coefficients[0] *= 0.5
         branches = []
-        for axis in range(3):
-            positions = (1 + np.cos(np.pi * rng.random((3, 1, fibers)))) / 2
+        for axis in range(dimensions):
+            positions = (1 + np.cos(np.pi * rng.random((dimensions, 1, fibers)))) / 2
             coordinates = list(positions)
             coordinates[axis] = sites[:, None]
             values = function(*coordinates).reshape(size, -1)
@@ -69,11 +73,10 @@ class SpectralNetwork(nn.Module):
             width = max(1, np.count_nonzero(singular_values > rank_tolerance * singular_values[0]))
             branches.append(np.ascontiguousarray(directions[:, :width]))
 
-        offsets = rng.uniform(0.25, 0.75, (3, readout_nodes))
+        offsets = rng.uniform(0.25, 0.75, (dimensions, readout_nodes))
         angles = np.pi * (np.arange(readout_nodes) + offsets) / readout_nodes
         grid = (1 + np.cos(angles)) / 2
-        x, y, z = grid
-        values = function(x[:, None, None], y[None, :, None], z[None, None, :])
+        values = function(*np.ix_(*grid))
         fit_maps = []
         for points, weights in zip(grid, branches, strict=True):
             features = chebvander(2 * points - 1, degree) @ weights
@@ -81,11 +84,15 @@ class SpectralNetwork(nn.Module):
             if rank != weights.shape[1]:
                 raise ValueError("Readout samples do not span the learned branch")
             fit_maps.append(inverse)
-        readout = np.einsum("ia,jb,kc,abcl->ijkl", *fit_maps, values, optimize=True)
+        nodes = ascii_letters[:dimensions]
+        modes = ascii_letters[dimensions:2 * dimensions]
+        output = ascii_letters[2 * dimensions]
+        maps = ",".join(mode + node for mode, node in zip(modes, nodes, strict=True))
+        readout = np.einsum(f"{maps},{nodes}{output}->{modes}{output}", *fit_maps, values, optimize=True)
         return cls(branches, np.ascontiguousarray(readout))
 
     def forward(self, points: torch.Tensor) -> torch.Tensor:
-        """Evaluate all outputs at a batch of three-dimensional points."""
+        """Evaluate all outputs at a batch of points."""
         features = []
         for coordinate, weights in zip(points.unbind(dim=-1), self.branches, strict=True):
             scaled = 2 * coordinate - 1
@@ -93,9 +100,12 @@ class SpectralNetwork(nn.Module):
             for _ in range(2, len(weights)):
                 activations.append(2 * scaled * activations[-1] - activations[-2])
             features.append(torch.stack(activations, dim=-1) @ weights)
-        return torch.einsum("pi,pj,pk,ijkl->pl", *features, self.readout)
+        modes = ascii_letters[:len(features)]
+        features_spec = ",".join("Z" + mode for mode in modes)
+        return torch.einsum(f"{features_spec},{modes}Y->ZY", *features, self.readout)
 
     def integrate(self) -> torch.Tensor:
         """Integrate each trained output over the unit cube by exact moments."""
         integrals = [self.moments @ weights for weights in self.branches]
-        return torch.einsum("i,j,k,ijkl->l", *integrals, self.readout)
+        modes = ascii_letters[:len(integrals)]
+        return torch.einsum(f"{','.join(modes)},{modes}Y->Y", *integrals, self.readout)
