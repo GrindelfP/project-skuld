@@ -10,6 +10,10 @@ from scipy.optimize import least_squares
 FloatArray = NDArray[np.float64]
 
 
+class UncertifiedWaterDepthError(RuntimeError):
+    """The fitted networks could not certify a water depth in [0, 1]."""
+
+
 def _features(points: FloatArray, frequencies: FloatArray) -> FloatArray:
     angles = (points - 0.5) @ frequencies.T
     return np.column_stack((np.ones(len(points)), np.cos(angles), np.sin(angles)))
@@ -62,6 +66,7 @@ class WaterVolumeNetwork:
         frequency_limit: float,
         restarts: int,
         rng: np.random.Generator,
+        max_nfev: int = 300,
     ) -> "WaterVolumeNetwork":
         """Learn frequencies and output weights from pointwise surface heights."""
         if points.ndim != 2 or not points.shape[1]:
@@ -72,6 +77,8 @@ class WaterVolumeNetwork:
             raise ValueError("Sample points must lie in the unit cube")
         if width < 1 or restarts < 1 or frequency_limit <= 0 or not np.isfinite(frequency_limit):
             raise ValueError("Expected positive width, restarts and finite frequency limit")
+        if max_nfev < 1:
+            raise ValueError("Expected a positive optimization budget")
         dimension = points.shape[1]
         if len(points) < 1 + width * (dimension + 2):
             raise ValueError("Expected at least as many samples as fitted parameters")
@@ -97,7 +104,7 @@ class WaterVolumeNetwork:
                 gtol=None,
                 xtol=1e-13,
                 ftol=1e-13,
-                max_nfev=300,
+                max_nfev=max_nfev,
             )
             coefficients, errors = project(fit.x)
             candidate = cls(fit.x.reshape(width, dimension), coefficients)
@@ -109,5 +116,5 @@ class WaterVolumeNetwork:
                     break
 
         if best is None:
-            raise RuntimeError("No fitted network certified a water depth in [0, 1]")
+            raise UncertifiedWaterDepthError("No fitted network certified a water depth in [0, 1]")
         return best
