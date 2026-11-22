@@ -13,6 +13,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 
+from benchmarks.meson_reference import physical_references
 from physics import D_R2, L_LOG, M1, M2, M3, PARAM_SETS, P1P1, P2P2, PP, T_MAX
 from skuld._piecewise_bernstein_volume import PiecewiseBernsteinSurface, collocation_points
 from utils.paths import get_mirror_path
@@ -58,35 +59,6 @@ def predict_integrals(models: dict[int, PiecewiseBernsteinSurface], scales: dict
         occupied = models[m].integrate_weighted(powers_for(params))
         # A = 1 - occupied. Evaluate scale*(1-A) without rounding A first.
         yield scales[m] * occupied, occupied
-
-
-def physical_references(order: int) -> list[mp.mpf]:
-    """Independent Gauss integration on the physical simplex and linear t panels."""
-    nodes, weights = mp.gauss_quadrature(order, "legendre01")
-    panels = (0, 1, 4, 16, 40, T_MAX)
-    time_nodes = []
-    for lo, hi in zip(panels[:-1], panels[1:], strict=True):
-        for z, w in zip(nodes, weights, strict=True):
-            t = lo + (hi - lo) * z
-            ratio = t / (1 + t)
-            time_nodes.append((t, ratio, (hi - lo) * w * ratio / (1 + t)))
-
-    totals = [mp.mpf(0) for _ in PARAM_SETS]
-    for x, wx in zip(nodes, weights, strict=True):
-        for y, wy in zip(nodes, weights, strict=True):
-            alpha1, alpha2 = x, (1 - x) * y
-            d, r2 = D_R2(alpha1, alpha2)
-            m1 = m2 = mp.mpf(0)
-            for t, ratio, wt in time_nodes:
-                value = wt * mp.exp(-t * d - ratio * r2)
-                m1 += value
-                m2 += value * ratio
-            spatial = wx * wy * (1 - x)
-            for index, (a, b, m, n) in enumerate(PARAM_SETS):
-                if (m, n) not in {(1, 2), (2, 3)}:
-                    raise ValueError("Reference time weights require the standard meson exponents")
-                totals[index] += spatial * alpha1**a * alpha2**b * (m1 if m == 1 else m2)
-    return totals
 
 
 def main() -> None:
