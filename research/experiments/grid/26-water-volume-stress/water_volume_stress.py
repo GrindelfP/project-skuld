@@ -3,9 +3,10 @@
 import argparse
 import csv
 import sys
-from collections.abc import Callable
+from collections.abc import Callable, Iterator
+from concurrent.futures import ProcessPoolExecutor
 from dataclasses import asdict, dataclass
-from itertools import product
+from itertools import product, repeat
 from math import comb, factorial, prod
 from pathlib import Path
 from statistics import mean
@@ -238,10 +239,56 @@ def summarize(rows: list[dict], **labels: int | str) -> dict:
     }
 
 
+def run_dimension(
+    dimension: int, seeds: tuple[int, ...], budgets: tuple[Budget, ...],
+) -> tuple[int, list[dict], list[dict]]:
+    rows = []
+    with mp.workdps(60), threadpool_limits(limits=1, user_api="blas"):
+        fixtures = surfaces(dimension)
+        test_x = np.random.default_rng(918).random((N_HOLDOUT, dimension))
+        for seed in seeds:
+            train_x = np.random.default_rng(seed).random(
+                (max(budget.training_sites for budget in budgets), dimension)
+            )
+            for surface in fixtures:
+                train_y = surface.evaluate(train_x)
+                test_y = surface.evaluate(test_x)
+                for budget in budgets:
+                    n = budget.training_sites
+                    rows.append(evaluate(
+                        surface.name, surface.exact, train_x[:n], train_y[:n],
+                        test_x, test_y, seed, budget,
+                    ))
+            print(f"{dimension}D seed={seed} complete", flush=True)
+    summary = [
+        summarize(
+            [row for row in rows if row["function"] == surface.name and row["name"] == budget.name],
+            dimension=dimension, function=surface.name, budget=budget.name,
+        )
+        for surface in fixtures for budget in budgets
+    ]
+    return dimension, rows, summary
+
+
+def run_dimensions(
+    dimensions: tuple[int, ...], seeds: tuple[int, ...], budgets: tuple[Budget, ...],
+    workers: int,
+) -> Iterator[tuple[int, list[dict], list[dict]]]:
+    arguments = (dimensions, repeat(seeds), repeat(budgets))
+    if workers == 1:
+        yield from map(run_dimension, *arguments)
+        return
+    with ProcessPoolExecutor(max_workers=workers) as executor:
+        yield from executor.map(run_dimension, *arguments)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--smoke", action="store_true", help="Use one seed, dimension and small budget")
+    parser.add_argument("--workers", type=int, default=1, help="Run this many dimensions in parallel")
     args = parser.parse_args()
+    if args.workers < 1:
+        parser.error("--workers must be positive")
     dimensions = DIMENSIONS[:1] if args.smoke else DIMENSIONS
     seeds = SEEDS[:1] if args.smoke else SEEDS
     budgets = (Budget("smoke", 2, 64, 8, 1, 15),) if args.smoke else BUDGETS
@@ -249,36 +296,12 @@ def main() -> None:
     destination = get_mirror_path(__file__, "results")
     rows = []
     summary = []
-    with mp.workdps(60), threadpool_limits(limits=1, user_api="blas"):
-        for dimension in dimensions:
-            fixtures = surfaces(dimension)
-            test_x = np.random.default_rng(918).random((N_HOLDOUT, dimension))
-            first = len(rows)
-            for seed in seeds:
-                train_x = np.random.default_rng(seed).random(
-                    (max(budget.training_sites for budget in budgets), dimension)
-                )
-                for surface in fixtures:
-                    train_y = surface.evaluate(train_x)
-                    test_y = surface.evaluate(test_x)
-                    for budget in budgets:
-                        n = budget.training_sites
-                        rows.append(evaluate(
-                            surface.name, surface.exact, train_x[:n], train_y[:n],
-                            test_x, test_y, seed, budget,
-                        ))
-                print(f"{dimension}D seed={seed} complete", flush=True)
-            current = rows[first:]
-            summary.extend(
-                summarize(
-                    [row for row in current if row["function"] == surface.name and row["name"] == budget.name],
-                    dimension=dimension, function=surface.name, budget=budget.name,
-                )
-                for surface in fixtures for budget in budgets
-            )
-            print(summarize(current, dimension=dimension), flush=True)
-            write_csv(destination / f"integrals{suffix}.csv", rows)
-            write_csv(destination / f"summary{suffix}.csv", summary)
+    for dimension, current, current_summary in run_dimensions(dimensions, seeds, budgets, args.workers):
+        rows.extend(current)
+        summary.extend(current_summary)
+        print(summarize(current, dimension=dimension), flush=True)
+        write_csv(destination / f"integrals{suffix}.csv", rows)
+        write_csv(destination / f"summary{suffix}.csv", summary)
     print(summarize(rows), flush=True)
 
 
