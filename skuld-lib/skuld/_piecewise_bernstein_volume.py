@@ -1,4 +1,4 @@
-"""Bounded piecewise Bernstein networks with exact polynomial-weighted readouts."""
+"""Bounded piecewise Bernstein interpolants with exact polynomial-weighted readouts."""
 
 from dataclasses import dataclass
 from itertools import product
@@ -47,7 +47,7 @@ def _weighted_moments(count: int, degree: int, powers: tuple[int, int]) -> Float
 
 @dataclass(frozen=True)
 class PiecewiseBernsteinSurface:
-    """One bounded tensor-product hidden layer per cell of a regular partition."""
+    """One bounded tensor-product polynomial per cell of a regular partition."""
 
     coefficients: FloatArray
     cells: tuple[int, ...]

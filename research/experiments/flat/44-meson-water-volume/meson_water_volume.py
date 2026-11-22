@@ -1,4 +1,4 @@
-"""Compute all eight finite-cutoff meson integrals with bounded water surfaces."""
+"""Integrate fixed piecewise Bernstein interpolants for the eight meson cases."""
 
 import csv
 import math
