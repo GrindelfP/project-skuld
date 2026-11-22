@@ -165,5 +165,7 @@ class FiberSurface:
             factors.append(factor)
             samples += used
         amplitude_bound = prod(factor.upper_bound() for factor in factors)
+        if not np.isfinite(amplitude_bound) or amplitude_bound <= 0:
+            return None, samples
         scale = min(signal, (1 - 16 * np.finfo(float).eps) / amplitude_bound)
         return cls(scale, tuple(factors)), samples

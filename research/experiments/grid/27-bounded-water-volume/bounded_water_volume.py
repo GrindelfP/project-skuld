@@ -28,6 +28,7 @@ from utils.paths import get_mirror_path
 
 DIMENSIONS = (2, 3, 4, 5, 6)
 SEEDS = (42, 123, 2026)
+CONFIRMATION_SEEDS = (17, 1701, 98765)
 N_VALIDATION = 512
 N_HOLDOUT = 4096
 MAX_CELLS = 1023
@@ -185,7 +186,7 @@ def audit(
 def score_model(model: Model, fixture: Surface, test_x: FloatArray, test_y: FloatArray) -> tuple:
     estimate = model.integrate()
     predictions = model.height(test_x)
-    if not 0 <= estimate <= 1 or np.any((predictions < -1e-12) | (predictions > 1 + 1e-12)):
+    if not 0 <= estimate <= 1 or not np.all((predictions >= -1e-12) & (predictions <= 1 + 1e-12)):
         raise RuntimeError(f"Range check failed on {model.kind} for {fixture.name}")
     relative, score = digits(estimate, fixture.exact)
     return estimate, relative, score, rmse(predictions, test_y)
@@ -223,12 +224,19 @@ def fit_case(
     }
 
 
-def run_dimension(dimension: int, smoke: bool) -> tuple[int, list[dict], list[dict]]:
+def evaluation_points(dimension: int, confirmation: bool) -> tuple[FloatArray, FloatArray]:
+    validation_seed, test_seed = (1229, 6133) if confirmation else (707, 918)
+    validation = np.random.default_rng(validation_seed).random((N_VALIDATION, dimension))
+    test = np.random.default_rng(test_seed).random((N_HOLDOUT, dimension))
+    return validation, test
+
+
+def run_dimension(dimension: int, smoke: bool, confirmation: bool) -> tuple[int, list[dict], list[dict]]:
     rows, audits = [], []
-    seeds = SEEDS[:1] if smoke else SEEDS
+    seeds = CONFIRMATION_SEEDS if confirmation else SEEDS
+    seeds = seeds[:1] if smoke else seeds
     budgets = (Budget(128, 2, 12),) if smoke else BUDGETS
-    validation_x = np.random.default_rng(707).random((N_VALIDATION, dimension))
-    test_x = np.random.default_rng(918).random((N_HOLDOUT, dimension))
+    validation_x, test_x = evaluation_points(dimension, confirmation)
     with mp.workdps(60), threadpool_limits(limits=1, user_api="blas"):
         fixtures = surfaces(dimension)
         for seed in seeds:
@@ -237,7 +245,8 @@ def run_dimension(dimension: int, smoke: bool) -> tuple[int, list[dict], list[di
                 heights = fixture.evaluate(points)
                 validation_y = fixture.evaluate(validation_x)
                 test_y = fixture.evaluate(test_x)
-                audits.append(audit(fixture, seed, points, heights, smoke))
+                if not confirmation:
+                    audits.append(audit(fixture, seed, points, heights, smoke))
                 for budget in budgets:
                     rows.append(fit_case(
                         fixture, budget, seed, points, heights, validation_x, validation_y, test_x, test_y,
@@ -282,20 +291,23 @@ def save_results(destination: Path, dims, suffix: str) -> None:
               f"{min(scores):.3f}/{mean(scores):.3f}/{max(scores):.3f}; "
               f"{sum(row['reached_12'] for row in current)} passing", flush=True)
         for filename, table in (("integrals", rows), ("summary", summary(rows)), ("range_audit", audits)):
-            write_csv(destination / f"{filename}{suffix}.csv", table)
+            if table:
+                write_csv(destination / f"{filename}{suffix}.csv", table)
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--smoke", action="store_true")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--smoke", action="store_true")
+    mode.add_argument("--confirmation", action="store_true", help="Use independent seeds and evaluation points")
     parser.add_argument("--workers", type=int, default=1)
     args = parser.parse_args()
     if args.workers < 1:
         parser.error("--workers must be positive")
     destination = get_mirror_path(__file__, "results")
     dimensions = DIMENSIONS[:1] if args.smoke else DIMENSIONS
-    arguments = (dimensions, repeat(args.smoke))
-    suffix = "_smoke" if args.smoke else ""
+    arguments = (dimensions, repeat(args.smoke), repeat(args.confirmation))
+    suffix = "_smoke" if args.smoke else "_confirmation" if args.confirmation else ""
     if args.workers == 1:
         save_results(destination, map(run_dimension, *arguments), suffix)
     else:

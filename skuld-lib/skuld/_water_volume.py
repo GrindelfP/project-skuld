@@ -106,6 +106,7 @@ class WaterVolumeNetwork:
 def _ridge_candidates(
     points: FloatArray, values: FloatArray, width: int, frequency_limit: float,
     restarts: int, max_nfev: int, rng: np.random.Generator,
+    *, initial_frequencies: FloatArray | None = None,
 ) -> Iterator[tuple[WaterVolumeNetwork, float]]:
     """Project the output weights out of the nonlinear frequency optimization."""
     dimension = points.shape[1]
@@ -118,8 +119,11 @@ def _ridge_candidates(
     def residual(flat_frequencies: FloatArray) -> FloatArray:
         return project(flat_frequencies)[1]
 
-    for _ in range(restarts):
-        start = rng.uniform(-frequency_limit, frequency_limit, size=width * dimension)
+    for trial in range(restarts):
+        start = (
+            initial_frequencies.reshape(-1) if trial == 0 and initial_frequencies is not None
+            else rng.uniform(-frequency_limit, frequency_limit, size=width * dimension)
+        )
         fit = least_squares(
             residual, start, bounds=(-frequency_limit, frequency_limit), gtol=None,
             xtol=1e-13, ftol=1e-13, max_nfev=max_nfev,
