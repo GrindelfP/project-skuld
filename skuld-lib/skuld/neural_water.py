@@ -6,13 +6,40 @@ from functools import lru_cache
 from itertools import product
 from math import fsum, prod
 
-import mpmath as mp
 import numpy as np
 from numpy.polynomial.chebyshev import chebvander
 from numpy.typing import NDArray
 from scipy.fft import dctn
 
 Array = NDArray[np.float64]
+
+
+def _chebyshev_means(degrees: NDArray[np.int64]) -> Array:
+    """Mean of each Chebyshev mode over a uniform axis of the tank."""
+    return np.divide(
+        1.0, 1.0 - degrees**2,
+        out=np.zeros(degrees.shape), where=degrees % 2 == 0,
+    )
+
+
+@lru_cache(maxsize=16)
+def _volume_moments(width: int) -> tuple[Array, Array]:
+    degrees = np.arange(width)
+    sums = degrees[:, None] + degrees
+    differences = np.abs(degrees[:, None] - degrees)
+    gram = (_chebyshev_means(sums) + _chebyshev_means(differences)) / 2
+    return _chebyshev_means(degrees), np.linalg.cholesky(gram).T
+
+
+def _paired_volume(left: tuple[Array, ...], right: tuple[Array, ...]) -> float:
+    """Propagate the joint second moment of two neural branches."""
+    joint = np.ones((1, 1))
+    for a, b in zip(left, right, strict=True):
+        shared_modes = min(len(a), len(b))
+        a, b = a[:shared_modes], b[:shared_modes]
+        weighted_b = joint @ b
+        joint = a.reshape(-1, a.shape[-1]).T @ weighted_b.reshape(-1, b.shape[-1])
+    return float(joint[0, 0])
 
 
 def _learn_layers(coefficients: Array, relative_tolerance: float) -> tuple[Array, ...]:
@@ -42,9 +69,10 @@ class _ColumnNetwork:
     @classmethod
     def learn(cls, heights: Array) -> "_ColumnNetwork":
         # Keep the inverse activation well conditioned even for signed heights.
-        peak = float(np.max(np.abs(heights)))
-        scale = (8 * peak if peak <= np.finfo(float).max / 8 else peak) or 1.0
-        latent_targets = np.arcsinh(heights / scale)
+        scale = float(np.max(np.abs(heights))) or 1.0
+        normalized = (heights / scale) / 8
+        # Stable inverse of z + z², the depth above the reference fill.
+        latent_targets = 2 * normalized / (1 + np.sqrt(1 + 4 * normalized))
         coefficients = dctn(latent_targets, type=2)
         for axis, size in enumerate(heights.shape):
             coefficients /= size
@@ -74,35 +102,33 @@ class _ColumnNetwork:
 
     def depths(self, points: Array) -> Array:
         latent = self._latent(points, self.layers) + self._latent(points, self.correction)
-        return self.scale * np.sinh(latent)
+        return self.scale * (8 * (latent + latent**2))
 
-    def _latent_grid(self, nodes: Array, layers: tuple[Array, ...]) -> Array:
-        state = np.ones((1, 1))
+    def _branch_moments(self, layers: tuple[Array, ...]) -> tuple[float, tuple[Array, ...]]:
+        first = np.ones(1)
+        orthogonal = []
         for layer in layers:
-            activated = self._activate(nodes, layer)
-            kernel = activated.transpose(1, 0, 2).reshape(layer.shape[0], -1)
-            state = (state @ kernel).reshape(-1, layer.shape[2])
-        return state[:, 0]
+            width = layer.shape[1]
+            means, factor = _volume_moments(width)
+            modes = layer.transpose(1, 0, 2)
+            averaged = (means @ modes.reshape(width, -1)).reshape(layer.shape[::2])
+            first = first @ averaged
+            orthogonal.append((factor @ modes.reshape(width, -1)).reshape(modes.shape))
+        return float(first[0]), tuple(orthogonal)
 
-    def volume(self, order: int) -> float:
-        nodes, weights = _gauss_rule(order)
-        latent = self._latent_grid(nodes, self.layers) + self._latent_grid(nodes, self.correction)
-        tensor_weights = np.ones(1)
-        for _ in self.layers:
-            tensor_weights = np.multiply.outer(tensor_weights, weights).ravel()
-        # Each pair of columns has lengths max(h, 0) and max(-h, 0).
-        # Accumulate their difference without first rounding the two totals.
-        return self.scale * fsum(np.sinh(latent) * tensor_weights)
-
-
-@lru_cache(maxsize=16)
-def _gauss_rule(order: int) -> tuple[Array, Array]:
-    context = mp.mp.clone()
-    context.dps = 40
-    nodes, weights = context.gauss_quadrature(order, "legendre")
-    nodes = np.asarray(list(nodes), dtype=float)
-    weights = np.asarray(list(weights), dtype=float) / 2
-    return nodes, weights
+    def volume(self) -> float:
+        """Measure occupied volume relative to a flat tank at height 1/4."""
+        first, layers = self._branch_moments(self.layers)
+        first_correction, correction = self._branch_moments(self.correction)
+        # Fill is (1/2 + z)². Cancel the reference fill algebraically and
+        # propagate the remaining first and second moments through the weights.
+        centered_fill = fsum((
+            first, first_correction,
+            _paired_volume(layers, layers),
+            2 * _paired_volume(layers, correction),
+            _paired_volume(correction, correction),
+        ))
+        return self.scale * (8 * centered_fill)
 
 
 @dataclass(frozen=True)
@@ -115,8 +141,8 @@ class _Tank:
     def widths(self) -> Array:
         return np.subtract(self.upper, self.lower)
 
-    def volume(self, order: int) -> float:
-        return prod(self.widths) * self.network.volume(order)
+    def volume(self) -> float:
+        return prod(self.widths) * self.network.volume()
 
 
 @dataclass(frozen=True)
@@ -137,13 +163,9 @@ class NeuralWaterMap:
             for tank in self._tanks
         )
 
-    def integrate(self, *, order: int | None = None) -> float:
+    def integrate(self) -> float:
         """Measure the signed volume of the learned columns."""
-        if order is None:
-            order = self.fit_order + 4
-        if order < 1:
-            raise ValueError("Readout order must be positive")
-        return fsum(tank.volume(order) for tank in self._tanks)
+        return fsum(tank.volume() for tank in self._tanks)
 
     def depths(self, points: Array) -> Array:
         """Evaluate actual network depths at points in the original domain."""

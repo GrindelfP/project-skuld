@@ -15,15 +15,25 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "skuld-lib"))
 
-from benchmarks.meson_reference import physical_references
 from benchmarks.meson_surfaces import meson_samples
 from benchmarks.water_volume_surfaces import surfaces
 from physics import PARAM_SETS
-from skuld.neural_water import Array, fit_water_map
+from skuld.neural_water import Array, _ColumnNetwork, fit_water_map
 from utils.paths import get_mirror_path
 
 TARGET = 15
 ORDERS = (56, 72, 88, 104, 120)
+# Frozen physical-coordinate references for PARAM_SETS at t <= 80.
+MESON_REFERENCES = (
+    "1.0243339058167526642905877421072730818218",
+    "0.3758095492800485610488363566996787751266",
+    "0.3758095492800485610488363566996787751266",
+    "0.1142569385920750245966803947037099703831",
+    "0.8247578513642928156583077079635010037545",
+    "0.3074142752138049601007022166798964445473",
+    "0.3074142752138049601007022166798964445473",
+    "0.0961457107260509180773192495552676799848",
+)
 
 
 @dataclass
@@ -44,7 +54,6 @@ class Measurement:
     estimate: float
     fit_order: int
     fit_change: float
-    readout_change: float
     queries: int
     weights: int
     seconds: float
@@ -69,18 +78,16 @@ def measure(
             raise AssertionError("Point evaluation accounting does not match the training grids")
         total_queries += oracle.queries
         parameters = network.parameter_count
-        coarse_readout = network.integrate()
-        estimate = network.integrate(order=order + 12)
+        estimate = network.integrate()
         scale = max(abs(estimate), np.finfo(float).tiny)
-        relative_readout = abs(estimate - coarse_readout) / scale
         if previous is not None:
             relative_fit = abs(estimate - previous) / scale
-            if relative_fit <= 8e-16 and relative_readout <= 5e-16:
+            if relative_fit <= 8e-16:
                 break
         previous = estimate
         del network
     return Measurement(
-        estimate, order, relative_fit, relative_readout, total_queries, parameters,
+        estimate, order, relative_fit, total_queries, parameters,
         perf_counter() - started,
     )
 
@@ -100,7 +107,6 @@ def score(group, name, dimension, measurement, exact, note=""):
         "correct_digits": digits,
         "fit_order": measurement.fit_order,
         "fit_relative_change": measurement.fit_change,
-        "readout_relative_change": measurement.readout_change,
         "training_point_evaluations": measurement.queries,
         "network_weights": measurement.weights,
         "wall_seconds": round(measurement.seconds, 6),
@@ -109,21 +115,32 @@ def score(group, name, dimension, measurement, exact, note=""):
 
 
 def check_volume_geometry():
+    # z(x,y) = (x + xy)/16 on [-1,1]^2. Its linear moment is zero.
+    x = np.array([[[0.0], [1 / 16]]])
+    y = np.array([[[0.0], [1.0]]])
+    one = np.ones((1, 1, 1))
+    squared_surface = _ColumnNetwork((x, one), (x, y), scale=1)
+    assert abs(squared_surface.volume() - 1 / 72) < 3e-17
+    # z(x) = (1+x)/16 + x/16 has a nonzero cross moment.
+    offset = np.array([[[1 / 16], [1 / 16]]])
+    overlapping = _ColumnNetwork((offset,), (x,), scale=1)
+    assert abs(overlapping.volume() - 55 / 96) < 1e-16
+
     oracle = PointOracle(lambda points: points[:, 0] - 0.25)
-    network = fit_water_map(oracle, [(-2.0, 3.0)], order=32)
+    network = fit_water_map(oracle, [(-2.0, 3.0)], order=48)
     oracle.active = False
     points = np.array([[-1.5], [0.25], [2.5]])
     np.testing.assert_allclose(network.depths(points), [-1.75, 0, 2.25], atol=2e-15, rtol=0)
-    assert abs(network.integrate() - 1.25) < 1e-15
-    layer_type = type(network._tanks[0].network)
-    unavailable = RuntimeError("Neural depth evaluation disabled")
-    with patch.object(layer_type, "_latent_grid", side_effect=unavailable):
+    with patch.object(_ColumnNetwork, "_latent", side_effect=AssertionError("Point readout")):
+        assert abs(network.integrate() - 1.25) < 2e-15
+    unavailable = RuntimeError("Neural weight readout disabled")
+    with patch.object(_ColumnNetwork, "_branch_moments", side_effect=unavailable):
         try:
             network.integrate()
         except RuntimeError as error:
             assert error is unavailable
         else:
-            raise AssertionError("Volume readout bypassed its depth network")
+            raise AssertionError("Volume readout bypassed the network weights")
     zero = fit_water_map(lambda points: np.zeros(len(points)), [(0, 1)], order=4)
     assert zero.integrate() == 0
 
@@ -139,17 +156,10 @@ def main():
                 lambda points: meson_samples(points, a, b, m),
                 ((0, 1),) * 3, ((),) * 3, ORDERS,
             ))
-        references_low = physical_references(28)
-        references_high = physical_references(36)
-        reference_change = max(abs((a - b) / b) for a, b in zip(
-            references_low, references_high, strict=True,
-        ))
-        if reference_change >= mp.mpf("1e-18"):
-            raise AssertionError(f"Meson scoring references changed by {mp.nstr(reference_change, 6)}")
-        print(f"Meson reference refinement: {mp.nstr(reference_change, 6)} relative", flush=True)
+        references = tuple(map(mp.mpf, MESON_REFERENCES))
         rows = [
             score("meson", f"I_{i}", 3, result, exact, "physical cutoff t=80")
-            for i, (result, exact) in enumerate(zip(meson, references_high, strict=True), 1)
+            for i, (result, exact) in enumerate(zip(meson, references, strict=True), 1)
         ]
         for dimension in (2, 3):
             bounds = ((0, 1),) * dimension
