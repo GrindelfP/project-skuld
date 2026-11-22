@@ -1,5 +1,6 @@
 """Experimental neural occupancy model on the unit hypercube."""
 
+from collections.abc import Iterator
 from dataclasses import dataclass
 from math import fsum
 
@@ -48,7 +49,9 @@ class WaterVolumeNetwork:
         lower, upper = self.depth_bounds()
         if not 0 <= lower <= upper <= 1:
             raise ValueError("The model's depth bounds must lie in [0, 1]")
+        return self._cube_mean()
 
+    def _cube_mean(self) -> float:
         # After vertical integration of occupancy, integrate h(x). On the
         # centered cube the sine moments vanish by symmetry, while each
         # cosine moment factors into sinc(w_j / 2) over the coordinates.
@@ -83,33 +86,13 @@ class WaterVolumeNetwork:
         if len(points) < 1 + width * (dimension + 2):
             raise ValueError("Expected at least as many samples as fitted parameters")
 
-        water_depth = 1 - heights
-
-        def project(flat_frequencies: FloatArray) -> tuple[FloatArray, FloatArray]:
-            features = _features(points, flat_frequencies.reshape(width, dimension))
-            coefficients = np.linalg.lstsq(features, water_depth, rcond=None)[0]
-            return coefficients, features @ coefficients - water_depth
-
-        def residual(flat_frequencies: FloatArray) -> FloatArray:
-            return project(flat_frequencies)[1]
-
         best = None
         best_rms = float("inf")
-        for _ in range(restarts):
-            start = rng.uniform(-frequency_limit, frequency_limit, size=width * dimension)
-            fit = least_squares(
-                residual,
-                start,
-                bounds=(-frequency_limit, frequency_limit),
-                gtol=None,
-                xtol=1e-13,
-                ftol=1e-13,
-                max_nfev=max_nfev,
-            )
-            coefficients, errors = project(fit.x)
-            candidate = cls(fit.x.reshape(width, dimension), coefficients)
+        for model, rms in _ridge_candidates(
+            points, 1 - heights, width, frequency_limit, restarts, max_nfev, rng
+        ):
+            candidate = cls(model.frequencies, model.coefficients)
             lower, upper = candidate.depth_bounds()
-            rms = float(np.sqrt(np.mean(errors**2)))
             if 0 <= lower <= upper <= 1 and rms < best_rms:
                 best, best_rms = candidate, rms
                 if best_rms <= 5e-15:
@@ -118,3 +101,30 @@ class WaterVolumeNetwork:
         if best is None:
             raise UncertifiedWaterDepthError("No fitted network certified a water depth in [0, 1]")
         return best
+
+
+def _ridge_candidates(
+    points: FloatArray, values: FloatArray, width: int, frequency_limit: float,
+    restarts: int, max_nfev: int, rng: np.random.Generator,
+) -> Iterator[tuple[WaterVolumeNetwork, float]]:
+    """Project the output weights out of the nonlinear frequency optimization."""
+    dimension = points.shape[1]
+
+    def project(flat_frequencies: FloatArray) -> tuple[FloatArray, FloatArray]:
+        features = _features(points, flat_frequencies.reshape(width, dimension))
+        coefficients = np.linalg.lstsq(features, values, rcond=None)[0]
+        return coefficients, features @ coefficients - values
+
+    def residual(flat_frequencies: FloatArray) -> FloatArray:
+        return project(flat_frequencies)[1]
+
+    for _ in range(restarts):
+        start = rng.uniform(-frequency_limit, frequency_limit, size=width * dimension)
+        fit = least_squares(
+            residual, start, bounds=(-frequency_limit, frequency_limit), gtol=None,
+            xtol=1e-13, ftol=1e-13, max_nfev=max_nfev,
+        )
+        coefficients, errors = project(fit.x)
+        yield WaterVolumeNetwork(fit.x.reshape(width, dimension), coefficients), float(
+            np.sqrt(np.mean(errors**2))
+        )
