@@ -14,15 +14,16 @@ from ._exponential_water_volume import ExponentialWaterSurface
 class NeuralWaterSurface(nn.Module):
     """Squared spatial layers, an exponential time layer and a positive output."""
 
-    def __init__(self, start_rates: tuple[float, float]) -> None:
+    def __init__(self, start_rates: tuple[float, float], *, anchored: bool = False) -> None:
         super().__init__()
+        self.anchored = anchored
         dtype = torch.float64
         self.x_layer = nn.Linear(1, 3, dtype=dtype)
         self.y_layer = nn.Linear(1, 3, dtype=dtype)
         self.x_mixing = nn.Linear(3, 3, dtype=dtype)
         self.y_mixing = nn.Linear(3, 3, dtype=dtype)
         self.time_layer = nn.Linear(1, 2, bias=False, dtype=dtype)
-        self.head = nn.Linear(27, 1, dtype=dtype)
+        self.head = nn.Linear(18 if anchored else 27, 1, bias=not anchored, dtype=dtype)
         with torch.no_grad():
             for layer in (self.x_layer, self.y_layer):
                 layer.weight[:, 0].copy_(torch.tensor([0.0, 0.7, -0.7], dtype=dtype))
@@ -33,7 +34,8 @@ class NeuralWaterSurface(nn.Module):
                 layer.weight.mul_(0.07).add_(torch.eye(3, dtype=dtype))
                 layer.bias.mul_(0.07)
             self.head.weight.mul_(0.15)
-            self.head.bias.zero_()
+            if self.head.bias is not None:
+                self.head.bias.zero_()
             self.time_layer.weight[:, 0].copy_(torch.tensor(start_rates, dtype=dtype))
 
     def log_field(self, points: torch.Tensor) -> torch.Tensor:
@@ -41,7 +43,10 @@ class NeuralWaterSurface(nn.Module):
         y = self.y_mixing(self.y_layer(2 * points[:, 1:2] - 1).square())
         spatial = (x[:, :, None] * y[:, None, :]).flatten(1)
         time = self.time_layer(points[:, 2:3] - 0.5).exp()
-        time = torch.cat((torch.ones_like(time[:, :1]), time), dim=1)
+        if self.anchored:
+            time = time - (-0.5 * self.time_layer.weight[:, 0]).exp()
+        else:
+            time = torch.cat((torch.ones_like(time[:, :1]), time), dim=1)
         return self.head((time[:, :, None] * spatial[:, None, :]).flatten(1))[:, 0]
 
     def forward(self, points: torch.Tensor, *, log: bool = False) -> torch.Tensor:
@@ -63,9 +68,14 @@ class NeuralWaterSurface(nn.Module):
         spatial = np.einsum(
             "ip,jq->ijpq", quadratic(self.x_layer, self.x_mixing), quadratic(self.y_layer, self.y_mixing)
         ).reshape(9, 3, 3)
-        coefficients = np.einsum("ij,jpq->ipq", array(self.head.weight).reshape(3, 9), spatial)
-        coefficients[0, 0, 0] += array(self.head.bias)[0]
-        return ExponentialWaterSurface(array(self.time_layer.weight)[:, 0].copy(), coefficients)
+        rates = array(self.time_layer.weight)[:, 0].copy()
+        coefficients = np.einsum("ij,jpq->ipq", array(self.head.weight).reshape(-1, 9), spatial)
+        if self.anchored:
+            baseline = -np.einsum("i,ipq->pq", np.exp(-0.5 * rates), coefficients)
+            coefficients = np.concatenate((baseline[None], coefficients))
+        else:
+            coefficients[0, 0, 0] += array(self.head.bias)[0]
+        return ExponentialWaterSurface(rates, coefficients)
 
 
 @dataclass(frozen=True)
@@ -79,6 +89,7 @@ class FitReport:
 
 def fit_neural_surface(
     points: np.ndarray, positive_values: np.ndarray, *, seed: int, start_rates: tuple[float, float],
+    anchored: bool = False,
 ) -> FitReport:
     """Train all layers jointly using a trust region and backpropagated Jacobians."""
     if (points.ndim != 2 or points.shape[1] != 3
@@ -88,7 +99,7 @@ def fit_neural_surface(
         raise ValueError("Expected positive point samples in the unit cube")
     with torch.random.fork_rng(devices=[]):
         torch.manual_seed(seed)
-        network = NeuralWaterSurface(start_rates)
+        network = NeuralWaterSurface(start_rates, anchored=anchored)
     features = torch.as_tensor(points, dtype=torch.float64)
     target = torch.as_tensor(positive_values, dtype=torch.float64).log()
     parameters = dict(network.named_parameters())
