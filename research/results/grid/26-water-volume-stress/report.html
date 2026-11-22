@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Нейросетевое интегрирование методом объёма воды</title>
+<style>
+* { box-sizing: border-box }
+body { margin: 0; font: 16px/1.55 system-ui, sans-serif; color: #14283e; background: #f3f6fb }
+main { width: min(1100px, 100%); margin: auto; padding: 38px 24px 56px }
+h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.06; margin: 0 0 .4em }
+h2 { font-size: 24px; margin: 30px 0 8px }
+p { max-width: 78ch; margin: 0 0 13px }
+a { color: #135c91 }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 10px; margin: 20px 0 }
+.metric { background: #14283e; color: #f4f8ff; border-radius: 10px; padding: 12px 16px }
+.metric strong { display: block; font-size: 24px; color: #b7efde }
+.table-wrap { overflow-x: auto; border-radius: 10px; background: white }
+table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums }
+th, td { text-align: center; padding: 8px; border: 2px solid white }
+thead th { background: #213c59; color: white }
+tbody th { text-align: left; background: #eef3f9; white-space: nowrap }
+td small { display: block; min-width: 110px; white-space: nowrap }
+.empty { background: #e4eaf1 }
+.good { background: #c9eee4 }
+.low { background: #fce7bc }
+.plots { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(430px, 100%), 1fr)); gap: 12px }
+figure { margin: 0; background: white; padding: 10px; border-radius: 10px }
+img { width: 100%; height: auto; display: block }
+figcaption { padding: 6px 10px }
+</style>
+<main>
+<h1>Интегрирование через объём воды</h1>
+<p>2D–6D · 11 поверхностей · 4 бюджета · 3 seed на каждый бюджет.
+Правильные цифры вычислены как −log<sub>10</sub> относительной ошибки.</p>
+<div class="metrics">
+  <div class="metric"><strong>660</strong>запусков</div>
+  <div class="metric"><strong>98</strong>с точностью ≥12 цифр</div>
+  <div class="metric"><strong>382</strong>отказов проверки диапазона</div>
+  <div class="metric"><strong>278</strong>численных оценок</div>
+</div>
+<h2>Точность по функциям и размерностям</h2>
+<p>В ячейке указана медиана правильных цифр среди полученных оценок,
+число допусков из 12 запусков и число оценок с ≥12 цифрами.
+Бирюзовым выделены ячейки, где хотя бы один запуск достиг цели.</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col">Функция</th><th scope="col">2D</th><th scope="col">3D</th><th scope="col">4D</th><th scope="col">5D</th><th scope="col">6D</th></tr></thead><tbody><tr><th scope="row">Две косые волны</th><td class="good"><strong>15,32</strong><small>допуск 12/12 · ≥12 12</small></td><td class="good"><strong>15,46</strong><small>допуск 12/12 · ≥12 11</small></td><td class="good"><strong>15,39</strong><small>допуск 12/12 · ≥12 10</small></td><td class="good"><strong>15,47</strong><small>допуск 12/12 · ≥12 9</small></td><td class="good"><strong>15,17</strong><small>допуск 12/12 · ≥12 9</small></td></tr><tr><th scope="row">Шесть быстрых волн</th><td class="low"><strong>2,21</strong><small>допуск 4/12 · ≥12 0</small></td><td class="low"><strong>2,25</strong><small>допуск 9/12 · ≥12 0</small></td><td class="low"><strong>1,98</strong><small>допуск 10/12 · ≥12 0</small></td><td class="low"><strong>2,32</strong><small>допуск 12/12 · ≥12 0</small></td><td class="low"><strong>2,23</strong><small>допуск 12/12 · ≥12 0</small></td></tr><tr><th scope="row">Связанный полином</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>2,41</strong><small>допуск 1/12 · ≥12 0</small></td><td class="low"><strong>1,87</strong><small>допуск 6/12 · ≥12 0</small></td><td class="low"><strong>1,67</strong><small>допуск 7/12 · ≥12 0</small></td><td class="low"><strong>1,78</strong><small>допуск 6/12 · ≥12 0</small></td></tr><tr><th scope="row">Связанная экспонента</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>1,41</strong><small>допуск 4/12 · ≥12 0</small></td><td class="low"><strong>1,61</strong><small>допуск 7/12 · ≥12 0</small></td><td class="low"><strong>2,19</strong><small>допуск 9/12 · ≥12 0</small></td></tr><tr><th scope="row">Осцилляция Genz</th><td class="good"><strong>15,69</strong><small>допуск 12/12 · ≥12 12</small></td><td class="good"><strong>15,67</strong><small>допуск 12/12 · ≥12 11</small></td><td class="good"><strong>15,53</strong><small>допуск 12/12 · ≥12 10</small></td><td class="good"><strong>15,89</strong><small>допуск 12/12 · ≥12 9</small></td><td class="good"><strong>2,56</strong><small>допуск 12/12 · ≥12 5</small></td></tr><tr><th scope="row">Лоренцевы пики</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td></tr><tr><th scope="row">Угловой пик</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>3,32</strong><small>допуск 1/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td></tr><tr><th scope="row">Гауссов пик</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td></tr><tr><th scope="row">Излом Genz</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>1,62</strong><small>допуск 1/12 · ≥12 0</small></td></tr><tr><th scope="row">Наклонный скачок</th><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>0,72</strong><small>допуск 1/12 · ≥12 0</small></td><td class="empty"><strong>—</strong><small>допуск 0/12 · ≥12 0</small></td><td class="low"><strong>1,63</strong><small>допуск 4/12 · ≥12 0</small></td><td class="low"><strong>1,11</strong><small>допуск 4/12 · ≥12 0</small></td></tr><tr><th scope="row">Малый интеграл</th><td class="low"><strong>9,83</strong><small>допуск 12/12 · ≥12 0</small></td><td class="low"><strong>9,67</strong><small>допуск 12/12 · ≥12 0</small></td><td class="low"><strong>9,38</strong><small>допуск 12/12 · ≥12 0</small></td><td class="low"><strong>9,60</strong><small>допуск 12/12 · ≥12 0</small></td><td class="low"><strong>9,42</strong><small>допуск 12/12 · ≥12 0</small></td></tr></tbody></table></div>
+<h2>Сравнение бюджетов</h2>
+<p>По всем полученным оценкам мин / среднее / макс составили 0,72 / 8,15 / 17,43.
+Допуск означает, что амплитудная оценка гарантирует глубину воды в [0, 1] на кубе.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Бюджет</th><th>Нейроны</th><th>Точки</th><th>Предел частот</th>
+<th>Допущено</th><th>≥12 цифр</th><th>Цифры, мин / сред. / макс</th></tr></thead>
+<tbody><tr><th scope='row'>pilot</th><td>2</td><td>256</td><td>8</td><td>81/165</td><td>28</td><td>0,72 / 7,93 / 17,43</td></tr><tr><th scope='row'>more_samples</th><td>2</td><td>1024</td><td>8</td><td>72/165</td><td>27</td><td>1,25 / 8,91 / 17,43</td></tr><tr><th scope='row'>wider</th><td>8</td><td>1024</td><td>8</td><td>52/165</td><td>30</td><td>1,95 / 11,90 / 17,43</td></tr><tr><th scope='row'>wide_band</th><td>8</td><td>1024</td><td>24</td><td>73/165</td><td>13</td><td>1,40 / 4,96 / 17,43</td></tr></tbody></table></div>
+<h2>Графики</h2>
+<div class="plots">
+<figure><img src="precision.png" alt="Тепловая карта медианной точности">
+<figcaption>Серые ячейки соответствуют функциям и размерностям без допущенных оценок.</figcaption></figure>
+<figure><img src="coverage.png" alt="Число точных, неточных и недопущенных запусков">
+<figcaption>По каждой функции было 60 запусков.</figcaption></figure>
+<figure><img src="comparison.png" alt="Правильные цифры сети и среднего по тем же точкам">
+<figcaption>На допущенных запусках нейросеть превзошла среднее по тем же точкам в 199 из 278 случаев.</figcaption></figure>
+</div>
+<h2>Данные</h2>
+<p><a href="integrals.csv">Все запуски</a> · <a href="summary.csv">Сводка по бюджетам</a></p>
+</main>
+</html>
