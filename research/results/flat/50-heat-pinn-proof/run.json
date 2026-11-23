@@ -1,0 +1,34 @@
+{
+  "config": {
+    "width": 6,
+    "sites": 128,
+    "batch": 128,
+    "adam": 450,
+    "lbfgs": 0,
+    "trust": 140,
+    "compact": true,
+    "rates": [
+      1.0
+    ],
+    "pde_weight": 1.0,
+    "neumann_weight": 1.0,
+    "late_weight": 0.0,
+    "balanced_time": false,
+    "normalize": false,
+    "log_every": 20
+  },
+  "seeds": [
+    42,
+    137
+  ],
+  "time": 6.0,
+  "readout_coordinate": 0.3333333333333333,
+  "dtype": "float64",
+  "device": "cpu",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "torch_version": "2.9.1",
+  "reference_arithmetic_digits": 65,
+  "width_by_dimension": {
+    "1": 4
+  }
+}
