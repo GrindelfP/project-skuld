@@ -3,6 +3,7 @@ import mpmath as mp
 import torch
 
 from heat_pinn import Config, DTYPE, HeatField, sample_sites
+from heat_pinn_anchored import AnchoredConfig, AnchoredField
 from heat_pinn_precision import CompactField, points_as_mp
 
 
@@ -41,6 +42,19 @@ def check_multiprecision(model, point, moment, expected):
             assert abs((plus - minus) / (2 * delta) - jac[index]) < mp.mpf('1e-30')
 
 
+def check_anchored(dimension, sites):
+    for reflected in (False, True):
+        model = AnchoredField(dimension, AnchoredConfig(width=6, initial_width=7,
+                                                       reflected=reflected, initial_feature=True))
+        check_double(model, dimension)
+        expected = model.initial(2 * sites.initial - 1)
+        torch.testing.assert_close(model(sites.initial, torch.zeros_like(sites.times)), expected)
+        if reflected:
+            _, gradient, _ = model(sites.faces, sites.face_times, True)
+            normal = gradient.gather(1, sites.axes[:, None])
+            assert normal.count_nonzero() == 0
+
+
 def main():
     torch.manual_seed(41)
     with mp.workdps(65):
@@ -53,7 +67,8 @@ def main():
                 point, moment, expected = check_double(model, dimension)
                 if compact:
                     check_multiprecision(model, point, moment, expected)
-    print('Heat PINN: site sampling, float64 derivatives, and all multiprecision Jacobian columns passed.')
+            check_anchored(dimension, sites)
+    print('Heat PINN: sampling, derivatives, anchoring, and reflected flux checks passed.')
 
 
 if __name__ == '__main__':

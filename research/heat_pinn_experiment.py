@@ -47,6 +47,9 @@ def plot_loss(path, histories):
             adam_steps = max((row['evaluation'] for row in history if row['stage'] == 'adam'), default=0)
             for stage in ('trust_region', 'trust_region_final', 'lbfgs', 'lbfgs_final'):
                 offsets[stage] = adam_steps
+            offsets['initial_fit'] = 0
+            offsets['dynamics'] = max((row['evaluation'] for row in history
+                                       if row['stage'] == 'initial_fit'), default=0)
             offsets['multiprecision'] = max(row['evaluation'] + offsets[row['stage']]
                                              for row in history if row['stage'] != 'multiprecision')
             x = [row['evaluation'] + offsets[row['stage']] for row in history]
@@ -69,7 +72,7 @@ def statistics_row(label, rows):
                 passes_1e_20=sum(row['passes_1e_20'] for row in rows))
 
 
-def run(script, cases, config, seeds, *, baseline=None, width_by_dimension=None):
+def run(script, cases, config, seeds, *, baseline=None, width_by_dimension=None, trainer=fit):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--smoke', action='store_true')
     parser.add_argument('--case', action='append', help='Run a named case, optionally restricted by --dimension')
@@ -90,6 +93,8 @@ def run(script, cases, config, seeds, *, baseline=None, width_by_dimension=None)
     if args.smoke:
         config = replace(config, sites=min(config.sites, 32), adam=2, lbfgs=min(config.lbfgs, 2),
                          trust=min(config.trust, 3))
+        if hasattr(config, 'initial_adam'):
+            config = replace(config, initial_adam=2, initial_lbfgs=min(config.initial_lbfgs, 2))
     out = get_mirror_path(script, 'results')
     if use_baseline:
         out = out / 'baseline'
@@ -110,7 +115,7 @@ def run(script, cases, config, seeds, *, baseline=None, width_by_dimension=None)
             if width_by_dimension and case.dimension in width_by_dimension:
                 case_config = replace(config, width=width_by_dimension[case.dimension])
             for seed in seeds:
-                model, scale, untrained, history, seconds = fit(case.point_fn, case.dimension, case_config, seed)
+                model, scale, untrained, history, seconds = trainer(case.point_fn, case.dimension, case_config, seed)
                 raw_estimate = plateau(model)
                 check = diagnostics(model, seed)
                 precision_sites = 0
