@@ -1,8 +1,11 @@
 """Fit and audit an insulated heat PINN for the finite-cutoff meson integrals."""
 import argparse
+from concurrent.futures import ProcessPoolExecutor
+from copy import deepcopy
 import csv
 import json
 import math
+from multiprocessing import get_context
 from pathlib import Path
 import sys
 from time import perf_counter
@@ -29,7 +32,7 @@ def references():
 
 
 HORIZON = 6.0
-N_DEFECTS = 5
+N_DEFECTS = 6
 
 
 def spacetime(count, generator):
@@ -74,7 +77,7 @@ def readout(model, time):
     return model(point).item()
 
 
-def defects(model, points, estimate, inject=0.0):
+def defects(model, points, estimate, *, source=0.0, plateau_bias=0.0):
     space = points[:, :3]
     points = points.detach().requires_grad_()
     field, derivatives = model.field(points)
@@ -82,8 +85,10 @@ def defects(model, points, estimate, inject=0.0):
     field_gradient = gradient(field, points)
     pde = (flux_time - field_gradient[:, :3]).abs().amax(dim=1)
     divergence = sum(gradient(flux_time[:, i], points)[:, i] for i in range(3))
+    laplacian = sum(gradient(field_gradient[:, i], points)[:, i] for i in range(3))
+    heat_residual = (field_gradient[:, 3] - laplacian).abs()
     # An injected uniform source changes u_s without changing the flux.
-    balance = (field_gradient[:, 3] + inject - divergence).abs()
+    balance = (field_gradient[:, 3] + source - divergence).abs()
     face_defects = []
     for axis in range(3):
         for side in (0., 1.):
@@ -96,16 +101,18 @@ def defects(model, points, estimate, inject=0.0):
     face = torch.stack(face_defects).amax(dim=0)
     final = model(with_time(space, HORIZON).requires_grad_())
     previous = model(with_time(space, HORIZON - 1).requires_grad_())
+    final = final + plateau_bias * (space[:, 0] - 1 / 3)
     amplitude = max(abs(estimate), torch.finfo(points.dtype).tiny)
     return torch.stack((pde, balance, face, (final - estimate).abs() / amplitude,
-                        (final - previous).abs() / amplitude), dim=1).detach()
+                        (final - previous).abs() / amplitude, heat_residual), dim=1).detach()
 
 
 def audit(model, estimate, options, generator):
     controller = HeatController(32, N_DEFECTS)
+    frozen_controller = deepcopy(controller)
     tolerances = torch.tensor([options.pde_tolerance, options.conservation_tolerance,
                                options.conservation_tolerance, options.plateau_tolerance,
-                               options.plateau_tolerance])
+                               options.plateau_tolerance, options.pde_tolerance])
     points = [spacetime(count, generator) for count in (192, 1024, 256)]
     training, pool, holdout = points
     targets = torch.log1p(defects(model, training, estimate) / tolerances)
@@ -116,19 +123,20 @@ def audit(model, estimate, options, generator):
     update = train(controller, loss, 300, 30, 0.005)
     with torch.no_grad():
         proposed = pool[controller(pool).topk(8, dim=0).indices.unique()]
-        frozen = pool[HeatController(32, N_DEFECTS)(pool).topk(8, dim=0).indices.unique()]
+        frozen = pool[frozen_controller(pool).topk(8, dim=0).indices.unique()]
     measured = defects(model, holdout, estimate)
     proposed_defects = defects(model, proposed, estimate)
     frozen_defects = defects(model, frozen, estimate)
     maxima = torch.cat((torch.expm1(targets) * tolerances, measured, proposed_defects)).amax(dim=0)
-    injected = defects(model, proposed, estimate, inject=1e-3)
+    injected = defects(model, holdout, estimate, source=1e-3, plateau_bias=1e-2)
     names = ('flux_pde_residual', 'local_heat_balance', 'normal_face_defect',
-             'plateau_spread', 'plateau_drift')
+             'plateau_spread', 'plateau_drift', 'heat_pde_residual')
     return dict(
         controller_update=update,
         controller_proposed_sites=len(proposed),
         controller_accepted=bool((maxima <= tolerances).all()),
         controller_injected_balance_detected=bool(injected[:, 1].max() > tolerances[1]),
+        injected_plateau_drift=injected[:, 4].max().item(),
         **{name: value.item() for name, value in zip(names, maxima, strict=True)},
         **{f'proposed_{name}': value.item()
            for name, value in zip(names, proposed_defects.amax(dim=0), strict=True)},
@@ -139,6 +147,8 @@ def audit(model, estimate, options, generator):
 
 def fit_case(index, options):
     begin = perf_counter()
+    torch.set_default_dtype(torch.float64)
+    torch.set_num_threads(1)
     torch.manual_seed(options.seed)
     generator = torch.Generator().manual_seed(options.seed)
     params = PARAM_SETS[index]
@@ -187,6 +197,38 @@ def fit_case(index, options):
     )
 
 
+def self_check(options):
+    """Check the derivative and controller paths on an exact transient."""
+    class InitialMode(torch.nn.Module):
+        def forward(self, xyz):
+            return 2 + torch.cos(math.pi * xyz[:, 0]) * torch.cos(2 * math.pi * xyz[:, 1])
+
+    class ExactHeat(HeatNetwork):
+        def flux(self, points):
+            x, y, z, time = points.unbind(dim=1)
+            angle_x, angle_y = math.pi * x, 2 * math.pi * y
+            time_factor = torch.expm1(-5 * math.pi**2 * time) / (5 * math.pi)
+            return time_factor[:, None] * torch.stack((
+                torch.sin(angle_x) * torch.cos(angle_y), 2 * torch.cos(angle_x) * torch.sin(angle_y),
+                0 * z,
+            ), dim=1)
+
+    generator = torch.Generator().manual_seed(options.seed)
+    torch.manual_seed(options.seed)
+    model = ExactHeat(InitialMode(), 1)
+    points = spacetime(256, generator)
+    field = model(points.clone().requires_grad_())
+    initial = model.initial(points[:, :3])
+    expected = 2 + (initial - 2) * torch.exp(-5 * math.pi**2 * points[:, 3])
+    discrepancy = (field - expected).detach().abs().max().item()
+    report = audit(model, readout(model, HORIZON), options, generator)
+    if discrepancy > 1e-13 or not report['controller_accepted']:
+        raise RuntimeError(f'Exact transient rejected: {discrepancy=}, {report=}')
+    if not report['controller_injected_balance_detected'] or report['injected_plateau_drift'] < 1e-3:
+        raise RuntimeError(f'Injected defect was not detected: {report=}')
+    print(json.dumps(dict(exact_transient_max_error=discrepancy, **report), indent=2))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--seed', type=int, default=42)
@@ -203,19 +245,40 @@ def main():
     parser.add_argument('--plateau-tolerance', type=float, default=1e-7)
     parser.add_argument('--conservation-tolerance', type=float, default=1e-10)
     parser.add_argument('--pde-tolerance', type=float, default=0.02)
+    parser.add_argument('--workers', type=int, default=1)
+    parser.add_argument('--self-check', action='store_true')
     parser.add_argument('--smoke', action='store_true')
     options = parser.parse_args()
+    if min(options.initial_width, options.width, options.initial_sites, options.pde_sites,
+           options.batch, options.workers) < 1:
+        parser.error('widths, sample counts, and worker count must be positive')
+    if min(options.initial_steps, options.heat_steps, options.initial_polish, options.heat_polish) < 0:
+        parser.error('optimizer step counts must be nonnegative')
+    if min(options.pde_tolerance, options.conservation_tolerance, options.plateau_tolerance) <= 0:
+        parser.error('controller tolerances must be positive')
     torch.set_default_dtype(torch.float64)
     torch.set_num_threads(1)
+    if options.self_check:
+        self_check(options)
+        return
 
     order = (0, 5) if options.smoke else tuple(range(len(PARAM_SETS)))
     rows = []
-    for index in order:
-        row = fit_case(index, options)
-        print(f'I_{index + 1} estimate={row["estimate"]:.12g}, plateau={row["plateau_spread"]:.3g}, '
+
+    def record(row):
+        index = int(row['integral'].split('_')[1])
+        print(f'I_{index} estimate={row["estimate"]:.12g}, plateau={row["plateau_spread"]:.3g}, '
               f'initial max={row["initial_holdout_max_over_peak"]:.3g}, time={row["wall_seconds"]:.1f}s',
               flush=True)
         rows.append(row)
+
+    if options.workers == 1:
+        for index in order:
+            record(fit_case(index, options))
+    else:
+        with ProcessPoolExecutor(max_workers=options.workers, mp_context=get_context('spawn')) as executor:
+            for row in executor.map(fit_case, order, [options] * len(order)):
+                record(row)
 
     # References are opened after every estimate and audit.
     reference_values = references()
