@@ -1,17 +1,25 @@
 {
-  "config": {
-    "size": 32,
-    "rank": 14,
-    "steps": 24,
-    "plateau_tolerance": 1e-08,
-    "conservation_tolerance": 1e-10,
-    "smoke": false
-  },
+  "status": "interrupted_at_user_request",
+  "requested_cases": 8,
+  "cases": 4,
+  "completed": [
+    "I_1",
+    "I_2",
+    "I_3",
+    "I_4"
+  ],
+  "pending": [
+    "I_5",
+    "I_6",
+    "I_7",
+    "I_8"
+  ],
+  "command": "python research/experiments/flat/53-conservative-heat-controller/meson.py --workers 4",
+  "notes": "Recovered after stopping from rounded stdout. Full diagnostics and unrounded estimates were not flushed. Acceptance fails from plateau spread alone.",
   "diffusion_horizon": 6,
-  "min_digits": 8.731604446529262,
-  "mean_digits": 8.92455885056658,
-  "max_digits": 9.245633897759948,
-  "passed_7_digits": 8,
-  "controller_accepted": 8,
-  "cases": 8
+  "plateau_tolerance": 1e-07,
+  "controller_accepted": 0,
+  "min_digits": 0.6825593148016861,
+  "mean_digits": 1.2870324448012571,
+  "max_digits": 2.2806992358724005
 }
