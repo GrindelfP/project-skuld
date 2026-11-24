@@ -1,20 +1,19 @@
-"""Fit, diffuse, and audit the finite-cutoff meson integrands."""
+"""Fit and audit an insulated heat PINN for the finite-cutoff meson integrals."""
 import argparse
 import csv
 import json
+import math
 from pathlib import Path
 import sys
 from time import perf_counter
 
-import numpy as np
-from scipy.stats import qmc
 import torch
 
 RESEARCH = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(RESEARCH), str(RESEARCH.parent / 'skuld-lib')]
 
 from physics import PARAM_SETS, T_MAX, integrand_transformed
-from skuld._conservative_heat import HeatController, HeatNetwork, InitialNetwork, evaluate, sites
+from skuld._conservative_heat import HeatController, HeatNetwork, InitialNetwork, gradient
 from utils.paths import get_mirror_path
 
 
@@ -29,121 +28,209 @@ def references():
     return [float(row['reference']) for row in rows]
 
 
-def mesh(z):
-    return np.stack(np.meshgrid(z, z, z, indexing='ij'), axis=-1).reshape(-1, 3)
+HORIZON = 6.0
+N_DEFECTS = 5
 
 
-def sample(params, xyz):
-    points = torch.from_numpy((xyz + 1) / 2)
-    return integrand_transformed(points, *params).numpy()
+def spacetime(count, generator):
+    points = torch.rand(count, 4, generator=generator)
+    # Resolve the initial transient while covering the whole horizon.
+    time = points[:, 3]
+    points[:, 3] = HORIZON * torch.expm1(5 * time) / math.expm1(5)
+    return points
 
 
-def sobol(seed, power):
-    return 2 * qmc.Sobol(3, scramble=True, seed=seed).random_base2(power) - 1
+def with_time(space, time):
+    return torch.cat((space, torch.full_like(space[:, :1], time)), dim=1)
 
 
-def fit_case(params, nodes, layers, options):
+def train(model, loss, steps, polish, learning_rate):
+    before = torch.cat([p.detach().flatten() for p in model.parameters() if p.requires_grad])
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+    for step in range(steps):
+        optimizer.zero_grad()
+        value = loss(step)
+        value.backward()
+        optimizer.step()
+    if polish:
+        optimizer = torch.optim.LBFGS(
+            model.parameters(), max_iter=polish, line_search_fn='strong_wolfe',
+            tolerance_grad=1e-12, tolerance_change=1e-15,
+        )
+
+        def closure():
+            optimizer.zero_grad()
+            value = loss(None)
+            value.backward()
+            return value
+
+        optimizer.step(closure)
+    after = torch.cat([p.detach().flatten() for p in model.parameters() if p.requires_grad])
+    return torch.linalg.vector_norm(after - before).item()
+
+
+def readout(model, time):
+    point = with_time(torch.full((1, 3), 1 / 3), time).requires_grad_()
+    return model(point).item()
+
+
+def defects(model, points, estimate, inject=0.0):
+    space = points[:, :3]
+    points = points.detach().requires_grad_()
+    field, derivatives = model.field(points)
+    flux_time = torch.stack([derivative[:, 3] for derivative in derivatives], dim=-1)
+    field_gradient = gradient(field, points)
+    pde = (flux_time - field_gradient[:, :3]).abs().amax(dim=1)
+    divergence = sum(gradient(flux_time[:, i], points)[:, i] for i in range(3))
+    # An injected uniform source changes u_s without changing the flux.
+    balance = (field_gradient[:, 3] + inject - divergence).abs()
+    face_defects = []
+    for axis in range(3):
+        for side in (0., 1.):
+            face = points.detach().clone()
+            face[:, axis] = side
+            face.requires_grad_()
+            normal_gradient = gradient(model(face), face)[:, axis]
+            normal_flux = model.flux(face)[:, axis]
+            face_defects.extend((normal_gradient.abs(), normal_flux.abs()))
+    face = torch.stack(face_defects).amax(dim=0)
+    final = model(with_time(space, HORIZON).requires_grad_())
+    previous = model(with_time(space, HORIZON - 1).requires_grad_())
+    amplitude = max(abs(estimate), torch.finfo(points.dtype).tiny)
+    return torch.stack((pde, balance, face, (final - estimate).abs() / amplitude,
+                        (final - previous).abs() / amplitude), dim=1).detach()
+
+
+def audit(model, estimate, options, generator):
+    controller = HeatController(32, N_DEFECTS)
+    tolerances = torch.tensor([options.pde_tolerance, options.conservation_tolerance,
+                               options.conservation_tolerance, options.plateau_tolerance,
+                               options.plateau_tolerance])
+    points = [spacetime(count, generator) for count in (192, 1024, 256)]
+    training, pool, holdout = points
+    targets = torch.log1p(defects(model, training, estimate) / tolerances)
+
+    def loss(_):
+        return (controller(training) - targets).square().mean()
+
+    update = train(controller, loss, 300, 30, 0.005)
+    with torch.no_grad():
+        proposed = pool[controller(pool).topk(8, dim=0).indices.unique()]
+        frozen = pool[HeatController(32, N_DEFECTS)(pool).topk(8, dim=0).indices.unique()]
+    measured = defects(model, holdout, estimate)
+    proposed_defects = defects(model, proposed, estimate)
+    frozen_defects = defects(model, frozen, estimate)
+    maxima = torch.cat((torch.expm1(targets) * tolerances, measured, proposed_defects)).amax(dim=0)
+    injected = defects(model, proposed, estimate, inject=1e-3)
+    names = ('flux_pde_residual', 'local_heat_balance', 'normal_face_defect',
+             'plateau_spread', 'plateau_drift')
+    return dict(
+        controller_update=update,
+        controller_proposed_sites=len(proposed),
+        controller_accepted=bool((maxima <= tolerances).all()),
+        controller_injected_balance_detected=bool(injected[:, 1].max() > tolerances[1]),
+        **{name: value.item() for name, value in zip(names, maxima, strict=True)},
+        **{f'proposed_{name}': value.item()
+           for name, value in zip(names, proposed_defects.amax(dim=0), strict=True)},
+        **{f'frozen_controller_{name}': value.item()
+           for name, value in zip(names, frozen_defects.amax(dim=0), strict=True)},
+    )
+
+
+def fit_case(index, options):
     begin = perf_counter()
-    n = len(nodes)
-    initial = InitialNetwork.fit(sample(params, mesh(nodes)).reshape((n,) * 3), nodes, options.rank)
-    holdout = sobol(639, 12)
-    expected = sample(params, holdout)
-    initial_error = np.max(abs(initial.forward(holdout) - expected))
-    scale = np.max(abs(expected))
-    field = initial.coefficients()
-    fit_seconds = perf_counter() - begin
-    controller = HeatController(seed=687)
-    train, candidates, verification = sobol(734, 7), sobol(832, 10), sobol(934, 8)
-    readout_point = np.full((1, 3), -1 / 3)
-    disabled_heat_estimate = initial.forward(readout_point)[0]
-    audits = []
-    first_plateau_step = None
-    for step in range(1, options.steps + 1):
-        previous = field
-        # Symmetric axis splitting. The continuous axis heat generators commute.
-        for axis in (0, 1, 2, 1, 0):
-            layer = layers[0 if axis == 2 else 1]
-            before, field = field, layer.advance(field, axis)
-            if step in (1, options.steps - 1, options.steps):
-                def defects(points):
-                    pde, flux = layer.defects(before, points, axis)
-                    balance = layer.balance(before, field, points, axis)
-                    return np.column_stack((pde, flux, balance)) / scale
+    torch.manual_seed(options.seed)
+    generator = torch.Generator().manual_seed(options.seed)
+    params = PARAM_SETS[index]
+    sites = torch.rand(options.initial_sites, 3, generator=generator)
+    values = integrand_transformed(sites, *params)
+    scale = values.abs().max().item()
+    values = values / scale
+    initial = InitialNetwork(options.initial_width)
 
-                report = controller.audit(defects, train, candidates, verification)
-                audits.append((step, axis, report))
-        if step < min(7, options.steps):
-            continue
+    def initial_loss(step):
+        batch = slice(None) if step is None else torch.randint(len(sites), (options.batch,), generator=generator)
+        return (initial(sites[batch]) - values[batch]).square().mean()
 
-        estimate = evaluate(field, readout_point)[0]
+    initial_update = train(initial, initial_loss, options.initial_steps, options.initial_polish, 0.003)
+    holdout = torch.rand(4096, 3, generator=generator)
+    with torch.no_grad():
+        holdout_error = initial(holdout) - integrand_transformed(holdout, *params) / scale
+        disabled = scale * initial(torch.full((1, 3), 1 / 3)).item()
+    model = HeatNetwork(initial, options.width)
+    fixed = spacetime(options.pde_sites, generator)
 
-        def plateau(points):
-            final = evaluate(field, points)
-            center = abs(final - estimate)
-            drift = abs(final - evaluate(previous, points))
-            return np.column_stack((center, drift)) / max(abs(estimate), np.finfo(float).tiny)
+    def heat_loss(step):
+        batch = fixed if step is None else spacetime(options.batch, generator)
+        residual = model.residual(batch.detach().requires_grad_())
+        late = with_time(batch[:, :3], HORIZON).requires_grad_()
+        late_gradient = gradient(model(late), late)[:, :3]
+        return residual.square().mean() + options.late_weight * late_gradient.square().mean()
 
-        report = controller.audit(plateau, train, candidates, verification)
-        if first_plateau_step is None and report.measured_max.max() <= options.plateau_tolerance:
-            # Keep evolving until the requested physical horizon.
-            first_plateau_step = step
-    last_report = report
-    pde, flux, balance = np.max([row[2].measured_max for row in audits], axis=0)
-    accepted = bool(max(flux, balance) <= options.conservation_tolerance
-                    and last_report.measured_max.max() <= options.plateau_tolerance)
-    return dict(estimate=estimate, initial_holdout_max_over_peak=initial_error / scale,
-                disabled_heat_estimate=disabled_heat_estimate, controller_accepted=accepted,
-                initial_weights=initial.parameters, initial_train_sites=n**3,
-                initial_holdout_sites=len(holdout), initial_fit_seconds=fit_seconds,
-                first_accepted_plateau_step=first_plateau_step, plateau_max_from_readout=last_report.measured_max[0],
-                plateau_max_step_drift=last_report.measured_max[1], controller_candidate_max_from_readout=last_report.proposed_max[0],
-                controller_candidate_max_drift=last_report.proposed_max[1],
-                controller_plateau_prediction_max_error=last_report.prediction_error.max(),
-                stage_residual_over_peak=pde, face_flux_over_peak=flux, local_balance_over_peak=balance,
-                wall_seconds=perf_counter() - begin)
+    heat_update = train(model, heat_loss, options.heat_steps, options.heat_polish, 0.002)
+    estimate = readout(model, HORIZON)
+    check_points = torch.rand(256, 3, generator=generator)
+    anchored = model(with_time(check_points, 0).requires_grad_()).detach()
+    audit_report = audit(model, estimate, options, generator)
+    return dict(
+        integral=f'I_{index + 1}', **dict(zip('abmn', params, strict=True)), t_max=T_MAX,
+        estimate=scale * estimate, disabled_heat_estimate=disabled,
+        initial_update=initial_update, heat_update=heat_update,
+        initial_weights=sum(p.numel() for p in initial.parameters()),
+        heat_weights=sum(p.numel() for p in model.parameters() if p.requires_grad),
+        initial_train_sites=len(sites), initial_holdout_sites=len(holdout),
+        initial_holdout_max_over_peak=holdout_error.abs().max().item(),
+        initial_holdout_rmse_over_peak=holdout_error.square().mean().sqrt().item(),
+        initial_anchor_error=(anchored - initial(check_points)).abs().max().item(),
+        **audit_report,
+        wall_seconds=perf_counter() - begin,
+    )
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--size', type=int, default=32)
-    parser.add_argument('--rank', type=int, default=14)
-    parser.add_argument('--steps', type=int, default=24)
-    parser.add_argument('--plateau-tolerance', type=float, default=1e-8)
+    parser.add_argument('--seed', type=int, default=42)
+    parser.add_argument('--initial-width', type=int, default=48)
+    parser.add_argument('--width', type=int, default=48)
+    parser.add_argument('--initial-sites', type=int, default=4096)
+    parser.add_argument('--pde-sites', type=int, default=768)
+    parser.add_argument('--batch', type=int, default=192)
+    parser.add_argument('--initial-steps', type=int, default=1200)
+    parser.add_argument('--initial-polish', type=int, default=180)
+    parser.add_argument('--heat-steps', type=int, default=1000)
+    parser.add_argument('--heat-polish', type=int, default=250)
+    parser.add_argument('--late-weight', type=float, default=10.)
+    parser.add_argument('--plateau-tolerance', type=float, default=1e-7)
     parser.add_argument('--conservation-tolerance', type=float, default=1e-10)
+    parser.add_argument('--pde-tolerance', type=float, default=0.02)
     parser.add_argument('--smoke', action='store_true')
     options = parser.parse_args()
-    if not 2 <= options.rank <= options.size or options.steps < 3:
-        parser.error('expected 2 <= rank <= size and at least three time steps')
-    if not (options.plateau_tolerance > 0 and options.conservation_tolerance > 0):
-        parser.error('controller tolerances must be positive')
-
+    torch.set_default_dtype(torch.float64)
     torch.set_num_threads(1)
-    nodes = sites(options.size)
-    h = 6 / options.steps
-    layers = (HeatNetwork.fit(options.size, h), HeatNetwork.fit(options.size, h / 2))
+
     order = (0, 5) if options.smoke else tuple(range(len(PARAM_SETS)))
     rows = []
     for index in order:
-        params = PARAM_SETS[index]
-        fit = fit_case(params, nodes, layers, options)
-        print(f'I_{index + 1} estimate={fit["estimate"]:.12g}, plateau={fit["plateau_max_from_readout"]:.3g}', flush=True)
-        rows.append(dict(integral=f'I_{index + 1}', a=params[0], b=params[1], m=params[2], n=params[3], t_max=T_MAX, **fit))
+        row = fit_case(index, options)
+        print(f'I_{index + 1} estimate={row["estimate"]:.12g}, plateau={row["plateau_spread"]:.3g}, '
+              f'initial max={row["initial_holdout_max_over_peak"]:.3g}, time={row["wall_seconds"]:.1f}s',
+              flush=True)
+        rows.append(row)
 
-    # Opening the scoring values is deferred until all three networks have finished.
+    # References are opened after every estimate and audit.
     reference_values = references()
     for index, row in zip(order, rows, strict=True):
         reference = reference_values[index]
         error = abs(row['estimate'] - reference)
         relative = error / abs(reference)
-        digits = float(-np.log10(relative)) if relative else float('inf')
-        disabled_relative = abs(row['disabled_heat_estimate'] - reference) / abs(reference)
-        row.update(reference=reference, absolute_error=error, relative_error=relative, correct_digits=digits,
-                   disabled_heat_relative_error=disabled_relative)
+        row.update(reference=reference, absolute_error=error, relative_error=relative,
+                   correct_digits=-math.log10(relative) if relative else float('inf'),
+                   disabled_heat_relative_error=abs(row['disabled_heat_estimate'] - reference) / abs(reference))
     digits = [row['correct_digits'] for row in rows]
-    summary = dict(min_digits=min(digits), mean_digits=float(np.mean(digits)), max_digits=max(digits),
-                   passed_7_digits=sum(row['controller_accepted'] and row['correct_digits'] >= 7 for row in rows),
-                   controller_accepted=sum(row['controller_accepted'] for row in rows),
-                   cases=len(rows))
+    summary = dict(min_digits=min(digits), mean_digits=sum(digits) / len(digits), max_digits=max(digits),
+                   scores_at_least_7_digits=sum(digit >= 7 for digit in digits),
+                   accepted_at_least_7_digits=sum(row['controller_accepted'] and row['correct_digits'] >= 7 for row in rows),
+                   controller_accepted=sum(row['controller_accepted'] for row in rows), cases=len(rows))
     directory = get_mirror_path(__file__, 'results')
     if options.smoke:
         directory = directory / 'smoke'
@@ -153,7 +240,7 @@ def main():
         writer.writeheader()
         writer.writerows(rows)
     with (directory / 'run.json').open('w') as output:
-        json.dump(dict(config=vars(options), diffusion_horizon=6, **summary), output, indent=2)
+        json.dump(dict(config=vars(options), diffusion_horizon=HORIZON, **summary), output, indent=2)
         output.write('\n')
     print(summary)
 
