@@ -1,0 +1,15 @@
+{
+  "config": {
+    "size": 32,
+    "rank": 14,
+    "steps": 24,
+    "plateau_tolerance": 1e-08,
+    "smoke": true
+  },
+  "diffusion_horizon": 6,
+  "min_digits": 8.936392820354637,
+  "mean_digits": 9.091013359057293,
+  "max_digits": 9.245633897759948,
+  "passed_7_digits": 2,
+  "cases": 2
+}
