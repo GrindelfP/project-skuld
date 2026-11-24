@@ -114,7 +114,8 @@ class HeatNetwork:
 
     def balance(self, field, later, xyz, axis):
         change = evaluate(later - field, xyz)
-        represented = evaluate(apply_axis(self.transition - np.eye(self.transition.shape[0]), field, axis), xyz)
+        divergence = [evaluate(apply_axis(stage, field, axis), xyz) for stage in self.stage_dxx]
+        represented = self.duration * (RADAU[-1] @ divergence)
         return abs(change - represented)
 
 

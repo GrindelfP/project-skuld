@@ -4,6 +4,7 @@
     "rank": 14,
     "steps": 24,
     "plateau_tolerance": 1e-08,
+    "conservation_tolerance": 1e-10,
     "smoke": true
   },
   "diffusion_horizon": 6,
@@ -11,5 +12,6 @@
   "mean_digits": 9.091013359057293,
   "max_digits": 9.245633897759948,
   "passed_7_digits": 2,
+  "controller_accepted": 2,
   "cases": 2
 }
